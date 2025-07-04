@@ -1,11 +1,13 @@
 import HeroSection from "@/src/components/home-page/hero-section";
-import AboutSection from "../components/home-page/about-section";
+import AboutSection from "@/src/components/home-page/about-section";
+import ServicesSection from "@/src/components/home-page/services";
 
 export default function Home() {
   return (
     <div className="">
       <HeroSection />
       <AboutSection />
+      <ServicesSection />
       {/* <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
         <Image
           className="dark:invert"
