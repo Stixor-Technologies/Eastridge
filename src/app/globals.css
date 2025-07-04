@@ -59,3 +59,9 @@ body {
     max-width: 96rem;
   }
 }
+
+@layer utilities {
+  h2 {
+    @apply from-accent to-body-primary bg-gradient-to-b bg-clip-text text-center text-[2.5rem] text-transparent md:text-[4.375rem];
+  }
+}

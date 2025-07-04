@@ -6,6 +6,13 @@ import BuildingMobile from "@/public/images/building-mobile.png";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
 import BuildingSideMobile from "@/public/images/building-side-mobile.png";
 
+import EmergencyIcon from "@/public/icons/emergency.svg";
+import ScienceIcon from "@/public/icons/science.svg";
+import DataIcon from "@/public/icons/data.svg";
+import SpeakerIcon from "@/public/icons/speaker.svg";
+import CodeIcon from "@/public/icons/code.svg";
+import LifebuoyIcon from "@/public/icons/lifebuoy.svg";
+
 const MENU = [
   { id: "#home", label: "Home" },
   { id: "#about", label: "About" },
@@ -35,4 +42,43 @@ const HERO_SLIDER_IMAGES = [
   },
 ];
 
-export { MENU, HERO_SLIDER_IMAGES };
+const SERVICES = [
+  {
+    icon: EmergencyIcon,
+    title: "Emergency & Trauma Care",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+  {
+    icon: ScienceIcon,
+    title: "24/7 ER availability",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+  {
+    icon: DataIcon,
+    title: "Trauma response capabilities",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+  {
+    icon: SpeakerIcon,
+    title: "Radiology: MRI, CT, X-ray, Ultrasound",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+  {
+    icon: CodeIcon,
+    title: "Diagnostic Services",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+  {
+    icon: LifebuoyIcon,
+    title: "Pathology: Lab services, blood tests",
+    description:
+      "Security testing is a type of software testing that is focused determining if an information.",
+  },
+];
+
+export { MENU, HERO_SLIDER_IMAGES, SERVICES };

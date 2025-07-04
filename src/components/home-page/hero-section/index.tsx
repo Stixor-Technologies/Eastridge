@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Keyboard } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import Image from "next/image";
 import Ambulance from "@/public/icons/ambulance.svg";
 import { HERO_SLIDER_IMAGES } from "@/src/core/constants";
@@ -14,11 +14,11 @@ const HeroSection = () => {
     <section>
       <div className="relative text-white">
         <Swiper
-          keyboard={true}
+          //   keyboard={true}
           loop={true}
-          simulateTouch={true}
-          longSwipesMs={10000}
-          modules={[Keyboard, Autoplay]}
+          //   simulateTouch={true}
+          //   longSwipesMs={10000}
+          modules={[Autoplay]}
           speed={1000}
           autoplay={{
             delay: 2000,
@@ -68,9 +68,9 @@ const HeroSection = () => {
               <Image src={Ambulance} alt="ambulance-icon" />
             </div>
 
-            <h2 className="text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter xl:-tracking-[2.95px]">
+            <h1 className="text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter xl:-tracking-[2.95px]">
               Care at Every Step
-            </h2>
+            </h1>
           </div>
         </div>
       </div>
