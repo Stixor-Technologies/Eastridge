@@ -77,7 +77,7 @@ const AboutSection = () => {
         <div className="flex flex-col gap-10 md:gap-20 lg:flex-row xl:gap-[6.75rem]">
           <div className="text-body-main w-full text-center text-xl md:text-[1.375rem] lg:max-w-[40.875rem] lg:text-left">
             <h4 className="text-body-primary text-[40px] leading-tight">
-              Our Value
+              Our Values
             </h4>
             <p className="my-9">
               From seamless appointment booking to advanced diagnostics and

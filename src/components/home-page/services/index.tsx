@@ -10,6 +10,7 @@ const ServicesSection = () => {
         Our Support & Emergency Services
       </h4>
 
+      {/* services list */}
       <div className="mt-10 grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-x-[clamp(00.5rem,10vw,8.875rem)] gap-y-[1.9375rem] md:mt-[3.75rem] md:gap-y-10">
         {SERVICES.map((service, index) => (
           <div
