@@ -5,10 +5,10 @@
   --color-background: #ffffff;
 
   /* Main text color for paragraphs */
-  --color-text-main: #a1a1a1;
+  --color-body-main: #a1a1a1;
 
   /* Primary text color (used for headings and prominent text) */
-  --color-text-primary: #333333;
+  --color-body-primary: #333333;
 
   /* Card background color */
   --color-card-bg: #f6f6f6;
