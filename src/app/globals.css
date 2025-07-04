@@ -20,6 +20,8 @@
   --color-accent: #d82519;
 
   --font-inter: var(--font-inter);
+
+  --shadow-slider-btn: 0px 0px 22px 0px #d8251966;
 }
 
 body {

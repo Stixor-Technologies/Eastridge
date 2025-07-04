@@ -13,6 +13,10 @@ import SpeakerIcon from "@/public/icons/speaker.svg";
 import CodeIcon from "@/public/icons/code.svg";
 import LifebuoyIcon from "@/public/icons/lifebuoy.svg";
 
+import GeneralSurgeryIcon from "@/public/icons/general-surgery.svg";
+import NeuroSurgeryIcon from "@/public/icons/neuro-surgery.svg";
+import SpinalSurgeryIcon from "@/public/icons/spinal-surgery.svg";
+
 const MENU = [
   { id: "#home", label: "Home" },
   { id: "#about", label: "About" },
@@ -81,4 +85,53 @@ const SERVICES = [
   },
 ];
 
-export { MENU, HERO_SLIDER_IMAGES, SERVICES };
+const DEPARTMENTS = [
+  {
+    id: "surgery-allied",
+    label: "Surgery & Allied",
+    items: [
+      {
+        icon: GeneralSurgeryIcon,
+        title: "General Surgery",
+      },
+      {
+        icon: NeuroSurgeryIcon,
+        title: "Neuro Surgery",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Spinal Surgery",
+      },
+      {
+        icon: GeneralSurgeryIcon,
+        title: "General Surgery",
+      },
+      {
+        icon: NeuroSurgeryIcon,
+        title: "Neuro Surgery",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Spinal Surgery",
+      },
+    ],
+  },
+  {
+    id: "diagnostics-allied",
+    label: "Diagnostics Allied",
+    items: [
+      // Add diagnostics items here
+      // { icon: SomeIcon, title: "Radiology" },
+    ],
+  },
+  {
+    id: "medicine-allied",
+    label: "Medicine & Allied",
+    items: [
+      // Add medicine items here
+      // { icon: SomeIcon, title: "Cardiology" },
+    ],
+  },
+];
+
+export { MENU, HERO_SLIDER_IMAGES, SERVICES, DEPARTMENTS };

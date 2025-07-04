@@ -73,7 +73,7 @@ const AboutSection = () => {
 
       {/* values section */}
 
-      <div className="py-10 md:py-[3.9375rem]">
+      <div className="pt-10 md:pt-[3.9375rem]">
         <div className="flex flex-col gap-10 md:gap-20 lg:flex-row xl:gap-[6.75rem]">
           <div className="text-body-main w-full text-center text-xl md:text-[1.375rem] lg:max-w-[40.875rem] lg:text-left">
             <h4 className="text-body-primary text-[40px] leading-tight">
