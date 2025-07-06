@@ -21,6 +21,8 @@ import Marker from "@/public/icons/marker.svg";
 import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
+import DummyMember from "@/public/images/team/member-dummy.png";
+
 const MAP_KEY = process.env["MAP_API"];
 
 const MENU = [
@@ -161,6 +163,42 @@ const CONTACT_CARDS = [
   },
 ];
 
+const MANAGEMENT_TEAM = [
+  {
+    name: "Garrison Gardner",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+  {
+    name: "Adrianna Rose",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+  {
+    name: "Jessica Jonathon",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+
+  {
+    name: "Garrison Gardner",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+
+  {
+    name: "Adrianna Rose",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+
+  {
+    name: "Jessica Jonathon",
+    title: "Marketing Executive",
+    image: DummyMember,
+  },
+];
+
 export {
   MENU,
   HERO_SLIDER_IMAGES,
@@ -168,4 +206,5 @@ export {
   DEPARTMENTS,
   MAP_KEY,
   CONTACT_CARDS,
+  MANAGEMENT_TEAM,
 };
