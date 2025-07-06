@@ -23,6 +23,15 @@ import Call from "@/public/icons/call.svg";
 
 import DummyMember from "@/public/images/team/member-dummy.png";
 
+import Instagram from "@/public/icons/instagram.svg";
+import Facebook from "@/public/icons/facebook.svg";
+import X from "@/public/icons/x.svg";
+import YouTube from "@/public/icons/youtube.svg";
+
+import MarkerBlack from "@/public/icons/marker-black.svg";
+import CallBlack from "@/public/icons/call-black.svg";
+import Sms from "@/public/icons/sms.svg";
+
 const MAP_KEY = process.env["MAP_API"];
 
 const MENU = [
@@ -220,6 +229,50 @@ const MANAGEMENT_TEAM = [
   },
 ];
 
+const SOCIAL_LINKS = [
+  {
+    icon: Instagram,
+    id: "instagram",
+    href: "https://www.instagram.com/eastridgehospital/",
+  },
+  {
+    icon: Facebook,
+    id: "facebook",
+    href: "https://www.facebook.com/eastridgehospital/",
+  },
+  {
+    icon: X,
+    id: "x",
+    href: "https://www.x.com/eastridgehospital/",
+  },
+  {
+    icon: YouTube,
+    id: "youtube",
+    href: "https://www.youtube.com/eastridgehospital/",
+  },
+];
+
+const FOOTER_CONTACTS = [
+  {
+    icon: MarkerBlack,
+    value: "125 Harmony Blvd, Los Angeles, CA 90001",
+    type: "address",
+    link: "https://www.google.com/maps/search/?api=1&query=125+Harmony+Blvd,+Los+Angeles,+CA+90001",
+  },
+  {
+    icon: CallBlack,
+    value: "+1 (888) 123-4567",
+    type: "phone",
+    link: "tel:+18881234567",
+  },
+  {
+    icon: Sms,
+    value: "hello@healthcore.com",
+    type: "email",
+    link: "mailto:hello@healthcore.com",
+  },
+];
+
 export {
   MENU,
   HERO_SLIDER_IMAGES,
@@ -228,4 +281,6 @@ export {
   MAP_KEY,
   CONTACT_CARDS,
   MANAGEMENT_TEAM,
+  SOCIAL_LINKS,
+  FOOTER_CONTACTS,
 };

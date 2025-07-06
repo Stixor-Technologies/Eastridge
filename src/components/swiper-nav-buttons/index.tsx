@@ -15,7 +15,7 @@ const SwiperNavButton: React.FC<SwiperNavButtonProps> = ({
 }) => (
   <button
     onClick={onClick}
-    className={`bg-accent shadow-slider-btn flex h-11 w-11 cursor-pointer items-center justify-center rounded-full ${className}`}
+    className={`bg-accent shadow-slider-btn flex size-11 cursor-pointer items-center justify-center rounded-full ${className}`}
     aria-label={direction === "prev" ? "Previous" : "Next"}
     type="button"
   >
