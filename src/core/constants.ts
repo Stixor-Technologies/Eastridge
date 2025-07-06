@@ -17,6 +17,12 @@ import GeneralSurgeryIcon from "@/public/icons/general-surgery.svg";
 import NeuroSurgeryIcon from "@/public/icons/neuro-surgery.svg";
 import SpinalSurgeryIcon from "@/public/icons/spinal-surgery.svg";
 
+import Marker from "@/public/icons/marker.svg";
+import Email from "@/public/icons/email.svg";
+import Call from "@/public/icons/call.svg";
+
+const MAP_KEY = process.env["MAP_API"];
+
 const MENU = [
   { id: "#home", label: "Home" },
   { id: "#about", label: "About" },
@@ -134,4 +140,32 @@ const DEPARTMENTS = [
   },
 ];
 
-export { MENU, HERO_SLIDER_IMAGES, SERVICES, DEPARTMENTS };
+const CONTACT_CARDS = [
+  {
+    icon: Marker,
+    title: "Our Address",
+    lines: "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+    type: "address",
+  },
+  {
+    icon: Email,
+    title: "Email Us",
+    lines: "Info@eastridge.com.pk",
+    type: "email",
+  },
+  {
+    icon: Call,
+    title: "Call Us",
+    lines: "0314 1234567",
+    type: "phone",
+  },
+];
+
+export {
+  MENU,
+  HERO_SLIDER_IMAGES,
+  SERVICES,
+  DEPARTMENTS,
+  MAP_KEY,
+  CONTACT_CARDS,
+};
