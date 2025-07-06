@@ -1,0 +1,205 @@
+import React, { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import gsap from "gsap";
+import Image from "next/image";
+import Close from "@/public/icons/close.svg";
+import Star from "@/public/icons/star.svg";
+
+interface Member {
+  name: string;
+  title: string;
+  image: any;
+  bio?: string;
+  experience?: string;
+  certificates?: string;
+  skills?: string;
+  location?: string;
+  phone?: string;
+  email?: string;
+}
+
+interface Props {
+  open: boolean;
+  member: Member | null;
+  onClose: () => void;
+}
+
+const modalRoot = typeof window !== "undefined" ? document.body : null;
+
+const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  //   useEffect(() => {
+  //     if (open && modalRef.current) {
+  //       gsap.fromTo(
+  //         modalRef.current,
+  //         { y: 60, opacity: 0 },
+  //         { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" },
+  //       );
+  //     }
+  //     return () => {
+  //       if (modalRef.current) {
+  //         gsap.to(modalRef.current, {
+  //           y: 60,
+  //           opacity: 0,
+  //           duration: 0.25,
+  //           ease: "power2.in",
+  //         });
+  //       }
+  //     };
+  //   }, [open]);
+
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("overflow-hidden");
+      if (modalRef.current) {
+        gsap.fromTo(
+          modalRef.current,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" },
+        );
+      }
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      if (modalRef.current) {
+        gsap.to(modalRef.current, {
+          y: 60,
+          opacity: 0,
+          duration: 0.25,
+          ease: "power2.in",
+        });
+      }
+    };
+  }, [open]);
+
+  if (!open || !member || !modalRoot) return null;
+
+  return createPortal(
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4"
+      onClick={onClose}
+    >
+      <div
+        ref={modalRef}
+        className="relative w-full max-w-[75.6875rem] overflow-hidden rounded-[.875rem] bg-white shadow-xl"
+        style={{ maxHeight: "90vh" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="border-card-border sticky top-0 z-10 flex w-full items-center justify-between border-b p-5 md:px-6 md:pt-6 md:pb-5">
+          <div className="flex items-center justify-center gap-6">
+            <div className="border-card-border flex size-12 items-center justify-center rounded-[.625rem] border shadow-2xl">
+              <Image
+                src={member.image}
+                alt={member.name}
+                className="rounded-full"
+                width={30}
+                height={30}
+              />
+            </div>
+
+            <p className="text-body-primary text-lg font-semibold">
+              Profile Detail
+            </p>
+          </div>
+
+          <button
+            className="cursor-pointer"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            <Image src={Close} alt="close-modal-icon" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div
+          className="flex flex-col gap-[1.1875rem] overflow-y-auto px-6 py-[1.6875rem] md:flex-row-reverse md:py-9"
+          style={{ maxHeight: "calc(90vh - 93px)" }}
+        >
+          {/*  */}
+          <div className="w-full max-w-[22.875rem] leading-tight">
+            <p className="text-accent text-[2rem] font-semibold md:text-[2.5rem]">
+              {member?.name}
+            </p>
+            <p className="text-body-primary md:text-xl">{member?.title}</p>
+
+            <Image
+              src={member?.image}
+              alt={`${member?.name} - image`}
+              className="mt-3 rounded-[1.375rem]"
+            />
+          </div>
+
+          <div className="flex-1">
+            {/* Biography */}
+            <div className="border-card-border mb-[.875rem] rounded-2xl border">
+              <div className="text-accent border-card-border border-b px-[1.375rem] py-3 text-lg leading-none font-bold">
+                <p className="underline underline-offset-14">Biography</p>
+              </div>
+
+              <div className="text-body-main flex gap-3 px-[1.375rem] py-7 text-sm leading-tight">
+                <Image src={Star} alt="star-icon" />
+                <p>{member.bio}</p>
+              </div>
+            </div>
+
+            {/* Details */}
+            <div className="border-card-border rounded-2xl border">
+              <div className="text-accent border-card-border border-b px-[1.375rem] py-3 text-lg leading-none font-bold">
+                <p className="underline underline-offset-14">Details</p>
+              </div>
+
+              <div className="space-y-5 px-[1.375rem] py-7">
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Occupation:</span>
+                  <span className="member-detail-info">{member?.title}</span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Experience:</span>
+                  <span className="member-detail-info member-detail-tile">
+                    {member?.experience}
+                  </span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Certificates:</span>
+                  <span className="member-detail-info">
+                    {member?.certificates}
+                  </span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Skills:</span>
+                  <span className="member-detail-info">{member?.skills}</span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Location:</span>
+                  <span className="member-detail-info">{member?.location}</span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Phone:</span>
+                  <span className="member-detail-info">{member?.phone}</span>
+                </div>
+
+                <div className="member-detail-info-container">
+                  <span className="member-detail-tile">Email:</span>
+                  <span className="member-detail-info">{member?.email}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>,
+    modalRoot,
+  );
+};
+
+export default TeamMemberModal;

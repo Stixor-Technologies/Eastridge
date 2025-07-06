@@ -66,4 +66,15 @@ body {
   h2 {
     @apply from-accent to-body-primary bg-gradient-to-b bg-clip-text text-center text-[2.5rem] text-transparent md:text-[4.375rem];
   }
+
+  .member-detail-info-container {
+    @apply grid grid-cols-[170px_1fr] gap-4 md:gap-14;
+  }
+  .member-detail-tile {
+    @apply text-body-primary text-xl leading-tight font-medium;
+  }
+
+  .member-detail-info {
+    @apply text-body-main flex-1 text-xl leading-tight font-medium;
+  }
 }

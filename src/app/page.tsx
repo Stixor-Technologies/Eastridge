@@ -9,11 +9,11 @@ import Team from "@/src/components/home-page/team";
 export default function Home() {
   return (
     <div className="">
-      <Team />
       <HeroSection />
       <AboutSection />
       <DepartmentsSection />
       <ServicesSection />
+      <Team />
       <ContactSection />
       <Banner />
     </div>
