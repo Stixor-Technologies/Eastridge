@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="pt-10 pb-[5.3125rem] md:pt-14">
-      <div className="container">
+    <footer>
+      <div className="container bg-[url(/images/footer-bg.png)] bg-contain bg-bottom bg-no-repeat pt-10 pb-[5.5625rem] md:pt-14">
         <div className="flex flex-col flex-wrap justify-between gap-10 md:flex-row md:items-center">
           <div className="sm:max-w-[18.75rem]">
             <Image
@@ -67,7 +67,7 @@ const Footer = () => {
             <span className="bg-accent rounded-xl px-3 py-1.5 text-white">
               Contact
             </span>
-            <div className="text-body-main mt-6 flex flex-col gap-2 text-lg">
+            <div className="text-body-main mt-6 flex flex-col gap-4 text-lg">
               {FOOTER_CONTACTS.map((item) => (
                 <Link
                   key={item.type}
