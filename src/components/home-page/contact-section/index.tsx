@@ -5,7 +5,7 @@ import IconBadge from "../../icon-badge";
 
 const ContactSection = () => {
   return (
-    <section className="container my-10">
+    <section className="container my-10" id="contact-us">
       <h2>Contact Us</h2>
 
       <div className="mt-10 flex flex-col gap-8 md:mt-[3.75rem] md:flex-row">

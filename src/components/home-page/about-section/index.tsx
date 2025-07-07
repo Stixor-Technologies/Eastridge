@@ -6,7 +6,7 @@ import Equipment from "@/public/images/equipment.png";
 
 const AboutSection = () => {
   return (
-    <section className="container">
+    <section className="container" id="about">
       <div className="my-10 lg:my-16">
         <h2>About Eastridge</h2>
 

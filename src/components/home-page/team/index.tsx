@@ -26,7 +26,7 @@ const Team = () => {
   };
 
   return (
-    <section className="overflow-hidden pt-16 pb-10">
+    <section className="overflow-hidden pt-16 pb-10" id="team">
       <h2>Management Team</h2>
       <div className="relative">
         <div className="container mt-10 md:mt-[3.625rem]">

@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 const HeroSection = () => {
   return (
-    <section>
+    <section id="home">
       <div className="relative text-white">
         <Swiper
           //   keyboard={true}

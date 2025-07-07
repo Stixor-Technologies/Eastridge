@@ -17,7 +17,7 @@ const DepartmentsSection = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (
-    <section className="overflow-hidden pt-16 pb-10">
+    <section className="overflow-hidden pt-16 pb-10" id="department">
       <h2>Departments</h2>
 
       <div className="mt-[1.625rem] flex items-end justify-center gap-2 md:mt-9 md:gap-3">
@@ -44,7 +44,7 @@ const DepartmentsSection = () => {
         <Swiper
           slidesPerView={"auto"}
           spaceBetween={43}
-          className="!overflow-visible"
+          // className="!overflow-visible"
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
           }}
