@@ -72,7 +72,7 @@ const DepartmentsSection = () => {
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={43}
-            // className="!overflow-visible"
+            className="!overflow-visible"
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
