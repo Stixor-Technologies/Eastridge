@@ -35,6 +35,8 @@ const Footer = () => {
               ))}
             </div>
 
+            {/* <FooterMenu /> */}
+
             <div className="flex gap-5 self-center sm:gap-8">
               {SOCIAL_LINKS?.map((item) => (
                 <Link

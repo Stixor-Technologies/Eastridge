@@ -29,7 +29,7 @@ const MapComponent = () => {
 
   return (
     <div
-      className={`sm:pb-1/2 relative h-[38.5rem] w-full overflow-hidden rounded-[1.25rem] md:h-auto md:flex-1`}
+      className={`map-section sm:pb-1/2 relative h-[38.5rem] w-full overflow-hidden rounded-[1.25rem] md:h-auto md:flex-1`}
     >
       {isLoaded ? (
         <GoogleMap

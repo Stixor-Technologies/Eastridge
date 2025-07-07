@@ -1,13 +1,17 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import HospitalGallery from "@/public/images/hospital-gallery.png";
 import HospitalReception from "@/public/images/hospital-reception.png";
 import Equipment from "@/public/images/equipment.png";
+import useSectionInView from "@/src/hooks/useSectionInView";
 
 const AboutSection = () => {
+  const { ref } = useSectionInView("#about");
+
   return (
-    <section className="container" id="about">
-      <div className="my-10 lg:my-16">
+    <section className="container pt-10 lg:pt-16" id="about" ref={ref}>
+      <div className="mb-10 lg:mb-16">
         <h2>About Eastridge</h2>
 
         {/* about section */}

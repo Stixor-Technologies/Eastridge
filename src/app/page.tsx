@@ -1,3 +1,4 @@
+"use client";
 import HeroSection from "@/src/components/home-page/hero-section";
 import AboutSection from "@/src/components/home-page/about-section";
 import ServicesSection from "@/src/components/home-page/services";
@@ -8,7 +9,7 @@ import Team from "@/src/components/home-page/team";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <HeroSection />
       <AboutSection />
       <DepartmentsSection />

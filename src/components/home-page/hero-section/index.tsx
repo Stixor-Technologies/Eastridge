@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
@@ -8,16 +8,45 @@ import { HERO_SLIDER_IMAGES } from "@/src/core/constants";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import useSectionInView from "@/src/hooks/useSectionInView";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const HeroSection = () => {
+  const { ref } = useSectionInView("#home");
+
+  const container = useRef<HTMLDivElement | null>(null);
+  const infoText = useRef<HTMLParagraphElement | null>(null);
+  const headingText = useRef<HTMLHeadingElement | null>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({});
+      tl.to(infoText.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "power1",
+      });
+      tl.to(
+        headingText.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+        },
+        "<0.2",
+      );
+    },
+
+    { scope: container },
+  );
+
   return (
-    <section id="home">
-      <div className="relative text-white">
+    <section id="home" ref={ref}>
+      <div className="relative text-white" ref={container}>
         <Swiper
-          //   keyboard={true}
           loop={true}
-          //   simulateTouch={true}
-          //   longSwipesMs={10000}
           modules={[Autoplay]}
           speed={1000}
           autoplay={{
@@ -55,7 +84,10 @@ const HeroSection = () => {
 
         <div className="absolute top-1/2 z-10 -mt-12 w-full -translate-y-1/2">
           <div className="container">
-            <p className="max-w-[32.375rem] text-[2rem] font-medium">
+            <p
+              className="max-w-[32.375rem] translate-y-9 text-[2rem] font-medium opacity-0"
+              ref={infoText}
+            >
               connected healthcare designed to support your journey, every step
               of the way.
             </p>
@@ -68,7 +100,10 @@ const HeroSection = () => {
               <Image src={Ambulance} alt="ambulance-icon" />
             </div>
 
-            <h1 className="text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter xl:-tracking-[2.95px]">
+            <h1
+              className="translate-y-10 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
+              ref={headingText}
+            >
               Care at Every Step
             </h1>
           </div>

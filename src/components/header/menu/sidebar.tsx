@@ -3,12 +3,15 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { MENU } from "@/src/core/constants";
+import { useScrollToSection } from "@/src/hooks/useScrollToSection";
+import { useSectionContext } from "@/src/context/section-context";
 
 const Sidebar = () => {
-  const sideBarMenu = useRef<HTMLDivElement | null>(null);
-  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const { scrollToSection } = useScrollToSection();
+  const { activeSection } = useSectionContext();
 
-  const [activeSection] = useState<string>("");
+  const sideBarMenu = useRef<HTMLDivElement | null>(null);
+  // const menuButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -21,20 +24,20 @@ const Sidebar = () => {
 
   const { contextSafe } = useGSAP({ scope: sideBarMenu });
 
-  const handleDocumentClick = useCallback(
-    (event: MouseEvent) => {
-      if (
-        sideBarMenu.current &&
-        menuButtonRef.current &&
-        !sideBarMenu.current.contains(event.target as Node) &&
-        !menuButtonRef.current?.contains(event.target as Node) &&
-        isMenuOpen
-      ) {
-        setIsMenuOpen(false);
-      }
-    },
-    [isMenuOpen],
-  );
+  // const handleDocumentClick = useCallback(
+  //   (event: MouseEvent) => {
+  //     if (
+  //       sideBarMenu.current &&
+  //       menuButtonRef.current &&
+  //       !sideBarMenu.current.contains(event.target as Node) &&
+  //       !menuButtonRef.current?.contains(event.target as Node) &&
+  //       isMenuOpen
+  //     ) {
+  //       setIsMenuOpen(false);
+  //     }
+  //   },
+  //   [isMenuOpen],
+  // );
 
   const closeMenuAnimation = useCallback(() => {
     if (sideBarMenu.current) {
@@ -69,12 +72,12 @@ const Sidebar = () => {
     };
   }, [isMenuOpen, closeMenuAnimation]);
 
-  useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, [handleDocumentClick]);
+  // useEffect(() => {
+  //   document.addEventListener("click", handleDocumentClick);
+  //   return () => {
+  //     document.removeEventListener("click", handleDocumentClick);
+  //   };
+  // }, [handleDocumentClick]);
 
   const toggleMenu = contextSafe(() => {
     // Create timeline only once, when needed
@@ -189,17 +192,19 @@ const Sidebar = () => {
         ref={sideBarMenu}
         className="fixed top-0 right-0 z-40 -mr-[100vw] h-screen w-screen overflow-y-auto bg-white will-change-auto"
       >
-        <div className="mx-auto mt-24 h-full w-full flex-col justify-center overflow-y-auto p-4">
+        <div className="mx-auto h-full w-full flex-col justify-center overflow-y-auto p-4 pt-24 pb-10">
           <ul className="min-aspect:space-y-[3vw] min-aspect:text-[3vw] space-y-1.5 text-[7vw] md:text-left">
             {MENU.map((item) => (
               <li
-                className={`text-body-primay rounded-sm px-6 py-[4vw] font-semibold ${activeSection === "" && "bg-accent/5"}`}
+                className={`text-body-primay rounded-sm px-6 py-[4vw] font-semibold ${activeSection === item?.id && "bg-accent/5"}`}
                 key={item?.id}
               >
                 <button
                   onClick={() => {
-                    // scrollToSection(item?.id);
+                    scrollToSection(item?.id);
+                    closeMenuAnimation();
                   }}
+                  className="w-full text-left"
                 >
                   {item.label}
                 </button>

@@ -9,8 +9,16 @@ import SwiperClass from "swiper";
 import { MANAGEMENT_TEAM } from "@/src/core/constants";
 import TeamMemberModal from "./TeamMemberModal";
 import SwiperNavButton from "../../swiper-nav-buttons";
+import useSectionInView from "@/src/hooks/useSectionInView";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Team = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  const { ref } = useSectionInView("#team");
+  const container = useRef<HTMLDivElement | null>(null);
+
   const swiperRef = useRef<SwiperClass | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<any>(null);
@@ -25,65 +33,88 @@ const Team = () => {
     setTimeout(() => setSelectedMember(null), 300); // allow animation to finish
   };
 
-  return (
-    <section className="overflow-hidden pt-16 pb-10" id="team">
-      <h2>Management Team</h2>
-      <div className="relative">
-        <div className="container mt-10 md:mt-[3.625rem]">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            className="!overflow-visible"
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: "auto",
-                spaceBetween: 81,
-              },
-            }}
-          >
-            <div className="mb-10 cursor-pointer overflow-visible">
-              {MANAGEMENT_TEAM?.map((member, index) => (
-                <SwiperSlide
-                  key={index}
-                  className={`w-full md:max-w-[21.3125rem]`}
-                  onClick={() => handleMemberClick(member)}
-                >
-                  <div className="border-card-border cursor-pointer rounded-xl border py-10 transition-shadow duration-300 hover:shadow-lg">
-                    <Image
-                      src={member?.image}
-                      alt={`${member?.name}-iamge`}
-                      className="px-4"
-                    />
-                    <div className="border-card-border border-t px-3.5 pt-[2.125rem] text-center">
-                      <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                        {member?.name}
-                      </h4>
-                      <span className="text-body-main text-xl">
-                        {member?.title}
-                      </span>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </div>
-          </Swiper>
+  useGSAP(
+    () => {
+      gsap.from(container?.current, {
+        opacity: 0,
+        y: "3rem",
+        duration: 0.7,
+        ease: "power1",
+        stagger: 0.1,
 
-          {/* Slider button */}
-          <div className="mt-[3.625rem] flex justify-center gap-10">
-            <SwiperNavButton
-              onClick={() => swiperRef.current?.slidePrev()}
-              direction="prev"
-            />
-            <SwiperNavButton
-              onClick={() => swiperRef.current?.slideNext()}
-              direction="next"
-            />
+        scrollTrigger: {
+          trigger: container?.current,
+          start: "top 80%",
+        },
+      });
+    },
+    {
+      scope: container,
+    },
+  );
+
+  return (
+    <section className="overflow-hidden pt-16 pb-10" id="team" ref={ref}>
+      <div ref={container}>
+        <h2>Management Team</h2>
+
+        <div className="relative">
+          <div className="container mt-10 md:mt-[3.625rem]">
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={20}
+              className="!overflow-visible"
+              onBeforeInit={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              breakpoints={{
+                768: {
+                  slidesPerView: "auto",
+                  spaceBetween: 81,
+                },
+              }}
+            >
+              <div className="mb-10 cursor-pointer overflow-visible">
+                {MANAGEMENT_TEAM?.map((member, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className={`w-full md:max-w-[21.3125rem]`}
+                    onClick={() => handleMemberClick(member)}
+                  >
+                    <div className="border-card-border cursor-pointer rounded-xl border py-10 transition-shadow duration-300 hover:shadow-lg">
+                      <Image
+                        src={member?.image}
+                        alt={`${member?.name}-iamge`}
+                        className="px-4"
+                      />
+                      <div className="border-card-border border-t px-3.5 pt-[2.125rem] text-center">
+                        <h4 className="text-body-primary text-2xl md:text-[2rem]">
+                          {member?.name}
+                        </h4>
+                        <span className="text-body-main text-xl">
+                          {member?.title}
+                        </span>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </div>
+            </Swiper>
+
+            {/* Slider button */}
+            <div className="mt-[3.625rem] flex justify-center gap-10">
+              <SwiperNavButton
+                onClick={() => swiperRef.current?.slidePrev()}
+                direction="prev"
+              />
+              <SwiperNavButton
+                onClick={() => swiperRef.current?.slideNext()}
+                direction="next"
+              />
+            </div>
           </div>
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-24 bg-gradient-to-l from-white via-white/80 to-transparent" />
         </div>
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-24 bg-gradient-to-l from-white via-white/80 to-transparent" />
       </div>
       <TeamMemberModal
         open={modalOpen}
