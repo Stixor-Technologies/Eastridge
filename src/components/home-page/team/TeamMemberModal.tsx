@@ -5,6 +5,7 @@ import Image from "next/image";
 import Close from "@/public/icons/close.svg";
 import Star from "@/public/icons/star.svg";
 import DummyProfile from "@/public/images/dummy-profile.png";
+import Link from "next/link";
 
 interface Member {
   name: string;
@@ -185,12 +186,22 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
 
                 <div className="member-detail-info-container">
                   <span className="member-detail-tile">Phone:</span>
-                  <span className="member-detail-info">{member?.phone}</span>
+                  <Link
+                    href={`tel:${member?.phone}`}
+                    className="member-detail-info"
+                  >
+                    {member?.phone}
+                  </Link>
                 </div>
 
                 <div className="member-detail-info-container">
                   <span className="member-detail-tile">Email:</span>
-                  <span className="member-detail-info">{member?.email}</span>
+                  <Link
+                    href={`mailto:${member?.email}`}
+                    className="member-detail-info"
+                  >
+                    {member?.email}
+                  </Link>
                 </div>
               </div>
             </div>

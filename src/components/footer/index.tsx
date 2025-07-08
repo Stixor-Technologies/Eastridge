@@ -52,7 +52,6 @@ const Footer = () => {
                     width={24}
                     height={24}
                     alt={item?.id}
-                    // className="transition-transform duration-300 hover:scale-105"
                   />
                 </Link>
               ))}

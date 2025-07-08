@@ -9,7 +9,7 @@ import ContactSection from "@/src/components/home-page/contact-section";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <HeroSection />
       <AboutSection />
       <DepartmentsSection />
@@ -17,6 +17,6 @@ export default function Home() {
       <Team />
       <ContactSection />
       <Banner />
-    </div>
+    </>
   );
 }

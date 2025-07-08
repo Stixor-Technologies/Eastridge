@@ -7,7 +7,7 @@ export const useScrollToSection = () => {
   const scrollToSection = contextSafe((targetSection: string) => {
     gsap.to(window, {
       duration: 1,
-      scrollTo: { y: targetSection, offsetY: 0 },
+      scrollTo: { y: targetSection, offsetY: 60 },
       ease: "power2",
     });
   });
