@@ -87,8 +87,12 @@ const AboutSection = () => {
   );
 
   return (
-    <section className="container pt-10 lg:pt-16" id="about" ref={ref}>
-      <div ref={container}>
+    <section
+      className="[background-size:50rem_37.5rem] bg-[right_-8.5rem_top_-14rem] bg-no-repeat pt-10 md:bg-[url(/images/light.png)] lg:pt-16"
+      id="about"
+      ref={ref}
+    >
+      <div ref={container} className="container">
         <div className="mb-10 lg:mb-16" ref={aboutSectionContainer}>
           <h2>About Eastridge</h2>
 

@@ -16,7 +16,7 @@ const ServicesSection = () => {
     () => {
       gsap.from(".fade-up", {
         opacity: 0,
-        y: "3rem",
+        y: "4rem",
         duration: 0.7,
         scrollTrigger: {
           trigger: container?.current,
@@ -26,7 +26,7 @@ const ServicesSection = () => {
 
       gsap.from([".service-card "], {
         opacity: 0,
-        y: "3rem",
+        y: "4rem",
         stagger: 0.1,
         duration: 0.7,
         ease: "power1",

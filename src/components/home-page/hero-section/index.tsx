@@ -85,7 +85,7 @@ const HeroSection = () => {
         <div className="absolute top-1/2 z-10 -mt-12 w-full -translate-y-1/2">
           <div className="container">
             <p
-              className="max-w-[32.375rem] translate-y-9 text-[2rem] font-medium opacity-0"
+              className="max-w-[32.375rem] translate-y-12 text-[2rem] font-medium opacity-0"
               ref={infoText}
             >
               connected healthcare designed to support your journey, every step
@@ -101,7 +101,7 @@ const HeroSection = () => {
             </div>
 
             <h1
-              className="translate-y-10 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
+              className="translate-y-12 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
               ref={headingText}
             >
               Care at Every Step

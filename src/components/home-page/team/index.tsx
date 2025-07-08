@@ -37,7 +37,7 @@ const Team = () => {
     () => {
       gsap.from(container?.current, {
         opacity: 0,
-        y: "3rem",
+        y: "4rem",
         duration: 0.7,
         ease: "power1",
         stagger: 0.1,
@@ -54,7 +54,11 @@ const Team = () => {
   );
 
   return (
-    <section className="overflow-hidden pt-16 pb-10" id="team" ref={ref}>
+    <section
+      className="overflow-hidden bg-[url(/images/stars.png)] bg-cover bg-[left_-8.5rem_top_-14rem] pt-16 pb-10"
+      id="team"
+      ref={ref}
+    >
       <div ref={container}>
         <h2>Management Team</h2>
 
@@ -78,16 +82,21 @@ const Team = () => {
                 {MANAGEMENT_TEAM?.map((member, index) => (
                   <SwiperSlide
                     key={index}
-                    className={`w-full md:max-w-[21.3125rem]`}
+                    className={`w-full sm:max-w-[21.3125rem]`}
                     onClick={() => handleMemberClick(member)}
                   >
-                    <div className="border-card-border cursor-pointer rounded-xl border py-10 transition-shadow duration-300 hover:shadow-lg">
-                      <Image
-                        src={member?.image}
-                        alt={`${member?.name}-iamge`}
-                        className="px-4"
-                      />
-                      <div className="border-card-border border-t px-3.5 pt-[2.125rem] text-center">
+                    <div className="border-card-border cursor-pointer rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+                      <div className="relative">
+                        <div className="bg-body-primary absolute top-14 left-1/2 -z-10 aspect-square w-[90%] -translate-x-1/2 rounded-full"></div>
+
+                        <Image
+                          src={member?.image}
+                          alt={`${member?.name}-image`}
+                          className=""
+                        />
+                      </div>
+
+                      <div className="border-card-border border-t pt-[2.125rem] text-center">
                         <h4 className="text-body-primary text-2xl md:text-[2rem]">
                           {member?.name}
                         </h4>
@@ -113,7 +122,7 @@ const Team = () => {
               />
             </div>
           </div>
-          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-24 bg-gradient-to-l from-white via-white/80 to-transparent" />
+          <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-white via-white/80 to-transparent sm:w-24" />
         </div>
       </div>
       <TeamMemberModal

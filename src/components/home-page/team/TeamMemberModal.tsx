@@ -4,6 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import Close from "@/public/icons/close.svg";
 import Star from "@/public/icons/star.svg";
+import DummyProfile from "@/public/images/dummy-profile.png";
 
 interface Member {
   name: string;
@@ -90,18 +91,17 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
       >
         {/* Header */}
         <div className="border-card-border sticky top-0 z-10 flex w-full items-center justify-between border-b p-5 md:px-6 md:pt-6 md:pb-5">
-          <div className="flex items-center justify-center gap-6">
-            <div className="border-card-border flex size-12 items-center justify-center rounded-[.625rem] border shadow-2xl">
+          <div className="flex items-center justify-center gap-5 sm:gap-6">
+            <div className="border-card-border flex size-[2.5625rem] items-center justify-center rounded-[.625rem] border shadow-2xl sm:size-12">
               <Image
-                src={member.image}
-                alt={member.name}
-                className="rounded-full"
+                src={DummyProfile}
+                alt={"dummy-profile"}
                 width={30}
                 height={30}
               />
             </div>
 
-            <p className="text-body-primary text-lg font-semibold">
+            <p className="text-body-primary font-semibold sm:text-lg">
               Profile Detail
             </p>
           </div>
@@ -117,7 +117,7 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
 
         {/* Content */}
         <div
-          className="flex flex-col gap-[1.1875rem] overflow-y-auto px-6 py-[1.6875rem] md:flex-row-reverse md:py-9"
+          className="flex flex-col gap-[1.1875rem] overflow-y-auto px-5 py-[1.6875rem] sm:px-6 md:flex-row-reverse md:py-9"
           style={{ maxHeight: "calc(90vh - 93px)" }}
         >
           {/*  */}
@@ -137,11 +137,11 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
           <div className="flex-1">
             {/* Biography */}
             <div className="border-card-border mb-[.875rem] rounded-2xl border">
-              <div className="text-accent border-card-border border-b px-[1.375rem] py-3 text-lg leading-none font-bold">
+              <div className="text-accent border-card-border border-b px-[1.1875rem] py-3 leading-none font-bold md:px-[1.375rem] md:text-lg">
                 <p className="underline underline-offset-14">Biography</p>
               </div>
 
-              <div className="text-body-main flex gap-3 px-[1.375rem] py-7 text-sm leading-tight">
+              <div className="text-body-main flex items-start gap-3 px-[1.1875rem] py-7 text-xs leading-tight sm:px-[1.375rem] sm:text-sm">
                 <Image src={Star} alt="star-icon" />
                 <p>{member.bio}</p>
               </div>
@@ -149,11 +149,11 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
 
             {/* Details */}
             <div className="border-card-border rounded-2xl border">
-              <div className="text-accent border-card-border border-b px-[1.375rem] py-3 text-lg leading-none font-bold">
+              <div className="text-accent border-card-border border-b px-[1.1875rem] py-3 leading-none font-bold sm:px-[1.375rem] md:text-lg">
                 <p className="underline underline-offset-14">Details</p>
               </div>
 
-              <div className="space-y-5 px-[1.375rem] py-7">
+              <div className="space-y-3 px-[1.1875rem] py-7 sm:px-[1.375rem] lg:space-y-5">
                 <div className="member-detail-info-container">
                   <span className="member-detail-tile">Occupation:</span>
                   <span className="member-detail-info">{member?.title}</span>

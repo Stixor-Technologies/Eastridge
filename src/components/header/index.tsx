@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/logo-header.png";
@@ -15,8 +15,49 @@ const Header = () => {
   const { scrollToSection } = useScrollToSection();
   const { activeSection } = useSectionContext();
 
+  const header = useRef<HTMLElement | null>(null);
+
+  const [data, setData] = useState({
+    x: 0,
+    y: 0,
+    lastX: 0,
+    lastY: 0,
+  });
+
+  const [navClassList, setNavClassList] = useState<string[]>([]);
+
+  const handleScroll = useCallback(() => {
+    setData((last) => ({
+      x: window.scrollX,
+      y: window.scrollY,
+      lastX: last.x,
+      lastY: last.y,
+    }));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    const _classList = [];
+
+    if (data.y > 20) {
+      _classList.push("bg-accent/80 !h-[4.625rem]");
+    } else {
+      _classList.push("h-[5.625rem]");
+    }
+
+    setNavClassList(_classList);
+  }, [data.y]);
+
   return (
-    <header className="fixed z-50 flex h-[5.625rem] w-full items-center">
+    <header
+      ref={header}
+      className={`fixed z-50 flex h-[5.625rem] w-full items-center duration-300 ${navClassList.join(" ")}`}
+    >
       <div className="container flex items-center justify-between">
         <Link href={"/"}>
           <Image src={Logo} width={120} height={41} alt="Eastridge-logo" />
@@ -29,7 +70,7 @@ const Header = () => {
                 onClick={() => {
                   scrollToSection(item?.id);
                 }}
-                className={`transition-all duration-300 ${activeSection === item?.id ? "text-xl font-semibold text-black" : "text-lg text-black/80"} `}
+                className={`transition-all duration-300 ${activeSection === item?.id ? "text-xl font-semibold text-white" : "text-lg text-white/80"} `}
               >
                 {item.label}
               </button>

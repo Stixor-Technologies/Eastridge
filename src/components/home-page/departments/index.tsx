@@ -29,7 +29,7 @@ const DepartmentsSection = () => {
     () => {
       gsap.from(container?.current, {
         opacity: 0,
-        y: "3rem",
+        y: "4rem",
         duration: 0.7,
         ease: "power1",
         scrollTrigger: {

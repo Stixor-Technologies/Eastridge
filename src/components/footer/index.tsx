@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Logo from "@/public/logo.png";
-import { MENU, SOCIAL_LINKS, FOOTER_CONTACTS } from "@/src/core/constants";
+import { SOCIAL_LINKS, FOOTER_CONTACTS } from "@/src/core/constants";
 import Link from "next/link";
+import FooterMenu from "./footer-menu";
 
 const Footer = () => {
   return (
@@ -24,7 +25,7 @@ const Footer = () => {
 
           {/* <div className="flex flex-1 items-center justify-between gap-10"> */}
           <div className="contents">
-            <div className="flex flex-col items-start gap-8 md:flex-row">
+            {/* <div className="flex flex-col items-start gap-8 md:flex-row">
               {MENU?.map((menuItem) => (
                 <button
                   key={menuItem?.id}
@@ -33,9 +34,9 @@ const Footer = () => {
                   {menuItem?.label}
                 </button>
               ))}
-            </div>
+            </div> */}
 
-            {/* <FooterMenu /> */}
+            <FooterMenu />
 
             <div className="flex gap-5 self-center sm:gap-8">
               {SOCIAL_LINKS?.map((item) => (
