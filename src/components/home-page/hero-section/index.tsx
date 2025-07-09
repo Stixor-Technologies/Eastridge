@@ -57,13 +57,6 @@ const HeroSection = () => {
           {HERO_SLIDER_IMAGES?.map((data) => {
             return (
               <SwiperSlide key={data?.id}>
-                {/* <Image
-                className="h-full w-full object-cover"
-                src={data?.src}
-                width={1536}
-                height={900}
-                alt={data?.alt}
-              /> */}
                 <picture>
                   <source
                     media="(max-width: 768px)"
@@ -88,7 +81,7 @@ const HeroSection = () => {
               className="max-w-[32.375rem] translate-y-12 text-[2rem] font-medium opacity-0"
               ref={infoText}
             >
-              connected healthcare designed to support your journey, every step
+              Connected healthcare designed to support your journey, every step
               of the way.
             </p>
           </div>

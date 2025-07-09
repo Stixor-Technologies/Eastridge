@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { DEPARTMENTS } from "@/src/core/constants";
+import { SERVICES_OFFERED } from "@/src/core/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Arrow from "@/public/icons/arrow.svg";
@@ -12,6 +12,7 @@ import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ValueAdditions from "@/src/components/home-page/value-additions";
 
 const DepartmentsSection = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -19,9 +20,13 @@ const DepartmentsSection = () => {
   const container = useRef<HTMLDivElement | null>(null);
 
   const { ref } = useSectionInView("#department");
-  const [selectedDept, setSelectedDept] = useState(DEPARTMENTS[0].id);
+  const [selectedService, setSelectedService] = useState(
+    SERVICES_OFFERED[0]?.id,
+  );
 
-  const currentDept = DEPARTMENTS.find((dept) => dept.id === selectedDept);
+  const currentService = SERVICES_OFFERED.find(
+    (service) => service?.id === selectedService,
+  );
 
   const swiperRef = useRef<SwiperClass | null>(null);
 
@@ -46,29 +51,25 @@ const DepartmentsSection = () => {
   return (
     <section className="overflow-hidden pt-16 pb-10" id="department" ref={ref}>
       <div ref={container}>
-        <h2>Departments</h2>
+        <h2>Services Offered</h2>
 
         <div className="mt-[1.625rem] flex items-end justify-center gap-2 md:mt-9 md:gap-3">
-          {DEPARTMENTS.map((dept) => (
+          {SERVICES_OFFERED.map((servicesOffered) => (
             <button
-              key={dept.id}
+              key={servicesOffered?.id}
               className={`cursor-pointer rounded-md px-2 leading-tight transition-all duration-300 md:rounded-xl md:px-6 ${
-                selectedDept === dept.id
+                selectedService === servicesOffered?.id
                   ? "bg-gradient-to-r from-[#B63B27] to-[#D94B2B] py-1.5 text-xs text-white md:py-3 md:text-[1.375rem]"
                   : "bg-card-bg text-primary py-1 text-xs md:py-2 md:text-base"
               }`}
-              onClick={() => setSelectedDept(dept.id)}
+              onClick={() => setSelectedService(servicesOffered?.id)}
             >
-              {dept.label}
+              {servicesOffered?.label}
             </button>
           ))}
         </div>
 
         <div className="container mt-10 md:mt-[3.75rem]">
-          {/* <ul className="mb-10 cursor-pointer overflow-visible"> */}
-          {/* <li className="bg-smoke-black text-light-silver flex-1 rounded-2xl px-[2rem] py-[1.563rem]"> */}
-          {/* </ul> */}
-
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={43}
@@ -78,7 +79,7 @@ const DepartmentsSection = () => {
             }}
           >
             <ul className="mb-10 cursor-pointer overflow-visible">
-              {currentDept?.items?.map((department, index) => {
+              {currentService?.items?.map((service, index) => {
                 return (
                   <SwiperSlide
                     key={index}
@@ -87,11 +88,11 @@ const DepartmentsSection = () => {
                     <li className="">
                       <div className="bg-card-bg px flex items-center gap-6 rounded-2xl px-8 py-10">
                         <Image
-                          src={department?.icon}
-                          alt={`${department?.title} icon`}
+                          src={service?.icon}
+                          alt={`${service?.title} icon`}
                         />
                         <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                          {department?.title}
+                          {service?.title}
                         </h4>
                       </div>
                     </li>
@@ -102,7 +103,6 @@ const DepartmentsSection = () => {
           </Swiper>
 
           {/* slider buttons */}
-
           <div className="mt-10 flex justify-center gap-10">
             <button
               onClick={() => swiperRef.current?.slidePrev()}
@@ -121,6 +121,8 @@ const DepartmentsSection = () => {
           </div>
         </div>
       </div>
+
+      <ValueAdditions />
     </section>
   );
 };

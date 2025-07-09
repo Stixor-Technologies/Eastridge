@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import HospitalGallery from "@/public/images/hospital-gallery.png";
 import HospitalReception from "@/public/images/hospital-reception.png";
-import Equipment from "@/public/images/equipment.png";
 import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -17,7 +16,6 @@ const AboutSection = () => {
 
   const aboutSectionContainer = useRef<HTMLDivElement | null>(null);
   const visionContainer = useRef<HTMLDivElement | null>(null);
-  const valuesContainer = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
@@ -76,12 +74,6 @@ const AboutSection = () => {
         visionContainer.current,
         undefined,
       );
-
-      createTimeline(
-        valuesContainer.current,
-        valuesContainer.current,
-        undefined,
-      );
     },
     { scope: container },
   );
@@ -97,25 +89,33 @@ const AboutSection = () => {
           <h2>About Eastridge</h2>
 
           {/* about section */}
-          <div className="mt-10 flex flex-col items-center gap-8 text-center lg:mt-20 lg:flex-row lg:gap-14 lg:text-left xl:gap-[5.625rem]">
-            <div className="w-full lg:max-w-[22.125rem]">
-              <h3 className="text-body-primary text-[2.5rem] leading-tight font-semibold md:text-6xl">
-                Care You Can <span className="text-accent">Trust</span>
-              </h3>
-              <p className="text-body-main mt-8 text-[1.375rem]">
-                Expert care. Genuine compassion. Always here for you.
-              </p>
-            </div>
+          <div className="mt-10 gap-8 text-center lg:mt-20 lg:flex-row lg:gap-14 lg:text-left xl:gap-[5.625rem]">
+            <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
+              Eastridge Prime Care is a new 173-bed purpose built greenfield
+              hospital of Fauji Foundation. The construction of the hospital
+              started in 2022. The hospital is scheduled to open its door to the
+              public in August 2025.
+            </p>
 
-            <p className="text-body-main flex-1 text-xl font-medium md:text-[1.375rem]">
-              Eastridge Prime Care is a 173-bed, multi-specialty hospital by the
-              Fauji Foundation, set to launch in August 2025. Built with
-              advanced medical technology and expert staff, it aims to deliver
-              ethical, high-quality care with empathy. Located in Rawalpindi, it
-              will serve the twin cities and beyond, with plans for future
-              expansion and medical tourism initiatives. Once fully completed in
-              2026, the facility will exceed 200,000 sq. ft., featuring a
-              state-of-the-art Cardiac Centre and support infrastructure.
+            <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
+              Eastridge Prime Care will bring a fresh offering in niche
+              healthcare services with technologically advanced equipment
+              through reputed consultants, competent nurses and well-trained
+              paramedic staff to the landscape of private hospitals in
+              Rawalpindi and Islamabad. The spirit of Eastride Prime Care
+              remains focused on the provision of high-quality patient care
+              services with empathy and patient safety in an ethical culture
+              which keeps Patient First as its core value for local as well as
+              global clientele.
+            </p>
+
+            <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
+              The facility is a fully integrated structure with architectural
+              ease of movement designed to provide functional patient pathways
+              around the intended services. The building has been designed to
+              provide natural lighting and an open, airy ambiance. Once
+              completely operational with its Cardiac Center, the hospital will
+              be housed over 200,000 sqare feet over 5 floors.
             </p>
           </div>
         </div>
@@ -131,8 +131,8 @@ const AboutSection = () => {
               Our Vision
             </h4>
             <p className="text-body-main my-9 text-xl lg:text-2xl">
-              To be the top choice in healthcare, known for exceptional care and
-              community well-being, trusted locally and globally.
+              To be the Center of Excellence for advanced healthcare, known for
+              exceptional care and wellbeing, trusted locally and globally.
             </p>
             <Image
               src={HospitalGallery}
@@ -147,8 +147,9 @@ const AboutSection = () => {
               Mission Statement
             </h4>
             <p className="text-body-main text-xl lg:text-2xl">
-              Provide Best in Class Hospital-based Ethical Healthcare Services,
-              acting as the Leading State of Art Center.
+              Provide Best in Class Hospital-based ethical Healthcare Services,
+              ensuring patient first value while acting as the Leading State of
+              Art Hospital.
             </p>
             <Image
               src={HospitalReception}
@@ -157,42 +158,6 @@ const AboutSection = () => {
               alt="hospital-reception"
               className="md:row-start-1"
             />
-          </div>
-        </div>
-
-        {/* values section */}
-
-        <div ref={valuesContainer} className="pt-10 md:pt-[3.9375rem]">
-          <div className="flex flex-col gap-10 md:gap-20 lg:flex-row xl:gap-[6.75rem]">
-            <div className="text-body-main w-full text-center text-xl md:text-[1.375rem] lg:max-w-[40.875rem] lg:text-left">
-              <h4 className="text-body-primary text-[40px] leading-tight">
-                Our Values
-              </h4>
-              <p className="my-9">
-                From seamless appointment booking to advanced diagnostics and
-                expert consultations, Eastridge Prime Care makes access to
-                healthcare simple, efficient, and reassuring. Whether it&apos;s
-                a routine visit or specialized treatment, we&apos;re here to
-                provide trusted, patient-centered care — day or night.
-              </p>
-              <p>
-                From seamless appointment booking to advanced diagnostics and
-                expert consultations, Eastridge Prime Care makes access to
-                healthcare simple, efficient, and reassuring. Whether it&apos;s
-                a routine visit or specialized treatment, we&apos;re here to
-                provide trusted, patient-centered care — day or night.
-              </p>
-            </div>
-
-            <div className="w-full lg:max-w-[37.375rem] 2xl:max-w-max">
-              <Image
-                src={Equipment}
-                width={1024}
-                height={509}
-                alt="equipment"
-                className="lg:ml-auto"
-              />
-            </div>
           </div>
         </div>
       </div>

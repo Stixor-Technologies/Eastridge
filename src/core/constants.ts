@@ -1,10 +1,10 @@
 import Building from "@/public/images/building.png";
-import BuildingFront from "@/public/images/building-front.png";
-import BuildingSide from "@/public/images/building-side.png";
+// import BuildingFront from "@/public/images/building-front.png";
+// import BuildingSide from "@/public/images/building-side.png";
 
 import BuildingMobile from "@/public/images/building-mobile.png";
-import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
-import BuildingSideMobile from "@/public/images/building-side-mobile.png";
+// import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
+// import BuildingSideMobile from "@/public/images/building-side-mobile.png";
 
 import EmergencyIcon from "@/public/icons/emergency.svg";
 import ScienceIcon from "@/public/icons/science.svg";
@@ -22,6 +22,8 @@ import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
 import DummyMember from "@/public/images/team/member-dummy.png";
+import MDFF from "@/public/images/team/md.jpeg";
+import MDMedical from "@/public/images/team/md-medical.jpg";
 
 import Instagram from "@/public/icons/instagram.svg";
 import Facebook from "@/public/icons/facebook.svg";
@@ -45,14 +47,14 @@ const MENU = [
 const HERO_SLIDER_IMAGES = [
   {
     id: "building-front",
-    src: BuildingFront,
-    mobileSrc: BuildingFrontMobile,
+    src: Building,
+    mobileSrc: Building,
     alt: "Building Front",
   },
   {
     id: "building-side",
-    src: BuildingSide,
-    mobileSrc: BuildingSideMobile,
+    src: Building,
+    mobileSrc: Building,
     alt: "Building Side",
   },
   {
@@ -63,46 +65,77 @@ const HERO_SLIDER_IMAGES = [
   },
 ];
 
-const SERVICES = [
+const VALUE_ADDITIONS = [
   {
     icon: EmergencyIcon,
-    title: "Emergency & Trauma Care",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title: "Modular Operation Rooms & Critical Care Areas",
+    description: "",
   },
+
+  {
+    icon: EmergencyIcon,
+    title: "Modular Labor Rooms",
+    description: "",
+  },
+
+  {
+    icon: EmergencyIcon,
+    title: "Neonatal Intensive Care ",
+    description: "",
+  },
+
+  {
+    icon: EmergencyIcon,
+    title: "Dialysis Center",
+    description: "",
+  },
+
+  {
+    icon: EmergencyIcon,
+    title: "Endoscopy & ERCP",
+    description: "",
+  },
+
+  {
+    icon: EmergencyIcon,
+    title: "Private Suites",
+    description: "",
+  },
+
   {
     icon: ScienceIcon,
-    title: "24/7 ER availability",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title: "Customized 24/7 Trauma & Emergency Services under one roof",
+    description: "",
   },
   {
     icon: DataIcon,
-    title: "Trauma response capabilities",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title: "CT Scan, MRI & Interventional Radiology",
+    description: "",
   },
   {
     icon: SpeakerIcon,
-    title: "Radiology: MRI, CT, X-ray, Ultrasound",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title: "Pathology Services in collaboration with our partners at IDC",
+    description: "",
   },
   {
     icon: CodeIcon,
-    title: "Diagnostic Services",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title: "Comprehensive Pharmacy Services with our partners MedAsk",
+    description: "",
   },
   {
     icon: LifebuoyIcon,
-    title: "Pathology: Lab services, blood tests",
-    description:
-      "Security testing is a type of software testing that is focused determining if an information.",
+    title:
+      "Patient culinary services and Cafe under supervision of professional nutritionist",
+    description: "",
+  },
+  {
+    icon: LifebuoyIcon,
+    title: "Comfortable Parking Areas & Mosque",
+    description: "",
   },
 ];
 
-const DEPARTMENTS = [
+const SERVICES_OFFERED = [
   {
     id: "surgery-allied",
     label: "Surgery & Allied",
@@ -121,32 +154,127 @@ const DEPARTMENTS = [
       },
       {
         icon: GeneralSurgeryIcon,
-        title: "General Surgery",
+        title: "Orthopedics",
       },
       {
         icon: NeuroSurgeryIcon,
-        title: "Neuro Surgery",
+        title: "Cardiothoracic Surgery",
       },
       {
         icon: SpinalSurgeryIcon,
-        title: "Spinal Surgery",
+        title: "Pediactric Surgery",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Plastic Surgery",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Vascular Surgery",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Gynae & Obs",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "ENT",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Anesthesia",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Opthalmology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Dental Surgery",
       },
     ],
   },
-  {
-    id: "diagnostics-allied",
-    label: "Diagnostics Allied",
-    items: [
-      // Add diagnostics items here
-      // { icon: SomeIcon, title: "Radiology" },
-    ],
-  },
+
   {
     id: "medicine-allied",
     label: "Medicine & Allied",
     items: [
       // Add medicine items here
       // { icon: SomeIcon, title: "Cardiology" },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Internal Medicine",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Cardiology & EP",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Gastronenterology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Pulmonology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Neurology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Nephrology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Rheumatology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Endocrinology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Pyschiatry",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Dermatology / Cosmotology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Pediatrics",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Neonatology",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Physiotherapy",
+      },
+    ],
+  },
+
+  {
+    id: "diagnostics-allied",
+    label: "Diagnostics",
+    items: [
+      // Add diagnostics items here
+      // { icon: SomeIcon, title: "Radiology" },
+
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Pathology Services",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Blood Bank",
+      },
+      {
+        icon: SpinalSurgeryIcon,
+        title: "Radio Diagnostics",
+      },
     ],
   },
 ];
@@ -257,7 +385,7 @@ const FOOTER_CONTACTS = [
     icon: MarkerBlack,
     value: "125 Harmony Blvd, Los Angeles, CA 90001",
     type: "address",
-    link: "https://www.google.com/maps/search/?api=1&query=125+Harmony+Blvd,+Los+Angeles,+CA+90001",
+    link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
   },
   {
     icon: CallBlack,
@@ -273,14 +401,54 @@ const FOOTER_CONTACTS = [
   },
 ];
 
+const LEADERSHIP_TEAM = [
+  {
+    name: "Lt Gen Anwar Ali Hyder, HI(M), (Retd)",
+    title: "MD & CEO Fauji Foundation",
+    image: MDFF,
+    bio: "During the discussion, each participant provided updates on their assigned tasks, highlighting completed milestones and identifying areas requiring further attention. Several challenges were raised, including delays due to external dependencies and resource constraints. The team collaboratively explored solutions, such as adjusting timelines, reallocating responsibilities, and escalating specific issues for quicker resolution. There was a strong focus on improving internal coordination and ensuring that deliverables remain on track.",
+    experience: "20 years",
+    certificates: "Robert L. Nobel Price, Edison Awards",
+    skills: "Working with both children and adults",
+    location: "380 Albert ST, Melbourne",
+    phone: "+1 (230)-369-155-23",
+    email: "garrison@joan.com",
+  },
+  {
+    name: "Lt Gen Mohsin Qureshi, HI(M), (Retd)",
+    title: "MD Medical Fauji Foundation",
+    image: MDMedical,
+    bio: "Adrianna specializes in digital marketing and team leadership.",
+    experience: "15 years",
+    certificates: "Digital Marketing Pro, Edison Awards",
+    skills: "Digital strategy, team leadership",
+    location: "380 Albert ST, Melbourne",
+    phone: "+1 (230)-369-155-24",
+    email: "adrianna@joan.com",
+  },
+  {
+    name: "Dr. Zafar Yousaf",
+    title: "CEO Eastridge Prime Care",
+    image: MDMedical,
+    bio: "Adrianna specializes in digital marketing and team leadership.",
+    experience: "15 years",
+    certificates: "Digital Marketing Pro, Edison Awards",
+    skills: "Digital strategy, team leadership",
+    location: "380 Albert ST, Melbourne",
+    phone: "+1 (230)-369-155-24",
+    email: "adrianna@joan.com",
+  },
+];
+
 export {
   MENU,
   HERO_SLIDER_IMAGES,
-  SERVICES,
-  DEPARTMENTS,
+  SERVICES_OFFERED,
+  VALUE_ADDITIONS,
   MAP_KEY,
   CONTACT_CARDS,
   MANAGEMENT_TEAM,
   SOCIAL_LINKS,
   FOOTER_CONTACTS,
+  LEADERSHIP_TEAM,
 };

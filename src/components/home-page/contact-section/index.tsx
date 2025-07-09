@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
-import MapComponent from "@/src/components/map";
 import { CONTACT_CARDS } from "@/src/core/constants";
 import IconBadge from "../../icon-badge";
 import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Map from "@/public/images/map.png";
+import Image from "next/image";
+import Link from "next/link";
 
 const ContactSection = () => {
   const { ref } = useSectionInView("#contact-us");
@@ -92,9 +94,19 @@ const ContactSection = () => {
         <h2 ref={textContainer}>Contact Us</h2>
 
         <div className="mt-10 flex flex-col gap-8 md:mt-[3.75rem] md:flex-row">
-          <MapComponent />
-
-          <div className="address-cards grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-9 md:max-w-[22.4375rem] md:grid-cols-1">
+          <Link
+            href={"https://maps.app.goo.gl/cKVxohzwMEUxqd6bA"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`map-section sm:pb-1/2 relative h-[38.5rem] w-full overflow-hidden rounded-[1.25rem] bg-red-200 md:h-auto md:flex-1`}
+          >
+            <Image
+              src={Map}
+              alt="map"
+              className="absolute top-0 left-0 h-full w-full object-cover"
+            />
+          </Link>
+          <div className="address-cards grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4 md:max-w-[15rem] md:grid-cols-1 lg:max-w-[22.4375rem] lg:gap-9">
             {CONTACT_CARDS?.map((cardInfo, index) => (
               <div
                 key={index}
@@ -107,19 +119,19 @@ const ContactSection = () => {
                 <h4 className="mt-9 mb-3 font-semibold">{cardInfo?.title}</h4>
 
                 {cardInfo.type === "email" ? (
-                  <a
+                  <Link
                     href={`mailto:${cardInfo.lines}`}
-                    className="hover:underline"
+                    className="break-all hover:underline"
                   >
                     {cardInfo.lines}
-                  </a>
+                  </Link>
                 ) : cardInfo.type === "phone" ? (
-                  <a
+                  <Link
                     href={`tel:${cardInfo.lines.replace(/\s+/g, "")}`}
-                    className="hover:underline"
+                    className="break-all hover:underline"
                   >
                     {cardInfo.lines}
-                  </a>
+                  </Link>
                 ) : (
                   <p>{cardInfo.lines}</p>
                 )}
