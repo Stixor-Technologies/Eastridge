@@ -70,7 +70,7 @@ const Header = () => {
                 onClick={() => {
                   scrollToSection(item?.id);
                 }}
-                className={`transition-all duration-300 ${activeSection === item?.id ? "text-xl font-semibold text-white" : "text-lg text-white/80"} `}
+                className={`transition-all duration-300 ${activeSection === item?.id ? "text-xl font-semibold text-white" : "text-lg text-white/80"} cursor-pointer`}
               >
                 {item.label}
               </button>
