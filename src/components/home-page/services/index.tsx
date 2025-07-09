@@ -14,12 +14,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ValueAdditions from "@/src/components/home-page/value-additions";
 
-const DepartmentsSection = () => {
+const ServicesSection = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const container = useRef<HTMLDivElement | null>(null);
 
-  const { ref } = useSectionInView("#department");
+  const { ref } = useSectionInView("#services");
   const [selectedService, setSelectedService] = useState(
     SERVICES_OFFERED[0]?.id,
   );
@@ -49,18 +49,18 @@ const DepartmentsSection = () => {
   );
 
   return (
-    <section className="overflow-hidden pt-16 pb-10" id="department" ref={ref}>
-      <div ref={container}>
+    <section className="overflow-hidden pt-16 pb-10" id="services" ref={ref}>
+      <div ref={container} className="container">
         <h2>Services Offered</h2>
 
-        <div className="mt-[1.625rem] flex items-end justify-center gap-2 md:mt-9 md:gap-3">
+        <div className="mt-[1.625rem] flex items-end justify-center gap-1.5 md:mt-9 md:gap-3">
           {SERVICES_OFFERED.map((servicesOffered) => (
             <button
               key={servicesOffered?.id}
               className={`cursor-pointer rounded-md px-2 leading-tight transition-all duration-300 md:rounded-xl md:px-6 ${
                 selectedService === servicesOffered?.id
-                  ? "bg-gradient-to-r from-[#B63B27] to-[#D94B2B] py-1.5 text-xs text-white md:py-3 md:text-[1.375rem]"
-                  : "bg-card-bg text-primary py-1 text-xs md:py-2 md:text-base"
+                  ? "bg-gradient-to-r from-[#B63B27] to-[#D94B2B] py-1.5 text-[clamp(10px,1.6vw,22px)] text-white md:py-3"
+                  : "bg-card-bg text-primary py-1 text-[clamp(10px,1.6vw,16px)] md:py-2"
               }`}
               onClick={() => setSelectedService(servicesOffered?.id)}
             >
@@ -69,7 +69,7 @@ const DepartmentsSection = () => {
           ))}
         </div>
 
-        <div className="container mt-10 md:mt-[3.75rem]">
+        <div className="mt-10 md:mt-[3.75rem]">
           <Swiper
             slidesPerView={"auto"}
             spaceBetween={43}
@@ -127,4 +127,4 @@ const DepartmentsSection = () => {
   );
 };
 
-export default DepartmentsSection;
+export default ServicesSection;

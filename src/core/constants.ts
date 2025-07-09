@@ -39,7 +39,7 @@ const MAP_KEY = process.env["MAP_API"];
 const MENU = [
   { id: "#home", label: "Home" },
   { id: "#about", label: "About" },
-  { id: "#department", label: "Department" },
+  { id: "#services", label: "Services" },
   { id: "#team", label: "Team" },
   { id: "#contact-us", label: "Contact Us" },
 ];

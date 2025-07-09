@@ -106,7 +106,7 @@ const ContactSection = () => {
               className="absolute top-0 left-0 h-full w-full object-cover"
             />
           </Link>
-          <div className="address-cards grid grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] gap-4 md:max-w-[15rem] md:grid-cols-1 lg:max-w-[22.4375rem] lg:gap-9">
+          <div className="address-cards grid grid-cols-[repeat(auto-fit,_minmax(270px,_1fr))] gap-4 md:max-w-[15rem] md:grid-cols-1 lg:max-w-[22.4375rem] lg:gap-9">
             {CONTACT_CARDS?.map((cardInfo, index) => (
               <div
                 key={index}

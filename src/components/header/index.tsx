@@ -45,7 +45,7 @@ const Header = () => {
     const _classList = [];
 
     if (data.y > 20) {
-      _classList.push("bg-accent/80 !h-[4.625rem]");
+      _classList.push("bg-black/80 backdrop-blur-md !h-[4.625rem]");
     } else {
       _classList.push("h-[5.625rem]");
     }

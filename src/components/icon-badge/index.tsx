@@ -9,7 +9,13 @@ type IconBadgeProps = {
 const IconBadge: FC<IconBadgeProps> = ({ icon, altText = "" }) => {
   return (
     <div className="border-card-border flex size-[3.375rem] items-center justify-center rounded-full border bg-white md:size-16">
-      <Image src={icon} width={31} height={31} alt={altText} />
+      <Image
+        src={icon}
+        alt={altText}
+        width={31}
+        height={31}
+        className="h-3/5 w-3/5 object-contain"
+      />
     </div>
   );
 };

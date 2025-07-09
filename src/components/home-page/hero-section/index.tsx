@@ -89,10 +89,13 @@ const HeroSection = () => {
 
         <div className="absolute bottom-0 z-10 w-full">
           <div className="container">
-            <div className="bg-accent mb-4 ml-auto flex size-[clamp(60px,6.5vw,90px)] items-center justify-center rounded-2xl md:mb-0 md:rounded-4xl">
-              <Image src={Ambulance} alt="ambulance-icon" />
+            <div className="bg-accent mb-4 ml-auto flex size-[clamp(2.5rem,6.5vw,4.375rem)] items-center justify-center rounded-xl md:mb-0 md:rounded-2xl">
+              <Image
+                src={Ambulance}
+                alt="ambulance-icon"
+                className="h-4/5 w-4/5 object-contain"
+              />
             </div>
-
             <h1
               className="translate-y-12 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
               ref={headingText}
