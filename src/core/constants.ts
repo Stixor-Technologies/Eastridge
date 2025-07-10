@@ -1,21 +1,53 @@
 import Building from "@/public/images/building.png";
-// import BuildingFront from "@/public/images/building-front.png";
-// import BuildingSide from "@/public/images/building-side.png";
-
 import BuildingMobile from "@/public/images/building-mobile.png";
-// import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
-// import BuildingSideMobile from "@/public/images/building-side-mobile.png";
 
-import EmergencyIcon from "@/public/icons/emergency.svg";
-import ScienceIcon from "@/public/icons/science.svg";
-import DataIcon from "@/public/icons/data.svg";
-import SpeakerIcon from "@/public/icons/speaker.svg";
-import CodeIcon from "@/public/icons/code.svg";
-import LifebuoyIcon from "@/public/icons/lifebuoy.svg";
+import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
+import Culinary from "@/public/icons/services/value-additions/culinary.svg";
+import Dialysis from "@/public/icons/services/value-additions/dialysis.svg";
+import Endoscopy from "@/public/icons/services/value-additions/endoscopy.svg";
+import Labour from "@/public/icons/services/value-additions/labor.svg";
+import Modular from "@/public/icons/services/value-additions/modular.svg";
+import Neonatal from "@/public/icons/services/value-additions/neonatal.svg";
+import Suites from "@/public/icons/services/value-additions/suites.svg";
+import Trauma from "@/public/icons/services/value-additions/trauma.svg";
+import PathologyV from "@/public/icons/services/value-additions/pathology.svg";
+import Pharmacy from "@/public/icons/services/value-additions/pharmacy.svg";
 
-import GeneralSurgeryIcon from "@/public/icons/general-surgery.svg";
-import NeuroSurgeryIcon from "@/public/icons/neuro-surgery.svg";
-import SpinalSurgeryIcon from "@/public/icons/spinal-surgery.svg";
+import Mosque from "@/public/icons/services/value-additions/mosque.svg";
+
+import Orhtopedics from "@/public/icons/services/orthopedics.svg";
+import Cardiothorcic from "@/public/icons/services/cardiothoracic-sugery.svg";
+import Pediactric from "@/public/icons/services/pediatric-surgery.svg";
+
+import Vascular from "@/public/icons/services/vasular.svg";
+import Gynae from "@/public/icons/services/gynae.svg";
+
+import Ent from "@/public/icons/services/ent.svg";
+import Anesthesia from "@/public/icons/services/anesthesia.svg";
+import Ophalmology from "@/public/icons/services/opthalmology.svg";
+import Dental from "@/public/icons/services/dental.svg";
+
+import GeneralSurgeryIcon from "@/public/icons/services/general-surgery.svg";
+import NeuroSurgeryIcon from "@/public/icons/services/neuro-surgery.svg";
+import SpinalSurgeryIcon from "@/public/icons/services/spinal-surgery.svg";
+
+import Medicine from "@/public/icons/services/medicine.svg";
+import Cardiology from "@/public/icons/services/cardiology.svg";
+import Gastentrology from "@/public/icons/services/gastentrology.svg";
+import Pulomonology from "@/public/icons/services/pulomonology.svg";
+import Neurology from "@/public/icons/services/neurology.svg";
+import Nephrology from "@/public/icons/services/nephrology.svg";
+import Dermatology from "@/public/icons/services/dermatology.svg";
+import Rheumatologt from "@/public/icons/services/rheumatologt.svg";
+import Physciatrist from "@/public/icons/services/phstiotherapy.svg";
+import Neonotology from "@/public/icons/services/neonotology.svg";
+import Pediatrics from "@/public/icons/services/pediatrics.svg";
+import Phstiotherapy from "@/public/icons/services/physciatrist.svg";
+import Endocronology from "@/public/icons/services/endocronology.svg";
+
+import Pathology from "@/public/icons/services/pathology.svg";
+import BloodBank from "@/public/icons/services/blood-bank.svg";
+import RadioDiagnosis from "@/public/icons/services/radio-diagnostics.svg";
 
 import Marker from "@/public/icons/marker.svg";
 import Email from "@/public/icons/email.svg";
@@ -67,69 +99,69 @@ const HERO_SLIDER_IMAGES = [
 
 const VALUE_ADDITIONS = [
   {
-    icon: EmergencyIcon,
+    icon: Modular,
     title: "Modular Operation Rooms & Critical Care Areas",
     description: "",
   },
 
   {
-    icon: EmergencyIcon,
+    icon: Labour,
     title: "Modular Labor Rooms",
     description: "",
   },
 
   {
-    icon: EmergencyIcon,
+    icon: Neonatal,
     title: "Neonatal Intensive Care ",
     description: "",
   },
 
   {
-    icon: EmergencyIcon,
+    icon: Dialysis,
     title: "Dialysis Center",
     description: "",
   },
 
   {
-    icon: EmergencyIcon,
+    icon: Endoscopy,
     title: "Endoscopy & ERCP",
     description: "",
   },
 
   {
-    icon: EmergencyIcon,
+    icon: Suites,
     title: "Private Suites",
     description: "",
   },
 
   {
-    icon: ScienceIcon,
+    icon: Trauma,
     title: "Customized 24/7 Trauma & Emergency Services under one roof",
     description: "",
   },
   {
-    icon: DataIcon,
+    icon: CTSCAN,
     title: "CT Scan, MRI & Interventional Radiology",
     description: "",
   },
   {
-    icon: SpeakerIcon,
+    icon: PathologyV,
     title: "Pathology Services in collaboration with our partners at IDC",
     description: "",
   },
   {
-    icon: CodeIcon,
+    icon: Pharmacy,
     title: "Comprehensive Pharmacy Services with our partners MedAsk",
     description: "",
   },
   {
-    icon: LifebuoyIcon,
+    icon: Culinary,
     title:
       "Patient culinary services and Cafe under supervision of professional nutritionist",
     description: "",
   },
   {
-    icon: LifebuoyIcon,
+    icon: Mosque,
     title: "Comfortable Parking Areas & Mosque",
     description: "",
   },
@@ -153,43 +185,43 @@ const SERVICES_OFFERED = [
         title: "Spinal Surgery",
       },
       {
-        icon: GeneralSurgeryIcon,
+        icon: Orhtopedics,
         title: "Orthopedics",
       },
       {
-        icon: NeuroSurgeryIcon,
+        icon: Cardiothorcic,
         title: "Cardiothoracic Surgery",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Pediactric,
         title: "Pediactric Surgery",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Pediactric,
         title: "Plastic Surgery",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Vascular,
         title: "Vascular Surgery",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Gynae,
         title: "Gynae & Obs",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Ent,
         title: "ENT",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Anesthesia,
         title: "Anesthesia",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Ophalmology,
         title: "Opthalmology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Dental,
         title: "Dental Surgery",
       },
     ],
@@ -199,58 +231,56 @@ const SERVICES_OFFERED = [
     id: "medicine-allied",
     label: "Medicine & Allied",
     items: [
-      // Add medicine items here
-      // { icon: SomeIcon, title: "Cardiology" },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Medicine,
         title: "Internal Medicine",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Cardiology,
         title: "Cardiology & EP",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Gastentrology,
         title: "Gastronenterology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Pulomonology,
         title: "Pulmonology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Neurology,
         title: "Neurology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Nephrology,
         title: "Nephrology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Rheumatologt,
         title: "Rheumatology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Endocronology,
         title: "Endocrinology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Physciatrist,
         title: "Pyschiatry",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Dermatology,
         title: "Dermatology / Cosmotology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Pediatrics,
         title: "Pediatrics",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Neonotology,
         title: "Neonatology",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: Phstiotherapy,
         title: "Physiotherapy",
       },
     ],
@@ -260,19 +290,16 @@ const SERVICES_OFFERED = [
     id: "diagnostics-allied",
     label: "Diagnostics",
     items: [
-      // Add diagnostics items here
-      // { icon: SomeIcon, title: "Radiology" },
-
       {
-        icon: SpinalSurgeryIcon,
+        icon: Pathology,
         title: "Pathology Services",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: BloodBank,
         title: "Blood Bank",
       },
       {
-        icon: SpinalSurgeryIcon,
+        icon: RadioDiagnosis,
         title: "Radio Diagnostics",
       },
     ],

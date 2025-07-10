@@ -90,33 +90,6 @@ const ValueAdditions = () => {
               direction="next"
             />
           </div>
-
-          {/* <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={43}
-          className="flex items-stretch !overflow-visible"
-        >
-          {VALUE_ADDITIONS?.map((value, index) => {
-            return (
-              <SwiperSlide
-                key={index}
-                className="flex h-auto w-full max-w-[26.375rem]"
-              >
-                <div className="service-card border-body-secondary bg-card-bg border-card-border flex h-full flex-col justify-items-center rounded-lg border p-[1.4375rem]">
-                  <IconBadge
-                    icon={value?.icon}
-                    altText={`${value?.title} - icon`}
-                  />
-                  <div className="flex flex-1 flex-col justify-center">
-                    <h5 className="text-body-primary mt-9 text-center text-2xl leading-tight font-semibold md:text-[1.6875rem]">
-                      {value?.title}
-                    </h5>
-                  </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper> */}
         </div>
       </div>
     </div>
