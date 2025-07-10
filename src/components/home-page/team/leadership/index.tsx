@@ -96,8 +96,6 @@ const Leadership = () => {
             ))}
           </Swiper>
         </div>
-
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-white via-white/80 to-transparent sm:w-24" />
       </div>
 
       <TeamMemberModal
