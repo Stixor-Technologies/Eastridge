@@ -20,10 +20,10 @@ const Leadership = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<any>(null);
 
-  const handleMemberClick = (member: any) => {
-    setSelectedMember(member);
-    setModalOpen(true);
-  };
+  // const handleMemberClick = (member: any) => {
+  //   setSelectedMember(member);
+  //   setModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -73,7 +73,7 @@ const Leadership = () => {
               <SwiperSlide
                 key={index}
                 className="flex !h-auto w-full sm:max-w-[400px]"
-                onClick={() => handleMemberClick(member)}
+                // onClick={() => handleMemberClick(member)}
               >
                 <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
                   <div className="relative">
