@@ -40,15 +40,14 @@ const ManagementTeam = () => {
     <section ref={container} className="container pt-16 pb-10">
       <h2>Management Team</h2>
 
-      <div className="my-20">
-        <div className="hidden w-full md:block">
+      <div className="mt-10">
+        <div className="hidden w-full sm:block">
           <svg
             width="100%"
             height="100%"
             viewBox="0 0 800 300"
             className="h-auto w-full"
             xmlns="http://www.w3.org/2000/svg"
-            // style={{ minHeight: "250px" }}
           >
             {/* Connection Lines */}
             <g stroke="#d1d5db" strokeWidth="3" fill="none">
@@ -116,15 +115,15 @@ const ManagementTeam = () => {
           </svg>
         </div>
 
-        <div className="md:hidden">
+        <div className="sm:hidden">
           <div className="flex flex-col items-center space-y-4">
             {/* CEO */}
-            <div className="flex flex-col items-center">
-              <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+            <div className="border-card-border flex w-full max-w-[230px] flex-col items-center rounded-xl border-2 px-2 py-3 shadow-sm">
+              <div className="flex size-18 items-center justify-center overflow-hidden rounded-full">
                 <Image src={CEO} alt="ceo-image" />
               </div>
 
-              <span className="text-body-primary mt-2 text-xs font-semibold">
+              <span className="text-body-primary/70 mt-2.5 text-sm font-bold">
                 CEO
               </span>
             </div>
@@ -133,32 +132,33 @@ const ManagementTeam = () => {
             <div className="h-4 w-0.5 bg-[#d1d5db]" />
 
             {/* Department Managers */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="flex flex-col items-center">
-                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+            <div className="flex w-full max-w-[230px] flex-col items-center space-y-3">
+              <div className="border-card-border flex w-full flex-col items-center rounded-xl border-2 px-2 py-3 shadow-sm">
+                <div className="flex size-18 items-center justify-center overflow-hidden rounded-full">
                   <Image src={COO} alt="coo-image" />
                 </div>
 
-                <span className="text-body-primary mt-2 text-xs font-semibold">
+                <span className="text-body-primary/70 mt-2 text-xs font-semibold">
                   COO
                 </span>
               </div>
-              <div className="flex flex-col items-center">
-                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+
+              <div className="border-card-border flex w-full flex-col items-center rounded-xl border-2 px-2 py-3 shadow-sm">
+                <div className="flex size-18 items-center justify-center overflow-hidden rounded-full">
                   <Image src={CNO} alt="cno-image" />
                 </div>
 
-                <span className="text-body-primary mt-2 text-xs font-semibold">
+                <span className="text-body-primary/70 mt-2 text-xs font-semibold">
                   CNO
                 </span>
               </div>
 
-              <div className="flex flex-col items-center">
-                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+              <div className="border-card-border flex w-full flex-col items-center rounded-xl border-2 px-2 py-3 shadow-sm">
+                <div className="flex size-18 items-center justify-center overflow-hidden rounded-full">
                   <Image src={HCAdmin} alt="hcadmin-image" />
                 </div>
 
-                <span className="text-body-primary mt-2 text-xs font-semibold">
+                <span className="text-body-primary/70 mt-2 text-xs font-semibold">
                   HC Admin
                 </span>
               </div>
