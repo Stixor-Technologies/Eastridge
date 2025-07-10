@@ -46,51 +46,52 @@ const ValueAdditions = () => {
   );
 
   return (
-    <div className="container overflow-hidden py-10" ref={container}>
-      <h2 className="fade-up">Value Additions</h2>
+    <div className="overflow-hidden py-10" ref={container}>
+      <div className="container">
+        <h2 className="fade-up">Value Additions</h2>
 
-      <div ref={servicesList} className="mt-10 md:mt-[3.75rem]">
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={43}
-          className="flex items-stretch !overflow-visible"
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-        >
-          {VALUE_ADDITIONS?.map((value, index) => {
-            return (
-              // !h-auto
-              <SwiperSlide key={index} className="w-full max-w-[26.375rem]">
-                <div
-                  key={index}
-                  className="service-card border-body-secondary bg-card-bg border-card-border h-full justify-items-center rounded-lg border p-5 md:p-7"
-                >
-                  <IconBadge
-                    icon={value?.icon}
-                    altText={`${value?.title} - icon`}
-                  />
-                  <h5 className="text-body-primary mt-6 text-center text-2xl leading-tight font-semibold md:text-[1.6875rem]">
-                    {value?.title}
-                  </h5>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        <div ref={servicesList} className="mt-10 md:mt-[3.75rem]">
+          <Swiper
+            slidesPerView={"auto"}
+            spaceBetween={43}
+            className="flex items-stretch !overflow-visible"
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
+            {VALUE_ADDITIONS?.map((value, index) => {
+              return (
+                // !h-auto
+                <SwiperSlide key={index} className="w-full max-w-[26.375rem]">
+                  <div
+                    key={index}
+                    className="service-card border-body-secondary bg-card-bg border-card-border h-full justify-items-center rounded-lg border p-5 md:p-7"
+                  >
+                    <IconBadge
+                      icon={value?.icon}
+                      altText={`${value?.title} - icon`}
+                    />
+                    <h5 className="text-body-primary mt-6 text-center text-2xl leading-tight font-semibold md:text-[1.6875rem]">
+                      {value?.title}
+                    </h5>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
 
-        <div className="mt-10 flex justify-center gap-10">
-          <SwiperNavButton
-            onClick={() => swiperRef.current?.slidePrev()}
-            direction="prev"
-          />
-          <SwiperNavButton
-            onClick={() => swiperRef.current?.slideNext()}
-            direction="next"
-          />
-        </div>
+          <div className="mt-10 flex justify-center gap-10">
+            <SwiperNavButton
+              onClick={() => swiperRef.current?.slidePrev()}
+              direction="prev"
+            />
+            <SwiperNavButton
+              onClick={() => swiperRef.current?.slideNext()}
+              direction="next"
+            />
+          </div>
 
-        {/* <Swiper
+          {/* <Swiper
           slidesPerView={"auto"}
           spaceBetween={43}
           className="flex items-stretch !overflow-visible"
@@ -116,26 +117,8 @@ const ValueAdditions = () => {
             );
           })}
         </Swiper> */}
+        </div>
       </div>
-
-      {/* <div
-        ref={servicesList}
-        className="mt-10 grid grid-cols-[repeat(auto-fit,_minmax(18.75rem,_1fr))] gap-x-[clamp(00.5rem,10vw,8.875rem)] gap-y-[1.9375rem] md:mt-[3.75rem] md:gap-y-10"
-      >
-        {VALUE_ADDITIONS.map((value, index) => (
-          <div
-            key={index}
-            className="service-card border-body-secondary bg-card-bg border-card-border justify-items-center rounded-lg border p-[1.4375rem]"
-          >
-            <IconBadge icon={value?.icon} altText={`${value?.title} - icon`} />
-            <div>
-              <h5 className="text-body-primary mt-9 text-center text-2xl leading-tight font-semibold md:text-[1.6875rem]">
-                {value?.title}
-              </h5>
-            </div>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 };
