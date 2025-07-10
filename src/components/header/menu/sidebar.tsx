@@ -145,15 +145,15 @@ const Sidebar = () => {
     <>
       {/* hamburger menu button */}
       <button
-        className="group hide-custom-cursor no-custom-cursor z-50 flex size-9 transform items-center justify-center drop-shadow-lg md:hidden"
+        className="group hide-custom-cursor no-custom-cursor relative z-50 flex size-9 transform items-center justify-center drop-shadow-lg md:hidden"
         type="button"
         onClick={toggleMenu}
       >
         <div
-          className={`group-hover:bg-light-purple absolute top-1/2 left-1/2 -z-10 h-[100%] w-[100%] -translate-x-1/2 -translate-y-1/2 scale-0 transform rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] group-hover:scale-100 group-hover:opacity-100 ${
+          className={`group-hover:bg-light-purple absolute top-1/2 left-1/2 -z-10 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 transform rounded-full transition-all duration-[400ms] ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] group-hover:scale-100 group-hover:opacity-100 ${
             !isMenuOpen
               ? "scale-0 bg-transparent"
-              : "bg-accent scale-100 opacity-100"
+              : "scale-100 bg-black opacity-100"
           }`}
         />
         <svg

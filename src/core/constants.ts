@@ -53,7 +53,6 @@ import Marker from "@/public/icons/marker.svg";
 import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
-import DummyMember from "@/public/images/team/member-dummy.png";
 import MDFF from "@/public/images/team/md.jpeg";
 import MDMedical from "@/public/images/team/md-medical.jpg";
 
@@ -65,6 +64,11 @@ import YouTube from "@/public/icons/youtube.svg";
 import MarkerBlack from "@/public/icons/marker-black.svg";
 import CallBlack from "@/public/icons/call-black.svg";
 import Sms from "@/public/icons/sms.svg";
+
+import CEO from "@/public/images/team/ceo.png";
+import COO from "@/public/images/team/coo.png";
+import CNO from "@/public/images/team/cno.png";
+import HCAdmin from "@/public/images/team/hc-admin.png";
 
 const MAP_KEY = process.env["MAP_API"];
 
@@ -329,58 +333,21 @@ const CONTACT_CARDS = [
 
 const MANAGEMENT_TEAM = [
   {
-    name: "Garrison Gardner",
-    title: "Marketing Executive",
-    image: DummyMember,
-    bio: "During the discussion, each participant provided updates on their assigned tasks, highlighting completed milestones and identifying areas requiring further attention. Several challenges were raised, including delays due to external dependencies and resource constraints. The team collaboratively explored solutions, such as adjusting timelines, reallocating responsibilities, and escalating specific issues for quicker resolution. There was a strong focus on improving internal coordination and ensuring that deliverables remain on track.",
-    experience: "20 years",
-    certificates: "Robert L. Nobel Price, Edison Awards",
-    skills: "Working with both children and adults",
-    location: "380 Albert ST, Melbourne",
-    phone: "+1 (230)-369-155-23",
-    email: "garrison@joan.com",
+    title: "CEO",
+    image: CEO,
   },
   {
-    name: "Adrianna Rose",
-    title: "Marketing Executive",
-    image: DummyMember,
-    bio: "Adrianna specializes in digital marketing and team leadership.",
-    experience: "15 years",
-    certificates: "Digital Marketing Pro, Edison Awards",
-    skills: "Digital strategy, team leadership",
-    location: "380 Albert ST, Melbourne",
-    phone: "+1 (230)-369-155-24",
-    email: "adrianna@joan.com",
+    title: "COO",
+    image: COO,
   },
   {
-    name: "Jessica Jonathon",
-    title: "Marketing Executive",
-    image: DummyMember,
-    bio: "Jessica is known for her innovative approach to brand management.",
-    experience: "12 years",
-    certificates: "Brand Innovator, Edison Awards",
-    skills: "Brand management, innovation",
-    location: "380 Albert ST, Melbourne",
-    phone: "+1 (230)-369-155-25",
-    email: "jessica@joan.com",
+    title: "CNO",
+    image: CNO,
   },
 
   {
-    name: "Garrison Gardner",
-    title: "Marketing Executive",
-    image: DummyMember,
-  },
-
-  {
-    name: "Adrianna Rose",
-    title: "Marketing Executive",
-    image: DummyMember,
-  },
-
-  {
-    name: "Jessica Jonathon",
-    title: "Marketing Executive",
-    image: DummyMember,
+    title: "HC Admin",
+    image: HCAdmin,
   },
 ];
 

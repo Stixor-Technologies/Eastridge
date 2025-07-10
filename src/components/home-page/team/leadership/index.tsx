@@ -5,7 +5,6 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import SwiperClass from "swiper";
 import { LEADERSHIP_TEAM } from "@/src/core/constants";
 import TeamMemberModal from "@/src/components/home-page/team/team-member-modal";
 import { useGSAP } from "@gsap/react";
@@ -16,7 +15,6 @@ const Leadership = () => {
   gsap.registerPlugin(ScrollTrigger);
   const container = useRef<HTMLDivElement | null>(null);
 
-  const swiperRef = useRef<SwiperClass | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<any>(null);
 
@@ -51,29 +49,25 @@ const Leadership = () => {
   );
 
   return (
-    <section ref={container} className="container overflow-hidden md:pt-6">
-      <h2>Board of Directors</h2>
+    <section ref={container} className="overflow-hidden md:pt-6">
+      <div className="container">
+        <h2>Board of Directors</h2>
 
-      <div className="relative">
         <div className="mt-10 flex justify-center md:mt-[3.625rem]">
           <Swiper
             slidesPerView={1}
             spaceBetween={20}
             className="md:flex md:justify-center md:!overflow-visible"
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
             breakpoints={{
               768: {
-                slidesPerView: "auto",
+                slidesPerView: 2,
               },
             }}
           >
             {LEADERSHIP_TEAM?.map((member, index) => (
               <SwiperSlide
                 key={index}
-                className="flex !h-auto w-full sm:max-w-[400px]"
-                // onClick={() => handleMemberClick(member)}
+                className="flex !h-auto w-full sm:max-w-[25rem]"
               >
                 <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
                   <div className="relative">
