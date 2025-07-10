@@ -1,35 +1,20 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import SwiperClass from "swiper";
-import { MANAGEMENT_TEAM } from "@/src/core/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SwiperNavButton from "@/src/components/swiper-nav-buttons";
-import TeamMemberModal from "@/src/components/home-page/team/team-member-modal";
+import CEO from "@/public/images/team/ceo.png";
+import COO from "@/public/images/team/coo.png";
+import CNO from "@/public/images/team/cno.png";
+import HCAdmin from "@/public/images/team/hc-admin.png";
 
 const ManagementTeam = () => {
   gsap.registerPlugin(ScrollTrigger);
   const container = useRef<HTMLDivElement | null>(null);
-
-  const swiperRef = useRef<SwiperClass | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedMember, setSelectedMember] = useState<any>(null);
-
-  const handleMemberClick = (member: any) => {
-    setSelectedMember(member);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setTimeout(() => setSelectedMember(null), 300); // allow animation to finish
-  };
 
   useGSAP(
     () => {
@@ -52,79 +37,135 @@ const ManagementTeam = () => {
   );
 
   return (
-    <section
-      ref={container}
-      className="container overflow-hidden bg-[url(/images/stars.png)] bg-cover bg-[left_-8.5rem_top_-14rem] pt-16 pb-10"
-    >
+    <section ref={container} className="container pt-16 pb-10">
       <h2>Management Team</h2>
 
-      <div className="relative">
-        <div className="mt-10 md:mt-[3.625rem]">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            className="!overflow-visible"
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: "auto",
-                spaceBetween: 81,
-              },
-            }}
+      <div className="my-20">
+        <div className="hidden w-full md:block">
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 800 300"
+            className="h-auto w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            // style={{ minHeight: "250px" }}
           >
-            <div className="mb-10 cursor-pointer overflow-visible">
-              {MANAGEMENT_TEAM?.map((member, index) => (
-                <SwiperSlide
-                  key={index}
-                  className={`w-full sm:max-w-[21.3125rem]`}
-                  onClick={() => handleMemberClick(member)}
-                >
-                  <div className="border-card-border cursor-pointer rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
-                    <div className="relative">
-                      <div className="bg-body-primary absolute top-14 left-1/2 -z-10 aspect-square w-[90%] -translate-x-1/2 rounded-full"></div>
+            {/* Connection Lines */}
+            <g stroke="#d1d5db" strokeWidth="3" fill="none">
+              {/* CEO to Level 1 */}
+              <path d="M400 110 L400 150 L200 150 L200 190" />
+              <path d="M400 150 L400 190" />
+              <path d="M400 150 L600 150 L600 190" />
+            </g>
 
-                      <Image
-                        src={member?.image}
-                        alt={`${member?.name}-image`}
-                        className=""
-                      />
-                    </div>
+            {/* CEO */}
+            <foreignObject x="340" y="0" width="120" height="120">
+              <div className="flex flex-col items-center">
+                {/* Profile Circle */}
+                <div className="border-accent/70 flex h-20 w-16 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg sm:h-24 sm:w-24">
+                  <Image src={CEO} alt="ceo-image" />
+                </div>
+                {/* </div> */}
+                <span className="text-body-primary text-xs font-semibold">
+                  CEO
+                </span>
+              </div>
+            </foreignObject>
 
-                    <div className="border-card-border border-t pt-[2.125rem] text-center">
-                      <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                        {member?.name}
-                      </h4>
-                      <span className="text-body-main text-xl">
-                        {member?.title}
-                      </span>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+            {/* Level 1 - Department Managers */}
+
+            {/* Product A Manager */}
+            <foreignObject x="140" y="190" width="120" height="120">
+              <div className="flex flex-col items-center">
+                {/* Profile Circle */}
+                <div className="border-accent/70 flex h-20 w-16 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg sm:h-24 sm:w-24">
+                  <Image src={COO} alt="coo-image" />
+                </div>
+                <span className="text-body-primary text-xs font-semibold">
+                  COO
+                </span>
+              </div>
+            </foreignObject>
+
+            {/* Product B Manager */}
+            <foreignObject x="340" y="190" width="120" height="120">
+              <div className="flex flex-col items-center">
+                {/* Profile Circle */}
+                <div className="border-accent/70 flex h-20 w-16 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg sm:h-24 sm:w-24">
+                  <Image src={CNO} alt="cno-image" />
+                </div>
+                <span className="text-body-primary text-xs font-semibold">
+                  CNO
+                </span>
+              </div>
+            </foreignObject>
+
+            {/* Product C Manager */}
+            <foreignObject x="540" y="190" width="120" height="120">
+              <div className="flex flex-col items-center">
+                {/* Profile Circle */}
+                <div className="border-accent/70 flex h-20 w-16 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg sm:h-24 sm:w-24">
+                  <Image src={HCAdmin} alt="hcadmin-image" />
+                </div>
+
+                <span className="text-body-primary text-xs font-semibold">
+                  HC Admin
+                </span>
+              </div>
+            </foreignObject>
+          </svg>
+        </div>
+
+        <div className="md:hidden">
+          <div className="flex flex-col items-center space-y-4">
+            {/* CEO */}
+            <div className="flex flex-col items-center">
+              <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+                <Image src={CEO} alt="ceo-image" />
+              </div>
+
+              <span className="text-body-primary mt-2 text-xs font-semibold">
+                CEO
+              </span>
             </div>
-          </Swiper>
 
-          {/* Slider button */}
-          <div className="mt-[3.625rem] flex justify-center gap-10">
-            <SwiperNavButton
-              onClick={() => swiperRef.current?.slidePrev()}
-              direction="prev"
-            />
-            <SwiperNavButton
-              onClick={() => swiperRef.current?.slideNext()}
-              direction="next"
-            />
+            {/* Connection Line */}
+            <div className="h-4 w-0.5 bg-[#d1d5db]" />
+
+            {/* Department Managers */}
+            <div className="flex flex-col items-center space-y-3">
+              <div className="flex flex-col items-center">
+                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+                  <Image src={COO} alt="coo-image" />
+                </div>
+
+                <span className="text-body-primary mt-2 text-xs font-semibold">
+                  COO
+                </span>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+                  <Image src={CNO} alt="cno-image" />
+                </div>
+
+                <span className="text-body-primary mt-2 text-xs font-semibold">
+                  CNO
+                </span>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <div className="border-accent/70 flex size-24 items-center justify-center overflow-hidden rounded-full border-4 shadow-lg">
+                  <Image src={HCAdmin} alt="hcadmin-image" />
+                </div>
+
+                <span className="text-body-primary mt-2 text-xs font-semibold">
+                  HC Admin
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-white via-white/80 to-transparent sm:w-24" />
       </div>
-      <TeamMemberModal
-        open={modalOpen}
-        member={selectedMember}
-        onClose={handleCloseModal}
-      />
     </section>
   );
 };
