@@ -60,7 +60,7 @@ const Leadership = () => {
             className="md:flex md:justify-center md:!overflow-visible"
             breakpoints={{
               768: {
-                slidesPerView: 2,
+                slidesPerView: "auto",
               },
             }}
           >
