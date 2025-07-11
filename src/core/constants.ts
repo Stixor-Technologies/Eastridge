@@ -314,8 +314,9 @@ const CONTACT_CARDS = [
   {
     icon: Marker,
     title: "Our Address",
-    lines: "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+    lines: "Jhelum Rd, Rawalpindi",
     type: "address",
+    link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
   },
   {
     icon: Email,
@@ -377,7 +378,7 @@ const SOCIAL_LINKS = [
 const FOOTER_CONTACTS = [
   {
     icon: MarkerBlack,
-    value: "125 Harmony Blvd, Los Angeles, CA 90001",
+    value: "Jhelum Rd, Rawalpindi",
     type: "address",
     link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
   },
