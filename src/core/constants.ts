@@ -54,7 +54,7 @@ import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
 import MDFF from "@/public/images/team/md.jpeg";
-import MDMedical from "@/public/images/team/md-medical.jpg";
+import MDMedical from "@/public/images/team/mdmedical.png";
 
 import Instagram from "@/public/icons/instagram.svg";
 import Facebook from "@/public/icons/facebook.svg";
@@ -424,7 +424,7 @@ const LEADERSHIP_TEAM = [
   {
     name: "Dr. Zafar Yousaf",
     title: "CEO Eastridge Prime Care",
-    image: MDMedical,
+    image: CEO,
     bio: "Adrianna specializes in digital marketing and team leadership.",
     experience: "15 years",
     certificates: "Digital Marketing Pro, Edison Awards",
