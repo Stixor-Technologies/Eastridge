@@ -423,7 +423,7 @@ const LEADERSHIP_TEAM = [
   },
   {
     name: "Dr. Zafar Yousaf",
-    title: "CEO Eastridge Prime Care",
+    title: "CEO Eastridge Primecare",
     image: CEO,
     bio: "Adrianna specializes in digital marketing and team leadership.",
     experience: "15 years",

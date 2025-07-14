@@ -91,22 +91,22 @@ const AboutSection = () => {
           {/* about section */}
           <div className="mt-10 gap-8 text-center lg:mt-20 lg:flex-row lg:gap-14 lg:text-left xl:gap-[5.625rem]">
             <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
-              Eastridge Prime Care is a new 173-bed purpose built greenfield
+              Eastridge Primecare is a new 173-bed purpose built greenfield
               hospital of Fauji Foundation. The construction of the hospital
               started in 2022. The hospital is scheduled to open its door to the
-              public in August 2025.
+              public in 2025.
             </p>
 
             <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
-              Eastridge Prime Care will bring a fresh offering in niche
+              Eastridge Primecare will bring a fresh offering in niche
               healthcare services with technologically advanced equipment
               through reputed consultants, competent nurses and well-trained
               paramedic staff to the landscape of private hospitals in
-              Rawalpindi and Islamabad. The spirit of Eastride Prime Care
-              remains focused on the provision of high-quality patient care
-              services with empathy and patient safety in an ethical culture
-              which keeps Patient First as its core value for local as well as
-              global clientele.
+              Rawalpindi and Islamabad. The spirit of Eastride Primecare remains
+              focused on the provision of high-quality patient care services
+              with empathy and patient safety in an ethical culture which keeps
+              Patient First as its core value for local as well as global
+              clientele.
             </p>
 
             <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
