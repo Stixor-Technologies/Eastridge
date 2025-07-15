@@ -1,5 +1,9 @@
 import Building from "@/public/images/building.png";
 import BuildingMobile from "@/public/images/building-mobile.png";
+import BuildingFront from "@/public/images/building-front.png";
+import BuildingSide from "@/public/images/building-side.png";
+import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
+import BuildingSideMobile from "@/public/images/building-side-mobile.png";
 
 import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
 import Culinary from "@/public/icons/services/value-additions/culinary.svg";
@@ -84,14 +88,14 @@ const MENU = [
 const HERO_SLIDER_IMAGES = [
   {
     id: "building-front",
-    src: Building,
-    mobileSrc: Building,
+    src: BuildingFront,
+    mobileSrc: BuildingFrontMobile,
     alt: "Building Front",
   },
   {
     id: "building-side",
-    src: Building,
-    mobileSrc: Building,
+    src: BuildingSide,
+    mobileSrc: BuildingSideMobile,
     alt: "Building Side",
   },
   {

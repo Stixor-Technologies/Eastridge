@@ -57,8 +57,11 @@ const ManagementTeam = () => {
                 </div>
                 <div className="border-card-border border-t pt-[2.125rem] text-center">
                   <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                    {firstMember.title}
+                    {firstMember.name}
                   </h4>
+                  <span className="text-body-main text-xl">
+                    {firstMember?.title}
+                  </span>
                 </div>
               </div>
             </div>
@@ -91,8 +94,11 @@ const ManagementTeam = () => {
                     </div>
                     <div className="border-card-border border-t pt-[2.125rem] text-center">
                       <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                        {member?.title}
+                        {member?.name}
                       </h4>
+                      <span className="text-body-main text-xl">
+                        {member?.title}
+                      </span>
                     </div>
                   </div>
                 </SwiperSlide>
