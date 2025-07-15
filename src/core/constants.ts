@@ -62,7 +62,7 @@ import MDMedical from "@/public/images/team/mdmedical.png";
 
 import Instagram from "@/public/icons/instagram.svg";
 import Facebook from "@/public/icons/facebook.svg";
-import X from "@/public/icons/x.svg";
+import LinkedIn from "@/public/icons/linkedin.svg";
 import YouTube from "@/public/icons/youtube.svg";
 
 import MarkerBlack from "@/public/icons/marker-black.svg";
@@ -319,20 +319,20 @@ const CONTACT_CARDS = [
   {
     icon: Marker,
     title: "Our Address",
-    lines: "Jhelum Rd, Rawalpindi",
+    lines: "Jhelum Rd, Rawalpindi, 46000",
     type: "address",
     link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
   },
   {
     icon: Email,
     title: "Email Us",
-    lines: "Info@eastridge.com.pk",
+    lines: "admin@eastridge.com.pk",
     type: "email",
   },
   {
     icon: Call,
     title: "Call Us",
-    lines: "0314 1234567",
+    lines: "(051) 884-4800",
     type: "phone",
   },
 ];
@@ -368,43 +368,43 @@ const SOCIAL_LINKS = [
   {
     icon: Instagram,
     id: "instagram",
-    href: "https://www.instagram.com/eastridgehospital/",
+    href: "https://www.instagram.com/eastridge.primecare/",
   },
   {
     icon: Facebook,
     id: "facebook",
-    href: "https://www.facebook.com/eastridgehospital/",
+    href: "https://www.facebook.com/profile.php?id=61577774163355",
   },
   {
-    icon: X,
-    id: "x",
-    href: "https://www.x.com/eastridgehospital/",
+    icon: LinkedIn,
+    id: "linkedin",
+    href: "https://www.linkedin.com/company/eastridgeprimecare/",
   },
   {
     icon: YouTube,
     id: "youtube",
-    href: "https://www.youtube.com/eastridgehospital/",
+    href: "https://www.youtube.com/@Eastridge.Primecare",
   },
 ];
 
 const FOOTER_CONTACTS = [
   {
     icon: MarkerBlack,
-    value: "Jhelum Rd, Rawalpindi",
+    value: "Jhelum Rd, Rawalpindi, 46000",
     type: "address",
-    link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
+    link: "https://maps.app.goo.gl/mg3YhrmrDtpduuFs8",
   },
   {
     icon: CallBlack,
-    value: "+1 (888) 123-4567",
+    value: "(051) 884-4800",
     type: "phone",
-    link: "tel:+18881234567",
+    link: "tel:+92518844800",
   },
   {
     icon: Sms,
-    value: "hello@healthcore.com",
+    value: "admin@eastridge.com.pk",
     type: "email",
-    link: "mailto:hello@healthcore.com",
+    link: "mailto:admin@eastridge.com.pk",
   },
 ];
 
