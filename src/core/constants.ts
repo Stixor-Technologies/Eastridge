@@ -2,7 +2,7 @@ import Building from "@/public/images/building.png";
 import BuildingMobile from "@/public/images/building-mobile.png";
 import BuildingFront from "@/public/images/building-front.png";
 import BuildingSide from "@/public/images/building-side.png";
-import BuildingFrontMobile from "@/public/images/building-front-mobile.png";
+import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
 import BuildingSideMobile from "@/public/images/building-side-mobile.png";
 
 import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
