@@ -69,6 +69,7 @@ import CEO from "@/public/images/team/ceo.png";
 import COO from "@/public/images/team/coo.png";
 import CNO from "@/public/images/team/cno.png";
 import HCAdmin from "@/public/images/team/hc-admin.png";
+import SMStaff from "@/public/images/team/sm-staff.png";
 
 const MAP_KEY = process.env["MAP_API"];
 
@@ -334,21 +335,28 @@ const CONTACT_CARDS = [
 
 const MANAGEMENT_TEAM = [
   {
-    title: "CEO",
-    image: CEO,
-  },
-  {
-    title: "COO",
+    name: "Dr. Naima Nawaz",
+    title: "Chief Operating Officer",
     image: COO,
+    bio: "",
   },
   {
-    title: "CNO",
+    name: "Dr. Adeel Nawaz",
+    title: "SM Medical Staff Affairs",
+    image: SMStaff,
+    bio: "",
+  },
+  {
+    name: "Saeeda Naweed",
+    title: "Chief Nursing Officer",
     image: CNO,
+    bio: "",
   },
-
   {
-    title: "HC Admin",
+    name: "Dr. Raheel Chishti ",
+    title: "Health Care Adminstrator",
     image: HCAdmin,
+    bio: "",
   },
 ];
 
