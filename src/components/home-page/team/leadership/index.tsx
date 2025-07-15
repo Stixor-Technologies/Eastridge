@@ -1,10 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { LEADERSHIP_TEAM } from "@/src/core/constants";
 import TeamMemberModal from "@/src/components/home-page/team/team-member-modal";
 import { useGSAP } from "@gsap/react";
@@ -53,23 +49,11 @@ const Leadership = () => {
       <div className="container">
         <h2>Board of Directors</h2>
 
-        <div className="mt-10 flex justify-center md:mt-[3.625rem]">
-          <Swiper
-            slidesPerView={1}
-            spaceBetween={20}
-            className="md:flex md:justify-center md:!overflow-visible"
-            breakpoints={{
-              768: {
-                slidesPerView: "auto",
-              },
-            }}
-          >
+        <div className="mt-10 md:mt-[3.625rem]">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {LEADERSHIP_TEAM?.map((member, index) => (
-              <SwiperSlide
-                key={index}
-                className="flex !h-auto w-full sm:max-w-[25rem]"
-              >
-                <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+              <div key={index} className="flex justify-center">
+                <div className="border-card-border flex h-full w-full max-w-[25rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
                   <div className="relative">
                     <Image
                       src={member?.image}
@@ -86,9 +70,9 @@ const Leadership = () => {
                     </span>
                   </div>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </div>
 

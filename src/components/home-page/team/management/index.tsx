@@ -1,13 +1,9 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { MANAGEMENT_TEAM } from "@/src/core/constants";
 
 const ManagementTeam = () => {
@@ -68,42 +64,28 @@ const ManagementTeam = () => {
           )}
 
           {/* Remaining Members Row */}
-          <div className="flex justify-center">
-            <Swiper
-              slidesPerView={1}
-              spaceBetween={20}
-              className="md:flex md:justify-center md:!overflow-visible"
-              breakpoints={{
-                768: {
-                  slidesPerView: "auto",
-                },
-              }}
-            >
-              {remainingMembers?.map((member, index) => (
-                <SwiperSlide
-                  key={index}
-                  className="flex !h-auto w-full sm:max-w-[25rem]"
-                >
-                  <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
-                    <div className="relative">
-                      <Image
-                        src={member?.image}
-                        alt={`${member?.title}-image`}
-                        className="aspect-[0.80/1] object-cover"
-                      />
-                    </div>
-                    <div className="border-card-border border-t pt-[2.125rem] text-center">
-                      <h4 className="text-body-primary text-2xl md:text-[2rem]">
-                        {member?.name}
-                      </h4>
-                      <span className="text-body-main text-xl">
-                        {member?.title}
-                      </span>
-                    </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+            {remainingMembers?.map((member, index) => (
+              <div key={index} className="flex justify-center">
+                <div className="border-card-border flex h-full w-full max-w-[25rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+                  <div className="relative">
+                    <Image
+                      src={member?.image}
+                      alt={`${member?.title}-image`}
+                      className="aspect-[0.80/1] object-cover"
+                    />
                   </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  <div className="border-card-border border-t pt-[2.125rem] text-center">
+                    <h4 className="text-body-primary text-2xl md:text-[2rem]">
+                      {member?.name}
+                    </h4>
+                    <span className="text-body-main text-xl">
+                      {member?.title}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
