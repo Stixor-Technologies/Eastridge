@@ -5,7 +5,7 @@ import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Map from "@/public/images/map.png";
+import Map from "@/public/images/map.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
