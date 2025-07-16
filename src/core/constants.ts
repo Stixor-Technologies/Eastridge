@@ -206,7 +206,7 @@ const SERVICES_OFFERED = [
         title: "Pediatric Surgery",
       },
       {
-        icon: Pediactric,
+        icon: Pediatric,
         title: "Plastic Surgery",
       },
       {
