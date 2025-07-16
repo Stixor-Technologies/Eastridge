@@ -54,7 +54,7 @@ import BloodBank from "@/public/icons/services/blood-bank.svg";
 import RadioDiagnosis from "@/public/icons/services/radio-diagnostics.svg";
 
 import Marker from "@/public/icons/marker.svg";
-import Email from "@/public/icons/email.svg";
+//import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
 import MDFF from "@/public/images/team/md.jpeg";
@@ -67,7 +67,7 @@ import YouTube from "@/public/icons/youtube.svg";
 
 import MarkerBlack from "@/public/icons/marker-black.svg";
 import CallBlack from "@/public/icons/call-black.svg";
-import Sms from "@/public/icons/sms.svg";
+//import Sms from "@/public/icons/sms.svg";
 
 import CEO from "@/public/images/team/ceo.jpg";
 import COO from "@/public/images/team/coo.jpg";
@@ -319,16 +319,17 @@ const CONTACT_CARDS = [
   {
     icon: Marker,
     title: "Our Address",
-    lines: "Jhelum Rd, Rawalpindi, 46000",
+    lines: "Foundation Medical Complex, Jhelum Road, Rawalpindi",
     type: "address",
     link: "https://maps.app.goo.gl/cKVxohzwMEUxqd6bA",
   },
-  {
+  /*  {
     icon: Email,
     title: "Email Us",
     lines: "admin@eastridge.com.pk",
     type: "email",
   },
+*/
   {
     icon: Call,
     title: "Call Us",
@@ -390,7 +391,7 @@ const SOCIAL_LINKS = [
 const FOOTER_CONTACTS = [
   {
     icon: MarkerBlack,
-    value: "Jhelum Rd, Rawalpindi, 46000",
+    value: "Foundation Medical Complex, Jhelum Road, Rawalpindi",
     type: "address",
     link: "https://maps.app.goo.gl/mg3YhrmrDtpduuFs8",
   },
@@ -400,12 +401,13 @@ const FOOTER_CONTACTS = [
     type: "phone",
     link: "tel:+92518844800",
   },
-  {
+  /*{
     icon: Sms,
     value: "admin@eastridge.com.pk",
     type: "email",
     link: "mailto:admin@eastridge.com.pk",
   },
+  */
 ];
 
 const LEADERSHIP_TEAM = [
