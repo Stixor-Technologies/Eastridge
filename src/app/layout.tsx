@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Eastridge Prime Care",
+  title: "Eastridge Primecare",
   description: "Best hospital in Rawalpindi and Islamabad",
 };
 
