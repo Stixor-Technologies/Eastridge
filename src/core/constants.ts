@@ -21,7 +21,7 @@ import Mosque from "@/public/icons/services/value-additions/mosque.svg";
 
 import Orhtopedics from "@/public/icons/services/orthopedics.svg";
 import Cardiothorcic from "@/public/icons/services/cardiothoracic-sugery.svg";
-import Pediactric from "@/public/icons/services/pediatric-surgery.svg";
+import Pediatric from "@/public/icons/services/pediatric-surgery.svg";
 
 import Vascular from "@/public/icons/services/vasular.svg";
 import Gynae from "@/public/icons/services/gynae.svg";
@@ -202,8 +202,8 @@ const SERVICES_OFFERED = [
         title: "Cardiothoracic Surgery",
       },
       {
-        icon: Pediactric,
-        title: "Pediactric Surgery",
+        icon: Pediatric,
+        title: "Pediatric Surgery",
       },
       {
         icon: Pediactric,
@@ -347,7 +347,7 @@ const MANAGEMENT_TEAM = [
   },
   {
     name: "Dr. Adeel Nawaz",
-    title: "SM Medical Staff Affairs",
+    title: "Head of Patient Affairs",
     image: SMStaff,
     bio: "",
   },
@@ -359,7 +359,7 @@ const MANAGEMENT_TEAM = [
   },
   {
     name: "Dr. Raheel Chishti ",
-    title: "Health Care Adminstrator",
+    title: "Head of Hospital Administration",
     image: HCAdmin,
     bio: "",
   },
