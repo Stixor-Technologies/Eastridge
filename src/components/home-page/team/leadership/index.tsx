@@ -49,11 +49,11 @@ const Leadership = () => {
       <div className="container">
         <h2>Board of Directors</h2>
 
-        <div className="mt-10 md:mt-[3.625rem]">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-10 flex justify-center md:mt-[3.625rem]">
+          <div className="flex flex-wrap justify-center gap-6">
             {LEADERSHIP_TEAM?.map((member, index) => (
-              <div key={index} className="flex justify-center">
-                <div className="border-card-border flex h-full w-full max-w-[25rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+              <div key={index} className="w-full max-w-[25rem] sm:w-auto">
+                <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
                   <div className="relative">
                     <Image
                       src={member?.image}

@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import HospitalGallery from "@/public/images/hospital-gallery.png";
-import HospitalReception from "@/public/images/hospital-reception.png";
+import HospitalGallery from "@/public/images/hospital-gallery.jpg";
+import HospitalReception from "@/public/images/hospital-reception.jpg";
 import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

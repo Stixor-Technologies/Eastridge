@@ -1,9 +1,9 @@
-import Building from "@/public/images/building.png";
-import BuildingMobile from "@/public/images/building-mobile.png";
-import BuildingFront from "@/public/images/building-front.png";
-import BuildingSide from "@/public/images/building-side.png";
+import Building from "@/public/images/building.jpg";
+import BuildingMobile from "@/public/images/building-mobile.jpg";
+import BuildingFront from "@/public/images/building-front.jpg";
+import BuildingSide from "@/public/images/building-side.jpg";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
-import BuildingSideMobile from "@/public/images/building-side-mobile.png";
+import BuildingSideMobile from "@/public/images/building-side-mobile.jpg";
 
 import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
 import Culinary from "@/public/icons/services/value-additions/culinary.svg";
@@ -58,7 +58,7 @@ import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
 import MDFF from "@/public/images/team/md.jpeg";
-import MDMedical from "@/public/images/team/mdmedical.png";
+import MDMedical from "@/public/images/team/mdmedical.jpg";
 
 import Instagram from "@/public/icons/instagram.svg";
 import Facebook from "@/public/icons/facebook.svg";
@@ -69,11 +69,11 @@ import MarkerBlack from "@/public/icons/marker-black.svg";
 import CallBlack from "@/public/icons/call-black.svg";
 import Sms from "@/public/icons/sms.svg";
 
-import CEO from "@/public/images/team/ceo.png";
-import COO from "@/public/images/team/coo.png";
-import CNO from "@/public/images/team/cno.png";
-import HCAdmin from "@/public/images/team/hc-admin.png";
-import SMStaff from "@/public/images/team/sm-staff.png";
+import CEO from "@/public/images/team/ceo.jpg";
+import COO from "@/public/images/team/coo.jpg";
+import CNO from "@/public/images/team/cno.jpg";
+import HCAdmin from "@/public/images/team/hc-admin.jpg";
+import SMStaff from "@/public/images/team/sm-staff.jpg";
 
 const MAP_KEY = process.env["MAP_API"];
 
