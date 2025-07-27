@@ -71,7 +71,7 @@ const ValueAdditions = () => {
                       icon={value?.icon}
                       altText={`${value?.title} - icon`}
                     />
-                    <h5 className="text-body-primary mt-6 text-center text-2xl leading-tight font-semibold md:text-[1.6875rem]">
+                    <h5 className="text-body-primary mt-6 text-center text-2xl md:text-[2rem]">
                       {value?.title}
                     </h5>
                   </div>
