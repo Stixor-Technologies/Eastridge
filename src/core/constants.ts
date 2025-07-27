@@ -1,9 +1,9 @@
-import Building from "@/public/images/building.jpg";
-import BuildingMobile from "@/public/images/building-mobile.jpg";
-import BuildingFront from "@/public/images/building-front.jpg";
-import BuildingSide from "@/public/images/building-side.jpg";
+import Building from "@/public/images/wallpaper.jpg";
+import BuildingMobile from "@/public/images/wallpaper-mobile.jpg";
+import BuildingFront from "@/public/images/building_front.jpg";
+import BuildingSide from "@/public/images/opd.jpg";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
-import BuildingSideMobile from "@/public/images/building-side-mobile.jpg";
+import BuildingSideMobile from "@/public/images/opd-mobile.jpg";
 
 import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
 import Culinary from "@/public/icons/services/value-additions/culinary.svg";
@@ -374,7 +374,7 @@ const SOCIAL_LINKS = [
   {
     icon: Facebook,
     id: "facebook",
-    href: "https://www.facebook.com/profile.php?id=61577774163355",
+    href: "https://www.facebook.com/profile.php?id=61578321713871",
   },
   {
     icon: LinkedIn,
