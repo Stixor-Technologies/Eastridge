@@ -43,19 +43,19 @@ const ManagementTeam = () => {
           {/* First Member Row */}
           {firstMember && (
             <div className="mb-8 flex justify-center">
-              <div className="border-card-border flex h-full w-full max-w-[25rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+              <div className="border-card-border flex h-full w-full max-w-[14rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg md:max-w-[16rem]">
                 <div className="relative">
                   <Image
                     src={firstMember.image}
                     alt={`${firstMember.title}-image`}
-                    className="aspect-[0.80/1] object-cover"
+                    className="aspect-[4/5] object-cover"
                   />
                 </div>
                 <div className="border-card-border border-t pt-[2.125rem] text-center">
-                  <h4 className="text-body-primary text-2xl md:text-[2rem]">
+                  <h4 className="text-body-primary text-[clamp(1.25rem,3vw,1.75rem)]">
                     {firstMember.name}
                   </h4>
-                  <span className="text-body-main text-xl">
+                  <span className="text-body-main text-[clamp(1rem,2.5vw,1.25rem)]">
                     {firstMember?.title}
                   </span>
                 </div>
@@ -67,19 +67,19 @@ const ManagementTeam = () => {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {remainingMembers?.map((member, index) => (
               <div key={index} className="flex justify-center">
-                <div className="border-card-border flex h-full w-full max-w-[25rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
+                <div className="border-card-border flex h-full w-full max-w-[14rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg md:max-w-[16rem]">
                   <div className="relative">
                     <Image
                       src={member?.image}
                       alt={`${member?.title}-image`}
-                      className="aspect-[0.80/1] object-cover"
+                      className="aspect-[4/5] object-cover"
                     />
                   </div>
                   <div className="border-card-border border-t pt-[2.125rem] text-center">
-                    <h4 className="text-body-primary text-2xl md:text-[2rem]">
+                    <h4 className="text-body-primary text-[clamp(1.25rem,3vw,1.75rem)]">
                       {member?.name}
                     </h4>
-                    <span className="text-body-main text-xl">
+                    <span className="text-body-main text-[clamp(1rem,2.5vw,1.25rem)]">
                       {member?.title}
                     </span>
                   </div>
