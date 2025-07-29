@@ -166,7 +166,7 @@ const VALUE_ADDITIONS = [
   {
     icon: Culinary,
     title:
-      "Patient culinary services and Cafe under supervision of professional nutritionist",
+      "Patient culinary services and Cafe under supervision of professional nutritionists",
     description: "",
   },
   {
@@ -227,7 +227,7 @@ const SERVICES_OFFERED = [
       },
       {
         icon: Ophalmology,
-        title: "Opthalmology",
+        title: "Ophthalmology",
       },
       {
         icon: Dental,
