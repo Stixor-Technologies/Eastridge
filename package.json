@@ -9,7 +9,7 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\"",
     "format": "prettier --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\" --write",
-    "postinstall": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
