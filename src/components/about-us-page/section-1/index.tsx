@@ -32,7 +32,7 @@ const AboutEastridgeSection = () => {
         <div className="grid grid-cols-1 overflow-hidden rounded-lg bg-white md:grid-cols-4">
           {/* Left Grid */}
           <div className="relative flex flex-col items-start border-b-0 border-gray-300 p-8 leading-snug font-medium md:col-span-1 md:border-t md:border-r md:border-b md:border-l-0 md:border-gray-300">
-            <span className="md:text-[22px] animate-fade mb-[82px] text-[24px] text-[#D82519]">
+            <span className="animate-fade mb-[82px] text-[24px] text-[#D82519] md:text-[22px]">
               ABOUT EASTRIDGE
             </span>
             <span className="animate-fade text-[5.375rem] font-semibold text-[#333333]">
