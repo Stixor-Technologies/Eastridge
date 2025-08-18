@@ -58,13 +58,12 @@ const AboutVisionSection = () => {
               Art Hospital.
             </p>
           </div>
-          <span className="animate-fade">
+          <span className="animate-fade md:row-start-1">
             <Image
               src="/images/hospital-reception.jpg"
               width={656}
               height={409}
               alt="hospital-reception"
-              className="md:row-start-1"
             />
           </span>
         </div>
