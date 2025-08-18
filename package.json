@@ -8,6 +8,7 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\"",
+    "lint:fix": "eslint --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\" --fix",
     "format": "prettier --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\" --write",
     "prepare": "husky"
   },

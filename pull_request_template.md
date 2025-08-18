@@ -8,13 +8,13 @@ Please select type of issue addressed,
 
 - [ ] Bug fix (Mention Ticket numbers)
 
-- [ ] New feature ( Story Number ) 
+- [ ] New feature ( Story Number )
 
 # Dependences / Libraries Installed
 
 Please list the packages and libraries installed (if any)
 
-- [ ] ( Package Name )  ( npm.js / github url ) 
+- [ ] ( Package Name ) ( npm.js / github url )
 
 # How Has This Been Tested By The Developer?
 
