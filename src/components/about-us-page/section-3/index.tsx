@@ -1,8 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import HospitalGallery from "@/public/images/hospital-gallery.jpg";
-import HospitalReception from "@/public/images/hospital-reception.jpg";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -41,7 +39,7 @@ const AboutVisionSection = () => {
           </p>
           <div className="animate-fade">
             <Image
-              src={HospitalGallery}
+              src="/images/hospital-gallery.jpg"
               width={656}
               height={383}
               alt="hospital-gallery"
@@ -62,7 +60,7 @@ const AboutVisionSection = () => {
           </div>
           <span className="animate-fade">
             <Image
-              src={HospitalReception}
+              src="/images/hospital-reception.jpg"
               width={656}
               height={409}
               alt="hospital-reception"
