@@ -35,7 +35,7 @@ const AboutEastridgeSection = () => {
             <span className="animate-fade mb-[82px] text-[24px] text-[#D82519] md:text-[22px]">
               ABOUT EASTRIDGE
             </span>
-            <span className="animate-fade text-[5.375rem] font-semibold text-[#333333]">
+            <span className="animate-fade text-[5.375rem] font-semibold text-[#333333] md:text-[4rem] lg:text-[5.375rem]">
               95<span className="text-[#D82519]">%</span>
             </span>
             <span className="animate-fade mt-4 text-[24px] text-[#767676]">
