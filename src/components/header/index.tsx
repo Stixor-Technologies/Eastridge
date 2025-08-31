@@ -68,7 +68,11 @@ const Header = () => {
             <li key={item?.id}>
               <button
                 onClick={() => {
-                  scrollToSection(item?.id);
+                  if (item?.scrollOnPage) {
+                    scrollToSection(item?.id);
+                  } else {
+                    window.location.href = item?.id;
+                  }
                 }}
                 className={`transition-all duration-300 ${activeSection === item?.id ? "text-xl font-semibold text-white" : "text-lg text-white/80"} cursor-pointer`}
               >

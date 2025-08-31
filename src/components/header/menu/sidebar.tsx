@@ -201,8 +201,11 @@ const Sidebar = () => {
               >
                 <button
                   onClick={() => {
-                    scrollToSection(item?.id);
-                    closeMenuAnimation();
+                    if (item?.scrollOnPage) {
+                      scrollToSection(item?.id);
+                    } else {
+                      window.location.href = item?.id;
+                    }
                   }}
                   className="w-full text-left"
                 >
