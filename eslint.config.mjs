@@ -23,6 +23,15 @@ export default defineConfig([
       prettier,
     },
 
+    settings: {
+      "import/resolver": {
+        typescript: {
+          alwaysTryTypes: true,
+          project: "./tsconfig.json",
+        },
+      },
+    },
+
     rules: {
       "prettier/prettier": "error",
       camelcase: "off",

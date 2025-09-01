@@ -449,6 +449,226 @@ const LEADERSHIP_TEAM = [
   },
 ];
 
+// Board of Directors data
+const boardMembers = [
+  {
+    id: 1,
+    image: "/images/board-1.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 2,
+    image: "/images/board-2.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 3,
+    image: "/images/board-3.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 4,
+    image: "/images/board-1.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+];
+
+// Team members data
+const teamMembers = [
+  {
+    id: 1,
+    image: "/images/board-1.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 2,
+    image: "/images/board-2.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 3,
+    image: "/images/board-3.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 4,
+    image: "/images/board-1.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 5,
+    image: "/images/board-2.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+  {
+    id: 6,
+    image: "/images/board-3.png",
+    name: "Garrison Gardner",
+    position: "Marketing Executive",
+    testimonial:
+      "I've been using this site for a few months, and it's incredibly reliable. I appreciate the convenience of booking and canceling appointments anytime, anywhere",
+  },
+];
+
+// Gallery data for doctors/physicians
+const galleryItems = [
+  {
+    image: "/images/gallery-1.png",
+    alt: "Hospital Gallery 1",
+    name: "Dr. John Smith",
+    designation: "Chief Medical Officer",
+  },
+  {
+    image: "/images/gallery-2.png",
+    alt: "Hospital Gallery 2",
+    name: "Dr. Sarah Johnson",
+    designation: "Head of Cardiology",
+  },
+  {
+    image: "/images/gallery-3.png",
+    alt: "Hospital Gallery 3",
+    name: "Dr. Michael Brown",
+    designation: "Senior Surgeon",
+  },
+  {
+    image: "/images/gallery-4.png",
+    alt: "Hospital Gallery 4",
+    name: "Dr. Emily Wilson",
+    designation: "Neurologist",
+  },
+  {
+    image: "/images/gallery-5.png",
+    alt: "Hospital Gallery 5",
+    name: "Dr. Robert Davis",
+    designation: "Pediatrician",
+  },
+  {
+    image: "/images/gallery-6.png",
+    alt: "Hospital Gallery 6",
+    name: "Dr. Lisa Anderson",
+    designation: "Oncologist",
+  },
+  {
+    image: "/images/gallery-7.png",
+    alt: "Hospital Gallery 7",
+    name: "Dr. James Miller",
+    designation: "Orthopedic Surgeon",
+  },
+  {
+    image: "/images/gallery-8.png",
+    alt: "Hospital Gallery 8",
+    name: "Dr. Patricia Clark",
+    designation: "Dermatologist",
+  },
+];
+
+// History events data for cleaner code structure
+const historyEvents = [
+  {
+    id: 1,
+    title: "Event 1",
+    year: "2015",
+    image: "/images/Frame 132 (1).png",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+  },
+  {
+    id: 2,
+    title: "Event 2",
+    year: "2018",
+    image: "/images/Frame 132 (2).png",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+  },
+  {
+    id: 3,
+    title: "Event 3",
+    year: "2018",
+    image: "/images/Frame 132 (3).png",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+  },
+];
+
+// Certificates data for the marquee
+const certificates = [
+  {
+    src: "/images/certificate.png",
+    alt: "Clutch Certification",
+    title: "Clutch Certification",
+    description: "Clutch 1000 Service\nProviders, 2024 Global",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "ISO Certification",
+    title: "ISO Certification",
+    description: "ISO 9001 Quality\nManagement, 2024",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "AWS Partner",
+    title: "AWS Partner",
+    description: "AWS Advanced Tier\nServices, 2024",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "Google Cloud Partner",
+    title: "Google Cloud Partner",
+    description: "Google Cloud\nSpecialization, 2024",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "Clutch Certification",
+    title: "Clutch Certification",
+    description: "Clutch 1000 Service\nProviders, 2024 Global",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "ISO Certification",
+    title: "ISO Certification",
+    description: "ISO 9001 Quality\nManagement, 2024",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "AWS Partner",
+    title: "AWS Partner",
+    description: "AWS Advanced Tier\nServices, 2024",
+  },
+  {
+    src: "/images/certificate.png",
+    alt: "Google Cloud Partner",
+    title: "Google Cloud Partner",
+    description: "Google Cloud\nSpecialization, 2024",
+  },
+];
+
 export {
   MENU,
   HERO_SLIDER_IMAGES,
@@ -460,4 +680,9 @@ export {
   SOCIAL_LINKS,
   FOOTER_CONTACTS,
   LEADERSHIP_TEAM,
+  boardMembers,
+  teamMembers,
+  galleryItems,
+  historyEvents,
+  certificates,
 };

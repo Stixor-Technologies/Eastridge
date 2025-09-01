@@ -1,5 +1,9 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 . "$(dirname "$0")/common.sh"
 
-yarn lint-staged
+# Ensure yarn works in Git hook environment on Windows
+if command -v yarn.cmd >/dev/null 2>&1; then
+  yarn.cmd lint-staged
+else
+  yarn lint-staged
+fi
