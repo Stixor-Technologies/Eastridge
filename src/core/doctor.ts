@@ -35,7 +35,7 @@ export interface Doctor {
 export const doctors: Doctor[] = [
   {
     id: "1",
-    name: "Dr. Zaid Ali Gorar",
+    name: "Dr. Zaid Ali Gorar 1",
     description: "Specialist in Internal Medicine",
     biography:
       "Dr. Zaid Ali Gorar is a highly experienced physician with over 15 years of practice in internal medicine. He is dedicated to providing comprehensive care to his patients.",
@@ -74,7 +74,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "2",
-    name: "Dr. Usman Ashraf",
+    name: "Dr. Usman Ashraf 1",
     description: "Cardiologist",
     biography:
       "Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from.",
@@ -104,7 +104,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "3",
-    name: "Dr. Shiza Qureshi",
+    name: "Dr. Shiza Qureshi 1",
     description: "Pediatrician",
     biography:
       "Dr. Shiza Qureshi is a compassionate pediatrician dedicated to the health and well-being of children from infancy through adolescence.",
@@ -143,7 +143,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "4",
-    name: "Dr. Kashif Siddiqui",
+    name: "Dr. Kashif Siddiqui 1",
     description: "Orthopedic Surgeon",
     biography:
       "Dr. Kashif Siddiqui is a skilled orthopedic surgeon specializing in sports injuries and joint replacement procedures.",
@@ -183,7 +183,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "5",
-    name: "Dr. Imran Ashraf",
+    name: "Dr. Imran Ashraf 1",
     description: "Neurologist",
     biography:
       "Dr. Imran Ashraf is an expert neurologist with extensive experience in diagnosing and treating neurological disorders.",
@@ -224,7 +224,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "6",
-    name: "Dr. Zaid Ali Gorar",
+    name: "Dr. Zaid Ali Gorar 2",
     description: "Specialist in Internal Medicine",
     biography:
       "Dr. Zaid Ali Gorar is a highly experienced physician with over 15 years of practice in internal medicine. He is dedicated to providing comprehensive care to his patients.",
@@ -263,7 +263,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "7",
-    name: "Dr. Usman Ashraf",
+    name: "Dr. Usman Ashraf 2",
     description: "Cardiologist",
     biography:
       "Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from.",
@@ -293,7 +293,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "8",
-    name: "Dr. Shiza Qureshi",
+    name: "Dr. Shiza Qureshi 2",
     description: "Pediatrician",
     biography:
       "Dr. Shiza Qureshi is a compassionate pediatrician dedicated to the health and well-being of children from infancy through adolescence.",
@@ -332,7 +332,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "9",
-    name: "Dr. Kashif Siddiqui",
+    name: "Dr. Kashif Siddiqui 2",
     description: "Orthopedic Surgeon",
     biography:
       "Dr. Kashif Siddiqui is a skilled orthopedic surgeon specializing in sports injuries and joint replacement procedures.",
@@ -372,7 +372,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "10",
-    name: "Dr. Imran Ashraf",
+    name: "Dr. Imran Ashraf 2",
     description: "Neurologist",
     biography:
       "Dr. Imran Ashraf is an expert neurologist with extensive experience in diagnosing and treating neurological disorders.",
@@ -413,7 +413,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "11",
-    name: "Dr. Zaid Ali Gorar",
+    name: "Dr. Zaid Ali Gorar 3",
     description: "Specialist in Internal Medicine",
     biography:
       "Dr. Zaid Ali Gorar is a highly experienced physician with over 15 years of practice in internal medicine. He is dedicated to providing comprehensive care to his patients.",
@@ -452,7 +452,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "12",
-    name: "Dr. Usman Ashraf",
+    name: "Dr. Usman Ashraf 3",
     description: "Cardiologist",
     biography:
       "Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from.",
@@ -482,7 +482,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "13",
-    name: "Dr. Shiza Qureshi",
+    name: "Dr. Shiza Qureshi 3",
     description: "Pediatrician",
     biography:
       "Dr. Shiza Qureshi is a compassionate pediatrician dedicated to the health of children from infancy through adolescence.",
@@ -521,7 +521,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "14",
-    name: "Dr. Kashif Siddiqui",
+    name: "Dr. Kashif Siddiqui 3",
     description: "Orthopedic Surgeon",
     biography:
       "Dr. Kashif Siddiqui is a skilled orthopedic surgeon specializing in sports injuries and joint replacement procedures.",
@@ -561,7 +561,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "15",
-    name: "Dr. Imran Ashraf",
+    name: "Dr. Imran Ashraf 3",
     description: "Neurologist",
     biography:
       "Dr. Imran Ashraf is an expert neurologist with extensive experience in diagnosing and treating neurological disorders.",
@@ -602,7 +602,7 @@ export const doctors: Doctor[] = [
   },
   {
     id: "16",
-    name: "Dr. Usman Ashraf",
+    name: "Dr. Usman Ashraf 4",
     description: "Cardiologist",
     biography:
       "Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from.",
