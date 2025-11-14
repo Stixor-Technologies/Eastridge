@@ -485,7 +485,7 @@ export const doctors: Doctor[] = [
     name: "Dr. Shiza Qureshi",
     description: "Pediatrician",
     biography:
-      "Dr. Shiza Qureshi is a compassionate pediatrician dedicated to the health and well-being of children from infancy through adolescence.",
+      "Dr. Shiza Qureshi is a compassionate pediatrician dedicated to the health of children from infancy through adolescence.",
     occupation: "Pediatrician",
     experience: "10 years",
     certificates: [
