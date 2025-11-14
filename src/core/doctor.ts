@@ -219,7 +219,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Wed: 9:00 AM - 5:00 PM, Thu-Fri: 10:00 AM - 4:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example5",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor5,
   },
   {
@@ -258,7 +258,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Fri: 9:00 AM - 5:00 PM, Sat: 10:00 AM - 2:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example1",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor1,
   },
   {
@@ -288,7 +288,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Thu: 8:00 AM - 4:00 PM, Fri: 9:00 AM - 1:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example2",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor2,
   },
   {
@@ -327,7 +327,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Fri: 10:00 AM - 6:00 PM, Sat: 9:00 AM - 1:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example3",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor3,
   },
   {
@@ -367,7 +367,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Tue-Sat: 8:00 AM - 4:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example4",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor4,
   },
   {
@@ -408,7 +408,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Wed: 9:00 AM - 5:00 PM, Thu-Fri: 10:00 AM - 4:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example5",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor5,
   },
   {
@@ -447,7 +447,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Fri: 9:00 AM - 5:00 PM, Sat: 10:00 AM - 2:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example1",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor1,
   },
   {
@@ -477,7 +477,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Thu: 8:00 AM - 4:00 PM, Fri: 9:00 AM - 1:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example2",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor2,
   },
   {
@@ -516,7 +516,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Fri: 10:00 AM - 6:00 PM, Sat: 9:00 AM - 1:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example3",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor3,
   },
   {
@@ -556,7 +556,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Tue-Sat: 8:00 AM - 4:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example4",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor4,
   },
   {
@@ -597,7 +597,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Wed: 9:00 AM - 5:00 PM, Thu-Fri: 10:00 AM - 4:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example5",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor5,
   },
   {
@@ -627,7 +627,7 @@ export const doctors: Doctor[] = [
       },
     ],
     hours: "Mon-Thu: 8:00 AM - 4:00 PM, Fri: 9:00 AM - 1:00 PM",
-    youtubeVideoLink: "https://www.youtube.com/watch?v=example2",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: doctor2,
   },
 ];

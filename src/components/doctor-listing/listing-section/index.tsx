@@ -148,10 +148,12 @@ const DoctorListingSection = () => {
             <button
               ref={buttonRef}
               onClick={handleToggle}
-              className="flex items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]"
+              className="flex w-full max-w-[209px] items-center justify-between rounded-full bg-[#D32F2F] py-4 pr-4 pl-8 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]"
               aria-label={showAll ? "Show less doctors" : "Show more doctors"}
             >
-              {showAll ? "Show Less" : "Show More"}
+              <span className="flex-1 text-left">
+                {showAll ? "Show Less" : "Show More"}
+              </span>
               <div
                 className={`flex h-12 w-12 items-center justify-center rounded-full bg-white transition-transform duration-300 ${
                   showAll ? "rotate-180" : ""
