@@ -2,16 +2,15 @@ import DoctorDetailSection from "@/src/components/doctor-detail/doctor-detail-se
 
 interface DoctorDetailPageProps {
   params: Promise<{
-    id: string;
+    slug: string;
   }>;
 }
 
 const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
-  const { id } = await params;
-
+  const { slug } = await params;
   return (
     <div>
-      <DoctorDetailSection doctorId={id} />
+      <DoctorDetailSection doctorName={slug} />
     </div>
   );
 };

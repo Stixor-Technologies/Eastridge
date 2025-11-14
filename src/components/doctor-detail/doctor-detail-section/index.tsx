@@ -11,14 +11,23 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface DoctorDetailSectionProps {
-  doctorId: string;
+  doctorName: string;
 }
 
-const DoctorDetailSection = ({ doctorId }: DoctorDetailSectionProps) => {
+// Helper function to create URL-friendly slugs from doctor names
+const createSlug = (name: string) => {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
+const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
   gsap.registerPlugin(ScrollTrigger);
 
   const container = useRef<HTMLDivElement | null>(null);
-  const doctor = doctors.find((d) => d.id === doctorId);
+  // Find doctor by matching slug to their name
+  const doctor = doctors.find((d) => createSlug(d.name) === doctorName);
 
   if (!doctor) {
     notFound();

@@ -11,6 +11,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Helper function to create URL-friendly slugs from doctor names
+const createSlug = (name: string) => {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
 const DoctorListingSection = () => {
   const container = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -107,7 +115,7 @@ const DoctorListingSection = () => {
               return (
                 <Link
                   key={doctor.id}
-                  href={`/doctor-detail-page/${doctor.id}`}
+                  href={`/doctor-listing/${createSlug(doctor.name)}`}
                   className={`block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
                 >
                   <div className="flex flex-col">
