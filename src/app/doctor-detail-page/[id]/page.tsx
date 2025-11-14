@@ -1,4 +1,4 @@
-import DoctorDetailSection from '@/src/components/doctor-detail/doctor-detail-section';
+import DoctorDetailSection from "@/src/components/doctor-detail/doctor-detail-section";
 
 interface DoctorDetailPageProps {
   params: Promise<{
@@ -8,7 +8,7 @@ interface DoctorDetailPageProps {
 
 const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
   const { id } = await params;
-  
+
   return (
     <div>
       <DoctorDetailSection doctorId={id} />
