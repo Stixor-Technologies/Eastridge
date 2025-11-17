@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 interface DoctorDetailSectionProps {
   doctorName: string;
 }
@@ -23,8 +24,6 @@ const createSlug = (name: string) => {
 };
 
 const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
-  gsap.registerPlugin(ScrollTrigger);
-
   const container = useRef<HTMLDivElement | null>(null);
   // Find doctor by matching slug to their name
   const doctor = doctors.find((d) => createSlug(d.name) === doctorName);
@@ -115,8 +114,7 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-4 text-sm text-gray-600">
-                  Letraset sheets containing Lorem Ipsum passages and more
-                  recently with desktop publishing
+                  {doctor.description}
                 </p>
                 <button className="inline-flex items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]">
                   Make Appointment
@@ -150,8 +148,7 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-8 text-sm leading-relaxed text-gray-600">
-                  Letraset sheets containing Lorem Ipsum passages and more
-                  recently with desktop publishing
+                  {doctor.description}
                 </p>
                 <button className="inline-flex items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]">
                   Make Appointment
