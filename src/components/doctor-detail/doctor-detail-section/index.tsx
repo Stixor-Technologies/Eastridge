@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { doctors } from "@/src/core/doctor";
-import { notFound } from "next/navigation";
+import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
 import RightArrow from "@/public/icons/right-arrow.svg";
 import VideoBG from "@/public/images/video-bg.svg";
@@ -11,26 +10,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
 interface DoctorDetailSectionProps {
-  doctorName: string;
+  doctor: Doctor;
 }
 
-// Helper function to create URL-friendly slugs from doctor names
-const createSlug = (name: string) => {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
-
-const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
+const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
   const container = useRef<HTMLDivElement | null>(null);
-  // Find doctor by matching slug to their name
-  const doctor = doctors.find((d) => createSlug(d.name) === doctorName);
-
-  if (!doctor) {
-    notFound();
-  }
 
   useGSAP(
     () => {
