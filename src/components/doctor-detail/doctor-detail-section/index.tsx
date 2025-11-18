@@ -36,28 +36,49 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
     },
   );
 
+  // Validate doctor prop
+  if (!doctor || typeof doctor !== "object") {
+    return null;
+  }
+
   // Convert YouTube URL to embed format
   const getEmbedUrl = (url: string) => {
     if (!url) return "";
 
-    // Handle youtu.be format
-    if (url.includes("youtu.be/")) {
-      const videoId = url.split("youtu.be/")[1]?.split("?")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
+    try {
+      const parsedUrl = new URL(url);
+      const hostname = parsedUrl.hostname.toLowerCase();
+
+      // Validate YouTube hostname
+      if (hostname !== "youtu.be" && !hostname.endsWith("youtube.com")) {
+        return "";
+      }
+
+      let videoId = "";
+
+      // Handle youtu.be format
+      if (hostname === "youtu.be") {
+        videoId = parsedUrl.pathname.slice(1).split("?")[0];
+      }
+      // Handle youtube.com/watch format
+      else if (parsedUrl.pathname === "/watch") {
+        videoId = parsedUrl.searchParams.get("v") || "";
+      }
+      // Handle youtube.com/embed format
+      else if (parsedUrl.pathname.startsWith("/embed/")) {
+        videoId = parsedUrl.pathname.split("/embed/")[1]?.split("?")[0] || "";
+      }
+
+      // Validate videoId contains only safe characters
+      if (videoId && /^[a-zA-Z0-9_-]+$/.test(videoId)) {
+        return `https://www.youtube.com/embed/${videoId}`;
+      }
+    } catch {
+      // Invalid URL
+      return "";
     }
 
-    // Handle youtube.com/watch format
-    if (url.includes("youtube.com/watch")) {
-      const videoId = url.split("v=")[1]?.split("&")[0];
-      return `https://www.youtube.com/embed/${videoId}`;
-    }
-
-    // Already in embed format
-    if (url.includes("/embed/")) {
-      return url;
-    }
-
-    return url;
+    return "";
   };
 
   return (
@@ -179,7 +200,9 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   Certificates:
                 </span>
                 <span className="text-gray-600">
-                  {doctor.certificates.join(", ")}
+                  {Array.isArray(doctor.certificates)
+                    ? doctor.certificates.join(", ")
+                    : ""}
                 </span>
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
@@ -187,7 +210,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   Skills:
                 </span>
                 <span className="text-gray-600">
-                  {doctor.skills.join(", ")}
+                  {Array.isArray(doctor.skills) ? doctor.skills.join(", ") : ""}
                 </span>
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
@@ -221,23 +244,25 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
 
             {/* Award Icons */}
             <div className="mb-8 flex flex-wrap gap-6 sm:mb-10 sm:gap-8">
-              {doctor.awards.slice(0, 2).map((award, index) => (
-                <div key={index} className="text-left">
-                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-pink-50">
-                    <Image
-                      src={award.icon}
-                      alt={award.name}
-                      width={32}
-                      height={32}
-                      className="object-contain"
-                    />
+              {(Array.isArray(doctor.awards) ? doctor.awards : [])
+                .slice(0, 2)
+                .map((award, index) => (
+                  <div key={index} className="text-left">
+                    <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-pink-50">
+                      <Image
+                        src={award.icon}
+                        alt={award.name}
+                        width={32}
+                        height={32}
+                        className="object-contain"
+                      />
+                    </div>
+                    <h4 className="mb-1 text-sm font-bold text-gray-900">
+                      {award.name}
+                    </h4>
+                    <p className="text-xs text-gray-600">{award.description}</p>
                   </div>
-                  <h4 className="mb-1 text-sm font-bold text-gray-900">
-                    {award.name}
-                  </h4>
-                  <p className="text-xs text-gray-600">{award.description}</p>
-                </div>
-              ))}
+                ))}
             </div>
 
             {/* Video Section */}
