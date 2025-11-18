@@ -97,7 +97,7 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
           <div className="w-full lg:w-[43%]">
             {/* Mobile Version */}
             <div className="lg:hidden">
-              <div className="mb-6 overflow-hidden rounded-3xl bg-gray-100">
+              <div className="mb-6 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
                   <Image
                     src={doctor.image}
@@ -133,7 +133,7 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
 
             {/* Desktop Version */}
             <div className="hidden lg:block">
-              <div className="mb-8 overflow-hidden rounded-3xl bg-gray-100">
+              <div className="mb-8 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
                   <Image
                     src={doctor.image}

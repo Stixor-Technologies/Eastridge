@@ -116,15 +116,15 @@ const DoctorListing = () => {
                 <Link
                   key={doctor.id}
                   href={`/doctor-listing/${createSlug(doctor.name)}`}
-                  className={`block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
+                  className={`group block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
                 >
                   <div className="flex flex-col">
-                    <div className="relative aspect-[313/387] w-full overflow-hidden">
+                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
                       <Image
                         src={doctor.image}
                         alt={doctor.name}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                     </div>
