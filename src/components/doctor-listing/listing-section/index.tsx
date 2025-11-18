@@ -148,7 +148,7 @@ const DoctorListing = () => {
             <button
               ref={buttonRef}
               onClick={handleToggle}
-              className="flex w-full max-w-[209px] items-center justify-between rounded-full bg-[#D32F2F] py-4 pr-4 pl-8 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]"
+              className="flex w-full max-w-[209px] cursor-pointer items-center justify-between rounded-full bg-[#D32F2F] py-4 pr-4 pl-8 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]"
               aria-label={showAll ? "Show less doctors" : "Show more doctors"}
             >
               <span className="flex-1 text-left">

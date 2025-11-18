@@ -77,8 +77,8 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
   return (
     <div className="bg-white" ref={container}>
       {/* Breadcrumb - Centered with top spacing */}
-      <div className="container mx-auto max-w-7xl px-4 pt-30 pb-8">
-        <div className="flex items-center justify-center gap-2 text-sm">
+      <div className="container mx-auto max-w-7xl px-4 pt-24 pb-6 lg:pt-30 lg:pb-8">
+        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
           <span className="text-gray-700">Doctor Listing</span>
           <span className="text-gray-400">&gt;</span>
           <span className="font-semibold text-red-600">Doctor Name</span>
@@ -110,21 +110,21 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
 
               {/* Mobile Doctor Name and Description */}
               <div className="mb-6 text-center">
-                <h2 className="mb-4 text-3xl font-bold text-gray-900">
+                <h2 className="mb-3 text-2xl font-bold text-gray-900 sm:text-3xl">
                   {doctor.name}
                 </h2>
-                <p className="mb-6 px-4 text-sm text-gray-600">
+                <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
                   {doctor.description}
                 </p>
-                <button className="inline-flex items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]">
+                <button className="inline-flex cursor-pointer items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C]">
                   Make Appointment
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
                     <Image
                       src={RightArrow}
                       alt="Right Arrow"
-                      width={20}
-                      height={20}
-                      className="text-[#D32F2F]"
+                      width={14}
+                      height={14}
+                      className="text-[#D32F2F] sm:h-5 sm:w-5"
                     />
                   </div>
                 </button>
@@ -147,12 +147,12 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
                 <h2 className="mb-4 text-3xl font-bold text-gray-900">
                   {doctor.name}
                 </h2>
-                <p className="mb-6 px-8 text-sm leading-relaxed text-gray-600">
+                <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
                   {doctor.description}
                 </p>
-                <button className="inline-flex items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]">
+                <button className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#D32F2F] py-2 pr-3 pl-5 text-sm font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C] sm:gap-4 sm:py-4 sm:pr-6 sm:pl-10 sm:text-lg">
                   Make Appointment
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
                     <Image
                       src={RightArrow}
                       alt="Right Arrow"
@@ -168,54 +168,56 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
 
           {/* Right Column - Biography, Details, Awards */}
           <div className="w-full lg:w-[57%]">
-            <h3 className="mb-6 text-2xl font-bold text-gray-900">Biography</h3>
-            <p className="mb-8 text-sm leading-relaxed text-gray-600">
+            <h3 className="mb-4 text-xl font-bold text-gray-900 sm:mb-6 sm:text-2xl">
+              Biography
+            </h3>
+            <p className="mb-6 text-sm leading-relaxed text-gray-600 sm:mb-8">
               {doctor.biography}
             </p>
 
-            <div className="mb-10 space-y-3 text-sm">
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+            <div className="mb-8 space-y-2 text-sm sm:mb-10 sm:space-y-3">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Occupation:
                 </span>
                 <span className="text-gray-600">{doctor.occupation}</span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Experience:
                 </span>
                 <span className="text-gray-600">{doctor.experience}</span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Certificates:
                 </span>
                 <span className="text-gray-600">
                   {doctor.certificates.join(", ")}
                 </span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Skills:
                 </span>
                 <span className="text-gray-600">
                   {doctor.skills.join(", ")}
                 </span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Location:
                 </span>
                 <span className="text-gray-600">{doctor.location}</span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Email:
                 </span>
                 <span className="text-gray-600">{doctor.email}</span>
               </div>
-              <div className="flex">
-                <span className="w-44 flex-shrink-0 font-bold text-gray-900">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Department Phone:
                 </span>
                 <span className="text-gray-600">{doctor.phoneNo}</span>
@@ -223,16 +225,16 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
             </div>
 
             {/* Awards & Hours */}
-            <h3 className="mb-4 text-2xl font-bold text-gray-900">
+            <h3 className="mb-3 text-xl font-bold text-gray-900 sm:mb-4 sm:text-2xl">
               Awards & Hours
             </h3>
-            <p className="mb-8 text-sm leading-relaxed text-gray-600">
+            <p className="mb-6 text-sm leading-relaxed text-gray-600 sm:mb-8">
               {doctor.hours ||
                 "Please contact the department for office hours."}
             </p>
 
             {/* Award Icons */}
-            <div className="mb-10 flex flex-wrap gap-8">
+            <div className="mb-8 flex flex-wrap gap-6 sm:mb-10 sm:gap-8">
               {doctor.awards.slice(0, 2).map((award, index) => (
                 <div key={index} className="text-left">
                   <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-pink-50">
@@ -253,13 +255,13 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
             </div>
 
             {/* Video Section */}
-            <div className="relative overflow-hidden rounded-3xl">
+            <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image
                 src={VideoBG}
                 alt="Video Background"
                 className="h-auto w-full"
               />
-              <div className="absolute inset-0 flex items-center justify-center p-8">
+              <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-8">
                 <div className="h-full w-full overflow-hidden rounded-2xl">
                   <iframe
                     className="h-full w-full"
