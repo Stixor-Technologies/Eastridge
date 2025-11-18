@@ -88,7 +88,7 @@ const MENU = [
     scrollOnPage: false,
   },
   { id: "#contact-us", label: "Contact Us", scrollOnPage: true },
-  { id: "/doctor-listing", label: "Doctor", scrollOnPage: false },
+  { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
 ];
 
 const HERO_SLIDER_IMAGES = [
