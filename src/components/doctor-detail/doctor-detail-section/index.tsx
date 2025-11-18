@@ -227,10 +227,8 @@ const DoctorDetailSection = ({ doctorName }: DoctorDetailSectionProps) => {
               Awards & Hours
             </h3>
             <p className="mb-8 text-sm leading-relaxed text-gray-600">
-              It uses a dictionary of over 200 Latin words, combined with a
-              handful of model sentence structures, to generate Lorem Ipsum
-              which looks reasonable. The generated Lorem Ipsum is therefore
-              always free from re
+              {doctor.hours ||
+                "Please contact the department for office hours."}
             </p>
 
             {/* Award Icons */}

@@ -19,7 +19,7 @@ const createSlug = (name: string) => {
     .replace(/^-+|-+$/g, "");
 };
 
-const DoctorListingSection = () => {
+const DoctorListing = () => {
   const container = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [showAll, setShowAll] = useState(false);
@@ -175,4 +175,4 @@ const DoctorListingSection = () => {
   );
 };
 
-export default DoctorListingSection;
+export default DoctorListing;
