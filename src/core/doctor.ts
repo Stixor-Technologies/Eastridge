@@ -73,7 +73,7 @@ export const doctors: Doctor[] = [
     name: "Dr Maham Tariq",
     description: "Breast Surgeon",
     biography:
-      "Graduated from Rawalpindi Medical College 2014, General Surgery training from Holy Family Hospital with MRCS + FCPS Gen Surgery. Breast Surgery Fellowship from CMH Rwp Done FCPS Breast Surgery + FEBS Breast Surgery, Europe Interest include Breast Cancer Surgery + Management of begining breast disease + screenng.",
+      "Graduated from Rawalpindi Medical College 2014, General Surgery training from Holy Family Hospital with MRCS + FCPS Gen Surgery. Breast Surgery Fellowship from CMH Rwp Done FCPS Breast Surgery + FEBS Breast Surgery, Europe Interest include Breast Cancer Surgery + Management of beginning breast disease + screening.",
     occupation: "MBBS, FPCS Surgery,FPCS Breast Surgery",
     qualifications: ["MBBS", "FPCS Surgery", "Surgery,FPCS Breast Surgery"],
     experience: "11",
@@ -90,7 +90,7 @@ export const doctors: Doctor[] = [
     name: "Dr Sana Qaiser",
     description: "General Surgeon",
     biography:
-      "MBBS in 2008, FCPS Gen Surgery 2015, Special Interest in Painless Surgery all general surgical procedures inculiding Anal Surgeries, Breast Surgeries, Gall Bladder Surgeries , thyroid cyctectomie , special interest in Painless Anal Surgical procudure and Scarless Breast Surgeries.",
+      "MBBS in 2008, FCPS Gen Surgery 2015, Special Interest in Painless Surgery all general surgical procedures including Anal Surgeries, Breast Surgeries, Gall Bladder Surgeries , thyroid cystectomy , special interest in Painless Anal Surgical procedure and Scarless Breast Surgeries.",
     occupation: "MBBS, FPCS Gen Surgery",
     qualifications: ["MBBS", "FPCS Gen Surgery"],
     experience: "11",
@@ -107,7 +107,7 @@ export const doctors: Doctor[] = [
     name: "Prof.Dr Nadeem Akhtar",
     description: "Neuro Surgeon",
     biography:
-      "Specialist in Brain&Spine Surgery. Specialist in Childern Neurology. Graduated from RMC and also Dean in RMC 1987. Interest in Spine disc and other Pathology of Spine.",
+      "Specialist in Brain&Spine Surgery. Specialist in Children Neurology. Graduated from RMC and also Dean in RMC 1987. Interest in Spine disc and other Pathology of Spine.",
     occupation: "MBBS, FPCS Neuro Surgery",
     qualifications: ["MBBS", "FPCS Neuro Surgery"],
     experience: "30",
@@ -124,7 +124,7 @@ export const doctors: Doctor[] = [
     name: "Dr Saima Shafait",
     description: "Consultant Neurologist",
     biography:
-      "Graduated from RMC 1999. MRCP UK Medicines FCPS Neurology. Special Interest in Epilipsy.",
+      "Graduated from RMC 1999. MRCP UK Medicines FCPS Neurology. Special Interest in Epilepsy.",
     occupation: "MBBS, MRCP UK - FCPS Neurology",
     qualifications: ["MBBS", "MRCP UK - FCPS Neurology"],
     experience: "20",
@@ -187,13 +187,13 @@ export const doctors: Doctor[] = [
     youtubeVideoLink: "https://www.youtube.com/embed/fXDisw6a3oQ",
     image: riffat_najeeb,
   },
-  {
+  /*{
     id: "9",
     name: "Dr Zameer Nayyar",
     description: "Consultant Paediatrics",
     biography: "MBBS 1990 Worked CMH-PAF Hospital. RTD 2020",
-    occupation: "MBBS, FCPS Pediatics",
-    qualifications: ["MBBS", "FCPS Pediatics"],
+    occupation: "MBBS, FCPS Pediatrics",
+    qualifications: ["MBBS", "FCPS Pediatrics"],
     experience: "30",
     certificates: [],
     skills: [],
@@ -203,11 +203,11 @@ export const doctors: Doctor[] = [
     youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: zameer_ahmad,
   },
-  /*{
+  {
     id: "10",
     name: "Prof.Dr Tallat Iftikhar",
     description: "Consultant Gynecology",
-    biography: "I am Prof.Dr Tallat Farkhanada Dean and Head of the Gynaecology Department at Holy Family Hospital RWP.I have started my evening ractice in Eastridge Prime Care RWP.i have been working in Obstetrics and Gynaecology for over 30years,taking care of women trhough pregnancy,childbirth,and different gynaecological problems.i look after high-risk pregnancies,help couples facing infertility and perform many types of gynaecologic surgeries with a focus on safety and comfort my goal is simple to promote safe motherhood and improved the health and wellbeing of women and their families.",
+    biography: "I am Prof.Dr Tallat Farkhanada Dean and Head of the Gynaecology Department at Holy Family Hospital RWP.I have started my evening practice in Eastridge Prime Care RWP.i have been working in Obstetrics and Gynaecology for over 30years,taking care of women through pregnancy,childbirth,and different gynaecological problems.i look after high-risk pregnancies,help couples facing infertility and perform many types of gynaecologic surgeries with a focus on safety and comfort my goal is simple to promote safe motherhood and improve the health and wellbeing of women and their families.",
     occupation: "MBBS, FCPS MCPS",
     qualifications: [
       "MBBS",
@@ -245,7 +245,7 @@ export const doctors: Doctor[] = [
     name: "Dr Ayesha Intikhab",
     description: "Consultant Paediatrics",
     biography:
-      "Graduate from Punjab Medical College Faisalabad in 2012 completed my FCPS training in Paediatrics from Childerens Hospital and insitute of child health,Lahore and FFH RWP, I have Experience in Neontology,Paediatrics Emergency and ICU Care, I have been working as a consultatnt Paediatrician in Punjab Govt Since clearing my FCPS.",
+      "Graduate from Punjab Medical College Faisalabad in 2012 completed my FCPS training in Paediatrics from Childerens Hospital and institute of child health,Lahore and FFH RWP, I have Experience in Neonatology,Paediatrics Emergency and ICU Care, I have been working as a consultant Paediatrician in Punjab Govt Since clearing my FCPS.",
     occupation: "MBBS, FCPS",
     qualifications: ["MBBS", "FCPS"],
     experience: "12",
@@ -260,9 +260,9 @@ export const doctors: Doctor[] = [
   {
     id: "13",
     name: "Prof Imran Ashraf",
-    description: "General & Laproscopic Surgeron",
+    description: "General & Laproscopic Surgeon",
     biography:
-      "Graduate in 1991,Army Medical College retired as Prof.of Surgery Master trainer Laproscopic Surgery trained over 50 surgeon FCPS. Vast experience in managing Trauma /Poly Trauma Special interest in Hepatoboliary & Colorectal Surgies and Oncological Surgeries. COAS Commadation card 2006.",
+      "Graduate in 1991,Army Medical College retired as Prof.of Surgery Master trainer Laproscopic Surgery trained over 50 surgeon FCPS. Vast experience in managing Trauma /Poly Trauma Special interest in Hepatobiliary & Colorectal Surgeries and Oncological Surgeries. COAS Commendation card 2006.",
     occupation: "MBBS,FCPS CHPE",
     qualifications: ["MBBS", "FCPS CHPE"],
     experience: "35",

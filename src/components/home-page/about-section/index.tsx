@@ -93,7 +93,7 @@ const AboutSection = () => {
             <p className="text-body-main mb-4 flex-1 text-xl font-medium md:text-[1.375rem]">
               Eastridge Primecare is a new 175 bed purpose built greenfield
               hospital of Fauji Foundation. The construction of the hospital
-              started in 2022. The hospital opened its door to the public on
+              started in 2022. The hospital opened its doors to the public on
               November 24, 2025.
             </p>
 
