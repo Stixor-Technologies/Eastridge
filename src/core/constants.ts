@@ -82,17 +82,17 @@ import SMStaff from "@/public/images/team/sm-staff.jpg";
 const MAP_KEY = process.env["MAP_API"];
 
 const MENU = [
-  { id: "#home", label: "Home", scrollOnPage: true },
-  { id: "#about", label: "About", scrollOnPage: true },
-  { id: "#services", label: "Services", scrollOnPage: true },
+  { id: "/#home", label: "Home", scrollOnPage: false },
+  { id: "/#about", label: "About", scrollOnPage: false },
+  { id: "/#services", label: "Services", scrollOnPage: false },
   { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
-  { id: "#team", label: "Team", scrollOnPage: true },
+  { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",
     label: "Careers",
     scrollOnPage: false,
   },
-  { id: "#contact-us", label: "Contact Us", scrollOnPage: true },
+  { id: "/#contact-us", label: "Contact Us", scrollOnPage: false },
 ];
 
 const HERO_SLIDER_IMAGES = [
