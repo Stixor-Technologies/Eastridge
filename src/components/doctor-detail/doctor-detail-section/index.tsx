@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
-import RightArrow from "@/public/icons/right-arrow.svg";
+//import RightArrow from "@/public/icons/right-arrow.svg";
 import VideoBG from "@/public/images/video-bg.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -123,6 +123,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
                   {doctor.description}
                 </p>
+                {/*
                 <button className="inline-flex cursor-pointer items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C]">
                   Make Appointment
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
@@ -135,6 +136,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                     />
                   </div>
                 </button>
+                */}
               </div>
             </div>
 
@@ -157,6 +159,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
                   {doctor.description}
                 </p>
+                {/*
                 <button className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#D32F2F] py-2 pr-3 pl-5 text-sm font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C] sm:gap-4 sm:py-4 sm:pr-6 sm:pl-10 sm:text-lg">
                   Make Appointment
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
@@ -169,6 +172,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                     />
                   </div>
                 </button>
+                */}
               </div>
             </div>
           </div>
@@ -185,17 +189,32 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
             <div className="mb-8 space-y-2 text-sm sm:mb-10 sm:space-y-3">
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
-                  Occupation:
+                  Department:
                 </span>
-                <span className="text-gray-600">{doctor.occupation}</span>
+                <span className="text-gray-600">{doctor.department}</span>
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Experience:
                 </span>
-                <span className="text-gray-600">{doctor.experience}</span>
+                <span className="text-gray-600">{doctor.experience} years</span>
               </div>
+
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
+                <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
+                  Qualifications:
+                </span>
+                <span className="text-gray-600">
+                  <ul className="list-inside list-disc">
+                    {doctor.qualifications.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </span>
+              </div>
+
+              {/* 
+                <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Certificates:
                 </span>
@@ -205,6 +224,8 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                     : ""}
                 </span>
               </div>
+              
+
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Skills:
@@ -213,18 +234,21 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   {Array.isArray(doctor.skills) ? doctor.skills.join(", ") : ""}
                 </span>
               </div>
+              */}
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Location:
                 </span>
                 <span className="text-gray-600">{doctor.location}</span>
               </div>
+              {/* 
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Email:
                 </span>
                 <span className="text-gray-600">{doctor.email}</span>
               </div>
+              */}
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Department Phone:
@@ -235,14 +259,15 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
 
             {/* Awards & Hours */}
             <h3 className="mb-3 text-xl font-bold text-gray-900 sm:mb-4 sm:text-2xl">
-              Awards & Hours
+              Hours
             </h3>
             <p className="mb-6 text-sm leading-relaxed text-gray-600 sm:mb-8">
-              {doctor.hours ||
-                "Please contact the department for office hours."}
+              {/*doctor.hours ||
+                "Please contact the department for office hours."*/}
+              Please contact the department for office hours.
             </p>
 
-            {/* Award Icons */}
+            {/* Award Icons 
             <div className="mb-8 flex flex-wrap gap-6 sm:mb-10 sm:gap-8">
               {(Array.isArray(doctor.awards) ? doctor.awards : [])
                 .slice(0, 2)
@@ -264,7 +289,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   </div>
                 ))}
             </div>
-
+            */}
             {/* Video Section */}
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
               <Image

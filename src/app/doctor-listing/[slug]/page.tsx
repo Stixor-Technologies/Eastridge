@@ -16,6 +16,12 @@ const createSlug = (name: string) => {
     .replace(/^-+|-+$/g, "");
 };
 
+export async function generateStaticParams() {
+  return doctors.map((doctor) => ({
+    slug: createSlug(doctor.name),
+  }));
+}
+
 const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
   const { slug } = await params;
 
