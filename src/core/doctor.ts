@@ -74,8 +74,8 @@ export const doctors: Doctor[] = [
     description: "Breast Surgeon",
     biography:
       "Graduated from Rawalpindi Medical College 2014, General Surgery training from Holy Family Hospital with MRCS + FCPS Gen Surgery. Breast Surgery Fellowship from CMH Rwp Done FCPS Breast Surgery + FEBS Breast Surgery, Europe Interest include Breast Cancer Surgery + Management of beginning breast disease + screening.",
-    occupation: "MBBS, FPCS Surgery,FPCS Breast Surgery",
-    qualifications: ["MBBS", "FPCS Surgery", "Surgery,FPCS Breast Surgery"],
+    occupation: "MBBS, FCPS Surgery,FPCS Breast Surgery",
+    qualifications: ["MBBS", "FCPS Surgery", "FCPS Breast Surgery"],
     experience: "11",
     certificates: [],
     skills: [],
@@ -91,7 +91,7 @@ export const doctors: Doctor[] = [
     description: "General Surgeon",
     biography:
       "MBBS in 2008, FCPS Gen Surgery 2015, Special Interest in Painless Surgery all general surgical procedures including Anal Surgeries, Breast Surgeries, Gall Bladder Surgeries , thyroid cystectomy , special interest in Painless Anal Surgical procedure and Scarless Breast Surgeries.",
-    occupation: "MBBS, FPCS Gen Surgery",
+    occupation: "MBBS, FCPS Gen Surgery",
     qualifications: ["MBBS", "FPCS Gen Surgery"],
     experience: "11",
     certificates: [],
@@ -108,8 +108,8 @@ export const doctors: Doctor[] = [
     description: "Neuro Surgeon",
     biography:
       "Specialist in Brain&Spine Surgery. Specialist in Children Neurology. Graduated from RMC and also Dean in RMC 1987. Interest in Spine disc and other Pathology of Spine.",
-    occupation: "MBBS, FPCS Neuro Surgery",
-    qualifications: ["MBBS", "FPCS Neuro Surgery"],
+    occupation: "MBBS, FCPS Neuro Surgery",
+    qualifications: ["MBBS", "FCPS Neuro Surgery"],
     experience: "30",
     certificates: [],
     skills: [],
@@ -175,7 +175,7 @@ export const doctors: Doctor[] = [
     name: "Dr Riffat Najeeb",
     description: "Consultant Gynecology",
     biography:
-      "Graduate of RMU with Intial training in Holy Family Hospital.Worked in Ireland/England/Saudi Arabia/Bahrain/Kuwait & Pakistan. Practicing Obstetrician/Gynaecologist & IVF consultant. Special interest in high risk pregnancies, infertility, Urogynae.",
+      "Graduate of RMU with initial training in Holy Family Hospital.Worked in Ireland/England/Saudi Arabia/Bahrain/Kuwait & Pakistan. Practicing Obstetrician/Gynaecologist & IVF consultant. Special interest in high risk pregnancies, infertility, Urogynae.",
     occupation: "MBBS,ConObs/Gyn Con IVF",
     qualifications: ["MBBS", "ConObs/Gyn Con IVF"],
     experience: "37",
@@ -245,7 +245,7 @@ export const doctors: Doctor[] = [
     name: "Dr Ayesha Intikhab",
     description: "Consultant Paediatrics",
     biography:
-      "Graduate from Punjab Medical College Faisalabad in 2012 completed my FCPS training in Paediatrics from Childerens Hospital and institute of child health,Lahore and FFH RWP, I have Experience in Neonatology,Paediatrics Emergency and ICU Care, I have been working as a consultant Paediatrician in Punjab Govt Since clearing my FCPS.",
+      "Graduate from Punjab Medical College Faisalabad in 2012 completed my FCPS training in Paediatrics from Children's Hospital and institute of child health,Lahore and FFH RWP, I have Experience in Neonatology,Paediatrics Emergency and ICU Care, I have been working as a consultant Paediatrician in Punjab Govt Since clearing my FCPS.",
     occupation: "MBBS, FCPS",
     qualifications: ["MBBS", "FCPS"],
     experience: "12",
@@ -260,16 +260,16 @@ export const doctors: Doctor[] = [
   {
     id: "13",
     name: "Prof Imran Ashraf",
-    description: "General & Laproscopic Surgeon",
+    description: "General & Laparoscopic Surgeon",
     biography:
-      "Graduate in 1991,Army Medical College retired as Prof.of Surgery Master trainer Laproscopic Surgery trained over 50 surgeon FCPS. Vast experience in managing Trauma /Poly Trauma Special interest in Hepatobiliary & Colorectal Surgeries and Oncological Surgeries. COAS Commendation card 2006.",
+      "Graduate in 1991,Army Medical College retired as Prof.of Surgery Master trainer Laparoscopic Surgery trained over 50 surgeon FCPS. Vast experience in managing Trauma /Poly Trauma Special interest in Hepatobiliary & Colorectal Surgeries and Oncological Surgeries. COAS Commendation card 2006.",
     occupation: "MBBS,FCPS CHPE",
     qualifications: ["MBBS", "FCPS CHPE"],
     experience: "35",
     certificates: [],
     skills: [],
     location: "Main Building, Eastridge Primecare",
-    department: "General & Laproscopic Surgery",
+    department: "General & Laparoscopic Surgery",
     phoneNo: "(051) 884-4800",
     youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: imran_ashraf,
