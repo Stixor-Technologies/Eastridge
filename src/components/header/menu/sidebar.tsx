@@ -201,6 +201,7 @@ const Sidebar = () => {
               >
                 <button
                   onClick={() => {
+                    closeMenuAnimation();
                     if (item?.scrollOnPage) {
                       scrollToSection(item?.id);
                     } else {
@@ -220,6 +221,7 @@ const Sidebar = () => {
       {/* sidebar menu overlay */}
       <div
         ref={overlayRef}
+        onClick={closeMenuAnimation}
         className={`${
           isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         } fixed inset-0 top-0 z-30 bg-black opacity-0`}
