@@ -6,7 +6,10 @@
  * @returns The slugified string
  */
 export function createSlug(name: string): string {
-  return name
+  if (name == null) {
+    return "";
+  }
+  return String(name)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
