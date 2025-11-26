@@ -8,6 +8,9 @@ import RightArrow from "@/public/icons/right-arrow.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DoctorSearchBar from "../searchbar-section";
+
+import { useState as useReactState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,28 +27,23 @@ const DoctorListing = () => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Calculate visible doctors based on screen size
-  // Desktop (lg): 4 columns × 3 rows = 12 doctors
-  // Mobile: 2 columns × 4 rows = 8 doctors
-  const desktopLimit = 12;
+  // --- Filtered doctors state ---
+  const [filteredDoctors, setFilteredDoctors] = useReactState(doctors);
 
-  const visibleDoctors = showAll ? doctors : doctors.slice(0, desktopLimit);
+  // Calculate visible doctors based on screen size
+  const desktopLimit = 12;
+  const visibleDoctors = showAll
+    ? filteredDoctors
+    : filteredDoctors.slice(0, desktopLimit);
 
   const handleToggle = () => {
     if (showAll && buttonRef.current) {
-      // Store button position before collapsing
       const buttonTop =
         buttonRef.current.getBoundingClientRect().top + window.scrollY;
-      const offset = 100; // Offset from top of viewport
-
+      const offset = 100;
       setShowAll(false);
-
-      // After state update, scroll to keep button in view
       requestAnimationFrame(() => {
-        window.scrollTo({
-          top: buttonTop - offset,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: buttonTop - offset, behavior: "smooth" });
       });
     } else {
       setShowAll(true);
@@ -53,30 +51,23 @@ const DoctorListing = () => {
   };
 
   // Group doctors into rows
-  // Mobile: 2 per row, Desktop (md): 3 per row, Desktop (lg): 4 per row
   const groupDoctorsIntoRows = () => {
     const rows = [];
-    const lgCols = 4; // lg: grid-cols-4
-
+    const lgCols = 4;
     for (let i = 0; i < visibleDoctors.length; i += lgCols) {
       rows.push(visibleDoctors.slice(i, i + lgCols));
     }
-
     return rows;
   };
-
   const doctorRows = groupDoctorsIntoRows();
 
+  // Animation
   useGSAP(
     () => {
       const rows = container.current?.querySelectorAll(".doctor-row");
-
       if (!rows) return;
-
       rows.forEach((row) => {
-        // Skip animation if row already has been animated
         if (row.getAttribute("data-animated")) return;
-
         gsap.from(row, {
           opacity: 0,
           y: "4rem",
@@ -95,14 +86,26 @@ const DoctorListing = () => {
     },
     {
       scope: container,
-      dependencies: [showAll],
+      dependencies: [showAll, filteredDoctors],
       revertOnUpdate: true,
     },
   );
 
+  // --- Filtering logic: pass a callback to DoctorSearchBar to update filteredDoctors ---
+  const handleFilter = (doctorsList: typeof doctors) => {
+    setFilteredDoctors(doctorsList);
+    setShowAll(false); // Reset to collapsed view on filter
+  };
+
   return (
     <section className="px-4 py-16">
       <div ref={container} className="container mx-auto max-w-7xl">
+        <DoctorSearchBar onFilter={handleFilter} />
+        {doctorRows.length === 0 && (
+          <div className="py-12 text-center text-lg text-gray-500">
+            No doctors found.
+          </div>
+        )}
         {doctorRows.map((row, rowIndex) => (
           <div
             key={rowIndex}
@@ -111,7 +114,6 @@ const DoctorListing = () => {
             {row.map((doctor) => {
               const globalIndex = visibleDoctors.indexOf(doctor);
               const isAlternate = globalIndex % 2 === 1;
-
               return (
                 <Link
                   key={doctor.id}
@@ -143,7 +145,7 @@ const DoctorListing = () => {
           </div>
         ))}
 
-        {doctors.length > desktopLimit && (
+        {filteredDoctors.length > desktopLimit && (
           <div className="mt-12 flex justify-center">
             <button
               ref={buttonRef}
