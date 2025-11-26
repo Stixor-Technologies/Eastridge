@@ -8,7 +8,6 @@ interface FilterState {
   occupation: string[];
   experience: string[];
   department: string[];
-  time: string[];
 }
 
 const experienceOptions = [
@@ -16,11 +15,6 @@ const experienceOptions = [
   { label: "4 yrs", value: "4" },
   { label: "6 yrs", value: "6" },
   { label: "8+ yrs", value: "8" },
-];
-
-const timeOptions = [
-  { label: "Morning", value: "Morning" },
-  { label: "Evening", value: "Evening" },
 ];
 
 const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
@@ -62,7 +56,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
         // ignore
       }
     }
-    return { occupation: [], experience: [], department: [], time: [] };
+    return { occupation: [], experience: [], department: [] };
   });
 
   // Save filters to localStorage whenever they change
@@ -83,6 +77,14 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     [],
   );
 
+  // Map experience filter values to min/max ranges
+  const experienceRanges: Record<string, { min: number; max?: number }> = {
+    "2": { min: 0, max: 2 },
+    "4": { min: 3, max: 4 },
+    "6": { min: 5, max: 6 },
+    "8": { min: 8 }, // 8+ years
+  };
+
   const filteredDoctors = useMemo(() => {
     return doctors.filter((doc) => {
       const matchesName = doc.name.toLowerCase().includes(search.toLowerCase());
@@ -92,30 +94,35 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
       const matchesExperience =
         filters.experience.length === 0 ||
         filters.experience.some((exp) => {
-          if (exp === "8") return Number(doc.experience) >= 8;
-          return Number(doc.experience) === Number(exp);
+          const range = experienceRanges[exp];
+          if (!range) return false;
+          const docExp = Number(doc.experience);
+          if (isNaN(docExp)) return false;
+          if (range.max !== undefined) {
+            return docExp >= range.min && docExp <= range.max;
+          } else {
+            return docExp >= range.min;
+          }
         });
       const matchesDepartment =
         filters.department.length === 0 ||
         filters.department.includes(doc.department);
-      const matchesTime = filters.time.length === 0 || true;
+      // Time filter removed (no scheduling data in Doctor model)
       return (
         matchesName &&
         matchesOccupation &&
         matchesExperience &&
-        matchesDepartment &&
-        matchesTime
+        matchesDepartment
       );
     });
   }, [search, filters]);
 
-  // Call onFilter whenever filteredDoctors changes
+  // Call onFilter whenever filteredDoctors or onFilter changes
   useEffect(() => {
     if (onFilter) {
       onFilter(filteredDoctors);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredDoctors]);
+  }, [filteredDoctors, onFilter]);
 
   const [inputFocused, setInputFocused] = useState(false);
   const suggestions = useMemo(() => {
@@ -139,7 +146,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   );
 
   const handleReset = useCallback(() => {
-    setFilters({ occupation: [], experience: [], department: [], time: [] });
+    setFilters({ occupation: [], experience: [], department: [] });
   }, []);
 
   const activeFilterCount = useMemo(() => {
@@ -300,7 +307,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
                   Filter Doctors
                 </h3>
                 <button
-                  className="rounded-full p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+                  className="cursor-pointer rounded-full p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
                   onClick={() => setShowDrawer(false)}
                   type="button"
                   aria-label="Close"
@@ -339,12 +346,6 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
                   options={departmentOptions}
                   selectedValues={filters.department}
                   filterKey="department"
-                />
-                <FilterSection
-                  label="Time"
-                  options={timeOptions}
-                  selectedValues={filters.time}
-                  filterKey="time"
                 />
               </div>
 

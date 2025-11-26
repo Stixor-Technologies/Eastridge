@@ -10,8 +10,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DoctorSearchBar from "../searchbar-section";
 
-import { useState as useReactState } from "react";
-
 gsap.registerPlugin(ScrollTrigger);
 
 // Helper function to create URL-friendly slugs from doctor names
@@ -28,7 +26,7 @@ const DoctorListing = () => {
   const [showAll, setShowAll] = useState(false);
 
   // --- Filtered doctors state ---
-  const [filteredDoctors, setFilteredDoctors] = useReactState(doctors);
+  const [filteredDoctors, setFilteredDoctors] = useState(doctors);
 
   // Calculate visible doctors based on screen size
   const desktopLimit = 12;
