@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useMemo, useCallback, useEffect } from "react";
+import { createSlug } from "../../../utils/slug";
 import { useRouter } from "next/navigation";
 import { doctors, Doctor } from "@/src/core/doctor";
 import Image from "next/image";
@@ -16,6 +17,14 @@ const experienceOptions = [
   { label: "6 yrs", value: "6" },
   { label: "8+ yrs", value: "8" },
 ];
+
+// Map experience filter values to min/max ranges (module-level constant)
+const experienceRanges: Record<string, { min: number; max?: number }> = {
+  "2": { min: 0, max: 2 },
+  "4": { min: 3, max: 4 },
+  "6": { min: 5, max: 6 },
+  "8": { min: 8 }, // 8+ years
+};
 
 const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
   return Array.from(
@@ -36,13 +45,7 @@ interface DoctorSearchBarProps {
 
 const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   const router = useRouter();
-  // Helper function to create URL-friendly slugs from doctor names (same as in [slug]/page.tsx)
-  const createSlug = (name: string) => {
-    return name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  };
+  // ...existing code...
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
@@ -76,14 +79,6 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     () => getUniqueValues(doctors, "department"),
     [],
   );
-
-  // Map experience filter values to min/max ranges
-  const experienceRanges: Record<string, { min: number; max?: number }> = {
-    "2": { min: 0, max: 2 },
-    "4": { min: 3, max: 4 },
-    "6": { min: 5, max: 6 },
-    "8": { min: 8 }, // 8+ years
-  };
 
   const filteredDoctors = useMemo(() => {
     return doctors.filter((doc) => {
@@ -258,8 +253,10 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
                     key={doc.id}
                     className="cursor-pointer border-b border-gray-100 px-4 py-3 last:border-b-0 hover:bg-gray-50"
                     onMouseDown={() => {
-                      setSearch(doc.name);
+                      // Directly navigate to detail page, skip listing update
                       setShowDropdown(false);
+                      setInputFocused(false);
+                      setSearch("");
                       const slug = createSlug(doc.name);
                       router.push(`/doctor-listing/${slug}`);
                     }}

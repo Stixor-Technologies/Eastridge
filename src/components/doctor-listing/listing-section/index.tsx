@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
+import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
 import Image from "next/image";
 import { doctors } from "@/src/core/doctor";
@@ -12,13 +13,7 @@ import DoctorSearchBar from "../searchbar-section";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Helper function to create URL-friendly slugs from doctor names
-const createSlug = (name: string) => {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
+// ...existing code...
 
 const DoctorListing = () => {
   const container = useRef<HTMLDivElement | null>(null);
@@ -89,11 +84,11 @@ const DoctorListing = () => {
     },
   );
 
-  // --- Filtering logic: pass a callback to DoctorSearchBar to update filteredDoctors ---
-  const handleFilter = (doctorsList: typeof doctors) => {
+  // --- Filtering logic: pass a memoized callback to DoctorSearchBar to update filteredDoctors ---
+  const handleFilter = useCallback((doctorsList: typeof doctors) => {
     setFilteredDoctors(doctorsList);
     setShowAll(false); // Reset to collapsed view on filter
-  };
+  }, []); // setFilteredDoctors and setShowAll are stable
 
   return (
     <section className="px-4 py-16">
