@@ -92,7 +92,7 @@ const DoctorListing = () => {
 
   return (
     <section className="px-4 py-16">
-      <div ref={container} className="container mx-auto max-w-7xl">
+      <div ref={container} className="md:container md:mx-auto md:max-w-7xl">
         <DoctorSearchBar onFilter={handleFilter} />
         {doctorRows.length === 0 && (
           <div className="py-12 text-center text-lg text-gray-500">
