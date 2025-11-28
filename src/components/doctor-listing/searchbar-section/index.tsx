@@ -6,25 +6,8 @@ import { doctors, Doctor } from "@/src/core/doctor";
 import Image from "next/image";
 
 interface FilterState {
-  occupation: string[];
-  experience: string[];
   department: string[];
 }
-
-const experienceOptions = [
-  { label: "2 yrs", value: "2" },
-  { label: "4 yrs", value: "4" },
-  { label: "6 yrs", value: "6" },
-  { label: "8+ yrs", value: "8" },
-];
-
-// Map experience filter values to min/max ranges
-const experienceRanges: Record<string, { min: number; max?: number }> = {
-  "2": { min: 0, max: 2 },
-  "4": { min: 3, max: 4 },
-  "6": { min: 5, max: 6 },
-  "8": { min: 8 },
-};
 
 const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
   return Array.from(
@@ -37,7 +20,7 @@ const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
   );
 };
 
-const FILTERS_KEY = "doctorFilters";
+const FILTERS_KEY = "doctorDepartmentFilters";
 
 interface DoctorSearchBarProps {
   onFilter?: (filteredDoctors: Doctor[]) => void;
@@ -51,6 +34,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   const [inputFocused, setInputFocused] = useState(false);
 
   // Main filters state (applied filters)
+
   const [filters, setFilters] = useState<FilterState>(() => {
     if (typeof window !== "undefined") {
       try {
@@ -60,7 +44,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
         // ignore
       }
     }
-    return { occupation: [], experience: [], department: [] };
+    return { department: [] };
   });
 
   // Temp filters for modal (staged changes)
@@ -82,11 +66,6 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     }
   }, [filters]);
 
-  const occupationOptions = useMemo(
-    () => getUniqueValues(doctors, "occupation"),
-    [],
-  );
-
   const departmentOptions = useMemo(
     () => getUniqueValues(doctors, "department"),
     [],
@@ -95,31 +74,10 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   const filteredDoctors = useMemo(() => {
     return doctors.filter((doc) => {
       const matchesName = doc.name.toLowerCase().includes(search.toLowerCase());
-      const matchesOccupation =
-        filters.occupation.length === 0 ||
-        filters.occupation.includes(doc.occupation);
-      const matchesExperience =
-        filters.experience.length === 0 ||
-        filters.experience.some((exp) => {
-          const range = experienceRanges[exp];
-          if (!range) return false;
-          const docExp = Number(doc.experience);
-          if (isNaN(docExp)) return false;
-          if (range.max !== undefined) {
-            return docExp >= range.min && docExp <= range.max;
-          } else {
-            return docExp >= range.min;
-          }
-        });
       const matchesDepartment =
         filters.department.length === 0 ||
         filters.department.includes(doc.department);
-      return (
-        matchesName &&
-        matchesOccupation &&
-        matchesExperience &&
-        matchesDepartment
-      );
+      return matchesName && matchesDepartment;
     });
   }, [search, filters]);
 
@@ -135,7 +93,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     return filteredDoctors;
   }, [search, filteredDoctors, inputFocused]);
 
-  // Change tempFilters only in modal
+  // Change tempFilters only in modal (only department)
   const handleFilterChange = useCallback(
     (key: keyof FilterState, value: string) => {
       setTempFilters((prev) => {
@@ -153,8 +111,8 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
 
   // Reset staged filters and close modal
   const handleReset = useCallback(() => {
-    setTempFilters({ occupation: [], experience: [], department: [] });
-    setFilters({ occupation: [], experience: [], department: [] });
+    setTempFilters({ department: [] });
+    setFilters({ department: [] });
     setShowDrawer(false);
   }, []);
 
@@ -167,7 +125,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   // Show count based on staged filters if modal open, else applied filters
   const activeFilterCount = useMemo(() => {
     const f = showDrawer ? tempFilters : filters;
-    return Object.values(f).reduce((sum, arr) => sum + arr.length, 0);
+    return f.department.length;
   }, [filters, tempFilters, showDrawer]);
 
   const handleDoctorSelect = useCallback(
@@ -185,7 +143,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     setSearch("");
   }, []);
 
-  // Filter Section Component
+  // Filter Section Component (only for department)
   const FilterSection = ({
     label,
     options,
@@ -193,7 +151,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     filterKey,
   }: {
     label: string;
-    options: Array<{ label: string; value: string }> | string[];
+    options: string[];
     selectedValues: string[];
     filterKey: keyof FilterState;
   }) => (
@@ -202,9 +160,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
         {label}
       </label>
       <div className="flex flex-wrap gap-2">
-        {options.map((opt) => {
-          const value = typeof opt === "string" ? opt : opt.value;
-          const displayLabel = typeof opt === "string" ? opt : opt.label;
+        {options.map((value) => {
           const isSelected = selectedValues.includes(value);
           return (
             <label
@@ -221,7 +177,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
                 onChange={() => handleFilterChange(filterKey, value)}
                 className="h-4 w-4 cursor-pointer rounded border-2 border-gray-300 accent-black focus:ring-2 focus:ring-black focus:ring-offset-0"
               />
-              <span className="select-none">{displayLabel}</span>
+              <span className="select-none">{value}</span>
             </label>
           );
         })}
@@ -230,8 +186,8 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
   );
 
   return (
-    <div className="w-full md:px-4 md:py-6">
-      <div className="ml-auto max-w-lg">
+    <div className="flex w-full justify-center md:px-4 md:py-6">
+      <div className="flex w-full max-w-lg flex-col items-center">
         <div className="mb-16 flex flex-row gap-3 md:mb-6">
           {/* Search Input */}
           <div className="relative flex-1">
@@ -366,18 +322,6 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
 
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto px-6 py-6">
-                <FilterSection
-                  label="Occupation"
-                  options={occupationOptions}
-                  selectedValues={tempFilters.occupation}
-                  filterKey="occupation"
-                />
-                <FilterSection
-                  label="Experience"
-                  options={experienceOptions}
-                  selectedValues={tempFilters.experience}
-                  filterKey="experience"
-                />
                 <FilterSection
                   label="Department"
                   options={departmentOptions}

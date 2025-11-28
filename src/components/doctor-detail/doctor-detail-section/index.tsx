@@ -148,7 +148,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                     src={doctor.image}
                     alt={doctor.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
               </div>

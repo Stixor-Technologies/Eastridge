@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,15 +13,33 @@ import DoctorSearchBar from "../searchbar-section";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ...existing code...
-
 const DoctorListing = () => {
   const container = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [showAll, setShowAll] = useState(false);
 
+  // Track screen size for proper row calculation
+  const [columnsPerRow, setColumnsPerRow] = useState(4);
+
   // --- Filtered doctors state ---
   const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+
+  // Update columns per row based on screen size
+  useEffect(() => {
+    const updateColumns = () => {
+      if (window.innerWidth < 768) {
+        setColumnsPerRow(2); // Mobile: 2 columns
+      } else if (window.innerWidth < 1024) {
+        setColumnsPerRow(3); // Tablet: 3 columns
+      } else {
+        setColumnsPerRow(4); // Desktop: 4 columns
+      }
+    };
+
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
+  }, []);
 
   // Calculate visible doctors based on screen size
   const desktopLimit = 12;
@@ -43,24 +61,40 @@ const DoctorListing = () => {
     }
   };
 
-  // Group doctors into rows
+  // Group doctors into rows based on current screen size
   const groupDoctorsIntoRows = () => {
     const rows = [];
-    const lgCols = 4;
-    for (let i = 0; i < visibleDoctors.length; i += lgCols) {
-      rows.push(visibleDoctors.slice(i, i + lgCols));
+    for (let i = 0; i < visibleDoctors.length; i += columnsPerRow) {
+      rows.push(visibleDoctors.slice(i, i + columnsPerRow));
     }
     return rows;
   };
   const doctorRows = groupDoctorsIntoRows();
 
-  // Animation
+  // Animation - Properly handle each row independently
   useGSAP(
     () => {
       const rows = container.current?.querySelectorAll(".doctor-row");
       if (!rows) return;
+
+      // Clear all previous ScrollTriggers to avoid conflicts
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.vars.trigger &&
+          container.current?.contains(trigger.vars.trigger as Element)
+        ) {
+          trigger.kill();
+        }
+      });
+
       rows.forEach((row) => {
-        if (row.getAttribute("data-animated")) return;
+        // Remove any previous animation data
+        row.removeAttribute("data-animated");
+
+        // Reset the row's style before animating
+        gsap.set(row, { opacity: 1, y: 0 });
+
+        // Create fresh animation for each row
         gsap.from(row, {
           opacity: 0,
           y: "4rem",
@@ -70,16 +104,14 @@ const DoctorListing = () => {
             trigger: row,
             start: "top 80%",
             toggleActions: "play none none none",
-            onEnter: () => {
-              row.setAttribute("data-animated", "true");
-            },
+            once: true, // Only animate once per row
           },
         });
       });
     },
     {
       scope: container,
-      dependencies: [showAll, filteredDoctors],
+      dependencies: [showAll, filteredDoctors, columnsPerRow],
       revertOnUpdate: true,
     },
   );
@@ -88,7 +120,7 @@ const DoctorListing = () => {
   const handleFilter = useCallback((doctorsList: typeof doctors) => {
     setFilteredDoctors(doctorsList);
     setShowAll(false); // Reset to collapsed view on filter
-  }, []); // setFilteredDoctors and setShowAll are stable
+  }, []);
 
   return (
     <section className="px-4 py-16">
@@ -101,7 +133,7 @@ const DoctorListing = () => {
         )}
         {doctorRows.map((row, rowIndex) => (
           <div
-            key={rowIndex}
+            key={`row-${rowIndex}-${columnsPerRow}`}
             className="doctor-row mb-6 grid grid-cols-2 gap-6 last:mb-0 md:mb-8 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
           >
             {row.map((doctor) => {
@@ -119,7 +151,7 @@ const DoctorListing = () => {
                         src={doctor.image}
                         alt={doctor.name}
                         fill
-                        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                     </div>
