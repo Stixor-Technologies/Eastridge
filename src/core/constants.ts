@@ -86,6 +86,7 @@ const MENU = [
   { id: "/#about", label: "About", scrollOnPage: false },
   { id: "/#services", label: "Services", scrollOnPage: false },
   { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
+  { id: "/department", label: "Departments", scrollOnPage: false },
   { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",

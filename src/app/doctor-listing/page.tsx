@@ -1,10 +1,10 @@
-import DoctorHeroSection from "../../components/doctor-listing/hero-section";
+import HeroSection from "../../components/reusable-sections/HeroSection";
 import DoctorListingSection from "../../components/doctor-listing/listing-section";
 
 const Doctorlisting = () => {
   return (
     <div>
-      <DoctorHeroSection />
+      <HeroSection>Our Doctors</HeroSection>
       <DoctorListingSection />
     </div>
   );
