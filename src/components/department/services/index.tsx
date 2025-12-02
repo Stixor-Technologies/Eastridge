@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   MedicalServiceIcon1,
   MedicalServiceIcon2,
@@ -20,17 +21,20 @@ interface Service {
   description: string;
   link?: string;
   featured?: boolean;
+  slug: string;
 }
 
 const MEDICAL_SERVICES: Service[] = [
   {
     title: "Surgery & Allied",
+    slug: "surgery-allied",
     description:
       "Comprehensive Surgical Care Across Multiple Specialties, Delivered By Experienced Surgeons Using Advanced Techniques And Equipment.",
     link: "Discover More",
   },
   {
     title: "Diagnostics Allied",
+    slug: "diagnostics-allied",
     description:
       "Expert Medical Care For Chronic And Acute Conditions, Supported By A Team Of Skilled Physicians Across Various Internal Medicine Fields.",
     link: "Discover More",
@@ -38,6 +42,7 @@ const MEDICAL_SERVICES: Service[] = [
   },
   {
     title: "Medicine & Allied",
+    slug: "medicine-allied",
     description:
       "Accurate And Timely Diagnostics Including Imaging, Lab Tests, And Screenings To Support Effective Diagnosis And Treatment Planning.",
     link: "Discover More",
@@ -47,19 +52,23 @@ const MEDICAL_SERVICES: Service[] = [
 const SUPPORT_SERVICES: Service[] = [
   {
     title: "Emergency Services And Trauma Capabilities",
+    slug: "emergency-services-trauma",
     description: "24/7 critical care for emergencies and trauma cases.",
   },
   {
     title: "Diagnostic Imaging Services",
+    slug: "diagnostic-imaging",
     subtitle: "(MRI, CT, X-Ray, Etc.)",
     description: "Advanced MRI, CT, X-ray, and more for accurate diagnostics.",
   },
   {
     title: "Laboratory Services And Testing Capabilities",
+    slug: "laboratory-services",
     description: "Fast, reliable testing for precise diagnosis.",
   },
   {
     title: "Pharmacy Services",
+    slug: "pharmacy-services",
     description: "On-site pharmacy with timely medication support.",
   },
 ];
@@ -67,27 +76,32 @@ const SUPPORT_SERVICES: Service[] = [
 const PATIENT_SERVICES: Service[] = [
   {
     title: "Admission And Discharge Processes",
+    slug: "admission-discharge",
     description:
       "Streamlined processes ensuring smooth patient entry and timely discharge.",
   },
   {
     title: "Visitor Policies And Guidelines",
+    slug: "visitor-policies",
     description:
       "Visitors allowed during set hours. Maintain hygiene and respect privacy. Access may be limited in critical areas.",
   },
   {
     title: "Patient Rights & Responsibilities",
+    slug: "patient-rights-responsibilities",
     description:
       "Empowering patients with clear rights and shared responsibilities for their care.",
   },
   {
     title: "Language interpretation services",
+    slug: "language-interpretation",
     subtitle: "(If applicable)",
     description:
       "Interpretation support for effective communication (if needed).",
   },
   {
     title: "Special patient populations served (pediatric, geriatric, etc.)",
+    slug: "special-populations",
     description:
       "Care tailored for pediatric, geriatric, and other specific patient groups.",
   },
@@ -113,14 +127,16 @@ const Services = () => {
 
         <div className="grid gap-6 md:grid-cols-3">
           {MEDICAL_SERVICES.map((service, idx) => (
-            <div
+            <Link
               key={service.title}
+              href={`/department/${service.slug}`}
               className="relative overflow-hidden rounded-3xl p-8 transition-all"
               style={{
                 background: "white",
                 color: "#1a202c",
                 cursor: "pointer",
                 transition: "background 0.3s, color 0.3s",
+                display: "block",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#D82519";
@@ -219,7 +235,7 @@ const Services = () => {
                   </svg>
                 </button>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -239,14 +255,16 @@ const Services = () => {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {SUPPORT_SERVICES.map((service, idx) => (
-            <div
+            <Link
               key={service.title}
+              href={`/department/${service.slug}`}
               className="rounded-3xl p-6 transition-all"
               style={{
                 background: "white",
                 color: "#1a202c",
                 cursor: "pointer",
                 transition: "background 0.3s, color 0.3s",
+                display: "block",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#D82519";
@@ -384,7 +402,7 @@ const Services = () => {
               >
                 {service.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -402,14 +420,16 @@ const Services = () => {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {PATIENT_SERVICES.map((service, idx) => (
-            <div
+            <Link
               key={service.title}
+              href={`/department/${service.slug}`}
               className="rounded-3xl p-6 transition-all"
               style={{
                 background: "white",
                 color: "#1a202c",
                 cursor: "pointer",
                 transition: "background 0.3s, color 0.3s",
+                display: "block",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#D82519";
@@ -533,7 +553,7 @@ const Services = () => {
               >
                 {service.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
