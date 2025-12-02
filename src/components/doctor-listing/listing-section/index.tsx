@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
+import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
 import Image from "next/image";
 import { doctors } from "@/src/core/doctor";
@@ -8,75 +9,92 @@ import RightArrow from "@/public/icons/right-arrow.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DoctorSearchBar from "../searchbar-section";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Helper function to create URL-friendly slugs from doctor names
-const createSlug = (name: string) => {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
 
 const DoctorListing = () => {
   const container = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [showAll, setShowAll] = useState(false);
 
-  // Calculate visible doctors based on screen size
-  // Desktop (lg): 4 columns × 3 rows = 12 doctors
-  // Mobile: 2 columns × 4 rows = 8 doctors
-  const desktopLimit = 12;
+  // Track screen size for proper row calculation
+  const [columnsPerRow, setColumnsPerRow] = useState(4);
 
-  const visibleDoctors = showAll ? doctors : doctors.slice(0, desktopLimit);
+  // --- Filtered doctors state ---
+  const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+
+  // Update columns per row based on screen size
+  useEffect(() => {
+    const updateColumns = () => {
+      if (window.innerWidth < 768) {
+        setColumnsPerRow(2); // Mobile: 2 columns
+      } else if (window.innerWidth < 1024) {
+        setColumnsPerRow(3); // Tablet: 3 columns
+      } else {
+        setColumnsPerRow(4); // Desktop: 4 columns
+      }
+    };
+
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
+  }, []);
+
+  // Calculate visible doctors based on screen size
+  const desktopLimit = 12;
+  const visibleDoctors = showAll
+    ? filteredDoctors
+    : filteredDoctors.slice(0, desktopLimit);
 
   const handleToggle = () => {
     if (showAll && buttonRef.current) {
-      // Store button position before collapsing
       const buttonTop =
         buttonRef.current.getBoundingClientRect().top + window.scrollY;
-      const offset = 100; // Offset from top of viewport
-
+      const offset = 100;
       setShowAll(false);
-
-      // After state update, scroll to keep button in view
       requestAnimationFrame(() => {
-        window.scrollTo({
-          top: buttonTop - offset,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: buttonTop - offset, behavior: "smooth" });
       });
     } else {
       setShowAll(true);
     }
   };
 
-  // Group doctors into rows
-  // Mobile: 2 per row, Desktop (md): 3 per row, Desktop (lg): 4 per row
+  // Group doctors into rows based on current screen size
   const groupDoctorsIntoRows = () => {
     const rows = [];
-    const lgCols = 4; // lg: grid-cols-4
-
-    for (let i = 0; i < visibleDoctors.length; i += lgCols) {
-      rows.push(visibleDoctors.slice(i, i + lgCols));
+    for (let i = 0; i < visibleDoctors.length; i += columnsPerRow) {
+      rows.push(visibleDoctors.slice(i, i + columnsPerRow));
     }
-
     return rows;
   };
-
   const doctorRows = groupDoctorsIntoRows();
 
+  // Animation - Properly handle each row independently
   useGSAP(
     () => {
       const rows = container.current?.querySelectorAll(".doctor-row");
-
       if (!rows) return;
 
-      rows.forEach((row) => {
-        // Skip animation if row already has been animated
-        if (row.getAttribute("data-animated")) return;
+      // Clear all previous ScrollTriggers to avoid conflicts
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (
+          trigger.vars.trigger &&
+          container.current?.contains(trigger.vars.trigger as Element)
+        ) {
+          trigger.kill();
+        }
+      });
 
+      rows.forEach((row) => {
+        // Remove any previous animation data
+        row.removeAttribute("data-animated");
+
+        // Reset the row's style before animating
+        gsap.set(row, { opacity: 1, y: 0 });
+
+        // Create fresh animation for each row
         gsap.from(row, {
           opacity: 0,
           y: "4rem",
@@ -86,32 +104,41 @@ const DoctorListing = () => {
             trigger: row,
             start: "top 80%",
             toggleActions: "play none none none",
-            onEnter: () => {
-              row.setAttribute("data-animated", "true");
-            },
+            once: true, // Only animate once per row
           },
         });
       });
     },
     {
       scope: container,
-      dependencies: [showAll],
+      dependencies: [showAll, filteredDoctors, columnsPerRow],
       revertOnUpdate: true,
     },
   );
 
+  // --- Filtering logic: pass a memoized callback to DoctorSearchBar to update filteredDoctors ---
+  const handleFilter = useCallback((doctorsList: typeof doctors) => {
+    setFilteredDoctors(doctorsList);
+    setShowAll(false); // Reset to collapsed view on filter
+  }, []);
+
   return (
     <section className="px-4 py-16">
-      <div ref={container} className="container mx-auto max-w-7xl">
+      <div ref={container} className="md:container md:mx-auto md:max-w-7xl">
+        <DoctorSearchBar onFilter={handleFilter} />
+        {doctorRows.length === 0 && (
+          <div className="py-12 text-center text-lg text-gray-500">
+            No doctors found.
+          </div>
+        )}
         {doctorRows.map((row, rowIndex) => (
           <div
-            key={rowIndex}
+            key={`row-${rowIndex}-${columnsPerRow}`}
             className="doctor-row mb-6 grid grid-cols-2 gap-6 last:mb-0 md:mb-8 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
           >
             {row.map((doctor) => {
               const globalIndex = visibleDoctors.indexOf(doctor);
               const isAlternate = globalIndex % 2 === 1;
-
               return (
                 <Link
                   key={doctor.id}
@@ -124,7 +151,7 @@ const DoctorListing = () => {
                         src={doctor.image}
                         alt={doctor.name}
                         fill
-                        className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                     </div>
@@ -143,7 +170,7 @@ const DoctorListing = () => {
           </div>
         ))}
 
-        {doctors.length > desktopLimit && (
+        {filteredDoctors.length > desktopLimit && (
           <div className="mt-12 flex justify-center">
             <button
               ref={buttonRef}
