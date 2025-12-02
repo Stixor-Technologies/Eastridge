@@ -16,7 +16,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
   if (!service) {
     notFound();
   }
-
+  // Here is the slug page code
   return (
     <main>
       <HeroSection>
