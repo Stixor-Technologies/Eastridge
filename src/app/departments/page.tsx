@@ -1,15 +1,17 @@
-import Appointments from "@/src/components/department/appointment";
+// import Appointments from "@/src/components/department/appointment";
 import KeyPhysicians from "@/src/components/department/key-physicians";
-import Services from "@/src/components/department/services";
+import DeptServices from "@/src/components/department/dept-services";
 import HeroSection from "../../components/reusable-sections/HeroSection";
+import Banner from "@/src/components/shared/banner";
 
 const Department = () => {
   return (
     <div>
       <HeroSection>Departments</HeroSection>
-      <Services />
+      <DeptServices />
       <KeyPhysicians />
-      <Appointments />
+      {/* <Appointments /> */}
+      <Banner />
     </div>
   );
 };
