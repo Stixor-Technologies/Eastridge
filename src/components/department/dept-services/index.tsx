@@ -2,21 +2,21 @@
 
 // Card component for displaying a service
 import { FC } from "react";
-import { ServiceDetail } from "@/src/core/department";
+
 import Arrow from "@/public/icons/right-arrow.svg";
 import Image from "next/image";
-
 import Link from "next/link";
+
+import IconBadge from "../../icon-badge";
 import {
   MEDICAL_SERVICES,
   SUPPORT_SERVICES,
   PATIENT_SERVICES,
-} from "@/src/core/department";
-
-import IconBadge from "../../icon-badge";
+} from "@/src/core/constants";
 
 interface ServiceCardProps {
-  service: ServiceDetail;
+  // service: ServiceDetail;
+  service: any;
   className?: string;
   isMedical?: boolean;
 }
@@ -27,8 +27,7 @@ const ServiceCard: FC<ServiceCardProps> = ({
   isMedical,
 }) => (
   <Link
-    key={service?.slug}
-    href={`/department/${service?.slug}`}
+    href={`/departments/${service?.slug}`}
     className={`group bg-card-bg hover:bg-accent p-5 transition-all duration-300 ease-in-out hover:!text-white ${className} ${isMedical ? "rounded-3xl" : "border-card-border rounded-lg border"}`}
   >
     {service?.icon && (

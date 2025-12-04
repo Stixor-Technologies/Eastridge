@@ -31,20 +31,13 @@ const OurCertificationSection = () => {
   ];
 
   return (
-    <section className="py-20">
-      {/* Header section with title and description */}
-      <div className="flex flex-col px-8 md:flex-row md:items-start">
-        {/* Main heading */}
-        <h2 className="mb-4 text-left text-[2rem] leading-tight font-normal text-[#333333] md:w-1/2 md:text-[3rem] md:leading-tight lg:text-[4.375rem]">
-          Our Certifications
+    <section className="mt-20 py-20">
+      <div className="container mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:gap-6 lg:mb-16">
+        <h2 className="text-body-primary md:font-4xl text-left text-4xl font-normal lg:text-5xl">
+          Our Certifications{" "}
         </h2>
-
-        {/* Spacer for layout */}
-        <div className="md:w-3/25"></div>
-
-        {/* Description text */}
-        <p className="text-[1rem] leading-normal font-normal text-[#A1A1A1] md:w-2/5 md:text-[1.25rem] md:leading-normal">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
+        <p className="text-body-main text-xl md:max-w-[35.75rem] md:text-justify">
+          orem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
           ever since the 1500s,
         </p>
@@ -52,7 +45,7 @@ const OurCertificationSection = () => {
 
       {/* Certificates marquee section */}
       <div className="mt-10">
-        <Marquee speed={50} gradient={false} pauseOnHover={false}>
+        <Marquee speed={50} gradient={false} loop={0} pauseOnHover={false}>
           {[...certificates, ...certificates].map((cert, index) => (
             <div
               key={index}

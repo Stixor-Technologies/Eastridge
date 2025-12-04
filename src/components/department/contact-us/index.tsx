@@ -25,13 +25,13 @@ const DepartmentContactUs = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
+    // TODO: Handle form submission logic here later
     console.log("Form submitted:", formData);
   };
 
   return (
     <section className="container py-10 md:py-16 lg:py-20">
-      <div className="mx-auto max-w-[75rem] rounded-[1.25rem] bg-[#F6F6F6] px-5 py-12 sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
+      <div className="bg-card-bg rounded-[1.25rem] px-5 py-12 sm:px-8 md:px-12 md:py-16 lg:px-16 lg:py-20">
         <h2 className="mb-10 text-center md:mb-12 lg:mb-16">Contact Us</h2>
 
         <form onSubmit={handleSubmit} className="mx-auto max-w-[70rem]">
