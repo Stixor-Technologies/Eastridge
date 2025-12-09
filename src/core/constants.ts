@@ -93,7 +93,7 @@ const MENU = [
   { id: "/#about", label: "About", scrollOnPage: false },
   { id: "/#services", label: "Services", scrollOnPage: false },
   { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
-  { id: "/department", label: "Departments", scrollOnPage: false },
+  { id: "/departments", label: "Departments", scrollOnPage: false },
   { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",
@@ -619,11 +619,10 @@ export const getServicesByCategory = (
   }
 };
 
-export const getDepartmentItems = (slug: string) => {
-  const service = getServiceBySlug(slug);
-  // return (service as any)?.items || [];
-  return service;
-};
+// export const getDepartmentItems = (slug: string) => {
+//   const service = getServiceBySlug(slug);
+//   return service;
+// };
 
 // Backward compatibility - alias for medical services
 // export { SERVICES_OFFERED as MEDICAL_SERVICES };

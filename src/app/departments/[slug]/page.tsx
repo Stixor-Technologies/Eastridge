@@ -1,40 +1,95 @@
 import { notFound } from "next/navigation";
-// import {
-//   getServiceBySlug,
-//   MEDICAL_SERVICES,
-//   ServiceDetail,
-// } from "@/src/core/department";
-import DetailSection from "@/src/components/department/detail-section";
-import HeroSection from "@/src/components/reusable-sections/HeroSection";
+import CheckMark from "@/public/icons/checkmark-red.svg";
 import Link from "next/link";
-import { FC } from "react";
-import { getDepartmentItems } from "@/src/core/constants";
+// import { FC } from "react";
 import Image from "next/image";
-import Banner from "@/src/components/shared/banner";
+import { getDepartment, departments } from "@/src/core/department";
+import { createSlug } from "@/src/utils/slug";
 
-interface ServiceCardProps {
-  service?: any;
+{
+  /* <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+            Our Department and Specialities
+          </h3>
+
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-[1fr_0.7fr]">
+            <div className="relative row-span-2 overflow-hidden rounded-2xl">
+              <Image
+                src={Emergency}
+                alt="Emergency"
+                className="inset-0 h-full w-full object-cover md:absolute"
+              />
+
+              <div className="absolute inset-0 flex flex-col justify-end bg-black/40 p-6 text-white">
+                <h3 className="text-xl leading-tight font-bold xl:text-[2.1875rem]">
+                  Emergency Department
+                </h3>
+
+                <p className="text-sm leading-tight xl:text-base">
+                  Lorem ipsum dolor sit amet consectetur. Diam id quis morbi ac.
+                  Habitant sit auctor viverra quis et enim pellentesque ornare
+                  sed. Laoreet ut lectus scelerisque dolor vitae urna. Tempus
+                  nibh mattis non fames vitae.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl">
+              <Image src={Cardiology} alt="Cardiology" />
+
+              <div className="absolute inset-0 flex flex-col justify-end bg-black/40 p-6 text-white">
+                <h3 className="text-xl leading-tight font-bold xl:text-[2.1875rem]">
+                  Cardiology
+                </h3>
+
+                <p className="text-sm leading-tight xl:text-base">
+                  Lorem ipsum dolor sit amet consectetur. Diam id quis morbi ac.
+                  Habitant sit auctor viverra quis et enim pellentesque ornare
+                  sed.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl">
+              <Image src={Neurology} alt="Neurology" />
+
+              <div className="absolute inset-0 flex flex-col justify-end bg-black/40 p-6 text-white">
+                <h3 className="text-xl leading-tight font-bold xl:text-[2.1875rem]">
+                  Neurology
+                </h3>
+
+                <p className="text-sm leading-tight xl:text-base">
+                  Lorem ipsum dolor sit amet consectetur. Diam id quis morbi ac.
+                  Habitant sit auctor viverra quis et enim pellentesque ornare
+                  sed.{" "}
+                </p>
+              </div>
+            </div>
+          </div> */
 }
 
-const ServiceCard: FC<ServiceCardProps> = ({ service }) => (
-  <Link
-    href={"/"}
-    // href={`/departments/${service?.slug}`}
-    className="bg-card-bg rounded-2xl p-5 transition-all duration-300 ease-in-out hover:!text-white md:px-6 md:py-10"
-  >
-    <Image src={service?.icon} alt={service?.title} width={64} height={64} />
-    <h3
-      className={
-        "text-body-primary mt-6 mb-4 text-2xl leading-tight font-semibold transition-all md:text-[2rem]"
-      }
-    >
-      {service?.title}
-    </h3>
-    <p className="text-body-main text-xl transition-all">
-      {service?.description}
-    </p>
-  </Link>
-);
+// interface ServiceCardProps {
+//   service?: any;
+// }
+
+// const ServiceCard: FC<ServiceCardProps> = ({ service }) => (
+//   <Link
+//     href={"/"}
+//     // href={`/departments/${service?.slug}`}
+//     className="bg-card-bg rounded-2xl p-5 transition-all duration-300 ease-in-out hover:!text-white md:px-6 md:py-10"
+//   >
+//     <Image src={service?.icon} alt={service?.title} width={64} height={64} />
+//     <h3
+//       className={
+//         "text-body-primary mt-6 mb-4 text-2xl leading-tight font-semibold transition-all md:text-[2rem]"
+//       }
+//     >
+//       {service?.title}
+//     </h3>
+//     <p className="text-body-main text-xl transition-all">
+//       {service?.description}
+//     </p>
+//   </Link>
+// );
 
 interface DepartmentPageProps {
   params: Promise<{
@@ -44,34 +99,240 @@ interface DepartmentPageProps {
 
 export default async function DepartmentPage({ params }: DepartmentPageProps) {
   const { slug } = await params;
-  const service = getDepartmentItems(slug);
+  const dept = getDepartment(slug);
 
-  console.log("slug", slug);
-  console.log("service", service);
-
-  if (!service) {
+  if (!dept) {
     notFound();
   }
-  // Here is the slug page code
   return (
-    <main>
-      <HeroSection>{service?.title}</HeroSection>
+    // <main>
+    //   <HeroSection>{service?.title}</HeroSection>
 
-      <section className="container mt-24">
-        <h4 className="text-accent text-center text-2xl">
-          Real words. Real impact.
-        </h4>
+    //   <section className="container mt-24">
+    //     <h4 className="text-accent text-center text-2xl">
+    //       Real words. Real impact.
+    //     </h4>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))]">
-          {service?.items?.map((item: any) => (
-            <ServiceCard key={item.slug} service={item} />
-          ))}
+    //     <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))]">
+    //       {service?.items?.map((item: any) => (
+    //         <ServiceCard key={item.slug} service={item} />
+    //       ))}
+    //     </div>
+    //   </section>
+
+    //   <DetailSection />
+    //   <Banner />
+    // </main>
+
+    <section className="py-40">
+      <div className="container flex flex-col items-start gap-12 lg:flex-row">
+        {/* Other Services Sidebar */}
+
+        <div className="sticky top-24 min-w-[23.125rem] rounded-2xl border border-gray-200 bg-white p-6">
+          <div className="mb-6 flex items-center">
+            <div className="mr-3 flex h-6 w-6 items-center justify-center">
+              <svg
+                className="h-5 w-5 text-red-500"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900">
+              Other Services
+            </h3>
+          </div>
+          <ul className="divide-accent/10 space-y-0 divide-y-1">
+            {departments.map((department) => {
+              const isActive = department.id === dept?.id;
+              return (
+                <li key={department.id}>
+                  <Link
+                    href={`/departments/${department.slug}`}
+                    className={`group flex items-center justify-between border-b border-gray-100 px-0 py-4 transition-colors last:border-b-0 ${
+                      isActive
+                        ? "text-red-500"
+                        : "text-gray-700 hover:text-red-500"
+                    }`}
+                  >
+                    <span className="text-base font-medium">
+                      {department.name}
+                    </span>
+                    <svg
+                      className={`h-4 w-4 transition-colors ${
+                        isActive
+                          ? "text-red-500"
+                          : "text-gray-400 group-hover:text-red-500"
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </section>
 
-      <DetailSection />
-      <Banner />
-    </main>
+        {/* right side */}
+        <div>
+          <Image src={dept?.bannerImage} alt="Microscope" />
+
+          {/* Support Group */}
+          <div className="mt-9">
+            <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+              {dept?.supportGroup?.title}
+            </h3>
+
+            <p className="text-body-main text-base">
+              {dept?.supportGroup?.description}
+            </p>
+
+            <ul className="mt-8 space-y-4">
+              {dept?.supportGroup?.bulletPoints.map((point, index) => (
+                <li
+                  key={index}
+                  className="text-body-main flex items-start text-base"
+                >
+                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] justify-center rounded-full">
+                    <Image src={CheckMark} alt="Check Mark" />
+                  </div>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Facility Images */}
+
+          <div className="mt-[3.5rem]">
+            <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+              VIew Of Facility From Inside
+            </h3>
+
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-[1fr_0.7fr]">
+              <div className="relative row-span-2 overflow-hidden rounded-2xl">
+                <Image
+                  src={dept?.facilityImages?.[0]}
+                  alt="Emergency"
+                  className="inset-0 h-full w-full object-cover md:absolute"
+                />
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image src={dept?.facilityImages?.[1]} alt="Cardiology" />
+              </div>
+
+              <div className="relative overflow-hidden rounded-2xl">
+                <Image src={dept?.facilityImages?.[2]} alt="Neurology" />
+              </div>
+            </div>
+
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              {dept?.facilityImages?.map((image, index) => (
+                // <div key={index} className="rounded-2xl">
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`Facility Image ${index + 1}`}
+                  className="aspect-[459/280] rounded-2xl object-cover"
+                />
+                // </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Emergency Staffing */}
+          <div className="mt-[3.5rem]">
+            <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+              {dept?.emergencyStaffing?.title}
+            </h3>
+
+            <p className="text-body-main text-base">
+              {dept?.emergencyStaffing?.description}
+            </p>
+
+            <ul className="mt-8 space-y-4">
+              {dept?.emergencyStaffing?.bulletPoints.map((point, index) => (
+                <li
+                  key={index}
+                  className="text-body-main flex items-start text-base"
+                >
+                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] justify-center rounded-full">
+                    <Image src={CheckMark} alt="Check Mark" />
+                  </div>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* timiings */}
+          <div className="mt-[3.5rem]">
+            <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+              Availability Timings
+            </h3>
+            <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-2">
+              {dept?.timings?.map((t) => (
+                <li key={t.day} className="text-body-main text-base">
+                  <span className="text-body-primary font-bold">{t.day}</span>:{" "}
+                  {t.start} – {t.end}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Assigned Doctors */}
+          <div className="mt-[3.5rem]">
+            <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
+              Assigned Doctors
+            </h3>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(auto-fit,_minmax(13.4375rem,_1fr))]">
+              {dept?.doctors?.map((doctor: any) => (
+                <Link
+                  key={doctor.id}
+                  href={`/doctor-listing/${createSlug(doctor.name)}`}
+                  className={`group block`}
+                >
+                  <div className="flex flex-col">
+                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
+                      <Image
+                        src={doctor.image}
+                        alt={doctor.name}
+                        fill
+                        className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <h3 className="text-base font-semibold text-gray-900 md:text-lg">
+                        {doctor.name}
+                      </h3>
+                      <p className="mt-1 text-xs text-gray-600 md:text-sm">
+                        {doctor.description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
