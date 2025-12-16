@@ -22,6 +22,8 @@ interface ServiceCardProps {
   isMedical?: boolean;
 }
 
+// const PRIMARY_COLOR = "#D82519";
+
 const DepartmentCard: FC<ServiceCardProps> = ({
   department,
   className = "",
@@ -77,6 +79,25 @@ const DeptServices = () => {
             />
           ))}
         </div>
+        {/* <div className="text-center">
+          <button
+            className="inline-flex cursor-pointer items-center justify-between rounded-full px-4 py-3 text-xl leading-none font-semibold text-white capitalize shadow-lg transition-all duration-300 hover:scale-105"
+            style={{ backgroundColor: PRIMARY_COLOR }}
+            aria-label="View all physicians"
+          >
+            <span>View All</span>
+            <div className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-white">
+              <Image
+                src="/icons/right-arrow.svg"
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
+            </div>
+          </button>
+        </div> */}
       </section>
 
       {/* Support Services Section */}

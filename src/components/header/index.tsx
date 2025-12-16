@@ -31,7 +31,9 @@ const Header = () => {
 
   // Check if we're on a doctor detail page
   const isDetailPage =
-    pathname?.startsWith("/doctor-listing/") && pathname !== "/doctor-listing";
+    (pathname?.startsWith("/doctor-listing/") &&
+      pathname !== "/doctor-listing") ||
+    pathname?.startsWith("/departments/emergency-department");
 
   const handleScroll = useCallback(() => {
     setData((last) => ({
