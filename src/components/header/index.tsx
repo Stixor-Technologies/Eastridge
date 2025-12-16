@@ -33,7 +33,7 @@ const Header = () => {
   const isDetailPage =
     (pathname?.startsWith("/doctor-listing/") &&
       pathname !== "/doctor-listing") ||
-    pathname?.startsWith("/departments/emergency-department");
+    (pathname?.startsWith("/departments/") && pathname !== "/departments");
 
   const handleScroll = useCallback(() => {
     setData((last) => ({

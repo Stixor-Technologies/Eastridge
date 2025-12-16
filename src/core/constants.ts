@@ -594,31 +594,6 @@ const LEADERSHIP_TEAM = [
   },
 ];
 
-// Utility Functions for unified department access
-export const getAllServices = () => {
-  return [...MEDICAL_SERVICES, ...SUPPORT_SERVICES, ...PATIENT_SERVICES];
-};
-
-export const getServiceBySlug = (slug: string) => {
-  // Search through all services at once using getAllServices
-  return getAllServices().find((service) => service?.slug === slug);
-};
-
-export const getServicesByCategory = (
-  category: "medical" | "support" | "patient",
-) => {
-  switch (category) {
-    case "medical":
-      return MEDICAL_SERVICES; // Medical services are in SERVICES_OFFERED
-    case "support":
-      return SUPPORT_SERVICES;
-    case "patient":
-      return PATIENT_SERVICES;
-    default:
-      return [];
-  }
-};
-
 // export const getDepartmentItems = (slug: string) => {
 //   const service = getServiceBySlug(slug);
 //   return service;

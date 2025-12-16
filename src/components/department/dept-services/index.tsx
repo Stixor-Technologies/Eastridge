@@ -13,16 +13,14 @@ import IconBadge from "../../icon-badge";
 //   SUPPORT_SERVICES,
 //   PATIENT_SERVICES,
 // } from "@/src/core/constants";
-import { departments } from "@/src/core/department";
+import { departments, Department } from "@/src/core/department";
 
 interface ServiceCardProps {
   // service: ServiceDetail;
-  department: any;
+  department: Department;
   className?: string;
   isMedical?: boolean;
 }
-
-// const PRIMARY_COLOR = "#D82519";
 
 const DepartmentCard: FC<ServiceCardProps> = ({
   department,
@@ -70,8 +68,6 @@ const DeptServices = () => {
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(auto-fit,_minmax(21.875rem,_1fr))]">
           {departments?.map((department) => (
-            // <DepartmentCard key={department.id} department={department} isMedical />
-
             <DepartmentCard
               key={department.id}
               department={department}
@@ -79,80 +75,7 @@ const DeptServices = () => {
             />
           ))}
         </div>
-        {/* <div className="text-center">
-          <button
-            className="inline-flex cursor-pointer items-center justify-between rounded-full px-4 py-3 text-xl leading-none font-semibold text-white capitalize shadow-lg transition-all duration-300 hover:scale-105"
-            style={{ backgroundColor: PRIMARY_COLOR }}
-            aria-label="View all physicians"
-          >
-            <span>View All</span>
-            <div className="ml-4 flex h-10 w-10 items-center justify-center rounded-full bg-white">
-              <Image
-                src="/icons/right-arrow.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            </div>
-          </button>
-        </div> */}
       </section>
-
-      {/* Support Services Section */}
-      {/* <section className="container my-20 lg:my-40">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:gap-6 lg:mb-16">
-          <h2 className="text-body-primary md:font-4xl text-left text-4xl font-normal lg:text-5xl">
-            Support Services
-          </h2>
-          <p className="text-body-main text-xl md:max-w-[35.75rem] md:text-justify">
-            Essential non-clinical services including pharmacy, nursing,
-            rehabilitation, housekeeping, and administration — all ensuring
-            smooth, patient-focused hospital operations.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(17.1875rem,_1fr))] gap-8">
-          {SUPPORT_SERVICES?.map((service) => (
-            <DepartmentCard key={service.slug} service={service} />
-          ))}
-        </div>
-      </section> */}
-
-      {/* Patient Services Section */}
-      {/* <section className="container">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:gap-6 lg:mb-16">
-          <h2 className="text-body-primary md:font-4xl text-left text-4xl font-normal lg:text-5xl">
-            Patient Services
-          </h2>
-          <p className="text-body-main text-xl md:max-w-[35.75rem] md:text-justify">
-            Your path to better health begins in just a few easy steps.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(17.1875rem,_1fr))] gap-8 lg:grid-cols-6">
-          {PATIENT_SERVICES?.map((service, index) => (
-            <DepartmentCard
-              key={service.slug}
-              service={service}
-              className={
-                index === 0
-                  ? "lg:col-span-2"
-                  : index === 1
-                    ? "lg:col-span-2"
-                    : index === 2
-                      ? "lg:col-span-2"
-                      : index === 3
-                        ? "lg:col-span-2 lg:col-start-2"
-                        : index === 4
-                          ? "lg:col-span-2 lg:col-start-4"
-                          : ""
-              }
-            />
-          ))}
-        </div>
-      </section> */}
     </div>
   );
 };

@@ -26,7 +26,6 @@ const DepartmentContactUs = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: Handle form submission logic here later
-    console.log("Form submitted:", formData);
   };
 
   return (

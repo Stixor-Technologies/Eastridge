@@ -189,20 +189,20 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
 
         {/* right side */}
         <div>
-          <Image src={dept?.bannerImage} alt="Microscope" />
+          <Image src={dept.bannerImage} alt="Microscope" />
 
           {/* Support Group */}
           <div className="mt-9">
             <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
-              {dept?.supportGroup?.title}
+              {dept.supportGroup.title}
             </h3>
 
             <p className="text-body-main text-base">
-              {dept?.supportGroup?.description}
+              {dept.supportGroup.description}
             </p>
 
             <ul className="mt-8 space-y-4">
-              {dept?.supportGroup?.bulletPoints.map((point, index) => (
+              {dept.supportGroup.bulletPoints.map((point, index) => (
                 <li
                   key={index}
                   className="text-body-main flex items-start text-base"
