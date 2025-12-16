@@ -82,7 +82,7 @@ const Header = () => {
           />
         </Link>
 
-        <ul className="hidden gap-8 md:flex">
+        <ul className="hidden gap-8 lg:flex">
           {MENU?.map((item) => (
             <li key={item?.id}>
               <button

@@ -145,7 +145,7 @@ const Sidebar = () => {
     <>
       {/* hamburger menu button */}
       <button
-        className="group hide-custom-cursor no-custom-cursor relative z-50 flex size-9 transform items-center justify-center drop-shadow-lg md:hidden"
+        className="group hide-custom-cursor no-custom-cursor relative z-50 flex size-9 transform items-center justify-center drop-shadow-lg lg:hidden"
         type="button"
         onClick={toggleMenu}
       >

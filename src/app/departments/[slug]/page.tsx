@@ -24,7 +24,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       <div className="container flex flex-col items-start gap-12 lg:flex-row">
         {/* Other Services Sidebar */}
 
-        <div className="sticky top-24 min-w-[23.125rem] rounded-2xl border border-gray-200 bg-white p-6">
+        <div className="top-24 w-[90vw] rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:min-w-[23.125rem]">
           <div className="mb-6 flex items-center">
             <div className="mr-3 flex h-6 w-6 items-center justify-center">
               <svg
