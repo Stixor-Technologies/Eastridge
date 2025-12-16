@@ -294,7 +294,7 @@ const MEDICAL_SERVICES = [
       },
       {
         icon: Gastentrology,
-        title: "Gastronenterology",
+        title: "Gastroenterology",
         slug: "gastronenterology",
       },
       {
@@ -324,7 +324,7 @@ const MEDICAL_SERVICES = [
       },
       {
         icon: Physciatrist,
-        title: "Pyschiatry",
+        title: "Psychiatry",
         slug: "psychiatry",
       },
       {
