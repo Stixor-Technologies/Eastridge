@@ -15,8 +15,8 @@
     "@gsap/react": "^2.1.2",
     "gsap": "^3.13.0",
     "next": "15.3.8",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
     "react-intersection-observer": "^9.16.0",
     "swiper": "^11.2.10"
   },
