@@ -64,10 +64,12 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
+
+    const currentModal = modalRef.current;
     return () => {
       document.body.classList.remove("overflow-hidden");
-      if (modalRef.current) {
-        gsap.to(modalRef.current, {
+      if (currentModal) {
+        gsap.to(currentModal, {
           y: 60,
           opacity: 0,
           duration: 0.25,

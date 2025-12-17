@@ -32,16 +32,7 @@ export default defineConfig([
       "react/no-unused-prop-types": "off",
       "react/require-default-props": "off",
 
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          ts: "never",
-          tsx: "never",
-          js: "never",
-          jsx: "never",
-        },
-      ],
+      "import/extensions": "off",
 
       "jsx-a11y/anchor-is-valid": [
         "error",
@@ -85,6 +76,8 @@ export default defineConfig([
       "react/jsx-props-no-spreading": "off",
       "react/no-unused-prop-types": "off",
       "react/require-default-props": "off",
+
+      "import/extensions": "off",
     },
   },
 ]);

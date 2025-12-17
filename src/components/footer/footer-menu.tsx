@@ -11,7 +11,13 @@ const FooterMenu = () => {
       {MENU?.map((menuItem) => (
         <button
           key={menuItem?.id}
-          onClick={() => scrollToSection(menuItem?.id)}
+          onClick={() => {
+            if (menuItem?.scrollOnPage) {
+              scrollToSection(menuItem?.id);
+            } else {
+              window.location.href = menuItem?.id;
+            }
+          }}
           className="text-body-primary cursor-pointer text-xl font-medium"
         >
           {menuItem?.label}

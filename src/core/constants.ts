@@ -64,6 +64,10 @@ import Instagram from "@/public/icons/instagram.svg";
 import Facebook from "@/public/icons/facebook.svg";
 import LinkedIn from "@/public/icons/linkedin.svg";
 import YouTube from "@/public/icons/youtube.svg";
+import InstagramHover from "@/public/icons/instagram-hover.svg";
+import FacebookHover from "@/public/icons/facebook-hover.svg";
+import LinkedInHover from "@/public/icons/linkedin-hover.svg";
+import YouTubeHover from "@/public/icons/youtube-hover.svg";
 
 import MarkerBlack from "@/public/icons/marker-black.svg";
 import CallBlack from "@/public/icons/call-black.svg";
@@ -78,16 +82,17 @@ import SMStaff from "@/public/images/team/sm-staff.jpg";
 const MAP_KEY = process.env["MAP_API"];
 
 const MENU = [
-  { id: "#home", label: "Home", scrollOnPage: true },
-  { id: "#about", label: "About", scrollOnPage: true },
-  { id: "#services", label: "Services", scrollOnPage: true },
-  { id: "#team", label: "Team", scrollOnPage: true },
+  { id: "/#home", label: "Home", scrollOnPage: false },
+  { id: "/#about", label: "About", scrollOnPage: false },
+  { id: "/#services", label: "Services", scrollOnPage: false },
+  { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
+  { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",
     label: "Careers",
     scrollOnPage: false,
   },
-  { id: "#contact-us", label: "Contact Us", scrollOnPage: true },
+  { id: "/#contact-us", label: "Contact Us", scrollOnPage: false },
 ];
 
 const HERO_SLIDER_IMAGES = [
@@ -373,21 +378,25 @@ const MANAGEMENT_TEAM = [
 const SOCIAL_LINKS = [
   {
     icon: Instagram,
+    hoverIcon: InstagramHover,
     id: "instagram",
     href: "https://www.instagram.com/eastridge.primecare/",
   },
   {
     icon: Facebook,
+    hoverIcon: FacebookHover,
     id: "facebook",
     href: "https://www.facebook.com/profile.php?id=61578321713871",
   },
   {
     icon: LinkedIn,
+    hoverIcon: LinkedInHover,
     id: "linkedin",
     href: "https://www.linkedin.com/company/eastridgeprimecare/",
   },
   {
     icon: YouTube,
+    hoverIcon: YouTubeHover,
     id: "youtube",
     href: "https://www.youtube.com/@Eastridge.Primecare",
   },

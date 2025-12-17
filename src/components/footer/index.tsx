@@ -45,13 +45,21 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   key={item?.id}
-                  className="bg-card-bg hover:bg-accent/70 flex size-12 items-center justify-center rounded-full transition-colors duration-300"
+                  className="bg-card-bg group flex size-12 items-center justify-center rounded-full"
                 >
                   <Image
                     src={item?.icon}
-                    width={24}
-                    height={24}
+                    width={48}
+                    height={48}
                     alt={item?.id}
+                    className="group-hover:hidden"
+                  />
+                  <Image
+                    src={item?.hoverIcon}
+                    width={48}
+                    height={48}
+                    alt={item?.id}
+                    className="hidden group-hover:block"
                   />
                 </Link>
               ))}
