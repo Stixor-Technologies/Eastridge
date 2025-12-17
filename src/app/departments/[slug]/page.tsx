@@ -85,7 +85,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
 
         {/* right side */}
         <div>
-          <Image src={dept.bannerImage} alt="Microscope" />
+          <Image src={dept.bannerImage} alt={`${dept.name} banner`} />
 
           {/* Support Group */}
           <div className="mt-9">
