@@ -24,7 +24,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       <div className="container flex flex-col items-start gap-12 lg:flex-row">
         {/* Other Services Sidebar */}
 
-        <div className="top-24 w-[90vw] rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:min-w-[23.125rem]">
+        <div className="top-24 w-[90vw] rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:w-[45.125rem]">
           <div className="mb-6 flex items-center">
             <div className="mr-3 flex h-6 w-6 items-center justify-center">
               <svg
@@ -103,7 +103,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
                   key={index}
                   className="text-body-main flex items-start text-base"
                 >
-                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] justify-center rounded-full">
+                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
                     <Image src={CheckMark} alt="Check Mark" />
                   </div>
                   {point}
@@ -165,9 +165,9 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
               {dept?.emergencyStaffing?.bulletPoints.map((point, index) => (
                 <li
                   key={index}
-                  className="text-body-main flex items-start text-base"
+                  className="text-body-main flex shrink-0 items-start text-base"
                 >
-                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] justify-center rounded-full">
+                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
                     <Image src={CheckMark} alt="Check Mark" />
                   </div>
                   {point}
