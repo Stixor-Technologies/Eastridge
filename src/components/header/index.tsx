@@ -31,7 +31,9 @@ const Header = () => {
 
   // Check if we're on a doctor detail page
   const isDetailPage =
-    pathname?.startsWith("/doctor-listing/") && pathname !== "/doctor-listing";
+    (pathname?.startsWith("/doctor-listing/") &&
+      pathname !== "/doctor-listing") ||
+    (pathname?.startsWith("/departments/") && pathname !== "/departments");
 
   const handleScroll = useCallback(() => {
     setData((last) => ({
@@ -80,7 +82,7 @@ const Header = () => {
           />
         </Link>
 
-        <ul className="hidden gap-8 md:flex">
+        <ul className="hidden gap-8 lg:flex">
           {MENU?.map((item) => (
             <li key={item?.id}>
               <button
