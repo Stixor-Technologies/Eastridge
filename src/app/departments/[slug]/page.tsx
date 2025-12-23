@@ -176,7 +176,6 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             </ul>
           </div>
 
-          {/* timiings */}
           <div className="mt-[3.5rem]">
             <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
               Availability Timings

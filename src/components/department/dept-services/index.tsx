@@ -2,17 +2,10 @@
 
 // Card component for displaying a service
 import { FC } from "react";
-
 import Arrow from "@/public/icons/right-arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
-
 import IconBadge from "../../icon-badge";
-// import {
-//   MEDICAL_SERVICES,
-//   SUPPORT_SERVICES,
-//   PATIENT_SERVICES,
-// } from "@/src/core/constants";
 import { departments, Department } from "@/src/core/department";
 
 interface ServiceCardProps {
