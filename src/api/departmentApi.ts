@@ -14,9 +14,6 @@ const getImageUrl = (img: StrapiImage | undefined): string => {
 
 // Helper function to filter doctors by department
 const filterDoctorsByDepartment = (departmentName: string) => {
-  console.log("🔍 Filtering for department:", departmentName);
-  console.log("📋 Total hardcoded doctors:", hardcodedDoctors.length);
-
   const normalizeName = (name: string) =>
     name
       .toLowerCase()
@@ -24,26 +21,17 @@ const filterDoctorsByDepartment = (departmentName: string) => {
       .replace(/[\/\s-]+/g, "");
 
   const normalizedDeptName = normalizeName(departmentName);
-  console.log("🎯 Normalized dept name:", normalizedDeptName);
 
   const filteredDoctors = hardcodedDoctors
     .filter((doctor) => {
       const doctorDepartments = doctor.department
         .split(",")
         .map((d) => d.trim());
-      console.log(
-        `  👨‍⚕️ Doctor: ${doctor.name}, Departments:`,
-        doctorDepartments,
-      );
 
       return doctorDepartments.some((dept) => {
         const normalizedDocDept = normalizeName(dept);
-        console.log(
-          `    🔄 Comparing: "${normalizedDocDept}" with "${normalizedDeptName}"`,
-        );
 
         if (normalizedDocDept === normalizedDeptName) {
-          console.log(`    ✅ Exact match found!`);
           return true;
         }
 
@@ -51,7 +39,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
           normalizedDocDept.includes(normalizedDeptName) ||
           normalizedDeptName.includes(normalizedDocDept)
         ) {
-          console.log(`    ✅ Partial match found!`);
           return true;
         }
 
@@ -69,7 +56,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
         for (const [key, variations] of Object.entries(specialCases)) {
           if (normalizedDeptName.includes(key)) {
             if (variations.some((v) => normalizedDocDept.includes(v))) {
-              console.log(`    ✅ Special case match found!`);
               return true;
             }
           }
@@ -85,8 +71,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
       description: doctor.description,
     }));
 
-  console.log("✅ Filtered doctors count:", filteredDoctors.length);
-  console.log("✅ Filtered doctors:", filteredDoctors);
   return filteredDoctors;
 };
 
@@ -157,7 +141,6 @@ const mapDepartment = (item: StrapiDepartment) => {
 export const getDepartments = async () => {
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
-    console.error("Departments API URL is missing");
     return [];
   }
   try {
@@ -165,18 +148,15 @@ export const getDepartments = async () => {
       cache: "no-store",
     });
     if (!res.ok) {
-      console.error(`Failed to fetch departments: ${res.status}`);
       return [];
     }
     const json = await res.json();
     if (!json.data || !Array.isArray(json.data)) {
-      console.error("Invalid departments API response", json);
       return [];
     }
     return json.data.map(mapDepartment);
   } catch (error) {
-    console.error("Error fetching departments:", error);
-    return [];
+    return { error: (error as Error).message || "Unknown error" };
   }
 };
 
@@ -185,7 +165,6 @@ export const getDepartmentBySlug = async (slug: string) => {
     const departments = await getDepartments();
     return departments.find((dept: any) => dept.slug === slug);
   } catch (error) {
-    console.error("Error fetching department by slug:", error);
-    return undefined;
+    return { error: (error as Error).message || "Unknown error" };
   }
 };

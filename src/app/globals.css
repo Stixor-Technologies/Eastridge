@@ -82,7 +82,6 @@ body {
 }
 
 @media (min-width: 365px) and (max-width: 640px) {
-  /* yahan apna CSS likho */
   .before-sm {
     width: 88vw;
   }
