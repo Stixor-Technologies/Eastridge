@@ -57,6 +57,13 @@ import Marker from "@/public/icons/marker.svg";
 //import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
 
+// Import icons from department.ts for unified structure
+import Safety from "@/public/icons/services/safety.svg";
+import Signal from "@/public/icons/services/signal.svg";
+import Zoom from "@/public/icons/services/zoom-in.svg";
+import Book from "@/public/icons/services/book.svg";
+import Heart from "@/public/icons/services/heart.svg";
+
 import MDFF from "@/public/images/team/md.jpeg";
 import MDMedical from "@/public/images/team/mdmedical.jpg";
 
@@ -86,6 +93,7 @@ const MENU = [
   { id: "/#about", label: "About", scrollOnPage: false },
   { id: "/#services", label: "Services", scrollOnPage: false },
   { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
+  { id: "/departments", label: "Departments", scrollOnPage: false },
   { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",
@@ -186,62 +194,81 @@ const VALUE_ADDITIONS = [
   },
 ];
 
-const SERVICES_OFFERED = [
+// Enhanced unified structure for all departments and services
+const MEDICAL_SERVICES = [
   {
     id: "surgery-allied",
     label: "Surgery & Allied",
+    slug: "surgery-allied",
+    title: "Surgery & Allied",
+    description:
+      "Comprehensive Surgical Care Across Multiple Specialties, Delivered By Experienced Surgeons Using Advanced Techniques And Equipment.",
+    icon: Zoom,
     items: [
       {
         icon: GeneralSurgeryIcon,
         title: "General Surgery",
+        slug: "general-surgery",
       },
       {
         icon: NeuroSurgeryIcon,
         title: "Neuro Surgery",
+        slug: "neuro-surgery",
       },
       {
         icon: SpinalSurgeryIcon,
         title: "Spinal Surgery",
+        slug: "spinal-surgery",
       },
       {
         icon: Orhtopedics,
         title: "Orthopedics",
+        slug: "orthopedics",
       },
       {
         icon: Cardiothorcic,
         title: "Cardiothoracic Surgery",
+        slug: "cardiothoracic-surgery",
       },
       {
         icon: Pediatric,
         title: "Pediatric Surgery",
+        slug: "pediatric-surgery",
       },
       {
         icon: Pediatric,
         title: "Plastic Surgery",
+        slug: "plastic-surgery",
       },
       {
         icon: Vascular,
         title: "Vascular Surgery",
+        slug: "vascular-surgery",
       },
       {
         icon: Gynae,
         title: "Gynae & Obs",
+        slug: "gynae-obs",
       },
       {
         icon: Ent,
         title: "ENT",
+        slug: "ent",
       },
       {
         icon: Anesthesia,
         title: "Anesthesia",
+        slug: "anesthesia",
       },
       {
         icon: Ophalmology,
         title: "Ophthalmology",
+        slug: "ophthalmology",
       },
       {
         icon: Dental,
         title: "Dental Surgery",
+        slug: "dental-surgery",
       },
     ],
   },
@@ -249,79 +276,183 @@ const SERVICES_OFFERED = [
   {
     id: "medicine-allied",
     label: "Medicine & Allied",
+    slug: "medicine-allied",
+    title: "Medicine & Allied",
+    description:
+      "Expert Medical Care For Chronic And Acute Conditions, Supported By A Team Of Skilled Physicians Across Various Internal Medicine Fields.",
+    icon: Heart,
     items: [
       {
         icon: Medicine,
         title: "Internal Medicine",
+        slug: "internal-medicine",
       },
       {
         icon: Cardiology,
         title: "Cardiology & EP",
+        slug: "cardiology-ep",
       },
       {
         icon: Gastentrology,
-        title: "Gastronenterology",
+        title: "Gastroenterology",
+        slug: "gastronenterology",
       },
       {
         icon: Pulomonology,
         title: "Pulmonology",
+        slug: "pulmonology",
       },
       {
         icon: Neurology,
         title: "Neurology",
+        slug: "neurology",
       },
       {
         icon: Nephrology,
         title: "Nephrology",
+        slug: "nephrology",
       },
       {
         icon: Rheumatologt,
         title: "Rheumatology",
+        slug: "rheumatology",
       },
       {
         icon: Endocronology,
         title: "Endocrinology",
+        slug: "endocrinology",
       },
       {
         icon: Physciatrist,
-        title: "Pyschiatry",
+        title: "Psychiatry",
+        slug: "psychiatry",
       },
       {
         icon: Dermatology,
         title: "Dermatology / Cosmotology",
+        slug: "dermatology-cosmotology",
       },
       {
         icon: Pediatrics,
         title: "Pediatrics",
+        slug: "pediatrics",
       },
       {
         icon: Neonotology,
         title: "Neonatology",
+        slug: "neonatology",
       },
       {
         icon: Phstiotherapy,
         title: "Physiotherapy",
+        slug: "physiotherapy",
       },
     ],
   },
 
   {
     id: "diagnostics-allied",
-    label: "Diagnostics",
+    label: "Diagnostics Allied",
+    slug: "diagnostics-allied",
+    title: "Diagnostics Allied",
+    description:
+      "Accurate And Timely Diagnostics Including Imaging, Lab Tests, And Screenings To Support Effective Diagnosis And Treatment Planning.",
+    icon: Book,
     items: [
       {
         icon: Pathology,
         title: "Pathology Services",
+        slug: "pathology-services",
       },
       {
         icon: BloodBank,
         title: "Blood Bank",
+        slug: "blood-bank",
       },
       {
         icon: RadioDiagnosis,
         title: "Radio Diagnostics",
+        slug: "radio-diagnostics",
       },
     ],
+  },
+];
+
+// Support Services (Non-Medical)
+const SUPPORT_SERVICES = [
+  {
+    slug: "emergency-services-trauma",
+    title: "Emergency Services And Trauma Capabilities",
+    description: "24/7 critical care for emergencies and trauma cases.",
+    icon: Safety,
+    items: [],
+  },
+  {
+    slug: "diagnostic-imaging",
+    title: "Diagnostic Imaging Services",
+    subtitle: "(MRI, CT, X-Ray, Etc.)",
+    description: "Advanced MRI, CT, X-ray, and more for accurate diagnostics.",
+    icon: Modular,
+    items: [],
+  },
+  {
+    slug: "laboratory-services",
+    title: "Laboratory Services And Testing Capabilities",
+    description: "Fast, reliable testing for precise diagnosis.",
+    icon: Signal,
+    items: [],
+  },
+  {
+    slug: "pharmacy-services",
+    title: "Pharmacy Services",
+    description: "On-site pharmacy with timely medication support.",
+    icon: Mosque,
+    items: [],
+  },
+];
+
+// Patient Services
+const PATIENT_SERVICES = [
+  {
+    slug: "admission-discharge",
+    title: "Admission And Discharge Processes",
+    description:
+      "Streamlined processes ensuring smooth patient entry and timely discharge.",
+    icon: Safety,
+    items: [],
+  },
+  {
+    slug: "visitor-policies",
+    title: "Visitor Policies And Guidelines",
+    description:
+      "Visitors allowed during set hours. Maintain hygiene and respect privacy.",
+    icon: Modular,
+    items: [],
+  },
+  {
+    slug: "patient-rights-responsibilities",
+    title: "Patient Rights & Responsibilities",
+    description:
+      "Empowering patients with clear rights and shared responsibilities for their care.",
+    icon: Signal,
+    items: [],
+  },
+  {
+    slug: "language-interpretation",
+    title: "Language interpretation services",
+    subtitle: "(If applicable)",
+    description:
+      "Interpretation support for effective communication (if needed).",
+    icon: Modular,
+    items: [],
+  },
+  {
+    slug: "special-populations",
+    title: "Special patient populations served (pediatric, geriatric, etc.)",
+    description:
+      "Care tailored for pediatric, geriatric, and other specific patient groups.",
+    icon: Signal,
+    items: [],
   },
 ];
 
@@ -463,10 +594,20 @@ const LEADERSHIP_TEAM = [
   },
 ];
 
+// export const getDepartmentItems = (slug: string) => {
+//   const service = getServiceBySlug(slug);
+//   return service;
+// };
+
+// Backward compatibility - alias for medical services
+// export { SERVICES_OFFERED as MEDICAL_SERVICES };
+
 export {
   MENU,
   HERO_SLIDER_IMAGES,
-  SERVICES_OFFERED,
+  MEDICAL_SERVICES,
+  SUPPORT_SERVICES,
+  PATIENT_SERVICES,
   VALUE_ADDITIONS,
   MAP_KEY,
   CONTACT_CARDS,

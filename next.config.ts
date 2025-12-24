@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
-
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
-    domains: ["localhost"],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "ycck088k4g8w44c0wc48ocos.91.99.180.200.sslip.io",
+      },
+    ],
   },
-  // output: "export",
-  // images: {
-  //   unoptimized: true,
-  // },
 };
 
 export default nextConfig;

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import { CONTACT_CARDS } from "@/src/core/constants";
 import IconBadge from "../../icon-badge";

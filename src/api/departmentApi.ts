@@ -17,7 +17,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
   console.log("🔍 Filtering for department:", departmentName);
   console.log("📋 Total hardcoded doctors:", hardcodedDoctors.length);
 
-  // Normalize department name for comparison
   const normalizeName = (name: string) =>
     name
       .toLowerCase()
@@ -29,7 +28,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
 
   const filteredDoctors = hardcodedDoctors
     .filter((doctor) => {
-      // Doctor can have multiple departments separated by comma
       const doctorDepartments = doctor.department
         .split(",")
         .map((d) => d.trim());
@@ -38,20 +36,17 @@ const filterDoctorsByDepartment = (departmentName: string) => {
         doctorDepartments,
       );
 
-      // Check if any of doctor's departments match
       return doctorDepartments.some((dept) => {
         const normalizedDocDept = normalizeName(dept);
         console.log(
           `    🔄 Comparing: "${normalizedDocDept}" with "${normalizedDeptName}"`,
         );
 
-        // Exact match
         if (normalizedDocDept === normalizedDeptName) {
           console.log(`    ✅ Exact match found!`);
           return true;
         }
 
-        // Partial match (e.g., "Cardiology" matches "Cardiac")
         if (
           normalizedDocDept.includes(normalizedDeptName) ||
           normalizedDeptName.includes(normalizedDocDept)
@@ -60,7 +55,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
           return true;
         }
 
-        // Special cases for common variations
         const specialCases: { [key: string]: string[] } = {
           obstetrics: ["obsgyn", "gynecology", "gynaecology", "obs", "gyn"],
           gynecology: ["obsgyn", "obstetrics", "gynaecology", "obs", "gyn"],
@@ -99,7 +93,34 @@ const filterDoctorsByDepartment = (departmentName: string) => {
 // Map Strapi API department to UI department structure
 type StrapiDepartment = any;
 const mapDepartment = (item: StrapiDepartment) => {
-  // Get filtered doctors for this department
+  // Safe access for supportGroup array
+  const supportGroupArray = Array.isArray(item.supportGroup)
+    ? item.supportGroup
+    : [];
+
+  const supportTitle = item.departmentTitlte || "";
+  const supportDescription = supportGroupArray[0]?.children?.[0]?.text || "";
+
+  const bulletPoints =
+    supportGroupArray[1]?.children?.map(
+      (c: any) => c.children?.[0]?.text || "",
+    ) || [];
+
+  // Safe facilityImages
+  const facilityImages = Array.isArray(item.facilityImages)
+    ? item.facilityImages.map(getImageUrl)
+    : [];
+
+  // Safe timings
+  const timings = Array.isArray(item.timing)
+    ? item.timing.map((t: any) => ({
+        day: t.day || "",
+        start: t.startTime || "",
+        end: t.endTime || "",
+      }))
+    : [];
+
+  // Filtered doctors
   const filteredDoctors = filterDoctorsByDepartment(item.departmentName || "");
 
   return {
@@ -111,22 +132,11 @@ const mapDepartment = (item: StrapiDepartment) => {
     hoverIcon: item.hoverIcon ? getImageUrl(item.hoverIcon) : undefined,
     bannerImage: getImageUrl(item.bannerImage),
     supportGroup: {
-      title: item.departmentTitlte || "",
-      description:
-        Array.isArray(item.supportGroup) &&
-        item.supportGroup[0]?.children?.[0]?.text
-          ? item.supportGroup[0].children[0].text
-          : "",
-      bulletPoints:
-        Array.isArray(item.supportGroup) && item.supportGroup[1]?.children
-          ? item.supportGroup[1].children.map(
-              (c: any) => c.children[0]?.text || "",
-            )
-          : [],
+      title: supportTitle,
+      description: supportDescription,
+      bulletPoints,
     },
-    facilityImages: Array.isArray(item.facilityImages)
-      ? item.facilityImages.map(getImageUrl)
-      : [],
+    facilityImages,
     appointment: {
       title: "",
       description: "",
@@ -137,14 +147,8 @@ const mapDepartment = (item: StrapiDepartment) => {
       description: "",
       bulletPoints: [],
     },
-    timings: Array.isArray(item.timing)
-      ? item.timing.map((t: any) => ({
-          day: t.day || "",
-          start: t.startTime || "",
-          end: t.endTime || "",
-        }))
-      : [],
-    doctors: filteredDoctors, // ✅ Filtered doctors added here
+    timings,
+    doctors: filteredDoctors,
     staffedTitle: item.staffedTitle || "",
     staffedGroup: item.staffedGroup || [],
   };

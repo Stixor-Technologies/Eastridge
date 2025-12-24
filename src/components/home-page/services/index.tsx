@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { SERVICES_OFFERED } from "@/src/core/constants";
+import { MEDICAL_SERVICES } from "@/src/core/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Arrow from "@/public/icons/arrow.svg";
@@ -21,10 +21,10 @@ const ServicesSection = () => {
 
   const { ref } = useSectionInView("#services");
   const [selectedService, setSelectedService] = useState(
-    SERVICES_OFFERED[0]?.id,
+    MEDICAL_SERVICES[0]?.id,
   );
 
-  const currentService = SERVICES_OFFERED.find(
+  const currentService = MEDICAL_SERVICES.find(
     (service) => service?.id === selectedService,
   );
 
@@ -54,7 +54,7 @@ const ServicesSection = () => {
         <h2>Services Offered</h2>
 
         <div className="mt-[1.625rem] flex items-end justify-center gap-1 md:mt-9 md:gap-3">
-          {SERVICES_OFFERED.map((servicesOffered) => (
+          {MEDICAL_SERVICES?.map((servicesOffered) => (
             <button
               key={servicesOffered?.id}
               className={`cursor-pointer rounded-md px-1.5 leading-tight transition-all duration-300 md:rounded-xl md:px-6 ${

@@ -1,13 +1,11 @@
 import DeptServices from "@/src/components/department/dept-services";
-import HeroSection from "@/src/components/home-page/hero-section";
-// import Banner from "@/src/components/shared/banner";
+import HeroSection from "../../components/reusable-sections/HeroSection";
 
 const Department = () => {
   return (
     <div>
-      <HeroSection></HeroSection>
+      <HeroSection>Departments</HeroSection>
       <DeptServices />
-      {/* <Banner /> */}
     </div>
   );
 };

@@ -5,11 +5,11 @@ import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
 import Image from "next/image";
 import { doctors } from "@/src/core/doctor";
-import RightArrow from "@/public/icons/right-arrow.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DoctorSearchBar from "../searchbar-section";
+import ShowMoreButton from "@/src/components/ui/ShowMoreBtn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,15 +24,14 @@ const DoctorListing = () => {
   // --- Filtered doctors state ---
   const [filteredDoctors, setFilteredDoctors] = useState(doctors);
 
-  // Update columns per row based on screen size
   useEffect(() => {
     const updateColumns = () => {
       if (window.innerWidth < 768) {
-        setColumnsPerRow(2); // Mobile: 2 columns
+        setColumnsPerRow(2);
       } else if (window.innerWidth < 1024) {
-        setColumnsPerRow(3); // Tablet: 3 columns
+        setColumnsPerRow(3);
       } else {
-        setColumnsPerRow(4); // Desktop: 4 columns
+        setColumnsPerRow(4);
       }
     };
 
@@ -41,8 +40,8 @@ const DoctorListing = () => {
     return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
-  // Calculate visible doctors based on screen size
   const desktopLimit = 12;
+
   const visibleDoctors = showAll
     ? filteredDoctors
     : filteredDoctors.slice(0, desktopLimit);
@@ -52,16 +51,21 @@ const DoctorListing = () => {
       const buttonTop =
         buttonRef.current.getBoundingClientRect().top + window.scrollY;
       const offset = 100;
+
       setShowAll(false);
+
       requestAnimationFrame(() => {
-        window.scrollTo({ top: buttonTop - offset, behavior: "smooth" });
+        window.scrollTo({
+          top: buttonTop - offset,
+          behavior: "smooth",
+        });
       });
     } else {
       setShowAll(true);
     }
   };
 
-  // Group doctors into rows based on current screen size
+  // Group doctors into rows based on screen size
   const groupDoctorsIntoRows = () => {
     const rows = [];
     for (let i = 0; i < visibleDoctors.length; i += columnsPerRow) {
@@ -69,15 +73,15 @@ const DoctorListing = () => {
     }
     return rows;
   };
+
   const doctorRows = groupDoctorsIntoRows();
 
-  // Animation - Properly handle each row independently
+  // Animations
   useGSAP(
     () => {
       const rows = container.current?.querySelectorAll(".doctor-row");
       if (!rows) return;
 
-      // Clear all previous ScrollTriggers to avoid conflicts
       ScrollTrigger.getAll().forEach((trigger) => {
         if (
           trigger.vars.trigger &&
@@ -88,13 +92,8 @@ const DoctorListing = () => {
       });
 
       rows.forEach((row) => {
-        // Remove any previous animation data
-        row.removeAttribute("data-animated");
-
-        // Reset the row's style before animating
         gsap.set(row, { opacity: 1, y: 0 });
 
-        // Create fresh animation for each row
         gsap.from(row, {
           opacity: 0,
           y: "4rem",
@@ -103,8 +102,7 @@ const DoctorListing = () => {
           scrollTrigger: {
             trigger: row,
             start: "top 80%",
-            toggleActions: "play none none none",
-            once: true, // Only animate once per row
+            once: true,
           },
         });
       });
@@ -116,21 +114,22 @@ const DoctorListing = () => {
     },
   );
 
-  // --- Filtering logic: pass a memoized callback to DoctorSearchBar to update filteredDoctors ---
   const handleFilter = useCallback((doctorsList: typeof doctors) => {
     setFilteredDoctors(doctorsList);
-    setShowAll(false); // Reset to collapsed view on filter
+    setShowAll(false);
   }, []);
 
   return (
     <section className="px-4 py-16">
       <div ref={container} className="md:container md:mx-auto md:max-w-7xl">
         <DoctorSearchBar onFilter={handleFilter} />
+
         {doctorRows.length === 0 && (
           <div className="py-12 text-center text-lg text-gray-500">
             No doctors found.
           </div>
         )}
+
         {doctorRows.map((row, rowIndex) => (
           <div
             key={`row-${rowIndex}-${columnsPerRow}`}
@@ -139,22 +138,26 @@ const DoctorListing = () => {
             {row.map((doctor) => {
               const globalIndex = visibleDoctors.indexOf(doctor);
               const isAlternate = globalIndex % 2 === 1;
+
               return (
                 <Link
                   key={doctor.id}
                   href={`/doctor-listing/${createSlug(doctor.name)}`}
-                  className={`group block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
+                  className={`group block ${
+                    isAlternate ? "mt-8 md:mt-12" : ""
+                  }`}
                 >
                   <div className="flex flex-col">
-                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
+                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 group-hover:shadow-xl">
                       <Image
                         src={doctor.image}
                         alt={doctor.name}
                         fill
-                        className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       />
                     </div>
+
                     <div className="mt-4">
                       <h3 className="text-base font-semibold text-gray-900 md:text-lg">
                         {doctor.name}
@@ -170,33 +173,13 @@ const DoctorListing = () => {
           </div>
         ))}
 
-        {filteredDoctors.length > desktopLimit && (
-          <div className="mt-12 flex justify-center">
-            <button
-              ref={buttonRef}
-              onClick={handleToggle}
-              className="flex w-full max-w-[209px] cursor-pointer items-center justify-between rounded-full bg-[#D32F2F] py-4 pr-4 pl-8 text-lg font-semibold text-white transition-colors duration-300 hover:bg-[#B71C1C]"
-              aria-label={showAll ? "Show less doctors" : "Show more doctors"}
-            >
-              <span className="flex-1 text-left">
-                {showAll ? "Show Less" : "Show More"}
-              </span>
-              <div
-                className={`flex h-12 w-12 items-center justify-center rounded-full bg-white transition-transform duration-300 ${
-                  showAll ? "rotate-180" : ""
-                }`}
-              >
-                <Image
-                  src={RightArrow}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="text-[#D32F2F]"
-                />
-              </div>
-            </button>
-          </div>
-        )}
+        <ShowMoreButton
+          showAll={showAll}
+          totalItems={filteredDoctors.length}
+          limit={desktopLimit}
+          onToggle={handleToggle}
+          buttonRef={buttonRef}
+        />
       </div>
     </section>
   );

@@ -10,6 +10,8 @@
   /* Primary text color (used for headings and prominent text) */
   --color-body-primary: #333333;
 
+  /* --color-dark-grey: #767676; */
+
   /* Card background color */
   --color-card-bg: #f6f6f6;
 
@@ -76,5 +78,12 @@ body {
 
   .member-detail-info {
     @apply text-body-main flex-1 text-xs leading-tight font-medium lg:text-xl;
+  }
+}
+
+@media (min-width: 365px) and (max-width: 640px) {
+  /* yahan apna CSS likho */
+  .before-sm {
+    width: 88vw;
   }
 }

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container bg-[url(/images/footer-bg.png)] bg-contain bg-bottom bg-no-repeat pt-10 pb-[5.5625rem] md:pt-14">
-        <div className="flex flex-col flex-wrap justify-between gap-10 md:flex-row md:items-center">
+        <div className="flex flex-col flex-wrap justify-between gap-10 lg:flex-row lg:items-center">
           <div className="sm:max-w-[18.75rem]">
             <Image
               src={Logo}

@@ -9,9 +9,7 @@ import DepartmentTiming from "@/src/components/department";
 import { createSlug } from "@/src/utils/slug";
 
 interface DepartmentPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function DepartmentPage({ params }: DepartmentPageProps) {
@@ -31,20 +29,19 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       <div className="container flex flex-col items-start gap-12 lg:flex-row">
         {/* Other Services Sidebar */}
 
-        <div className="top-24 w-[90vw] rounded-2xl border border-gray-200 bg-white p-6 lg:sticky lg:w-[45.125rem]">
+        <div className="before-sm top-24 w-[83vw] rounded-2xl border border-gray-200 bg-white p-6 sm:w-[90vw] lg:sticky lg:w-[45.125rem]">
           <div className="mb-6 flex items-center">
-            <div className="mr-3 flex h-6 w-6 items-center justify-center">
-              <svg
-                className="h-5 w-5 text-red-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
+            <div className="mr-1.5 flex h-6 w-6 items-center justify-center">
+              {dept?.hoverIcon ? (
+                <Image
+                  src={dept.hoverIcon}
+                  alt={dept.name}
+                  width={25}
+                  height={25}
                 />
-              </svg>
+              ) : dept?.icon ? (
+                <Image src={dept.icon} alt={dept.name} width={20} height={20} />
+              ) : null}
             </div>
             <h3 className="text-lg font-semibold text-gray-900">
               Other Services
@@ -229,35 +226,42 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
             <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
               Assigned Doctors
             </h3>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(auto-fit,_minmax(13.4375rem,_1fr))]">
-              {dept?.doctors?.map((doctor: Doctor) => (
-                <Link
-                  key={doctor.id}
-                  href={`/doctor-listing/${createSlug(doctor.name)}`}
-                  className={`group block`}
-                >
-                  <div className="flex flex-col">
-                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
-                      <Image
-                        src={doctor.image}
-                        alt={doctor.name}
-                        fill
-                        className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      />
+
+            {dept?.doctors && dept.doctors.length > 0 ? (
+              <div className="grid grid-flow-row auto-rows-auto justify-start gap-4 sm:grid-cols-[repeat(auto-fit,_minmax(12.4375rem,12.4375rem))]">
+                {dept.doctors.map((doctor: Doctor) => (
+                  <Link
+                    key={doctor.id}
+                    href={`/doctor-listing/${createSlug(doctor.name)}`}
+                    className={`group block`}
+                  >
+                    <div className="flex flex-col">
+                      <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
+                        <Image
+                          src={doctor.image}
+                          alt={doctor.name}
+                          fill
+                          className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <h3 className="text-base font-semibold text-gray-900 md:text-lg">
+                          {doctor.name}
+                        </h3>
+                        <p className="mt-1 text-xs text-gray-600 md:text-sm">
+                          {doctor.description}
+                        </p>
+                      </div>
                     </div>
-                    <div className="mt-4">
-                      <h3 className="text-base font-semibold text-gray-900 md:text-lg">
-                        {doctor.name}
-                      </h3>
-                      <p className="mt-1 text-xs text-gray-600 md:text-sm">
-                        {doctor.description}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-lg border border-dashed border-gray-300 bg-white px-4 py-6 text-center text-sm text-[#D82519]">
+                No doctors available in Assigned Doctors
+              </p>
+            )}
           </div>
         </div>
       </div>
