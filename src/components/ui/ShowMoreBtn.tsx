@@ -28,7 +28,7 @@ const ShowMoreButton: FC<ShowMoreButtonProps> = ({
       <button
         ref={buttonRef}
         onClick={onToggle}
-        className="flex items-center gap-3 rounded-full bg-[#D82519] px-8 py-5 text-lg font-semibold text-white transition hover:bg-[#b81d13]"
+        className="flex cursor-pointer items-center gap-3 rounded-full bg-[#D82519] px-8 py-5 text-lg font-semibold text-white transition hover:bg-[#b81d13]"
       >
         {showAll ? "Show Less" : "Show More"}
         <span

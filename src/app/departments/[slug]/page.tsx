@@ -30,7 +30,6 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       notFound();
     }
     dept = deptResult.data;
-    console.log(dept);
 
     if ("error" in sidebar || !sidebar.data) {
       notFound();
@@ -184,18 +183,19 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-4">
-                {dept?.facilityImages
-                  ?.slice(3, 5)
-                  .map((image: string, index: number) => (
-                    <Image
-                      key={index}
-                      src={image}
-                      alt={dept?.name}
-                      className="aspect-[459/280] w-300 rounded-2xl object-cover"
-                      width={300}
-                      height={200}
-                    />
-                  ))}
+                {dept?.facilityImages?.length > 3 &&
+                  dept.facilityImages
+                    .slice(3, 5)
+                    .map((image: string, index: number) => (
+                      <Image
+                        key={index}
+                        src={image}
+                        alt={dept?.name}
+                        className="aspect-[459/280] w-300 rounded-2xl object-cover"
+                        width={300}
+                        height={200}
+                      />
+                    ))}
               </div>
             </div>
 
