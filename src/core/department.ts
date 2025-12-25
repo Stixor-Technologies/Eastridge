@@ -17,6 +17,7 @@ export interface StaffedGroupBlock {
 
 export interface Department {
   id: string;
+  documentId: string;
   name: string;
   icon: string;
   hoverIcon?: string;
@@ -29,11 +30,6 @@ export interface Department {
     bulletPoints: string[];
   };
   facilityImages: string[];
-  appointment: {
-    title: string;
-    description: string;
-    ctaText: string;
-  };
   emergencyStaffing: {
     title: string;
     description: string;

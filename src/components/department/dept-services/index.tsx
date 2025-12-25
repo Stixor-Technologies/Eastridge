@@ -23,7 +23,7 @@ const DepartmentCard: FC<ServiceCardProps> = ({
   isMedical,
 }) => (
   <Link
-    href={`/departments/${department.slug}`}
+    href={`/departments/${department.documentId}`}
     className={`group bg-card-bg hover:bg-accent p-5 transition-all duration-300 hover:!text-white ${
       isMedical ? "rounded-3xl" : "border-card-border rounded-lg border"
     } ${className}`}
@@ -68,13 +68,20 @@ const DeptServices: FC = () => {
 
   useEffect(() => {
     getDepartments()
-      .then((data) => {
-        setDepartments(data);
+      .then((result) => {
+        if ("error" in result) {
+          setError(result.error);
+          setLoading(false);
+          return;
+        }
+        setDepartments(result.data);
         setLoading(false);
-        if (!data.length) setError("No departments found.");
+        if (!result.data.length) {
+          setError("No departments found.");
+        }
       })
-      .catch(() => {
-        setError("Failed to load departments.");
+      .catch((error) => {
+        setError(`Error: ${error}`);
         setLoading(false);
       });
   }, []);

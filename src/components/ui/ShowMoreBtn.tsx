@@ -36,7 +36,7 @@ const ShowMoreButton: FC<ShowMoreButtonProps> = ({
             showAll ? "rotate-180" : ""
           }`}
         >
-          <Image src={Arrow} alt="" width={20} height={20} />
+          <Image src={Arrow} alt="arrow" width={20} height={20} />
         </span>
       </button>
     </div>

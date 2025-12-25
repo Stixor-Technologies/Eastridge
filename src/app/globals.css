@@ -81,8 +81,3 @@ body {
   }
 }
 
-@media (min-width: 365px) and (max-width: 640px) {
-  .before-sm {
-    width: 88vw;
-  }
-}
