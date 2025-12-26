@@ -110,7 +110,7 @@ const filterDoctorsByDepartment = (departmentName: string) => {
 interface StrapiDepartment {
   id: string | number;
   documentId?: string;
-  departmentTitlte?: string;
+  supportTitle: string;
   supportGroup: StrapiRichTextBlock[];
   facilityImages: StrapiImage[];
   timing: StrapiTiming[];
@@ -134,7 +134,6 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     ? item.supportGroup
     : [];
 
-  const supportTitle = item.departmentTitlte || "";
   const supportDescription = supportGroupArray[0]?.children?.[0]?.text || "";
 
   const bulletPoints =
@@ -168,7 +167,7 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     hoverIcon: item.hoverIcon ? getImageUrl(item.hoverIcon) : undefined,
     bannerImage: getImageUrl(item.bannerImage),
     supportGroup: {
-      title: supportTitle,
+      title: item.supportTitle,
       description: supportDescription,
       bulletPoints: bulletPoints,
     },
