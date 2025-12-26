@@ -2,7 +2,7 @@
 
 // Import hardcoded doctors
 import { doctors as hardcodedDoctors } from "@/src/core/doctor";
-import { Department, StaffedGroupBlock } from "../core/department";
+import { Department } from "../core/department";
 
 // Helper to get full image URL from Strapi media object
 type StrapiImage = { url?: string };
@@ -133,22 +133,6 @@ interface StrapiDepartment {
   publishedAt?: string;
 }
 
-// Helper function to map StrapiRichTextBlock[] to StaffedGroupBlock[]
-const mapStaffedGroup = (
-  blocks: StrapiRichTextBlock[],
-): StaffedGroupBlock[] => {
-  return blocks.map((block) => ({
-    type: block.type,
-    children: block.children.map((child) => ({
-      type: child.type,
-      text: child.text,
-      children:
-        child.children?.map((nested) => ({ text: nested.text })) || undefined,
-    })),
-    format: block.format,
-  }));
-};
-
 const mapDepartment = (item: StrapiDepartment): Department => {
   // Safe access for supportGroup array
   const supportGroupArray: StrapiRichTextBlock[] = Array.isArray(
@@ -157,22 +141,11 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     ? item.supportGroup
     : [];
 
-  // Find the first paragraph block for description
-  const paragraphBlock = supportGroupArray.find(
-    (block) => block.type === "paragraph",
-  );
-  const supportDescription =
-    paragraphBlock?.children
-      ?.map((child) => child.text || "")
-      .join(" ")
-      .trim() || "";
+  const supportDescription = supportGroupArray[0]?.children?.[0]?.text || "";
 
-  // Find the first list block for bullet points
-  const listBlock = supportGroupArray.find((block) => block.type === "list");
   const bulletPoints =
-    listBlock?.children
-      ?.map((item) => item.children?.[0]?.text || "")
-      .filter((text) => text) || [];
+    supportGroupArray[1]?.children?.map((c) => c.children?.[0]?.text || "") ||
+    [];
 
   // Safe facilityImages
   const facilityImages = Array.isArray(item.facilityImages)
@@ -190,6 +163,21 @@ const mapDepartment = (item: StrapiDepartment): Department => {
 
   // Filtered doctors
   const filteredDoctors = filterDoctorsByDepartment(item.departmentName || "");
+
+  // Map staffedGroup to ensure type compatibility
+  const mappedStaffedGroup = item.staffedGroup
+    ? item.staffedGroup.map((block) => ({
+        type: block.type,
+        children: block.children.map((child) => ({
+          type: child.type,
+          text: child.text,
+          children: child.children?.map((nestedChild) => ({
+            text: nestedChild.text,
+          })),
+        })),
+        format: block.format,
+      }))
+    : [];
 
   return {
     id: item.id?.toString() || "",
@@ -209,7 +197,7 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     timings,
     doctors: filteredDoctors,
     staffedTitle: item.staffedTitle || "",
-    staffedGroup: item.staffedGroup ? mapStaffedGroup(item.staffedGroup) : [],
+    staffedGroup: mappedStaffedGroup,
   };
 };
 
