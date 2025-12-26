@@ -189,11 +189,6 @@ const mapDepartment = (item: StrapiDepartment): Department => {
       bulletPoints: bulletPoints,
     },
     facilityImages,
-    emergencyStaffing: {
-      title: "",
-      description: "",
-      bulletPoints: [],
-    },
     timings,
     doctors: filteredDoctors,
     staffedTitle: item.staffedTitle || "",

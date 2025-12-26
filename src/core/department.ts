@@ -30,11 +30,6 @@ export interface Department {
     bulletPoints: string[];
   };
   facilityImages: string[];
-  emergencyStaffing: {
-    title: string;
-    description: string;
-    bulletPoints: string[];
-  };
   timings: Array<{
     day: string;
     start: string;
