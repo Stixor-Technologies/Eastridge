@@ -1,8 +1,8 @@
 import Building from "@/public/images/wallpaper.jpg";
 import BuildingMobile from "@/public/images/wallpaper-mobile.jpg";
-import BuildingFront from "@/public/images/building_front.jpg";
+import BuildingFront from "@/public/images/building-fronts.png";
 import BuildingSide from "@/public/images/opd.jpg";
-import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
+import BuildingFrontMobile from "@/public/images/building-front-mobiles.jpg";
 import BuildingSideMobile from "@/public/images/opd-mobile.jpg";
 
 import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
