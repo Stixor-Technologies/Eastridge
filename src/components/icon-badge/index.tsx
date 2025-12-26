@@ -20,7 +20,7 @@ const IconBadge: FC<IconBadgeProps> = ({ icon, hoverIcon, altText = "" }) => {
       {hoverIcon && (
         <Image
           src={hoverIcon}
-          alt={altText + " hover"}
+          alt={altText}
           width={50}
           height={50}
           className="absolute top-1/2 left-1/2 z-20 h-3/5 w-3/5 -translate-x-1/2 -translate-y-1/2 object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
