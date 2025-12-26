@@ -2,7 +2,7 @@
 
 // Import hardcoded doctors
 import { doctors as hardcodedDoctors } from "@/src/core/doctor";
-import { Department } from "../core/department";
+import { Department, StaffedGroupBlock } from "../core/department";
 
 // Helper to get full image URL from Strapi media object
 type StrapiImage = { url?: string };
@@ -132,6 +132,23 @@ interface StrapiDepartment {
   updatedAt?: string;
   publishedAt?: string;
 }
+
+// Helper function to map StrapiRichTextBlock[] to StaffedGroupBlock[]
+const mapStaffedGroup = (
+  blocks: StrapiRichTextBlock[],
+): StaffedGroupBlock[] => {
+  return blocks.map((block) => ({
+    type: block.type,
+    children: block.children.map((child) => ({
+      type: child.type,
+      text: child.text,
+      children:
+        child.children?.map((nested) => ({ text: nested.text })) || undefined,
+    })),
+    format: block.format,
+  }));
+};
+
 const mapDepartment = (item: StrapiDepartment): Department => {
   // Safe access for supportGroup array
   const supportGroupArray: StrapiRichTextBlock[] = Array.isArray(
@@ -192,7 +209,7 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     timings,
     doctors: filteredDoctors,
     staffedTitle: item.staffedTitle || "",
-    staffedGroup: item.staffedGroup || [],
+    staffedGroup: item.staffedGroup ? mapStaffedGroup(item.staffedGroup) : [],
   };
 };
 
