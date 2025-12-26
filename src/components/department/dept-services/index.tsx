@@ -8,7 +8,6 @@ import Arrow from "@/public/icons/right-arrow.svg";
 import IconBadge from "../../icon-badge";
 import { Department } from "@/src/core/department";
 import { getDepartments } from "@/src/api/departmentApi";
-import { LoaderOne } from "@/src/components/ui/loader";
 import ShowMoreButton from "@/src/components/ui/ShowMoreBtn";
 
 interface ServiceCardProps {
@@ -122,7 +121,7 @@ const DeptServices: FC = () => {
         {/* Content */}
         {loading ? (
           <div className="flex justify-center">
-            <LoaderOne />
+            <p>loading .....</p>
           </div>
         ) : error ? (
           <div className="text-center font-semibold text-red-600">{error}</div>
