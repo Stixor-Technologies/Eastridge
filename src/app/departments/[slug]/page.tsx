@@ -162,22 +162,26 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
 
                 <div className="flex gap-4 md:ml-4 md:h-full md:flex-col md:justify-between">
                   <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
-                    <Image
-                      src={dept?.facilityImages?.[1]}
-                      alt={dept?.name}
-                      className="h-full w-full object-cover"
-                      width={400}
-                      height={240}
-                    />
+                    {dept?.facilityImages?.[1] && (
+                      <Image
+                        src={dept?.facilityImages?.[1]}
+                        alt={dept?.name}
+                        className="h-full w-full object-cover"
+                        width={400}
+                        height={240}
+                      />
+                    )}
                   </div>
                   <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
-                    <Image
-                      src={dept?.facilityImages?.[2]}
-                      alt={dept?.name}
-                      className="h-full w-full object-cover"
-                      width={400}
-                      height={240}
-                    />
+                    {dept?.facilityImages?.[2] && (
+                      <Image
+                        src={dept?.facilityImages?.[2]}
+                        alt={dept?.name}
+                        className="h-full w-full object-cover"
+                        width={400}
+                        height={240}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
