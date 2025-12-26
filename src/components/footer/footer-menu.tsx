@@ -7,7 +7,7 @@ const FooterMenu = () => {
   const { scrollToSection } = useScrollToSection();
 
   return (
-    <div className="flex flex-col items-start gap-8 md:flex-row">
+    <div className="flex flex-col items-start gap-8 lg:flex-row">
       {MENU?.map((menuItem) => (
         <button
           key={menuItem?.id}
