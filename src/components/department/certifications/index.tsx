@@ -36,7 +36,7 @@ const OurCertificationSection = () => {
         <h2 className="text-body-primary md:font-4xl text-left text-4xl font-normal lg:text-5xl">
           Our Certifications{" "}
         </h2>
-        <p className="text-body-main text-xl md:max-w-[35.75rem] md:text-justify">
+        <p className="text-body-main text-lg md:max-w-[35.75rem] md:text-justify">
           orem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
           ever since the 1500s,
