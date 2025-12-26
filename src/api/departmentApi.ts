@@ -140,11 +140,22 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     ? item.supportGroup
     : [];
 
-  const supportDescription = supportGroupArray[0]?.children?.[0]?.text || "";
+  // Find the first paragraph block for description
+  const paragraphBlock = supportGroupArray.find(
+    (block) => block.type === "paragraph",
+  );
+  const supportDescription =
+    paragraphBlock?.children
+      ?.map((child) => child.text || "")
+      .join(" ")
+      .trim() || "";
 
+  // Find the first list block for bullet points
+  const listBlock = supportGroupArray.find((block) => block.type === "list");
   const bulletPoints =
-    supportGroupArray[1]?.children?.map((c) => c.children?.[0]?.text || "") ||
-    [];
+    listBlock?.children
+      ?.map((item) => item.children?.[0]?.text || "")
+      .filter((text) => text) || [];
 
   // Safe facilityImages
   const facilityImages = Array.isArray(item.facilityImages)
