@@ -121,7 +121,7 @@ const DeptServices: FC = () => {
         {/* Content */}
         {loading ? (
           <div className="flex justify-center">
-            <p>loading .....</p>
+            <p className="text-accent text-center text-xl">loading .....</p>
           </div>
         ) : error ? (
           <div className="text-center font-semibold text-red-600">{error}</div>

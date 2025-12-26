@@ -3,10 +3,10 @@ import CheckMark from "@/public/icons/checkmark-red.svg";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  DepartmentSidebarItem,
   getDepartmentByDocumentId,
   getDepartmentsForSidebar,
 } from "@/src/api/departmentApi";
+import { DepartmentSidebarItem } from "@/src/core/department";
 import { Department, Doctor, StaffedGroupBlock } from "@/src/core/department";
 import DepartmentTiming from "@/src/components/department";
 import { createSlug } from "@/src/utils/slug";

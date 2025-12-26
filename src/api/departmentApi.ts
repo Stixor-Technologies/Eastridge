@@ -2,10 +2,16 @@
 
 // Import hardcoded doctors
 import { doctors as hardcodedDoctors } from "@/src/core/doctor";
-import { Department } from "../core/department";
+import {
+  Department,
+  StrapiDepartment,
+  StrapiRichTextBlock,
+  ApiResponse,
+  DepartmentSidebarItem,
+} from "../core/department";
 
 // Helper to get full image URL from Strapi media object
-type StrapiImage = { url?: string };
+export type StrapiImage = { url?: string };
 const getImageUrl = (img: StrapiImage | undefined): string => {
   if (!img) return "";
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -18,37 +24,6 @@ const getImageUrl = (img: StrapiImage | undefined): string => {
 
   return img.url ? `${API_URL}${img.url}` : "";
 };
-
-// Strapi rich text structures
-interface StrapiRichTextChild {
-  type?: string;
-  text?: string;
-  children?: Array<{ text?: string; type?: string }>;
-}
-
-interface StrapiRichTextBlock {
-  type: "paragraph" | "list";
-  children: StrapiRichTextChild[];
-  format?: string;
-}
-
-interface StrapiTiming {
-  day: string;
-  startTime: string;
-  endTime: string;
-}
-
-interface ApiResponse {
-  data: StrapiDepartment[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-}
 
 // Helper function to filter doctors by department
 const filterDoctorsByDepartment = (departmentName: string) => {
@@ -113,25 +88,6 @@ const filterDoctorsByDepartment = (departmentName: string) => {
 };
 
 // Map Strapi API department to UI department structure
-interface StrapiDepartment {
-  id: string | number;
-  documentId?: string;
-  supportTitle: string;
-  supportGroup: StrapiRichTextBlock[];
-  facilityImages: StrapiImage[];
-  timing: StrapiTiming[];
-  departmentName: string;
-  slug: string;
-  departmentDescription: string;
-  icon: StrapiImage;
-  hoverIcon?: StrapiImage;
-  bannerImage: StrapiImage;
-  staffedTitle?: string;
-  staffedGroup?: StrapiRichTextBlock[];
-  createdAt?: string;
-  updatedAt?: string;
-  publishedAt?: string;
-}
 
 const mapDepartment = (item: StrapiDepartment): Department => {
   // Safe access for supportGroup array
@@ -256,13 +212,6 @@ export const getDepartmentByDocumentId = async (
     return { error: "Error fetching department by documentId" };
   }
 };
-
-export interface DepartmentSidebarItem {
-  id: number;
-  documentId: string;
-  name: string;
-  slug: string;
-}
 
 export const getDepartmentsForSidebar = async (): Promise<
   { data: DepartmentSidebarItem[] } | { error: string }
