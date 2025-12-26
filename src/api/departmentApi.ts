@@ -8,8 +8,14 @@ import { Department } from "../core/department";
 type StrapiImage = { url?: string };
 const getImageUrl = (img: StrapiImage | undefined): string => {
   if (!img) return "";
+  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  if (!API_URL) {
+    throw new Error(
+      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
+    );
+  }
   if (img.url?.startsWith("http")) return img.url;
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
+
   return img.url ? `${API_URL}${img.url}` : "";
 };
 
