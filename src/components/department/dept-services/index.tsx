@@ -79,8 +79,12 @@ const DeptServices: FC = () => {
           setError("No departments found.");
         }
       })
-      .catch((error) => {
-        setError(`Error: ${error}`);
+      .catch((error: unknown) => {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An unexpected error occurred");
+        }
         setLoading(false);
       });
   }, []);

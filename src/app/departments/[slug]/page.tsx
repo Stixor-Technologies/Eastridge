@@ -149,10 +149,10 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
 
               <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-[1fr_0.7fr] md:gap-0">
                 <div className="relative overflow-hidden rounded-2xl md:h-full md:max-h-[500px] md:min-h-[400px] md:w-full">
-                  {dept?.facilityImages && (
+                  {dept?.facilityImages?.length > 0 && (
                     <Image
-                      src={dept?.facilityImages?.[0]}
-                      alt={dept?.name}
+                      src={dept.facilityImages[0]}
+                      alt={dept.name}
                       className="h-full w-full object-cover"
                       width={600}
                       height={500}
@@ -164,8 +164,8 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
                   <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
                     {dept?.facilityImages?.[1] && (
                       <Image
-                        src={dept?.facilityImages?.[1]}
-                        alt={dept?.name}
+                        src={dept.facilityImages[1]}
+                        alt={dept.name}
                         className="h-full w-full object-cover"
                         width={400}
                         height={240}
@@ -175,8 +175,8 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
                   <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
                     {dept?.facilityImages?.[2] && (
                       <Image
-                        src={dept?.facilityImages?.[2]}
-                        alt={dept?.name}
+                        src={dept.facilityImages[2]}
+                        alt={dept.name}
                         className="h-full w-full object-cover"
                         width={400}
                         height={240}
@@ -194,7 +194,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
                       <Image
                         key={index}
                         src={image}
-                        alt={dept?.name}
+                        alt={dept.name}
                         className="aspect-[459/280] w-300 rounded-2xl object-cover"
                         width={300}
                         height={200}
