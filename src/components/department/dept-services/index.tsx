@@ -9,6 +9,7 @@ import IconBadge from "../../icon-badge";
 import { Department } from "@/src/core/department";
 import { getDepartments } from "@/src/api/departmentApi";
 import ShowMoreButton from "@/src/components/ui/ShowMoreBtn";
+import IconLoader from "../../ui/IconLoader";
 
 interface ServiceCardProps {
   department: Department;
@@ -125,7 +126,7 @@ const DeptServices: FC = () => {
         {/* Content */}
         {loading ? (
           <div className="flex justify-center">
-            <p className="text-accent text-center text-xl">loading .....</p>
+            <IconLoader />
           </div>
         ) : error ? (
           <div className="text-center font-semibold text-red-600">{error}</div>
