@@ -1,15 +1,19 @@
 import type { NextConfig } from "next";
 
+const imageHost = process.env.NEXT_PUBLIC_IMAGE_HOST;
+
 const nextConfig: NextConfig = {
   images: {
-    formats: ['image/webp'],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "ycck088k4g8w44c0wc48ocos.91.99.180.200.sslip.io",
-        pathname: "/**",
-      },
-    ],
+    formats: ["image/webp"],
+    remotePatterns: imageHost
+      ? [
+          {
+            protocol: "https",
+            hostname: imageHost,
+            pathname: "/**",
+          },
+        ]
+      : [],
   },
 };
 
