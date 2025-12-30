@@ -113,8 +113,8 @@ const DeptServices: FC = () => {
     <div className="py-16">
       <section className="container mx-auto">
         {/* Header */}
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center lg:mb-16">
-          <h2 className="text-body-primary text-4xl lg:max-w-[39.875rem] lg:text-5xl">
+        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-center lg:mb-16">
+          <h2 className="text-body-primary text-left text-4xl lg:max-w-[30.875rem] lg:text-5xl">
             Real Advice, From Real Health Experts
           </h2>
           <p className="text-body-main text-xl md:max-w-[22.25rem]">
