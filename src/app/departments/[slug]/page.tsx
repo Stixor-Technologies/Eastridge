@@ -2,7 +2,7 @@ import {
   getDepartmentByDocumentId,
   getDepartmentsForSidebar,
 } from "@/src/api/departmentApi";
-import DepartmentDetails from "@/src/components/department/single-page";
+import DepartmentDetails from "@/src/components/department/dept-details";
 import { notFound } from "next/navigation";
 
 interface DepartmentPageProps {
@@ -10,28 +10,24 @@ interface DepartmentPageProps {
 }
 
 export default async function DepartmentPage({ params }: DepartmentPageProps) {
-  try {
-    const slug = (await params)?.slug;
-    const [deptResult, sidebar] = await Promise.all([
-      getDepartmentByDocumentId(slug),
-      getDepartmentsForSidebar(),
-    ]);
+  const slug = (await params)?.slug;
+  const [deptResult, sidebar] = await Promise.all([
+    getDepartmentByDocumentId(slug),
+    getDepartmentsForSidebar(),
+  ]);
 
-    if ("error" in deptResult || !deptResult.data) {
-      notFound();
-    }
-
-    if ("error" in sidebar || !sidebar.data) {
-      notFound();
-    }
-    return (
-      <DepartmentDetails
-        dept={deptResult.data}
-        sidebarData={sidebar.data}
-        slug={slug}
-      />
-    );
-  } catch {
+  if ("error" in deptResult || !deptResult.data) {
     notFound();
   }
+
+  if ("error" in sidebar || !sidebar.data) {
+    notFound();
+  }
+  return (
+    <DepartmentDetails
+      dept={deptResult.data}
+      sidebarData={sidebar.data}
+      slug={slug}
+    />
+  );
 }
