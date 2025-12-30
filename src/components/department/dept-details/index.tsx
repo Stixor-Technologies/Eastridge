@@ -1,3 +1,4 @@
+import React from "react";
 import CheckMark from "@/public/icons/checkmark-red.svg";
 import DepartmentTiming from "@/src/components/department";
 import {
@@ -198,15 +199,20 @@ const DepartmentDetails = ({
                   return (
                     <ul key={idx} className="mt-4 space-y-4">
                       {block.children?.map((item, liIdx) => (
-                        <li
-                          key={liIdx}
-                          className="text-body-main flex items-start text-base"
-                        >
-                          <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
-                            <Image src={CheckMark} alt="Check Mark" />
-                          </div>
-                          {item.children?.map((child) => child.text || null)}
-                        </li>
+                        <React.Fragment key={liIdx}>
+                          {item?.children &&
+                          item?.children[0]?.text === "" ? null : (
+                            <li
+                              key={liIdx}
+                              className="text-body-main flex items-start text-base"
+                            >
+                              <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
+                                <Image src={CheckMark} alt="Check Mark" />
+                              </div>
+                              {item?.children && item?.children[0]?.text}
+                            </li>
+                          )}
+                        </React.Fragment>
                       ))}
                     </ul>
                   );

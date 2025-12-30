@@ -89,7 +89,6 @@ const DeptServices: FC = () => {
         setLoading(false);
       });
   }, []);
-  console.log(departments);
 
   const visibleDepartments = showAll
     ? departments
