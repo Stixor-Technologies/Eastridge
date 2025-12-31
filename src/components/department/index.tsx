@@ -12,13 +12,11 @@ const DepartmentTiming: React.FC<DepartmentTimingProps> = ({ timing }) => {
 
   return (
     <ul className="mt-4 grid grid-cols-2 gap-x-8 gap-y-2">
-      {timing.map(({ day, start, end }, idx) => (
-        <li
-          key={`${day}-${start}-${end}-${idx}`}
-          className="text-body-main text-base"
-        >
-          <span className="text-body-primary font-bold">{day}</span>:{" "}
-          {formatTimeTo12Hour(start)} – {formatTimeTo12Hour(end)}
+      {timing.map((time) => (
+        <li key={time.id} className="text-body-main text-base">
+          <span className="text-body-primary font-bold">{time.day}</span>:{" "}
+          {formatTimeTo12Hour(time.startTime)} –{" "}
+          {formatTimeTo12Hour(time.endTime)}
         </li>
       ))}
     </ul>

@@ -7,16 +7,6 @@ export interface Doctor {
   description: string;
 }
 
-export interface StaffedGroupBlock {
-  type: "paragraph" | "list";
-  children: Array<{
-    type?: string;
-    text?: string;
-    children?: Array<{ text?: string }>;
-  }>;
-  format?: string;
-}
-
 export interface Department {
   id: string;
   documentId: string;
@@ -26,36 +16,20 @@ export interface Department {
   slug: string;
   description: string;
   bannerImage: string;
-  supportGroup: {
-    title: string;
-    description: string;
-    bulletPoints: string[];
-  };
+  supportTitle: string;
+  supportDescription: string;
   facilityImages: string[];
-  timings: Array<{
-    day: string;
-    start: string;
-    end: string;
-  }>;
   doctors: Doctor[];
   staffedTitle?: string;
-  staffedGroup?: StaffedGroupBlock[];
-}
+  staffedDescription: string;
+  supportBulletPoints?: SupportBulletPoint[];
+  staffedBulletPoints?: StaffedBulletPoints[];
 
-// Strapi rich text structures
-export interface StrapiRichTextChild {
-  type?: string;
-  text?: string;
-  children?: Array<{ text?: string; type?: string }>;
-}
-
-export interface StrapiRichTextBlock {
-  type: "paragraph" | "list";
-  children: StrapiRichTextChild[];
-  format?: string;
+  timings: StrapiTiming[];
 }
 
 export interface StrapiTiming {
+  id: number;
   day: string;
   startTime: string;
   endTime: string;
@@ -80,13 +54,23 @@ export interface DepartmentSidebarItem {
   slug: string;
 }
 
+export interface SupportBulletPoint {
+  id: number;
+  supportPoints: string;
+}
+
+export interface StaffedBulletPoints {
+  id: number;
+  staffedPoints: string;
+}
+
 export interface StrapiDepartment {
   id: string | number;
   documentId?: string;
   supportTitle: string;
-  supportGroup: StrapiRichTextBlock[];
+  supportDescription: string;
   facilityImages: StrapiImage[];
-  timing: StrapiTiming[];
+  timings: StrapiTiming[]; // Updated to use timings instead of timing
   departmentName: string;
   slug: string;
   departmentDescription: string;
@@ -94,7 +78,9 @@ export interface StrapiDepartment {
   hoverIcon?: StrapiImage;
   bannerImage: StrapiImage;
   staffedTitle?: string;
-  staffedGroup?: StrapiRichTextBlock[];
+  staffedDescription: string;
+  supportBulletPoints?: SupportBulletPoint[];
+  staffedBulletPoints?: StaffedBulletPoints[];
   createdAt?: string;
   updatedAt?: string;
   publishedAt?: string;

@@ -8,8 +8,9 @@ const nextConfig: NextConfig = {
     remotePatterns: imageHost
       ? [
           {
-            protocol: "https",
+            protocol: "http",
             hostname: imageHost,
+            port: "1337",
             pathname: "/**",
           },
         ]

@@ -5,7 +5,6 @@ import { doctors as hardcodedDoctors } from "@/src/core/doctor";
 import {
   Department,
   StrapiDepartment,
-  StrapiRichTextBlock,
   ApiResponse,
   DepartmentSidebarItem,
 } from "../core/department";
@@ -90,50 +89,7 @@ const filterDoctorsByDepartment = (departmentName: string) => {
 // Map Strapi API department to UI department structure
 
 const mapDepartment = (item: StrapiDepartment): Department => {
-  // Safe access for supportGroup array
-  const supportGroupArray: StrapiRichTextBlock[] = Array.isArray(
-    item.supportGroup,
-  )
-    ? item.supportGroup
-    : [];
-
-  const supportDescription = supportGroupArray[0]?.children?.[0]?.text || "";
-
-  const bulletPoints =
-    supportGroupArray[1]?.children?.map((c) => c.children?.[0]?.text || "") ||
-    [];
-
-  // Safe facilityImages
-  const facilityImages = Array.isArray(item.facilityImages)
-    ? item.facilityImages.map(getImageUrl)
-    : [];
-
-  // Safe timings
-  const timings = Array.isArray(item.timing)
-    ? item.timing.map((t) => ({
-        day: t.day || "",
-        start: t.startTime || "",
-        end: t.endTime || "",
-      }))
-    : [];
-
-  // Filtered doctors
   const filteredDoctors = filterDoctorsByDepartment(item.departmentName || "");
-
-  // Map staffedGroup to ensure type compatibility
-  const mappedStaffedGroup = item.staffedGroup
-    ? item.staffedGroup.map((block) => ({
-        type: block.type,
-        children: block.children.map((child) => ({
-          type: child.type,
-          text: child.text,
-          children: child.children?.map((nestedChild) => ({
-            text: nestedChild.text,
-          })),
-        })),
-        format: block.format,
-      }))
-    : [];
 
   return {
     id: item.id?.toString() || "",
@@ -144,16 +100,15 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     icon: getImageUrl(item.icon),
     hoverIcon: item.hoverIcon ? getImageUrl(item.hoverIcon) : undefined,
     bannerImage: getImageUrl(item.bannerImage),
-    supportGroup: {
-      title: item.supportTitle,
-      description: supportDescription,
-      bulletPoints: bulletPoints,
-    },
-    facilityImages,
-    timings,
+    supportTitle: item.supportTitle,
+    supportDescription: item.supportDescription,
+    facilityImages: item.facilityImages.map(getImageUrl),
+    timings: item.timings,
     doctors: filteredDoctors,
-    staffedTitle: item.staffedTitle || "",
-    staffedGroup: mappedStaffedGroup,
+    staffedTitle: item.staffedTitle,
+    staffedDescription: item.staffedDescription,
+    supportBulletPoints: item.supportBulletPoints,
+    staffedBulletPoints: item.staffedBulletPoints,
   };
 };
 
