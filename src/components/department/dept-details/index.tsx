@@ -109,7 +109,7 @@ const DepartmentDetails = ({
                   key={index}
                   className="text-body-main flex items-start text-base"
                 >
-                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
+                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
                     <Image src={CheckMark} alt="Check Mark" />
                   </div>
                   {point}
@@ -206,7 +206,7 @@ const DepartmentDetails = ({
                               key={liIdx}
                               className="text-body-main flex items-start text-base"
                             >
-                              <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 justify-center rounded-full">
+                              <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
                                 <Image src={CheckMark} alt="Check Mark" />
                               </div>
                               {item?.children && item?.children[0]?.text}
