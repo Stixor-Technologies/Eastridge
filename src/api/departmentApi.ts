@@ -102,7 +102,7 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     bannerImage: getImageUrl(item.bannerImage),
     supportTitle: item.supportTitle,
     supportDescription: item.supportDescription,
-    facilityImages: item.facilityImages.map(getImageUrl),
+    facilityImages: item.facilityImages?.map(getImageUrl) ?? [],
     timings: item.timings,
     doctors: filteredDoctors,
     staffedTitle: item.staffedTitle,

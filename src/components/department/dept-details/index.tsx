@@ -280,9 +280,9 @@ const DepartmentDetails = ({
                 ))}
               </div>
             ) : (
-              <p className="rounded-lg border border-dashed border-gray-300 bg-white px-4 py-6 text-center text-sm text-[#D82519]">
+              <div className="text-body-main text-base">
                 No doctors assigned yet
-              </p>
+              </div>
             )}
           </div>
         </div>
