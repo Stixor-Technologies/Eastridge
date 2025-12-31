@@ -1,11 +1,7 @@
-export interface TimingItem {
-  day: string;
-  start: string;
-  end: string;
-}
+import { StrapiTiming } from "./department";
 
 export interface DepartmentTimingProps {
-  timing?: TimingItem[] | null;
+  timing?: StrapiTiming[] | null;
 }
 
 // Convert "HH:MM:SS.sss" to 12-hour format "h:mm AM/PM"

@@ -19,13 +19,16 @@ const DepartmentDetails = ({
   sidebarData: DepartmentSidebarItem[];
   slug: string;
 }) => {
+  const hasSideImages = dept?.facilityImages?.length > 1;
+
   return (
     <section className="py-40">
       <div className="container flex flex-col items-start gap-12 lg:flex-row">
         {/* Other Services Sidebar */}
-        <div className="top-24 w-full rounded-2xl border border-gray-200 bg-white p-6 sm:w-[90vw] lg:sticky lg:w-[45.125rem]">
+        <div className="top-24 w-full shrink-0 rounded-2xl border border-gray-200 bg-white p-6 sm:w-[90vw] lg:sticky lg:w-[17.80rem] lg:flex-none">
+          {/* Header */}
           <div className="mb-6 flex items-center">
-            <div className="mr-1.5 flex h-6 w-6 items-center justify-center">
+            <div className="mr-1.5 flex h-6 w-6 shrink-0 items-center justify-center">
               {dept?.hoverIcon ? (
                 <Image
                   src={dept.hoverIcon}
@@ -37,32 +40,37 @@ const DepartmentDetails = ({
                 <Image src={dept.icon} alt={dept.name} width={20} height={20} />
               ) : null}
             </div>
+
             <h3 className="text-lg font-semibold text-gray-900">
               Other Services
             </h3>
           </div>
-          <ul className="divide-accent/10 space-y-0 divide-y-1">
+
+          {/* Links */}
+          <ul className="divide-accent/10 divide-y">
             {sidebarData.map((department) => {
               const isActive = department.documentId === slug;
+
               return (
                 <li key={department.id}>
                   <Link
                     href={`/departments/${department.documentId}`}
-                    className={`group flex items-center justify-between border-b border-gray-100 px-0 py-4 transition-colors last:border-b-0 ${
+                    className={`group flex items-center justify-between py-4 transition-colors ${
                       isActive
                         ? "text-red-500"
                         : "text-gray-700 hover:text-red-500"
-                    }`}
+                    } `}
                   >
                     <span className="text-base font-medium">
                       {department.name}
                     </span>
+
                     <svg
-                      className={`h-4 w-4 transition-colors ${
+                      className={`h-4 w-4 shrink-0 transition-colors ${
                         isActive
                           ? "text-red-500"
                           : "text-gray-400 group-hover:text-red-500"
-                      }`}
+                      } `}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -96,25 +104,28 @@ const DepartmentDetails = ({
           {/* Support Group */}
           <div className="mt-9">
             <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
-              {dept?.supportGroup?.title}
+              {dept?.supportTitle}
             </h3>
 
             <p className="text-body-main text-base">
-              {dept?.supportGroup?.description}
+              {dept?.supportDescription}
             </p>
 
             <ul className="mt-8 space-y-4">
-              {dept?.supportGroup?.bulletPoints?.map((point, index) => (
-                <li
-                  key={index}
-                  className="text-body-main flex items-start text-base"
-                >
-                  <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
-                    <Image src={CheckMark} alt="Check Mark" />
-                  </div>
-                  {point}
-                </li>
-              ))}
+              {Array.isArray(dept?.supportBulletPoints) &&
+                dept.supportBulletPoints.map((point) => {
+                  return (
+                    <li
+                      key={point.id}
+                      className="text-body-main flex items-start text-base"
+                    >
+                      <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
+                        <Image src={CheckMark} alt="Check Mark" />
+                      </div>
+                      {point.supportPoints}
+                    </li>
+                  );
+                })}
             </ul>
           </div>
 
@@ -125,22 +136,36 @@ const DepartmentDetails = ({
               View Of Facility From Inside
             </h3>
 
-            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-[1fr_0.7fr] md:gap-0">
-              <div className="relative overflow-hidden rounded-2xl md:h-full md:max-h-[500px] md:min-h-[400px] md:w-full">
-                {dept?.facilityImages?.length > 0 && (
+            <div
+              className={`mt-6 grid gap-4 ${
+                hasSideImages
+                  ? "grid-cols-1 md:grid-cols-[1fr_0.7fr] md:gap-0"
+                  : "grid-cols-1"
+              }`}
+            >
+              {/* MAIN IMAGE */}
+              <div
+                className={`relative overflow-hidden rounded-2xl ${
+                  hasSideImages
+                    ? "md:h-full md:max-h-[500px] md:min-h-[400px]"
+                    : "h-[400px] w-full"
+                }`}
+              >
+                {dept?.facilityImages?.[0] && (
                   <Image
                     src={dept.facilityImages[0]}
                     alt={dept.name}
                     className="h-full w-full object-cover"
-                    width={600}
+                    width={800}
                     height={500}
+                    priority
                   />
                 )}
               </div>
 
-              <div className="flex gap-4 md:ml-4 md:h-full md:flex-col md:justify-between">
-                <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
-                  {dept?.facilityImages?.[1] && (
+              {hasSideImages && (
+                <div className="grid grid-cols-2 gap-4 md:ml-4 md:flex md:h-full md:flex-col md:justify-between">
+                  <div className="relative aspect-[459/280] overflow-hidden rounded-2xl md:aspect-auto md:h-[240px]">
                     <Image
                       src={dept.facilityImages[1]}
                       alt={dept.name}
@@ -148,26 +173,27 @@ const DepartmentDetails = ({
                       width={400}
                       height={240}
                     />
-                  )}
-                </div>
-                <div className="relative w-full overflow-hidden rounded-2xl md:h-[240px] md:w-full">
+                  </div>
+
                   {dept?.facilityImages?.[2] && (
-                    <Image
-                      src={dept.facilityImages[2]}
-                      alt={dept.name}
-                      className="h-full w-full object-cover"
-                      width={400}
-                      height={240}
-                    />
+                    <div className="relative aspect-[459/280] overflow-hidden rounded-2xl md:aspect-auto md:h-[240px]">
+                      <Image
+                        src={dept.facilityImages[2]}
+                        alt={dept.name}
+                        className="h-full w-full object-cover"
+                        width={400}
+                        height={240}
+                      />
+                    </div>
                   )}
                 </div>
-              </div>
+              )}
             </div>
 
             <div className="mt-4 grid grid-cols-2 gap-4">
               {dept?.facilityImages?.length > 3 &&
                 dept.facilityImages
-                  .slice(3, 5)
+                  .slice(3)
                   .map((image: string, index: number) => (
                     <Image
                       key={index}
@@ -186,39 +212,27 @@ const DepartmentDetails = ({
             <h3 className="text-body-primary mb-4 text-2xl leading-tight font-bold md:text-[2.1875rem]">
               {dept?.staffedTitle}
             </h3>
-            {Array.isArray(dept.staffedGroup) &&
-              dept?.staffedGroup?.map((block, idx) => {
-                if (block.type === "paragraph") {
+
+            <p className="text-body-main text-base">
+              {dept?.staffedDescription}
+            </p>
+
+            <ul className="mt-8 space-y-4">
+              {Array.isArray(dept?.staffedBulletPoints) &&
+                dept.staffedBulletPoints.map((point) => {
                   return (
-                    <p key={idx} className="text-body-main mb-2 text-base">
-                      {block.children?.map((child) => child.text || null)}
-                    </p>
+                    <li
+                      key={point.id}
+                      className="text-body-main flex items-start text-base"
+                    >
+                      <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
+                        <Image src={CheckMark} alt="Check Mark" />
+                      </div>
+                      {point.staffedPoints}
+                    </li>
                   );
-                }
-                if (block.type === "list") {
-                  return (
-                    <ul key={idx} className="mt-4 space-y-4">
-                      {block.children?.map((item, liIdx) => (
-                        <React.Fragment key={liIdx}>
-                          {item?.children &&
-                          item?.children[0]?.text === "" ? null : (
-                            <li
-                              key={liIdx}
-                              className="text-body-main flex items-start text-base"
-                            >
-                              <div className="bg-accent/10 mt-0.5 mr-4 flex size-[1.4375rem] shrink-0 items-center justify-center rounded-full">
-                                <Image src={CheckMark} alt="Check Mark" />
-                              </div>
-                              {item?.children && item?.children[0]?.text}
-                            </li>
-                          )}
-                        </React.Fragment>
-                      ))}
-                    </ul>
-                  );
-                }
-                return null;
-              })}
+                })}
+            </ul>
           </div>
 
           {/* timings */}
@@ -266,9 +280,9 @@ const DepartmentDetails = ({
                 ))}
               </div>
             ) : (
-              <p className="rounded-lg border border-dashed border-gray-300 bg-white px-4 py-6 text-center text-sm text-[#D82519]">
+              <div className="text-body-main text-base">
                 No doctors assigned yet
-              </p>
+              </div>
             )}
           </div>
         </div>
