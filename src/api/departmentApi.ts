@@ -11,7 +11,7 @@ import {
 
 // Helper to get full image URL from Strapi media object
 export type StrapiImage = { url?: string };
-const getImageUrl = (img: StrapiImage | undefined): string => {
+export const getImageUrl = (img: StrapiImage | undefined): string => {
   if (!img) return "";
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {

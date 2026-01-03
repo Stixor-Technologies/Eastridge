@@ -1,5 +1,5 @@
+import { getDoctorsById } from "@/src/api/doctorApi";
 import DoctorDetailSection from "@/src/components/doctor-detail/doctor-detail-section";
-import { doctors } from "@/src/core/doctor";
 import { notFound } from "next/navigation";
 
 interface DoctorDetailPageProps {
@@ -8,29 +8,19 @@ interface DoctorDetailPageProps {
   }>;
 }
 
-// Helper function to create URL-friendly slugs from doctor names
-const createSlug = (name: string) => {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
-
-export async function generateStaticParams() {
-  return doctors.map((doctor) => ({
-    slug: createSlug(doctor.name),
-  }));
-}
-
 const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
   const { slug } = await params;
 
-  // Find doctor by matching slug to their name
-  const doctor = doctors.find((d) => createSlug(d.name) === slug);
+  // Fetch doctors filtered by slug
+  const doctorData = await getDoctorsById(slug);
 
-  if (!doctor) {
+  // If API returned nothing or empty array, show 404
+  if (!doctorData || doctorData.data.length === 0) {
     notFound();
   }
+
+  // Use the first doctor from the array
+  const doctor = doctorData.data[0];
 
   return (
     <div>

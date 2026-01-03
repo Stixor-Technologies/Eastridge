@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
 import Image from "next/image";
-import { doctors } from "@/src/core/doctor";
+import { Doctor } from "@/src/core/doctors";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DoctorSearchBar from "../searchbar-section";
 import ShowMoreButton from "@/src/components/ui/ShowMoreBtn";
+import { getDoctors } from "@/src/api/doctorApi";
+import { getImageUrl } from "@/src/api/departmentApi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +24,39 @@ const DoctorListing = () => {
   const [columnsPerRow, setColumnsPerRow] = useState(4);
 
   // --- Filtered doctors state ---
-  const [filteredDoctors, setFilteredDoctors] = useState(doctors);
+  const [allDoctors, setAllDoctors] = useState<Doctor[]>([]);
+  const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
+  const FILTERS_KEY = "doctorDepartmentFilters";
+
+  useEffect(() => {
+    const getdata = async () => {
+      const res = await getDoctors();
+      setAllDoctors(res);
+
+      // ✅ read saved filters
+      const saved = localStorage.getItem(FILTERS_KEY);
+
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved) as { department: string[] };
+
+          // ✅ apply department filter after reload
+          if (parsed.department.length > 0) {
+            const filtered = res.filter((doc) =>
+              parsed.department.includes(doc.department),
+            );
+            setFilteredDoctors(filtered);
+            return;
+          }
+        } catch {}
+      }
+
+      // ✅ fallback (no filters)
+      setFilteredDoctors(res);
+    };
+
+    getdata();
+  }, []);
 
   useEffect(() => {
     const updateColumns = () => {
@@ -114,7 +148,7 @@ const DoctorListing = () => {
     },
   );
 
-  const handleFilter = useCallback((doctorsList: typeof doctors) => {
+  const handleFilter = useCallback((doctorsList: Doctor[]) => {
     setFilteredDoctors(doctorsList);
     setShowAll(false);
   }, []);
@@ -122,7 +156,11 @@ const DoctorListing = () => {
   return (
     <section className="px-4 py-16">
       <div ref={container} className="md:container md:mx-auto md:max-w-7xl">
-        <DoctorSearchBar onFilter={handleFilter} />
+        <DoctorSearchBar
+          doctor={allDoctors}
+          onFilter={handleFilter}
+          FILTERS_KEY={FILTERS_KEY}
+        />
 
         {doctorRows.length === 0 && (
           <div className="py-12 text-center text-lg text-gray-500">
@@ -142,20 +180,22 @@ const DoctorListing = () => {
               return (
                 <Link
                   key={doctor.id}
-                  href={`/doctor-listing/${createSlug(doctor.name)}`}
+                  href={`/doctor-listing/${createSlug(doctor.documentId)}`}
                   className={`group block ${
                     isAlternate ? "mt-8 md:mt-12" : ""
                   }`}
                 >
                   <div className="flex flex-col">
                     <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 group-hover:shadow-xl">
-                      <Image
-                        src={doctor.image}
-                        alt={doctor.name}
-                        fill
-                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      />
+                      {doctor.image.url && (
+                        <Image
+                          src={getImageUrl(doctor.image)}
+                          alt={doctor.name}
+                          fill
+                          className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        />
+                      )}
                     </div>
 
                     <div className="mt-4">
@@ -163,7 +203,7 @@ const DoctorListing = () => {
                         {doctor.name}
                       </h3>
                       <p className="mt-1 text-xs text-gray-600 md:text-sm">
-                        {doctor.description}
+                        {doctor.Designation}
                       </p>
                     </div>
                   </div>
