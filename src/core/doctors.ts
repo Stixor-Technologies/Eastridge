@@ -14,7 +14,6 @@ export interface Doctor {
   qualifications: Qualification[];
   youtubeVideoUrl: string;
   occupation: string;
-  error: string;
 }
 
 export interface DoctorsApiResponse {
