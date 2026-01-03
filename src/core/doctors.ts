@@ -4,12 +4,12 @@ export interface Doctor {
   id: number;
   documentId: string;
   name: string;
-  Designation: string;
+  designation: string;
   biography: string;
   department: string;
   experience: string;
   location: string;
-  DepartmentPhone: string;
+  departmentPhone: string;
   image: StrapiImage;
   qualifications: Qualification[];
   youtubeVideoUrl: string;

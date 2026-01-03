@@ -123,7 +123,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
-                  {doctor.Designation}
+                  {doctor.designation}
                 </p>
                 {/*
                 <button className="inline-flex cursor-pointer items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C]">
@@ -159,7 +159,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
-                  {doctor.Designation}
+                  {doctor.designation}
                 </p>
                 {/*
                 <button className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#D32F2F] py-2 pr-3 pl-5 text-sm font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C] sm:gap-4 sm:py-4 sm:pr-6 sm:pl-10 sm:text-lg">
@@ -255,7 +255,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Department Phone:
                 </span>
-                <span className="text-gray-600">{doctor.DepartmentPhone}</span>
+                <span className="text-gray-600">{doctor.departmentPhone}</span>
               </div>
             </div>
 

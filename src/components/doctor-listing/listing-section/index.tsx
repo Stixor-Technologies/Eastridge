@@ -272,7 +272,7 @@ const DoctorListing = () => {
                             {doctor.name}
                           </h3>
                           <p className="mt-1 text-xs text-gray-600 md:text-sm">
-                            {doctor.Designation}
+                            {doctor.designation}
                           </p>
                         </div>
                       </div>

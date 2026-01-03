@@ -48,12 +48,12 @@ export const getDoctors = async (): Promise<{
 
 export const getDoctorsById = async (
   documentId: string,
-): Promise<{ data?: Doctor[]; error?: string }> => {
+): Promise<{ data: Doctor[] | undefined } | { error: string }> => {
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
-    return {
-      error: "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-    };
+    throw new Error(
+      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
+    );
   }
   try {
     const res = await fetch(
@@ -63,14 +63,12 @@ export const getDoctorsById = async (
       },
     );
     if (!res.ok) {
-      return { error: `Failed to fetch doctors: ${res.status}` };
+      throw new Error(`Failed to fetch doctors: ${res.status}`);
     }
     const json: DoctorsApiResponse = await res.json();
-    if (!json || !Array.isArray(json.data)) {
-      return { error: "Malformed response: missing or invalid data array" };
-    }
-    return { data: json.data };
-  } catch (error: any) {
-    return { error: error?.message || "Error fetching doctor by documentId" };
+    const doctors: Doctor[] = json.data;
+    return { data: doctors };
+  } catch {
+    return { error: "Error fetching department by documentId" };
   }
 };
