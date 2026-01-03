@@ -1,36 +1,5 @@
 import { Doctor, DoctorsApiResponse } from "@/src/core/doctors";
 
-// export const getDoctors = async (): Promise<Doctor[]> => {
-//   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
-//   if (!API_URL) {
-//     throw new Error(
-//       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-//     );
-//   }
-
-//   try {
-//     const res = await fetch(`${API_URL}/api/doctors?populate=*`, {
-//       cache: "no-store",
-//     });
-
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch doctors: ${res.status}`);
-//     }
-
-//     const json: DoctorsApiResponse = await res.json();
-
-//     // Extract only the array of doctors
-//     const doctors: Doctor[] = json.data;
-
-//     return doctors;
-//   } catch (error) {
-//     console.error("Error fetching doctors:", error);
-//     return [];
-//   }
-// };
-
-// src/api/doctorApi.ts
-
 export const getDoctors = async (): Promise<{
   doctors: Doctor[];
   error: string | null;
@@ -68,8 +37,6 @@ export const getDoctors = async (): Promise<{
       error: null,
     };
   } catch (error) {
-    console.error("Error fetching doctors:", error);
-
     return {
       doctors: [],
       error:
