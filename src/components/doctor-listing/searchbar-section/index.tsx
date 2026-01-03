@@ -37,16 +37,6 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [inputFocused, setInputFocused] = useState(false);
-  // Save search to localStorage whenever it changes
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      try {
-        localStorage.setItem("doctorSearchText", search);
-      } catch {
-        // ignore
-      }
-    }
-  }, [search]);
 
   // Main filters state (applied filters)
 

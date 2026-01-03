@@ -11,15 +11,12 @@ interface DoctorDetailPageProps {
 const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
   const { slug } = await params;
 
-  // Fetch doctors filtered by slug
   const doctorData = await getDoctorsById(slug);
 
-  // If API returned nothing or empty array, show 404
-  if (!doctorData || doctorData.data.length === 0) {
+  if ("error" in doctorData || !doctorData.data) {
     notFound();
   }
 
-  // Use the first doctor from the array
   const doctor = doctorData.data[0];
 
   return (

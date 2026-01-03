@@ -23,36 +23,77 @@ const DoctorListing = () => {
   // Track screen size for proper row calculation
   const [columnsPerRow, setColumnsPerRow] = useState(4);
 
-  // --- Filtered doctors state ---
+  // --- Data states ---
   const [allDoctors, setAllDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
+  const [loading, setLoading] = useState(true); // ← Ab true se start
+  const [error, setError] = useState<string | null>(null);
   const FILTERS_KEY = "doctorDepartmentFilters";
 
   useEffect(() => {
     const getdata = async () => {
-      const res = await getDoctors();
-      setAllDoctors(res);
+      setLoading(true);
+      setError(null);
 
-      // ✅ read saved filters
-      const saved = localStorage.getItem(FILTERS_KEY);
+      let doctorsResult: { doctors: Doctor[]; error: string | null };
 
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved) as { department: string[] };
-
-          // ✅ apply department filter after reload
-          if (parsed.department.length > 0) {
-            const filtered = res.filter((doc) =>
-              parsed.department.includes(doc.department),
-            );
-            setFilteredDoctors(filtered);
-            return;
-          }
-        } catch {}
+      try {
+        doctorsResult = await getDoctors();
+      } catch {
+        setError("Failed to connect to server");
+        setAllDoctors([]);
+        setFilteredDoctors([]);
+        setLoading(false);
+        return;
       }
 
-      // ✅ fallback (no filters)
-      setFilteredDoctors(res);
+      if (doctorsResult.error) {
+        setError(doctorsResult.error);
+        setAllDoctors([]);
+        setFilteredDoctors([]);
+        setLoading(false);
+        return;
+      }
+
+      const doctors = doctorsResult.doctors;
+      setAllDoctors(doctors);
+
+      let appliedFilters = false;
+
+      try {
+        const saved = localStorage.getItem(FILTERS_KEY);
+
+        if (saved) {
+          let parsed: { department: string[] };
+
+          try {
+            parsed = JSON.parse(saved);
+          } catch {
+            localStorage.removeItem(FILTERS_KEY);
+            throw new Error("Invalid filter data");
+          }
+
+          if (parsed && Array.isArray(parsed.department)) {
+            if (parsed.department.length > 0) {
+              const filtered = doctors.filter(
+                (doc) =>
+                  doc.department && parsed.department.includes(doc.department),
+              );
+
+              setFilteredDoctors(filtered);
+              appliedFilters = true;
+            }
+          }
+        }
+      } catch {
+        // ignore
+      }
+
+      if (!appliedFilters) {
+        setFilteredDoctors(doctors);
+      }
+
+      setLoading(false);
     };
 
     getdata();
@@ -99,7 +140,6 @@ const DoctorListing = () => {
     }
   };
 
-  // Group doctors into rows based on screen size
   const groupDoctorsIntoRows = () => {
     const rows = [];
     for (let i = 0; i < visibleDoctors.length; i += columnsPerRow) {
@@ -151,6 +191,7 @@ const DoctorListing = () => {
   const handleFilter = useCallback((doctorsList: Doctor[]) => {
     setFilteredDoctors(doctorsList);
     setShowAll(false);
+    setError(null); // ← Safe reset
   }, []);
 
   return (
@@ -162,64 +203,98 @@ const DoctorListing = () => {
           FILTERS_KEY={FILTERS_KEY}
         />
 
-        {doctorRows.length === 0 && (
-          <div className="py-12 text-center text-lg text-gray-500">
-            No doctors found.
+        {/* Loading State */}
+        {loading && (
+          <div className="py-20 text-center">
+            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-black"></div>
+            <p className="mt-6 text-lg text-gray-600">Loading doctors...</p>
           </div>
         )}
 
-        {doctorRows.map((row, rowIndex) => (
-          <div
-            key={`row-${rowIndex}-${columnsPerRow}`}
-            className="doctor-row mb-6 grid grid-cols-2 gap-6 last:mb-0 md:mb-8 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
-          >
-            {row.map((doctor) => {
-              const globalIndex = visibleDoctors.indexOf(doctor);
-              const isAlternate = globalIndex % 2 === 1;
-
-              return (
-                <Link
-                  key={doctor.id}
-                  href={`/doctor-listing/${createSlug(doctor.documentId)}`}
-                  className={`group block ${
-                    isAlternate ? "mt-8 md:mt-12" : ""
-                  }`}
-                >
-                  <div className="flex flex-col">
-                    <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 group-hover:shadow-xl">
-                      {doctor.image.url && (
-                        <Image
-                          src={getImageUrl(doctor.image)}
-                          alt={doctor.name}
-                          fill
-                          className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
-                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        />
-                      )}
-                    </div>
-
-                    <div className="mt-4">
-                      <h3 className="text-base font-semibold text-gray-900 md:text-lg">
-                        {doctor.name}
-                      </h3>
-                      <p className="mt-1 text-xs text-gray-600 md:text-sm">
-                        {doctor.Designation}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+        {/* Error State */}
+        {error && !loading && (
+          <div className="py-20 text-center">
+            <p className="mb-6 text-xl font-medium text-red-600">{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="rounded-xl bg-black px-8 py-3 font-medium text-white transition-colors hover:bg-gray-800"
+            >
+              Try Again
+            </button>
           </div>
-        ))}
+        )}
 
-        <ShowMoreButton
-          showAll={showAll}
-          totalItems={filteredDoctors.length}
-          limit={desktopLimit}
-          onToggle={handleToggle}
-          buttonRef={buttonRef}
-        />
+        {/* No Doctors Found */}
+        {!loading && !error && filteredDoctors.length === 0 && (
+          <div className="py-20 text-center">
+            <p className="text-xl text-gray-600">
+              No doctors found matching your criteria.
+            </p>
+            <p className="mt-4 text-gray-500">
+              Try adjusting filters or search term.
+            </p>
+          </div>
+        )}
+
+        {/* Doctors Grid - Only show when data is ready */}
+        {!loading && !error && doctorRows.length > 0 && (
+          <>
+            {doctorRows.map((row, rowIndex) => (
+              <div
+                key={`row-${rowIndex}-${columnsPerRow}`}
+                className="doctor-row mb-6 grid grid-cols-2 gap-6 last:mb-0 md:mb-8 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
+              >
+                {row.map((doctor) => {
+                  const globalIndex = visibleDoctors.indexOf(doctor);
+                  const isAlternate = globalIndex % 2 === 1;
+
+                  return (
+                    <Link
+                      key={doctor.id}
+                      href={
+                        doctor.documentId
+                          ? `/doctor-listing/${createSlug(doctor.documentId)}`
+                          : "#"
+                      }
+                      className={`group block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
+                    >
+                      <div className="flex flex-col">
+                        <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 group-hover:shadow-xl">
+                          {doctor.image && (
+                            <Image
+                              src={getImageUrl(doctor.image)}
+                              alt={doctor.name}
+                              fill
+                              className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            />
+                          )}
+                        </div>
+
+                        <div className="mt-4">
+                          <h3 className="text-base font-semibold text-gray-900 md:text-lg">
+                            {doctor.name}
+                          </h3>
+                          <p className="mt-1 text-xs text-gray-600 md:text-sm">
+                            {doctor.Designation}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
+
+            <ShowMoreButton
+              showAll={showAll}
+              totalItems={filteredDoctors.length}
+              limit={desktopLimit}
+              onToggle={handleToggle}
+              buttonRef={buttonRef}
+            />
+          </>
+        )}
       </div>
     </section>
   );
