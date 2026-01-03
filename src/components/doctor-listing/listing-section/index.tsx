@@ -251,11 +251,7 @@ const DoctorListing = () => {
                   return (
                     <Link
                       key={doctor.id}
-                      href={
-                        doctor.documentId
-                          ? `/doctor-listing/${createSlug(doctor.documentId)}`
-                          : "#"
-                      }
+                      href={`/doctor-listing/${createSlug(doctor.documentId)}`}
                       className={`group block ${isAlternate ? "mt-8 md:mt-12" : ""}`}
                     >
                       <div className="flex flex-col">

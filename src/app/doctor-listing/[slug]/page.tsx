@@ -13,7 +13,12 @@ const DoctorDetail = async ({ params }: DoctorDetailPageProps) => {
 
   const doctorData = await getDoctorsById(slug);
 
-  if ("error" in doctorData || !doctorData.data) {
+  if (
+    "error" in doctorData ||
+    !doctorData.data ||
+    !Array.isArray(doctorData.data) ||
+    doctorData.data.length === 0
+  ) {
     notFound();
   }
 
