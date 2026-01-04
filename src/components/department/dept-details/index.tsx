@@ -36,6 +36,13 @@ const DepartmentDetails = ({
 
   return (
     <section className="py-40">
+      <div className="container mx-auto max-w-7xl px-4 pb-8">
+        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
+          <span className="text-gray-700">Services</span>
+          <span className="text-gray-400">&gt;</span>
+          <span className="font-semibold text-red-600">{dept?.name}</span>
+        </div>
+      </div>
       <div className="container flex flex-col items-start gap-12 lg:flex-row">
         {/* Other Services Sidebar */}
         <div className="top-24 w-full shrink-0 rounded-2xl border border-gray-200 bg-white p-6 sm:w-[90vw] lg:sticky lg:w-[17.80rem] lg:flex-none">
