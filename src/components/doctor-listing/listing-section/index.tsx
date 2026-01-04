@@ -26,7 +26,7 @@ const DoctorListing = () => {
   // --- Data states ---
   const [allDoctors, setAllDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
-  const [loading, setLoading] = useState(true); // ← Ab true se start
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const FILTERS_KEY = "doctorDepartmentFilters";
 

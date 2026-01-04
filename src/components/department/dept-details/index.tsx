@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import CheckMark from "@/public/icons/checkmark-red.svg";
 import DepartmentTiming from "@/src/components/department";
 import {
@@ -23,8 +24,15 @@ const DepartmentDetails = ({
   doctors: smallDepartment;
 }) => {
   const hasSideImages = dept?.facilityImages?.length > 1;
-  console.log(dept);
-  console.log(doctors);
+
+  const [showAll, setShowAll] = useState(false);
+  const MOBILE_VISIBLE_LIMIT = 2;
+
+  const departmentsToRender = sidebarData;
+  const mobileDepartments =
+    sidebarData.length > MOBILE_VISIBLE_LIMIT && !showAll
+      ? sidebarData.slice(0, MOBILE_VISIBLE_LIMIT)
+      : sidebarData;
 
   return (
     <section className="py-40">
@@ -32,7 +40,7 @@ const DepartmentDetails = ({
         {/* Other Services Sidebar */}
         <div className="top-24 w-full shrink-0 rounded-2xl border border-gray-200 bg-white p-6 sm:w-[90vw] lg:sticky lg:w-[17.80rem] lg:flex-none">
           {/* Header */}
-          <div className="mb-6 flex items-center">
+          <div className="mb-4 flex items-center">
             <div className="mr-1.5 flex h-6 w-6 shrink-0 items-center justify-center">
               {dept?.hoverIcon ? (
                 <Image
@@ -45,37 +53,72 @@ const DepartmentDetails = ({
                 <Image src={dept.icon} alt={dept.name} width={20} height={20} />
               ) : null}
             </div>
-
             <h3 className="text-lg font-semibold text-gray-900">
               Other Services
             </h3>
           </div>
 
-          {/* Links */}
           <ul className="divide-accent/10 divide-y">
-            {sidebarData.map((department) => {
+            {/** Mobile Items */}
+            {mobileDepartments.map((department) => {
               const isActive = department.documentId === slug;
-
               return (
-                <li key={department.id}>
+                <li key={department.id} className="lg:hidden">
                   <Link
                     href={`/departments/${department.documentId}`}
                     className={`group flex items-center justify-between py-4 transition-colors ${
                       isActive
                         ? "text-red-500"
                         : "text-gray-700 hover:text-red-500"
-                    } `}
+                    }`}
                   >
                     <span className="text-base font-medium">
                       {department.name}
                     </span>
-
                     <svg
-                      className={`h-4 w-4 shrink-0 transition-colors ${
+                      className={`h-4 w-4 shrink-0 ${
                         isActive
                           ? "text-red-500"
                           : "text-gray-400 group-hover:text-red-500"
-                      } `}
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+                </li>
+              );
+            })}
+
+            {/** Desktop Items */}
+            {departmentsToRender.map((department) => {
+              const isActive = department.documentId === slug;
+              return (
+                <li key={department.id} className="hidden lg:block">
+                  <Link
+                    href={`/departments/${department.documentId}`}
+                    className={`group flex items-center justify-between py-4 transition-colors ${
+                      isActive
+                        ? "text-red-500"
+                        : "text-gray-700 hover:text-red-500"
+                    }`}
+                  >
+                    <span className="text-base font-medium">
+                      {department.name}
+                    </span>
+                    <svg
+                      className={`h-4 w-4 shrink-0 ${
+                        isActive
+                          ? "text-red-500"
+                          : "text-gray-400 group-hover:text-red-500"
+                      }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -92,6 +135,15 @@ const DepartmentDetails = ({
               );
             })}
           </ul>
+
+          {sidebarData.length > MOBILE_VISIBLE_LIMIT && (
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="mt-4 w-full rounded-lg border border-gray-300 py-2 text-sm font-medium text-gray-700 hover:border-red-500 hover:text-red-500 lg:hidden"
+            >
+              {showAll ? "Show Less" : "Show More"}
+            </button>
+          )}
         </div>
 
         {/* right side */}
