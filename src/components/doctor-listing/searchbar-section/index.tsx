@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { createSlug } from "../../../utils/slug";
 import { useRouter } from "next/navigation";
-// import { doctors, Doctor } from "@/src/core/doctor";
 import Image from "next/image";
 import { Doctor } from "@/src/core/doctors";
 

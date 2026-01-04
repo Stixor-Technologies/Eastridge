@@ -4,22 +4,27 @@ import DepartmentTiming from "@/src/components/department";
 import {
   Department,
   DepartmentSidebarItem,
-  Doctor,
+  smallDepartment,
 } from "@/src/core/department";
 import { createSlug } from "@/src/utils/slug";
 import Image from "next/image";
 import Link from "next/link";
+import { getImageUrl } from "@/src/api/departmentApi";
 
 const DepartmentDetails = ({
   dept,
   sidebarData,
   slug,
+  doctors,
 }: {
   dept: Department;
   sidebarData: DepartmentSidebarItem[];
   slug: string;
+  doctors: smallDepartment;
 }) => {
   const hasSideImages = dept?.facilityImages?.length > 1;
+  console.log(dept);
+  console.log(doctors);
 
   return (
     <section className="py-40">
@@ -249,30 +254,32 @@ const DepartmentDetails = ({
               Assigned Doctors
             </h3>
 
-            {dept?.doctors && dept.doctors.length > 0 ? (
+            {doctors?.doctors?.length ? (
               <div className="grid grid-flow-row auto-rows-auto justify-start gap-4 sm:grid-cols-[repeat(auto-fit,_minmax(12.4375rem,12.4375rem))]">
-                {dept.doctors.map((doctor: Doctor) => (
+                {doctors.doctors.map((doc) => (
                   <Link
-                    key={doctor.id}
-                    href={`/doctor-listing/${createSlug(doctor.name)}`}
-                    className={`group block`}
+                    key={doc.id}
+                    href={`/doctor-listing/${createSlug(doc.documentId)}`}
+                    className="group block"
                   >
                     <div className="flex flex-col">
                       <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
-                        <Image
-                          src={doctor.image}
-                          alt={doctor.name}
-                          fill
-                          className="object-cover object-top transition-transform duration-300 ease-in-out group-hover:scale-105"
-                          sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        />
+                        {doc.image && (
+                          <Image
+                            src={getImageUrl(doc.image)}
+                            alt={doc.name}
+                            fill
+                            className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          />
+                        )}
                       </div>
                       <div className="mt-4">
                         <h3 className="text-base font-semibold text-gray-900 md:text-lg">
-                          {doctor.name}
+                          {doc.name}
                         </h3>
                         <p className="mt-1 text-xs text-gray-600 md:text-sm">
-                          {doctor.description}
+                          {doc.designation}
                         </p>
                       </div>
                     </div>

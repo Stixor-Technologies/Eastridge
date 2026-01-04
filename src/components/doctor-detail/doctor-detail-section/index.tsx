@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-// import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
 //import RightArrow from "@/public/icons/right-arrow.svg";
 import VideoBG from "@/public/images/video-bg.svg";
