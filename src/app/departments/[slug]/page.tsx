@@ -1,6 +1,7 @@
 import {
   getDepartmentByDocumentId,
   getDepartmentsForSidebar,
+  getDoctorByDepartment,
 } from "@/src/api/departmentApi";
 import DepartmentDetails from "@/src/components/department/dept-details";
 import { notFound } from "next/navigation";
@@ -11,12 +12,17 @@ interface DepartmentPageProps {
 
 export default async function DepartmentPage({ params }: DepartmentPageProps) {
   const slug = (await params)?.slug;
-  const [deptResult, sidebar] = await Promise.all([
+  const [deptResult, sidebar, doctors] = await Promise.all([
     getDepartmentByDocumentId(slug),
     getDepartmentsForSidebar(),
+    getDoctorByDepartment(slug),
   ]);
 
   if ("error" in deptResult || !deptResult.data) {
+    notFound();
+  }
+
+  if (doctors.error || !doctors.data) {
     notFound();
   }
 
@@ -28,6 +34,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
       dept={deptResult.data}
       sidebarData={sidebar.data}
       slug={slug}
+      doctors={doctors.data}
     />
   );
 }

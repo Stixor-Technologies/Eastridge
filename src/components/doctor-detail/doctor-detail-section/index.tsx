@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
 //import RightArrow from "@/public/icons/right-arrow.svg";
 import VideoBG from "@/public/images/video-bg.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Doctor } from "@/src/core/doctors";
+import { getImageUrl } from "@/src/api/departmentApi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,7 +108,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
               <div className="mb-6 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
                   <Image
-                    src={doctor.image}
+                    src={getImageUrl(doctor.image)}
                     alt={doctor.name}
                     fill
                     className="object-cover"
@@ -121,7 +122,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
-                  {doctor.description}
+                  {doctor.designation}
                 </p>
                 {/*
                 <button className="inline-flex cursor-pointer items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C]">
@@ -145,7 +146,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
               <div className="mb-8 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
                   <Image
-                    src={doctor.image}
+                    src={getImageUrl(doctor.image)}
                     alt={doctor.name}
                     fill
                     className="object-cover object-top"
@@ -157,7 +158,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                   {doctor.name}
                 </h2>
                 <p className="mb-6 px-2 text-sm leading-relaxed text-gray-600">
-                  {doctor.description}
+                  {doctor.designation}
                 </p>
                 {/*
                 <button className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#D32F2F] py-2 pr-3 pl-5 text-sm font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C] sm:gap-4 sm:py-4 sm:pr-6 sm:pl-10 sm:text-lg">
@@ -206,8 +207,8 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 </span>
                 <span className="text-gray-600">
                   <ul className="list-inside list-disc">
-                    {doctor.qualifications.map((item, index) => (
-                      <li key={index}>{item}</li>
+                    {doctor.qualifications.map((item) => (
+                      <li key={item.id}>{item.qualificationsText}</li>
                     ))}
                   </ul>
                 </span>
@@ -253,7 +254,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
                   Department Phone:
                 </span>
-                <span className="text-gray-600">{doctor.phoneNo}</span>
+                <span className="text-gray-600">{doctor.departmentPhone}</span>
               </div>
             </div>
 
@@ -301,7 +302,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <div className="h-full w-full overflow-hidden rounded-2xl">
                   <iframe
                     className="h-full w-full"
-                    src={getEmbedUrl(doctor.youtubeVideoLink)}
+                    src={getEmbedUrl(doctor.youtubeVideoUrl)}
                     title="YouTube video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

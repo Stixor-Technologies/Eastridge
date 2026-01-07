@@ -2,8 +2,8 @@
 import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { createSlug } from "../../../utils/slug";
 import { useRouter } from "next/navigation";
-import { doctors, Doctor } from "@/src/core/doctor";
 import Image from "next/image";
+import { Doctor } from "@/src/core/doctors";
 
 interface FilterState {
   department: string[];
@@ -20,13 +20,17 @@ const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
   );
 };
 
-const FILTERS_KEY = "doctorDepartmentFilters";
-
 interface DoctorSearchBarProps {
   onFilter?: (filteredDoctors: Doctor[]) => void;
+  doctor: Doctor[];
+  FILTERS_KEY: string;
 }
 
-const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
+const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({
+  onFilter,
+  doctor,
+  FILTERS_KEY,
+}) => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
@@ -64,22 +68,22 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
     } catch {
       // ignore
     }
-  }, [filters]);
+  }, [filters, FILTERS_KEY]);
 
   const departmentOptions = useMemo(
-    () => getUniqueValues(doctors, "department"),
-    [],
+    () => getUniqueValues(doctor, "department"),
+    [doctor],
   );
 
   const filteredDoctors = useMemo(() => {
-    return doctors.filter((doc) => {
+    return doctor.filter((doc) => {
       const matchesName = doc.name.toLowerCase().includes(search.toLowerCase());
       const matchesDepartment =
         filters.department.length === 0 ||
         filters.department.includes(doc.department);
       return matchesName && matchesDepartment;
     });
-  }, [search, filters]);
+  }, [doctor, search, filters]);
 
   // Call onFilter whenever filteredDoctors changes
   useEffect(() => {
@@ -133,7 +137,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
       setShowDropdown(false);
       setInputFocused(false);
       setSearch("");
-      const slug = createSlug(doc.name);
+      const slug = createSlug(doc.documentId);
       router.push(`/doctor-listing/${slug}`);
     },
     [router],

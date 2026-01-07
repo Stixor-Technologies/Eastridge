@@ -1,10 +1,17 @@
 import { StrapiImage } from "../api/departmentApi";
 
-export interface Doctor {
-  id: string;
+export interface DoctorsData {
+  id: number;
+  documentId: string;
   name: string;
-  image: string;
-  description: string;
+  designation: string;
+  image: StrapiImage;
+}
+
+export interface smallDepartment {
+  documentId: string;
+  id: number;
+  doctors: DoctorsData[];
 }
 
 export interface Department {
@@ -19,7 +26,6 @@ export interface Department {
   supportTitle: string;
   supportDescription: string;
   facilityImages: string[];
-  doctors: Doctor[];
   staffedTitle?: string;
   staffedDescription: string;
   supportBulletPoints?: SupportBulletPoint[];

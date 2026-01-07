@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const imageHost = process.env.NEXT_PUBLIC_IMAGE_HOST;
+const imageHost = process.env.IMAGE_HOST;
 
 const nextConfig: NextConfig = {
   images: {

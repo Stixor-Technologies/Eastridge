@@ -1,96 +1,31 @@
-// src/lib/departmentApi.ts
+// src/api/departmentApi.ts
 
-// Import hardcoded doctors
-import { doctors as hardcodedDoctors } from "@/src/core/doctor";
 import {
   Department,
   StrapiDepartment,
   ApiResponse,
   DepartmentSidebarItem,
+  smallDepartment,
 } from "../core/department";
 
-// Helper to get full image URL from Strapi media object
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 export type StrapiImage = { url?: string };
-const getImageUrl = (img: StrapiImage | undefined): string => {
-  if (!img) return "";
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+export const getImageUrl = (img?: StrapiImage): string => {
+  if (!img?.url) return "";
+
+  // absolute URL already
+  if (img.url.startsWith("http")) return img.url;
+
   if (!API_URL) {
-    throw new Error(
-      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-    );
+    return img.url; // fallback, no crash
   }
-  if (img.url?.startsWith("http")) return img.url;
 
-  return img.url ? `${API_URL}${img.url}` : "";
+  return `${API_URL}${img.url}`;
 };
-
-// Helper function to filter doctors by department
-const filterDoctorsByDepartment = (departmentName: string) => {
-  const normalizeName = (name: string) =>
-    name
-      .toLowerCase()
-      .trim()
-      .replace(/[\/\s-]+/g, "");
-
-  const normalizedDeptName = normalizeName(departmentName);
-
-  const filteredDoctors = hardcodedDoctors
-    .filter((doctor) => {
-      const doctorDepartments = doctor.department
-        .split(",")
-        .map((d) => d.trim());
-
-      return doctorDepartments.some((dept) => {
-        const normalizedDocDept = normalizeName(dept);
-
-        if (normalizedDocDept === normalizedDeptName) {
-          return true;
-        }
-
-        if (
-          normalizedDocDept.includes(normalizedDeptName) ||
-          normalizedDeptName.includes(normalizedDocDept)
-        ) {
-          return true;
-        }
-
-        const specialCases: { [key: string]: string[] } = {
-          obstetrics: ["obsgyn", "gynecology", "gynaecology", "obs", "gyn"],
-          gynecology: ["obsgyn", "obstetrics", "gynaecology", "obs", "gyn"],
-          pediatrics: ["paeds", "paediatrics", "pediatric"],
-          paediatrics: ["paeds", "pediatrics", "pediatric"],
-          surgery: ["surgeon", "surgical"],
-          neurology: ["neuro", "neurological"],
-          cardiology: ["cardiac", "heart"],
-          orthopedic: ["orthopaedic", "ortho"],
-        };
-
-        for (const [key, variations] of Object.entries(specialCases)) {
-          if (normalizedDeptName.includes(key)) {
-            if (variations.some((v) => normalizedDocDept.includes(v))) {
-              return true;
-            }
-          }
-        }
-
-        return false;
-      });
-    })
-    .map((doctor) => ({
-      id: doctor.id,
-      name: doctor.name,
-      image: typeof doctor.image === "string" ? doctor.image : doctor.image.src,
-      description: doctor.description,
-    }));
-
-  return filteredDoctors;
-};
-
-// Map Strapi API department to UI department structure
 
 const mapDepartment = (item: StrapiDepartment): Department => {
-  const filteredDoctors = filterDoctorsByDepartment(item.departmentName || "");
-
   return {
     id: item.id?.toString() || "",
     documentId: item.documentId || item.id?.toString() || "",
@@ -104,7 +39,6 @@ const mapDepartment = (item: StrapiDepartment): Department => {
     supportDescription: item.supportDescription,
     facilityImages: item.facilityImages?.map(getImageUrl) ?? [],
     timings: item.timings,
-    doctors: filteredDoctors,
     staffedTitle: item.staffedTitle,
     staffedDescription: item.staffedDescription,
     supportBulletPoints: item.supportBulletPoints,
@@ -115,7 +49,6 @@ const mapDepartment = (item: StrapiDepartment): Department => {
 export const getDepartments = async (): Promise<
   { data: Department[] } | { error: string }
 > => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -141,7 +74,6 @@ export const getDepartments = async (): Promise<
 export const getDepartmentByDocumentId = async (
   documentId: string,
 ): Promise<{ data: Department | undefined } | { error: string }> => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -171,7 +103,6 @@ export const getDepartmentByDocumentId = async (
 export const getDepartmentsForSidebar = async (): Promise<
   { data: DepartmentSidebarItem[] } | { error: string }
 > => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -211,5 +142,48 @@ export const getDepartmentsForSidebar = async (): Promise<
     };
   } catch {
     return { error: "Error fetching departments for sidebar" };
+  }
+};
+
+export const getDoctorByDepartment = async (
+  documentId: string,
+): Promise<{ data: smallDepartment | null; error: string | null }> => {
+  if (!API_URL) {
+    return {
+      data: null,
+      error: "API base URL is missing. Please check environment configuration.",
+    };
+  }
+
+  try {
+    const res = await fetch(
+      `${API_URL}/api/departments/${documentId}?fields[0]=documentId&populate[doctors][fields][0]=name&populate[doctors][fields][1]=designation&populate[doctors][populate][image]=true`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch doctors (Status: ${res.status})`);
+    }
+
+    const json: { data: smallDepartment } = await res.json();
+
+    if (!json || !json.data) {
+      throw new Error("Invalid response format from server");
+    }
+
+    return {
+      data: json.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to load doctors. Please try again later.",
+    };
   }
 };
