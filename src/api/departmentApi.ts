@@ -12,17 +12,16 @@ const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export type StrapiImage = { url?: string };
 
-export const getImageUrl = (img?: StrapiImage): string => {
-  if (!img?.url) return "";
-
-  // absolute URL already
-  if (img.url.startsWith("http")) return img.url;
-
+export const getImageUrl = (img: StrapiImage | undefined): string => {
+  if (!img) return "";
   if (!API_URL) {
-    return img.url; // fallback, no crash
+    throw new Error(
+      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
+    );
   }
+  if (img.url?.startsWith("http")) return img.url;
 
-  return `${API_URL}${img.url}`;
+  return img.url ? `${API_URL}${img.url}` : "";
 };
 
 const mapDepartment = (item: StrapiDepartment): Department => {
