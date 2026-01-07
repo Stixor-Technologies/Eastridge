@@ -147,12 +147,14 @@ export const getDepartmentsForSidebar = async (): Promise<
 
 export const getDoctorByDepartment = async (
   documentId: string,
-): Promise<{ data: smallDepartment } | { error: string }> => {
+): Promise<{ data: smallDepartment | null; error: string | null }> => {
   if (!API_URL) {
-    throw new Error(
-      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-    );
+    return {
+      data: null,
+      error: "API base URL is missing. Please check environment configuration.",
+    };
   }
+
   try {
     const res = await fetch(
       `${API_URL}/api/departments/${documentId}?fields[0]=documentId&populate[doctors][fields][0]=name&populate[doctors][fields][1]=designation&populate[doctors][populate][image]=true`,
@@ -160,12 +162,28 @@ export const getDoctorByDepartment = async (
         cache: "no-store",
       },
     );
+
     if (!res.ok) {
-      throw new Error(`Failed to fetch doctors: ${res.status}`);
+      throw new Error(`Failed to fetch doctors (Status: ${res.status})`);
     }
+
     const json: { data: smallDepartment } = await res.json();
-    return { data: json.data };
-  } catch {
-    return { error: "Error fetching doctors by department" };
+
+    if (!json || !json.data) {
+      throw new Error("Invalid response format from server");
+    }
+
+    return {
+      data: json.data,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to load doctors. Please try again later.",
+    };
   }
 };

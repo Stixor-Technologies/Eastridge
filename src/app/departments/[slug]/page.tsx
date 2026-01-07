@@ -22,7 +22,7 @@ export default async function DepartmentPage({ params }: DepartmentPageProps) {
     notFound();
   }
 
-  if ("error" in doctors || !doctors.data) {
+  if (doctors.error || !doctors.data) {
     notFound();
   }
 
