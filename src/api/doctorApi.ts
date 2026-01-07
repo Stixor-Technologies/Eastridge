@@ -71,7 +71,10 @@ export const getDoctorsById = async (
   } catch (error) {
     return {
       doctors: [],
-      error: error instanceof Error ? error.message : "Failed to load doctors",
+      error:
+        error instanceof Error
+          ? error.message
+          : "Failed to load doctors. Please try again later.",
     };
   }
 };
