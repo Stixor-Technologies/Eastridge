@@ -1,11 +1,10 @@
 import { Doctor, DoctorsApiResponse } from "@/src/core/doctors";
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const getDoctors = async (): Promise<{
   doctors: Doctor[];
   error: string | null;
 }> => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
   if (!API_URL) {
     return {
       doctors: [],
@@ -16,7 +15,6 @@ export const getDoctors = async (): Promise<{
   try {
     const res = await fetch(`${API_URL}/api/doctors?populate=*`, {
       cache: "no-store",
-      // next: { revalidate: 60 }, // optional: fallback revalidation
     });
 
     if (!res.ok) {
@@ -48,27 +46,32 @@ export const getDoctors = async (): Promise<{
 
 export const getDoctorsById = async (
   documentId: string,
-): Promise<{ data: Doctor[] | undefined } | { error: string }> => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+): Promise<{ doctors: Doctor[]; error: string | null }> => {
   if (!API_URL) {
-    throw new Error(
-      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-    );
+    throw new Error("NEXT_PUBLIC_BASE_URL is not defined");
   }
+
   try {
     const res = await fetch(
       `${API_URL}/api/doctors?filters[documentId][$eq]=${documentId}&populate=*`,
-      {
-        cache: "no-store",
-      },
+      { cache: "no-store" },
     );
+
     if (!res.ok) {
       throw new Error(`Failed to fetch doctors: ${res.status}`);
     }
+
     const json: DoctorsApiResponse = await res.json();
-    const doctors: Doctor[] = json.data;
-    return { data: doctors };
-  } catch {
-    return { error: "Error fetching department by documentId" };
+
+    if (!json || !Array.isArray(json.data)) {
+      throw new Error("Invalid response format");
+    }
+
+    return { doctors: json.data, error: null };
+  } catch (error) {
+    return {
+      doctors: [],
+      error: error instanceof Error ? error.message : "Failed to load doctors",
+    };
   }
 };

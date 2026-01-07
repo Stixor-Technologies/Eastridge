@@ -31,72 +31,54 @@ const DoctorListing = () => {
   const FILTERS_KEY = "doctorDepartmentFilters";
 
   useEffect(() => {
-    const getdata = async () => {
+    const getDoctorsData = async () => {
       setLoading(true);
       setError(null);
 
-      let doctorsResult: { doctors: Doctor[]; error: string | null };
-
       try {
-        doctorsResult = await getDoctors();
-      } catch {
-        setError("Failed to connect to server");
-        setAllDoctors([]);
-        setFilteredDoctors([]);
-        setLoading(false);
-        return;
-      }
+        const doctorsResult = await getDoctors();
 
-      if (doctorsResult.error) {
-        setError(doctorsResult.error);
-        setAllDoctors([]);
-        setFilteredDoctors([]);
-        setLoading(false);
-        return;
-      }
+        if (doctorsResult.error) {
+          setError(doctorsResult.error);
+        }
 
-      const doctors = doctorsResult.doctors;
-      setAllDoctors(doctors);
+        const doctors = doctorsResult.doctors;
+        setAllDoctors(doctors);
 
-      let appliedFilters = false;
+        let filteredDoctors = doctors;
 
-      try {
-        const saved = localStorage.getItem(FILTERS_KEY);
+        try {
+          const saved = localStorage.getItem(FILTERS_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved) as { department?: string[] };
 
-        if (saved) {
-          let parsed: { department: string[] };
-
-          try {
-            parsed = JSON.parse(saved);
-          } catch {
-            localStorage.removeItem(FILTERS_KEY);
-            throw new Error("Invalid filter data");
-          }
-
-          if (parsed && Array.isArray(parsed.department)) {
-            if (parsed.department.length > 0) {
-              const filtered = doctors.filter(
+            if (
+              Array.isArray(parsed.department) &&
+              parsed.department.length > 0
+            ) {
+              filteredDoctors = doctors.filter(
                 (doc) =>
-                  doc.department && parsed.department.includes(doc.department),
+                  doc.department && parsed.department!.includes(doc.department),
               );
-
-              setFilteredDoctors(filtered);
-              appliedFilters = true;
             }
           }
+        } catch {
+          localStorage.removeItem(FILTERS_KEY);
         }
-      } catch {
-        // ignore
-      }
 
-      if (!appliedFilters) {
-        setFilteredDoctors(doctors);
+        setFilteredDoctors(filteredDoctors);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to connect to server",
+        );
+        setAllDoctors([]);
+        setFilteredDoctors([]);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     };
 
-    getdata();
+    getDoctorsData();
   }, []);
 
   useEffect(() => {

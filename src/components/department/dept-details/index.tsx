@@ -26,7 +26,7 @@ const DepartmentDetails = ({
   const hasSideImages = dept?.facilityImages?.length > 1;
 
   const [showAll, setShowAll] = useState(false);
-  const MOBILE_VISIBLE_LIMIT = 2;
+  const MOBILE_VISIBLE_LIMIT = 4;
 
   const departmentsToRender = sidebarData;
   const mobileDepartments =

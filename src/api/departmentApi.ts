@@ -8,19 +8,21 @@ import {
   smallDepartment,
 } from "../core/department";
 
-// Helper to get full image URL from Strapi media object
-export type StrapiImage = { url?: string };
-export const getImageUrl = (img: StrapiImage | undefined): string => {
-  if (!img) return "";
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
-  if (!API_URL) {
-    throw new Error(
-      "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
-    );
-  }
-  if (img.url?.startsWith("http")) return img.url;
+const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-  return img.url ? `${API_URL}${img.url}` : "";
+export type StrapiImage = { url?: string };
+
+export const getImageUrl = (img?: StrapiImage): string => {
+  if (!img?.url) return "";
+
+  // absolute URL already
+  if (img.url.startsWith("http")) return img.url;
+
+  if (!API_URL) {
+    return img.url; // fallback, no crash
+  }
+
+  return `${API_URL}${img.url}`;
 };
 
 const mapDepartment = (item: StrapiDepartment): Department => {
@@ -47,7 +49,6 @@ const mapDepartment = (item: StrapiDepartment): Department => {
 export const getDepartments = async (): Promise<
   { data: Department[] } | { error: string }
 > => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -73,7 +74,6 @@ export const getDepartments = async (): Promise<
 export const getDepartmentByDocumentId = async (
   documentId: string,
 ): Promise<{ data: Department | undefined } | { error: string }> => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -103,7 +103,6 @@ export const getDepartmentByDocumentId = async (
 export const getDepartmentsForSidebar = async (): Promise<
   { data: DepartmentSidebarItem[] } | { error: string }
 > => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -149,7 +148,6 @@ export const getDepartmentsForSidebar = async (): Promise<
 export const getDoctorByDepartment = async (
   documentId: string,
 ): Promise<{ data: smallDepartment } | { error: string }> => {
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
   if (!API_URL) {
     throw new Error(
       "NEXT_PUBLIC_BASE_URL is not defined in environment variables",
@@ -166,10 +164,8 @@ export const getDoctorByDepartment = async (
       throw new Error(`Failed to fetch doctors: ${res.status}`);
     }
     const json: { data: smallDepartment } = await res.json();
-    console.log(json);
     return { data: json.data };
-  } catch (error) {
-    console.error(error);
+  } catch {
     return { error: "Error fetching doctors by department" };
   }
 };
