@@ -23,7 +23,6 @@ const DoctorListing = () => {
   // Track screen size for proper row calculation
   const [columnsPerRow, setColumnsPerRow] = useState(4);
 
-  // --- Data states ---
   const [allDoctors, setAllDoctors] = useState<Doctor[]>([]);
   const [filteredDoctors, setFilteredDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(true);
