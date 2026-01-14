@@ -186,7 +186,12 @@ const DoctorListing = () => {
         />
 
         {/* Loading State */}
-        {loading && <IconLoader />}
+        {loading && (
+          <div role="status" aria-live="polite">
+            <IconLoader />
+            <span className="sr-only">Loading content</span>
+          </div>
+        )}
 
         {/* Error State */}
         {error && !loading && (
