@@ -12,6 +12,7 @@ import DoctorSearchBar from "../searchbar-section";
 import ShowMoreButton from "@/src/components/ui/ShowMoreBtn";
 import { getDoctors } from "@/src/api/doctorApi";
 import { getImageUrl } from "@/src/api/departmentApi";
+import IconLoader from "../../ui/IconLoader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -186,9 +187,9 @@ const DoctorListing = () => {
 
         {/* Loading State */}
         {loading && (
-          <div className="py-20 text-center">
-            <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-black"></div>
-            <p className="mt-6 text-lg text-gray-600">Loading doctors...</p>
+          <div role="status" aria-live="polite">
+            <IconLoader />
+            <span className="sr-only">Loading content</span>
           </div>
         )}
 
