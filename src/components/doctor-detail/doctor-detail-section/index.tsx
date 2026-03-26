@@ -86,9 +86,9 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
       {/* Breadcrumb - Centered with top spacing */}
       <div className="container mx-auto max-w-7xl px-4 pt-24 pb-6 lg:pt-30 lg:pb-8">
         <div className="flex items-center justify-center gap-2 text-xs sm:text-sm">
-          <span className="text-gray-700">Doctor Listing</span>
+          <span className="text-gray-700">Consultant Listing</span>
           <span className="text-gray-400">&gt;</span>
-          <span className="font-semibold text-red-600">Doctor Name</span>
+          <span className="font-semibold text-red-600">Consultant Name</span>
         </div>
       </div>
 

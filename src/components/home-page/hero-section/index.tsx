@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
-import Ambulance from "@/public/icons/ambulance.svg";
 import { HERO_SLIDER_IMAGES } from "@/src/core/constants";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -75,33 +74,21 @@ const HeroSection = () => {
           })}
         </Swiper>
 
-        <div className="absolute top-1/2 z-10 -mt-12 w-full -translate-y-1/2">
+        <div className="absolute bottom-0 z-10 w-full">
           <div className="container">
+            <h1
+              className="mb-6 translate-y-12 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
+              ref={headingText}
+            >
+              Care at Every Step
+            </h1>
             <p
-              className="max-w-[32.375rem] translate-y-12 text-[2rem] font-medium opacity-0"
+              className="mx-auto max-w-[32.375rem] translate-y-12 text-center text-[2rem] font-medium opacity-0"
               ref={infoText}
             >
               Connected healthcare designed to support your journey, every step
               of the way.
             </p>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 z-10 w-full">
-          <div className="container">
-            <div className="bg-accent mb-4 ml-auto flex size-[clamp(2.5rem,6.5vw,4.375rem)] items-center justify-center rounded-xl md:mb-0 md:rounded-2xl">
-              <Image
-                src={Ambulance}
-                alt="ambulance-icon"
-                className="h-4/5 w-4/5 object-contain"
-              />
-            </div>
-            <h1
-              className="translate-y-12 text-center text-[clamp(1.875rem,11vw,10.575rem)] leading-none font-medium tracking-tighter opacity-0 xl:-tracking-[2.95px]"
-              ref={headingText}
-            >
-              Care at Every Step
-            </h1>
           </div>
         </div>
       </div>

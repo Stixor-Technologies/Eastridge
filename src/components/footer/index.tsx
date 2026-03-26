@@ -8,7 +8,7 @@ import FooterMenu from "./footer-menu";
 const Footer = () => {
   return (
     <footer>
-      <div className="container bg-[url(/images/footer-bg.png)] bg-contain bg-bottom bg-no-repeat pt-10 pb-[5.5625rem] md:pt-14">
+      <div className="container pt-10 pb-[5.5625rem] md:pt-14">
         <div className="flex flex-col flex-wrap justify-between gap-10 md:flex-row md:items-center">
           <div className="sm:max-w-[18.75rem]">
             <Image
@@ -19,7 +19,7 @@ const Footer = () => {
               className="mx-auto"
             />
             <p className="text-body-main mt-[1.375rem] text-center md:hidden">
-              Expert care. Genuine compassion. Always here for you.
+              Where Healing Meets Innovation.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ const Footer = () => {
 
         <div className="mt-8 flex items-start justify-between">
           <p className="text-body-main hidden max-w-[18.75rem] text-xl md:block">
-            Expert care. Genuine compassion. Always here for you.
+            Where Healing Meets Innovation.
           </p>
           <div>
             <span className="bg-accent rounded-xl px-3 py-1.5 text-white">

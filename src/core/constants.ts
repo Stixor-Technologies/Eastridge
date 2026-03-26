@@ -5,7 +5,6 @@ import BuildingSide from "@/public/images/opd.jpg";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
 import BuildingSideMobile from "@/public/images/opd-mobile.jpg";
 
-import CTSCAN from "@/public/icons/services/value-additions/ct-scan.svg";
 import Culinary from "@/public/icons/services/value-additions/culinary.svg";
 import Dialysis from "@/public/icons/services/value-additions/dialysis.svg";
 import Endoscopy from "@/public/icons/services/value-additions/endoscopy.svg";
@@ -20,7 +19,6 @@ import Pharmacy from "@/public/icons/services/value-additions/pharmacy.svg";
 import Mosque from "@/public/icons/services/value-additions/mosque.svg";
 
 import Orhtopedics from "@/public/icons/services/orthopedics.svg";
-import Cardiothorcic from "@/public/icons/services/cardiothoracic-sugery.svg";
 import Pediatric from "@/public/icons/services/pediatric-surgery.svg";
 
 import Vascular from "@/public/icons/services/vasular.svg";
@@ -28,15 +26,12 @@ import Gynae from "@/public/icons/services/gynae.svg";
 
 import Ent from "@/public/icons/services/ent.svg";
 import Anesthesia from "@/public/icons/services/anesthesia.svg";
-import Ophalmology from "@/public/icons/services/opthalmology.svg";
-import Dental from "@/public/icons/services/dental.svg";
 
 import GeneralSurgeryIcon from "@/public/icons/services/general-surgery.svg";
 import NeuroSurgeryIcon from "@/public/icons/services/neuro-surgery.svg";
 import SpinalSurgeryIcon from "@/public/icons/services/spinal-surgery.svg";
 
 import Medicine from "@/public/icons/services/medicine.svg";
-import Cardiology from "@/public/icons/services/cardiology.svg";
 import Gastentrology from "@/public/icons/services/gastentrology.svg";
 import Pulomonology from "@/public/icons/services/pulomonology.svg";
 import Neurology from "@/public/icons/services/neurology.svg";
@@ -85,7 +80,7 @@ const MENU = [
   { id: "/#home", label: "Home", scrollOnPage: false },
   { id: "/#about", label: "About", scrollOnPage: false },
   { id: "/#services", label: "Services", scrollOnPage: false },
-  { id: "/doctor-listing", label: "Doctors", scrollOnPage: false },
+  { id: "/doctor-listing", label: "Consultants", scrollOnPage: false },
   { id: "/#team", label: "Team", scrollOnPage: false },
   {
     id: "https://careers.eastridgeprimecare.com.pk/",
@@ -119,7 +114,7 @@ const HERO_SLIDER_IMAGES = [
 const VALUE_ADDITIONS = [
   {
     icon: Modular,
-    title: "Modular Operation Rooms & Critical Care Areas",
+    title: "Modular Operation Theatre & Critical Care Areas",
     description: "",
   },
 
@@ -159,11 +154,6 @@ const VALUE_ADDITIONS = [
     description: "",
   },
   {
-    icon: CTSCAN,
-    title: "CT Scan, MRI & Interventional Radiology",
-    description: "",
-  },
-  {
     icon: PathologyV,
     title: "Pathology Services in collaboration with our partners at IDC",
     description: "",
@@ -181,7 +171,7 @@ const VALUE_ADDITIONS = [
   },
   {
     icon: Mosque,
-    title: "Comfortable Parking Areas & Mosque",
+    title: "Parking Areas & Mosque",
     description: "",
   },
 ];
@@ -208,10 +198,6 @@ const SERVICES_OFFERED = [
         title: "Orthopedics",
       },
       {
-        icon: Cardiothorcic,
-        title: "Cardiothoracic Surgery",
-      },
-      {
         icon: Pediatric,
         title: "Pediatric Surgery",
       },
@@ -235,14 +221,6 @@ const SERVICES_OFFERED = [
         icon: Anesthesia,
         title: "Anesthesia",
       },
-      {
-        icon: Ophalmology,
-        title: "Ophthalmology",
-      },
-      {
-        icon: Dental,
-        title: "Dental Surgery",
-      },
     ],
   },
 
@@ -253,10 +231,6 @@ const SERVICES_OFFERED = [
       {
         icon: Medicine,
         title: "Internal Medicine",
-      },
-      {
-        icon: Cardiology,
-        title: "Cardiology & EP",
       },
       {
         icon: Gastentrology,
@@ -288,7 +262,7 @@ const SERVICES_OFFERED = [
       },
       {
         icon: Dermatology,
-        title: "Dermatology / Cosmotology",
+        title: "Dermatology / Cosmetology",
       },
       {
         icon: Pediatrics,
