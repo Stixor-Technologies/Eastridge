@@ -121,14 +121,14 @@ const ContactSection = () => {
                 {/* {cardInfo.type === "email" ? (
                   <Link
                     href={`mailto:${cardInfo.lines}`}
-                    className="break-all hover:underline"
+                    className="break-words hover:underline"
                   >
                     {cardInfo.lines}
                   </Link>
                 ) : cardInfo.type === "phone" ? (
                   <Link
                     href={`tel:${cardInfo.lines.replace(/\s+/g, "")}`}
-                    className="break-all hover:underline"
+                    className="break-words hover:underline"
                   >
                     {cardInfo.lines}
                   </Link>
@@ -141,21 +141,21 @@ const ContactSection = () => {
                     href={cardInfo.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="break-all hover:underline"
+                    className="break-words hover:underline"
                   >
                     {cardInfo.lines}
                   </Link>
                 ) : cardInfo.type === "email" ? (
                   <Link
                     href={`mailto:${cardInfo.lines}`}
-                    className="break-all hover:underline"
+                    className="break-words hover:underline"
                   >
                     {cardInfo.lines}
                   </Link>
                 ) : cardInfo.type === "phone" ? (
                   <Link
                     href={`tel:${cardInfo.lines.replace(/\s+/g, "")}`}
-                    className="break-all hover:underline"
+                    className="break-words hover:underline"
                   >
                     {cardInfo.lines}
                   </Link>
