@@ -112,11 +112,13 @@ const ContactSection = () => {
                 key={index}
                 className="address-card bg-card-bg border-card-border text-body-primary rounded-lg border p-[1.375rem] text-xl"
               >
-                <IconBadge
-                  icon={cardInfo?.icon}
-                  altText={`${cardInfo?.title} - icon`}
-                />
-                <h4 className="mt-9 mb-3 font-semibold">{cardInfo?.title}</h4>
+                <div className="mb-3 flex items-center gap-4">
+                  <IconBadge
+                    icon={cardInfo?.icon}
+                    altText={`${cardInfo?.title} - icon`}
+                  />
+                  <h4 className="font-semibold">{cardInfo?.title}</h4>
+                </div>
 
                 {/* {cardInfo.type === "email" ? (
                   <Link
