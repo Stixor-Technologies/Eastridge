@@ -75,6 +75,8 @@ import COO from "@/public/images/team/coo.jpg";
 import CNO from "@/public/images/team/cno.jpg";
 import HCAdmin from "@/public/images/team/hc-admin.jpg";
 import SMStaff from "@/public/images/team/sm-staff.jpg";
+import SMFinance from "@/public/images/team/sm-finance.jpg";
+import SMServices from "@/public/images/team/sm-services.jpg";
 
 const MAP_KEY = process.env["MAP_API"];
 
@@ -358,6 +360,18 @@ const MANAGEMENT_TEAM = [
     name: "Dr. Raheel Chishti ",
     title: "Head of Hospital Administration",
     image: HCAdmin,
+    bio: "",
+  },
+  {
+    name: "Saad Ullah Malik",
+    title: "SM Finance",
+    image: SMFinance,
+    bio: "",
+  },
+  {
+    name: "Lt Col Akbar Ali Khan",
+    title: "SM Services",
+    image: SMServices,
     bio: "",
   },
 ];
