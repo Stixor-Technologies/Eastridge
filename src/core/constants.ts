@@ -4,6 +4,11 @@ import BuildingFront from "@/public/images/building_front.jpg";
 import BuildingSide from "@/public/images/opd.jpg";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
 import BuildingSideMobile from "@/public/images/opd-mobile.jpg";
+import Slider1 from "@/public/images/slider-1.jpeg";
+import Slider2 from "@/public/images/slider-2.jpeg";
+import Slider3 from "@/public/images/slider-3.jpeg";
+import Slider4 from "@/public/images/slider-4.jpeg";
+import EROpening from "@/public/images/er-opening.jpeg";
 
 import Culinary from "@/public/icons/services/value-additions/culinary.svg";
 import Dialysis from "@/public/icons/services/value-additions/dialysis.svg";
@@ -112,6 +117,36 @@ const HERO_SLIDER_IMAGES = [
     src: Building,
     mobileSrc: BuildingMobile,
     alt: "Building",
+  },
+  {
+    id: "slider-1",
+    src: Slider1,
+    mobileSrc: Slider1,
+    alt: "Eastridge Primecare",
+  },
+  {
+    id: "slider-2",
+    src: Slider2,
+    mobileSrc: Slider2,
+    alt: "Eastridge Primecare",
+  },
+  {
+    id: "slider-3",
+    src: Slider3,
+    mobileSrc: Slider3,
+    alt: "Eastridge Primecare",
+  },
+  {
+    id: "slider-4",
+    src: Slider4,
+    mobileSrc: Slider4,
+    alt: "Eastridge Primecare",
+  },
+  {
+    id: "er-opening",
+    src: EROpening,
+    mobileSrc: EROpening,
+    alt: "ER Opening",
   },
 ];
 
