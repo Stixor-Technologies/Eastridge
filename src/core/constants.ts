@@ -15,6 +15,7 @@ import Suites from "@/public/icons/services/value-additions/suites.svg";
 import Trauma from "@/public/icons/services/value-additions/trauma.svg";
 import PathologyV from "@/public/icons/services/value-additions/pathology.svg";
 import Pharmacy from "@/public/icons/services/value-additions/pharmacy.svg";
+import Nutrition from "@/public/icons/services/value-additions/nutrition.svg";
 
 import Mosque from "@/public/icons/services/value-additions/mosque.svg";
 
@@ -167,6 +168,11 @@ const VALUE_ADDITIONS = [
     icon: Culinary,
     title:
       "Patient culinary services and Cafe under supervision of professional nutritionists",
+    description: "",
+  },
+  {
+    icon: Nutrition,
+    title: "Nutrition & Wellness Services",
     description: "",
   },
   {
