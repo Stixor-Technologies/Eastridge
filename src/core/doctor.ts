@@ -1,11 +1,16 @@
 //import award1 from "@/public/icons/nobel-price.svg";
 //import award2 from "@/public/icons/edison-award.svg";
 
+import aamer_mahmood_malak from "@/public/images/optimized/doctors/aamer_mahmood_malak.jpg";
 import asim_naqvi from "@/public/images/optimized/doctors/asim_naqvi.jpg";
 import ayesha_intekhab from "@/public/images/optimized/doctors/ayesha_intekhab.jpg";
-//import batool_butt from "@/public/images/optimized/doctors/batool_butt.jpg";
+import batool_butt from "@/public/images/optimized/doctors/batool_butt.jpg";
+import farrukh_saeed from "@/public/images/optimized/doctors/farrukh_saeed.jpg";
+import hamid_ali_shah from "@/public/images/optimized/doctors/hamid_ali_shah.jpg";
+import humaira_arshad from "@/public/images/optimized/doctors/humaira_arshad.jpg";
 import imran_ashraf from "@/public/images/optimized/doctors/imran_ashraf.jpg";
-//import irfan_saeed from "@/public/images/optimized/doctors/irfan_saeed.jpg";
+import irfan_saeed from "@/public/images/optimized/doctors/irfan_saeed.jpg";
+import khalid_mahmood from "@/public/images/optimized/doctors/khalid_mahmood.jpg";
 import maham_tariq from "@/public/images/optimized/doctors/maham_tariq.jpg";
 import nadeem_akhtar from "@/public/images/optimized/doctors/nadeem_akhtar.jpg";
 import naeem_zia from "@/public/images/optimized/doctors/naeem_zia.jpg";
@@ -14,6 +19,11 @@ import riffat_najeeb from "@/public/images/optimized/doctors/riffat_najeeb.jpg";
 import sadia_chaudhry from "@/public/images/optimized/doctors/sadia_chaudhry.jpg";
 import saima_shafait from "@/public/images/optimized/doctors/saima_shafait.jpg";
 import sana_qaiser from "@/public/images/optimized/doctors/sana_qaiser.jpg";
+import shahid_hameed from "@/public/images/optimized/doctors/shahid_hameed.jpg";
+import shumaila_hadi from "@/public/images/optimized/doctors/shumaila_hadi.jpg";
+import tehreem_yazdani from "@/public/images/optimized/doctors/tehreem_yazdani.jpg";
+import usman_qureshi from "@/public/images/optimized/doctors/usman_qureshi.jpg";
+import zahoor_iqbal_mirza from "@/public/images/optimized/doctors/zahoor_iqbal_mirza.jpg";
 import zameer_ahmad from "@/public/images/optimized/doctors/zameer_ahmad.jpg";
 
 import { StaticImageData } from "next/image";
@@ -305,5 +315,244 @@ export const doctors: Doctor[] = [
     phoneNo: "(051) 884-4800",
     youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
     image: sadia_chaudhry,
+  },
+  {
+    id: "16",
+    name: "Prof. Dr Farrukh Saeed",
+    description: "Consultant Gastroenterologist",
+    biography:
+      "Dr. Farrukh Saeed is a distinguished gastroenterologist with decades of experience in clinical practice, teaching, and advanced endoscopic procedures. He graduated from Army Medical College, Rawalpindi in 1987, completing FCPS in Medicine in 1995 and FCPS in Gastroenterology in 2005. Dr. Farrukh has served as a Classified Medical Specialist and Gastroenterologist at multiple Army hospitals, including Military Hospital Rawalpindi (PEMH), CMH Peshawar, and CMH Quetta. He has held prestigious academic positions, including Professor of Medicine and Principal at Army Medical College, Rawalpindi, and has led the Department of Gastroenterology since 2017, developing PEMH into one of the country’s best-equipped training centers. He has supervised over 30 fellows in gastroenterology since 2010. His primary clinical interests include ERCP and EUS, and he is committed to providing advanced, patient-centered care with a focus on safety and excellence.",
+    occupation:
+      "MBBS, FCPS (Medicine), FCPS (Gastroenterology), FRCP (Edin), FACP, CHPE",
+    qualifications: [
+      "MBBS",
+      "FCPS (Medicine)",
+      "FCPS (Gastroenterology)",
+      "FRCP (Edin)",
+      "FACP",
+      "CHPE",
+    ],
+    experience: "35",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Gastroenterology",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
+    image: farrukh_saeed,
+  },
+  {
+    id: "17",
+    name: "Asst. Prof. Dr Irfan Saeed",
+    description: "Consultant ENT & Head & Neck Surgeon",
+    biography:
+      "Dr. Irfan Saeed is an experienced ENT specialist and Head & Neck surgeon with a distinguished military and clinical career. He graduated from Army Medical College in 1992 and completed his MCPS and FCPS in 2002. Dr. Saeed has served at various CMH and PAF hospitals, most recently as Team Leader for Head & Neck Surgeries at CMH Rawalpindi from 2023 to 2025. He brings extensive expertise in managing a wide range of ENT and head & neck conditions, combining precision, advanced techniques, and patient-centered care.",
+    occupation: "MBBS, FCPS, MCPS",
+    qualifications: ["MBBS", "FCPS", "MCPS"],
+    experience: "33",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "ENT",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
+    image: irfan_saeed,
+  },
+  {
+    id: "18",
+    name: "Dr. Tehreem Yazdani",
+    description: "Consultant Obs & Gynae",
+    biography:
+      "Dr. Tehreem Yazdani is a highly experienced obstetrician and gynaecologist with over 33 years of dedicated service in women’s health. A graduate of Fatima Jinnah Medical University, she joined the Pakistan Army in 1995 as a Captain and served with distinction for 31 years, retiring at the rank of Brigadier. She has a strong special interest in high-risk obstetrics, genetic testing, normal deliveries, gynaecological surgeries, and maternal–fetal medicine. In addition to her clinical expertise, Dr. Yazdani is also qualified in medical education, reflecting her commitment to advancing women’s healthcare through both practice and teaching. Dr. Tehreem Yazdani brings her extensive experience, disciplined training, and compassionate approach to the patients of Eastridge Primecare Hospital.",
+    occupation:
+      "MBBS, FCPS (Gynae & Obs), MCPS (Gynae & Obs), MSc, MPhil (Medical Education)",
+    qualifications: [
+      "MBBS",
+      "FCPS (Gynae & Obs)",
+      "MCPS (Gynae & Obs)",
+      "MSc, MPhil (Medical Education)",
+    ],
+    experience: "33",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Obs & Gynae",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/ZsXDB0oHOII",
+    image: tehreem_yazdani,
+  },
+  {
+    id: "19",
+    name: "Dr. Shahid Hameed",
+    description: "Consultant Plastic Surgeon",
+    biography:
+      "Dr. Shahid Hameed brings over three decades of expertise in plastic surgery, combining extensive clinical experience with advanced surgical skills. A graduate of Quaid-e-Azam University, he went on to achieve dual specialization with FCPS degrees in General Surgery and Plastic Surgery from CPSP, reflecting his exceptional expertise and dedication to surgical excellence. Dr. Shahid has served as Consultant Plastic Surgeon at Maroof International Hospital. He also held the position of Consultant and Head of the Plastic Surgery Department at CMH Rawalpindi. He combines advanced surgical techniques with a patient-centered approach to deliver safe and effective outcomes.",
+    occupation: "MBBS, FCPS (General Surgery), FCPS (Plastic Surgery)",
+    qualifications: [
+      "MBBS",
+      "FCPS (General Surgery)",
+      "FCPS (Plastic Surgery)",
+    ],
+    experience: "31",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Plastic Surgery",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
+    image: shahid_hameed,
+  },
+  {
+    id: "20",
+    name: "Assoc. Prof. Dr Syed Hamid Ali Shah",
+    description: "Consultant Anaesthesiologist",
+    biography:
+      "Assoc. Prof. Dr. Syed Hamid Ali Shah is a distinguished anesthesiologist with extensive expertise in perioperative and pain management. He earned his MBBS from the University of the Punjab and completed both MCPS and FCPS in Anaesthesiology from CPSP, along with an MSc in Pain Medicine from Ripha International University. Dr. Hamid has led anesthesia departments at CMH Rawalpindi and CMH Quetta, and served as Associate Professor and Head of Anaesthesia at Bahria International Hospital. He integrates advanced anesthetic and pain management strategies to ensure patient comfort, safety, and faster recovery.",
+    occupation:
+      "MBBS, FCPS (Anaesthesiology), MCPS (Anaesthesiology), MSc (Pain Medicine)",
+    qualifications: [
+      "MBBS",
+      "FCPS (Anaesthesiology)",
+      "MCPS (Anaesthesiology)",
+      "MSc (Pain Medicine)",
+    ],
+    experience: "27",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Anaesthesiology",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
+    image: hamid_ali_shah,
+  },
+  {
+    id: "21",
+    name: "Dr. Aamer Mahmood Malak",
+    description: "Consultant Anaesthesiologist",
+    biography:
+      "Dr. Aamer Mahmood Malak is a highly experienced Consultant Anaesthesiologist and a graduate of Army Medical College. With over 25 years of clinical experience, including extensive international exposure, he has provided safe and effective anaesthesia care for a wide range of surgical procedures. His expertise includes general anaesthesia, regional anaesthesia (spinal, epidural, and nerve blocks), perioperative patient management, and pain control. Dr. Malak is committed to ensuring the highest standards of patient safety, comfort, and quality care before, during, and after surgery.",
+    occupation: "MBBS, FCPS Anaesthesiology, CESR (UK)",
+    qualifications: ["MBBS", "FCPS Anaesthesiology", "CESR (UK)"],
+    experience: "25",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Anaesthesiology",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://youtu.be/Bsc5LEVjQx0",
+    image: aamer_mahmood_malak,
+  },
+  {
+    id: "22",
+    name: "Prof. Dr Zahoor Iqbal Mirza",
+    description: "Consultant Urologist & Transplant Surgeon",
+    biography:
+      "Prof. Dr. Zahoor Iqbal Mirza is a seasoned Urologist and transplant Surgeon. He has dedicated 24 years in advancing patient care and surgical excellence. A graduate of Allama Iqbal Medical College, he went on to achieve dual FCPS qualifications in General Surgery and Urology from CPSP, showcasing his expertise across multiple surgical disciplines. Prof Dr. Zahoor has served as Professor, Classified Urologist and Transplant Surgeon at Armed Forces Institute of Urology (AFIU). He also held a similar role at CMH Kharian, leading complex urological and transplant procedures. At Eastridge Primecare Hospital, Dr. Zahoor provides expert, safe and personalized urology and transplant services to support patient health and well-being.",
+    occupation: "MBBS, FCPS (General Surgery), FCPS (Urology)",
+    qualifications: ["MBBS", "FCPS (General Surgery)", "FCPS (Urology)"],
+    experience: "24",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Urology",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/WR32acuybpQ",
+    image: zahoor_iqbal_mirza,
+  },
+  {
+    id: "23",
+    name: "Dr. Shumaila Hadi",
+    description: "Internal Medicine Specialist",
+    biography:
+      "Dr. Shumaila Hadi is an accomplished physician with 23 years of diverse international clinical experience. Gold medallist from Khyber Medical College (2001), she went on to complete MRCP Part 1 and 2 (UK) in 2007. She received extensive postgraduate training in Australia across multiple specialties, including General Medicine, Acute Medical Care, Stroke Medicine, Geriatrics and Obstetric Medicine. She also served as a Clinical Academic with the University of Adelaide. Dr. Shumaila Hadi brings a strong blend of expertise, academic excellence and compassionate patient care to Eastridge Primecare Hospital, offering comprehensive and evidence-based medical care to patients across a wide range of conditions.",
+    occupation: "MBBS, FRACP (Australia), Internal/Obstetric Medicine",
+    qualifications: [
+      "MBBS",
+      "FRACP (Australia)",
+      "Internal/Obstetric Medicine",
+    ],
+    experience: "23",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Medicine",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/qdl_GkfuHDg",
+    image: shumaila_hadi,
+  },
+  {
+    id: "24",
+    name: "Prof. Dr Usman Qureshi",
+    description: "Consultant General Surgeon",
+    biography:
+      "Prof Dr. Usman Qureshi is a highly experienced surgeon and emergency medicine specialist with over 22 years of distinguished service in clinical practice, academia and medical leadership. He earned his MBBS from the University of Punjab and holds an FCPS in General Surgery, along with memberships in the Royal College of Emergency Medicine (UK) and the Royal College of Physicians & Surgeons, Glasgow. Dr. Qureshi has held several prestigious roles throughout his career including Dean of Clinical Academics at Rawalpindi Medical University, Head of Emergency Medicine at Holy Family Hospital and Head of Surgery at Benazir Bhutto Hospital. He also serves as Director of the Quality Enhancement Cell, Additional Director of Medical Education & ORIC and Section Editor for the Journal of Rawalpindi Medical College. With his vast expertise, he provides exceptional surgical and emergency care with a focus on precision, safety and patient-centered outcomes at Eastridge Primecare.",
+    occupation: "MBBS, FCPS (Gen Surgery), MRCPS",
+    qualifications: ["MBBS", "FCPS (Gen Surgery)", "MRCPS"],
+    experience: "22",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Gen Surgery",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/MnyiioPFs6s",
+    image: usman_qureshi,
+  },
+  {
+    id: "25",
+    name: "Prof. Dr Khalid Mahmood",
+    description: "Consultant General Surgeon",
+    biography:
+      "Prof Dr. Khalid Mahmood is a highly experienced surgeon with 22 years of expertise in complex and advanced surgical care. He graduated with an MBBS from Quaid-e-Azam University and earned his FCPS in Surgery from CPSP. Dr. Khalid also currently serves as Professor of Surgery at NUST, School of Health Sciences, shaping the next generation of surgeons. He has led surgical departments at CMH Rawalpindi and PAF Karachi, and served as Consultant Surgeon at CMH Lahore. Known for his expertise in complex surgical procedures, he combines precision, innovation with a patient-centered approach. His leadership in surgical education and clinical practice has earned him a reputation for excellence and reliability.",
+    occupation: "MBBS, FCPS (Surgery)",
+    qualifications: ["MBBS", "FCPS (Surgery)"],
+    experience: "22",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Gen Surgery",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/TuaDbGgR-Y0",
+    image: khalid_mahmood,
+  },
+  {
+    id: "26",
+    name: "Prof. Dr Humaira Arshad",
+    description: "Consultant Gynaecologist",
+    biography:
+      "Prof Dr. Humaira Arshad is a highly experienced obstetrician and gynecologist with 16 years of clinical and academic expertise. She earned her MBBS from Quaid-e-Azam University and completed both MCPS and FCPS in Obstetrics & Gynecology from CPSP. Dr. Humaira has served as Consultant Gynecologist at Shaheen Health Plus and Professor of Obstetrics & Gynecology at Rawal Institute of Health Sciences, Islamabad. She has also held leadership roles as Consultant and Head of the Gynecology Department at CMH Quetta. Additionally, she served as Associate Professor and Head of Gynecology at Quetta Institute of Medical Sciences. Renowned for her precision, compassion, and patient-centered approach, she excels in managing complex gynecological and obstetric cases.",
+    occupation: "MBBS, FCPS (Obs and Gynae), MCPS (Obs and Gynae)",
+    qualifications: ["MBBS", "FCPS (Obs and Gynae)", "MCPS (Obs and Gynae)"],
+    experience: "16",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Obs & Gynae",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/JSt1AMxFLnk",
+    image: humaira_arshad,
+  },
+  {
+    id: "27",
+    name: "Dr. Batool Butt",
+    description: "Consultant Nephrologist",
+    biography:
+      "Dr. Batool Butt is an accomplished nephrologist with 14 years of clinical experience and advanced training in kidney care and renal transplantation. She graduated from NUST (AMC) in 2009 and completed her training in both Internal Medicine and Nephrology at PEMH, successfully passing all examinations on her first attempt. She holds multiple prestigious qualifications, including MRCP, ES Neph, CHPE, DHPE, and a Fellowship in Clinical Renal Transplantation. Dr. Batool has attended and presented at numerous national and international conferences and is an active member of the American Society of Nephrology and the International Society of Nephrology. She also serves as Pakistan’s representative to the Asian Pacific Society of Nephrology. Dedicated to evidence-based, patient-centred kidney care, Dr. Batool Butt brings her extensive expertise to the patients of Eastridge Primecare Hospital.",
+    occupation: "MBBS, FCPS (Med), FCPS (Neph), MRCP, ES Neph, DHPE",
+    qualifications: [
+      "MBBS",
+      "FCPS (Med)",
+      "FCPS (Neph)",
+      "MRCP",
+      "ES Neph",
+      "DHPE",
+    ],
+    experience: "14",
+    certificates: [],
+    skills: [],
+    location: "Main Building, Eastridge Primecare",
+    department: "Nephrology",
+    phoneNo: "(051) 884-4800",
+    youtubeVideoLink: "https://www.youtube.com/embed/-trhfDIidwY",
+    image: batool_butt,
   },
 ];
