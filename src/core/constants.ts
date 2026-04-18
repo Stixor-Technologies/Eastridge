@@ -52,6 +52,7 @@ import RadioDiagnosis from "@/public/icons/services/radio-diagnostics.svg";
 import Marker from "@/public/icons/marker.svg";
 //import Email from "@/public/icons/email.svg";
 import Call from "@/public/icons/call.svg";
+import Clock from "@/public/icons/clock.svg";
 
 import MDFF from "@/public/images/team/md.jpeg";
 import MDMedical from "@/public/images/team/mdmedical.jpg";
@@ -325,6 +326,12 @@ const CONTACT_CARDS = [
     title: "Call Us",
     lines: "(051) 884-4800",
     type: "phone",
+  },
+  {
+    icon: Clock,
+    title: "OPD Working Hours",
+    lines: "9:00 AM to 9:00 PM",
+    type: "hours",
   },
 ];
 
