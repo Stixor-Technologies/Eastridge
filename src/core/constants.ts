@@ -1,9 +1,7 @@
 import Building from "@/public/images/wallpaper.jpg";
 import BuildingMobile from "@/public/images/wallpaper-mobile.jpg";
 import BuildingFront from "@/public/images/building_front.jpg";
-import BuildingSide from "@/public/images/opd.jpg";
 import BuildingFrontMobile from "@/public/images/building-front-mobile.jpg";
-import BuildingSideMobile from "@/public/images/opd-mobile.jpg";
 import Slider1 from "@/public/images/slider-1.jpeg";
 import Slider2 from "@/public/images/slider-2.jpeg";
 import Slider3 from "@/public/images/slider-3.jpeg";
@@ -105,12 +103,6 @@ const HERO_SLIDER_IMAGES = [
     src: BuildingFront,
     mobileSrc: BuildingFrontMobile,
     alt: "Building Front",
-  },
-  {
-    id: "building-side",
-    src: BuildingSide,
-    mobileSrc: BuildingSideMobile,
-    alt: "Building Side",
   },
   {
     id: "building",
