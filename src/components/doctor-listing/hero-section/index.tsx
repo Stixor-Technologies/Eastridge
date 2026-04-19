@@ -1,10 +1,10 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import doctorHero from "@/public/images/ui/doctor-hero.png";
 
 const DoctorHeroSection = () => {
   return (
     <div className="relative h-[447px] w-full">
-      <Image
+      <ExportedImage
         src={doctorHero}
         alt="Doctor Hero Background"
         fill

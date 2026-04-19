@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { LEADERSHIP_TEAM } from "@/src/core/constants";
 import TeamMemberModal from "@/src/components/home-page/team/team-member-modal";
 import { useGSAP } from "@gsap/react";
@@ -58,7 +58,7 @@ const Leadership = () => {
               >
                 <div className="border-card-border flex h-full w-full cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg">
                   <div className="relative">
-                    <Image
+                    <ExportedImage
                       src={member?.image}
                       alt={`${member?.name}-image`}
                       className="aspect-[4/5] object-cover"

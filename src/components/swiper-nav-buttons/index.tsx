@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Arrow from "@/public/icons/arrow.svg";
 
 interface SwiperNavButtonProps {
@@ -19,7 +19,7 @@ const SwiperNavButton: React.FC<SwiperNavButtonProps> = ({
     aria-label={direction === "prev" ? "Previous" : "Next"}
     type="button"
   >
-    <Image
+    <ExportedImage
       src={Arrow}
       alt={direction === "prev" ? "arrow-previous" : "arrow-next"}
       className={direction === "next" ? "rotate-180" : ""}

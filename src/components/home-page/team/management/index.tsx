@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -45,7 +45,7 @@ const ManagementTeam = () => {
             <div className="mb-8 flex justify-center">
               <div className="border-card-border flex h-full w-full max-w-[14rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg md:max-w-[16rem]">
                 <div className="relative">
-                  <Image
+                  <ExportedImage
                     src={firstMember.image}
                     alt={`${firstMember.title}-image`}
                     className="aspect-[4/5] object-cover"
@@ -69,7 +69,7 @@ const ManagementTeam = () => {
               <div key={index} className="flex justify-center">
                 <div className="border-card-border flex h-full w-full max-w-[14rem] cursor-pointer flex-col rounded-xl border px-4 py-10 transition-shadow duration-300 hover:shadow-lg md:max-w-[16rem]">
                   <div className="relative">
-                    <Image
+                    <ExportedImage
                       src={member?.image}
                       alt={`${member?.title}-image`}
                       className="aspect-[4/5] object-cover"

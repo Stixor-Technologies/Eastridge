@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { createSlug } from "../../../utils/slug";
 import Link from "next/link";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { doctors } from "@/src/core/doctor";
 import RightArrow from "@/public/icons/right-arrow.svg";
 import { useGSAP } from "@gsap/react";
@@ -147,7 +147,7 @@ const DoctorListing = () => {
                 >
                   <div className="flex flex-col">
                     <div className="relative aspect-[313/387] w-full overflow-hidden rounded-2xl border border-[#EBEBEB] transition-shadow duration-300 ease-in-out group-hover:shadow-xl">
-                      <Image
+                      <ExportedImage
                         src={doctor.image}
                         alt={doctor.name}
                         fill
@@ -186,7 +186,7 @@ const DoctorListing = () => {
                   showAll ? "rotate-180" : ""
                 }`}
               >
-                <Image
+                <ExportedImage
                   src={RightArrow}
                   alt=""
                   width={20}

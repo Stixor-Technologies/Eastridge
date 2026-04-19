@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Map from "@/public/images/ui/map.jpg";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 
 const ContactSection = () => {
@@ -100,7 +100,7 @@ const ContactSection = () => {
             rel="noopener noreferrer"
             className={`map-section sm:pb-1/2 relative h-[38.5rem] w-full overflow-hidden rounded-[1.25rem] bg-red-200 md:h-auto md:flex-1`}
           >
-            <Image
+            <ExportedImage
               src={Map}
               alt="map"
               className="absolute top-0 left-0 h-full w-full object-cover"

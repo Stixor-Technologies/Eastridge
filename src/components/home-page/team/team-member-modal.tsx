@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Close from "@/public/icons/close.svg";
 import Star from "@/public/icons/star.svg";
 import DummyProfile from "@/public/images/ui/dummy-profile.png";
@@ -96,7 +96,7 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
         <div className="border-card-border sticky top-0 z-10 flex w-full items-center justify-between border-b p-5 md:px-6 md:pt-6 md:pb-5">
           <div className="flex items-center justify-center gap-5 sm:gap-6">
             <div className="border-card-border flex size-[2.5625rem] items-center justify-center rounded-[.625rem] border shadow-2xl sm:size-12">
-              <Image
+              <ExportedImage
                 src={DummyProfile}
                 alt={"dummy-profile"}
                 width={30}
@@ -114,7 +114,7 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
             onClick={onClose}
             aria-label="Close"
           >
-            <Image src={Close} alt="close-modal-icon" />
+            <ExportedImage src={Close} alt="close-modal-icon" />
           </button>
         </div>
 
@@ -130,7 +130,7 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
             </p>
             <p className="text-body-primary md:text-xl">{member?.title}</p>
 
-            <Image
+            <ExportedImage
               src={member?.image}
               alt={`${member?.name} - image`}
               className="mt-3 rounded-[1.375rem]"
@@ -145,7 +145,7 @@ const TeamMemberModal: React.FC<Props> = ({ open, member, onClose }) => {
               </div>
 
               <div className="text-body-main flex items-start gap-3 px-[1.1875rem] py-7 text-xs leading-tight sm:px-[1.375rem] sm:text-sm">
-                <Image src={Star} alt="star-icon" />
+                <ExportedImage src={Star} alt="star-icon" />
                 <p>{member.bio}</p>
               </div>
             </div>

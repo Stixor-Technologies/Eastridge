@@ -3,7 +3,7 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { createSlug } from "../../../utils/slug";
 import { useRouter } from "next/navigation";
 import { doctors, Doctor } from "@/src/core/doctor";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 
 interface FilterState {
   department: string[];
@@ -211,7 +211,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
             />
             {/* Search icon */}
             <span className="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2">
-              <Image
+              <ExportedImage
                 src="/icons/search.svg"
                 alt="Search"
                 width={20}
@@ -268,7 +268,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
             type="button"
             aria-label="Open filters"
           >
-            <Image
+            <ExportedImage
               src="/icons/filter.svg"
               alt="Filters"
               width={20}

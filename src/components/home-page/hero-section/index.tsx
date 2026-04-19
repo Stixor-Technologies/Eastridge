@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { HERO_SLIDER_IMAGES } from "@/src/core/constants";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -61,7 +61,7 @@ const HeroSection = () => {
                     media="(max-width: 768px)"
                     srcSet={data?.mobileSrc?.src}
                   />
-                  <Image
+                  <ExportedImage
                     className="h-full w-full object-cover"
                     src={data?.src}
                     width={1536}

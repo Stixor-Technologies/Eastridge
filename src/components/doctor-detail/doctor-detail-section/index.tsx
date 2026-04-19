@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
 //import RightArrow from "@/public/icons/right-arrow.svg";
@@ -106,7 +106,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
             <div className="lg:hidden">
               <div className="mb-6 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
-                  <Image
+                  <ExportedImage
                     src={doctor.image}
                     alt={doctor.name}
                     fill
@@ -127,7 +127,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <button className="inline-flex cursor-pointer items-center gap-4 rounded-full bg-[#D32F2F] py-4 pr-6 pl-10 text-lg font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C]">
                   Make Appointment
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
-                    <Image
+                    <ExportedImage
                       src={RightArrow}
                       alt="Right Arrow"
                       width={14}
@@ -144,7 +144,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
             <div className="hidden lg:block">
               <div className="mb-8 overflow-hidden rounded-2xl border border-[#EBEBEB] bg-gray-100">
                 <div className="relative" style={{ aspectRatio: "537/690" }}>
-                  <Image
+                  <ExportedImage
                     src={doctor.image}
                     alt={doctor.name}
                     fill
@@ -163,7 +163,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 <button className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#D32F2F] py-2 pr-3 pl-5 text-sm font-semibold whitespace-nowrap text-white transition-colors duration-300 hover:bg-[#B71C1C] sm:gap-4 sm:py-4 sm:pr-6 sm:pl-10 sm:text-lg">
                   Make Appointment
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white sm:h-12 sm:w-12">
-                    <Image
+                    <ExportedImage
                       src={RightArrow}
                       alt="Right Arrow"
                       width={20}
@@ -278,7 +278,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
                 .map((award, index) => (
                   <div key={index} className="text-left">
                     <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-pink-50">
-                      <Image
+                      <ExportedImage
                         src={award.icon}
                         alt={award.name}
                         width={32}
@@ -296,7 +296,7 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
             */}
             {/* Video Section */}
             <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
-              <Image
+              <ExportedImage
                 src={VideoBG}
                 alt="Video Background"
                 className="h-auto w-full"

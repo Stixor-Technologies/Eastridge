@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/public/logo-header.png";
@@ -72,7 +72,7 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between">
         <Link href={"/"}>
-          <Image
+          <ExportedImage
             src={isDetailPage && data.y <= 20 ? LogoBlack : Logo}
             width={120}
             height={41}

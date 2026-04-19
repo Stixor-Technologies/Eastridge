@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Doctor from "@/public/images/ui/doctor.png";
 
 const Banner = () => {
@@ -19,7 +19,7 @@ const Banner = () => {
           </div>
 
           <div className="self-end">
-            <Image
+            <ExportedImage
               src={Doctor}
               alt="doctor"
               width={532}

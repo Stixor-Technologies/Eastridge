@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 import { SERVICES_OFFERED } from "@/src/core/constants";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Arrow from "@/public/icons/arrow.svg";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -87,7 +87,7 @@ const ServicesSection = () => {
                   >
                     <li className="">
                       <div className="bg-card-bg px flex items-center gap-6 rounded-2xl px-8 py-10">
-                        <Image
+                        <ExportedImage
                           src={service?.icon}
                           alt={`${service?.title} icon`}
                         />
@@ -109,14 +109,18 @@ const ServicesSection = () => {
               className="bg-accent shadow-slider-btn flex h-11 w-11 cursor-pointer items-center justify-center rounded-full"
               aria-label="Previous"
             >
-              <Image src={Arrow} alt="arrow-previous" />
+              <ExportedImage src={Arrow} alt="arrow-previous" />
             </button>
             <button
               onClick={() => swiperRef.current?.slideNext()}
               className="bg-accent shadow-slider-btn flex h-11 w-11 cursor-pointer items-center justify-center rounded-full"
               aria-label="Next"
             >
-              <Image src={Arrow} alt="arrow-next" className="rotate-180" />
+              <ExportedImage
+                src={Arrow}
+                alt="arrow-next"
+                className="rotate-180"
+              />
             </button>
           </div>
         </div>

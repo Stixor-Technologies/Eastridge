@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Logo from "@/public/logo.png";
 import { SOCIAL_LINKS, FOOTER_CONTACTS } from "@/src/core/constants";
 import Link from "next/link";
@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container pt-10 pb-[5.5625rem] md:pt-14">
         <div className="flex flex-col flex-wrap justify-between gap-10 md:flex-row md:items-center">
           <div className="sm:max-w-[18.75rem]">
-            <Image
+            <ExportedImage
               src={Logo}
               width={220}
               height={76}
@@ -47,14 +47,14 @@ const Footer = () => {
                   key={item?.id}
                   className="bg-card-bg group flex size-12 items-center justify-center rounded-full"
                 >
-                  <Image
+                  <ExportedImage
                     src={item?.icon}
                     width={48}
                     height={48}
                     alt={item?.id}
                     className="group-hover:hidden"
                   />
-                  <Image
+                  <ExportedImage
                     src={item?.hoverIcon}
                     width={48}
                     height={48}
@@ -86,7 +86,7 @@ const Footer = () => {
                   }
                   className="flex items-center gap-2 hover:underline"
                 >
-                  <Image
+                  <ExportedImage
                     src={item.icon}
                     alt={item.type}
                     width={20}

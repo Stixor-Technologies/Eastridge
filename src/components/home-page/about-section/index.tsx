@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import HospitalGallery from "@/public/images/hospital/hospital-gallery.jpg";
 import HospitalReception from "@/public/images/hospital/hospital-reception.jpg";
 import useSectionInView from "@/src/hooks/useSectionInView";
@@ -134,7 +134,7 @@ const AboutSection = () => {
               To be the Center of Excellence for advanced healthcare, known for
               exceptional care and wellbeing, trusted locally and globally.
             </p>
-            <Image
+            <ExportedImage
               src={HospitalGallery}
               width={656}
               height={383}
@@ -151,7 +151,7 @@ const AboutSection = () => {
               ensuring patient first value while acting as the Leading State of
               Art Hospital.
             </p>
-            <Image
+            <ExportedImage
               src={HospitalReception}
               width={656}
               height={409}

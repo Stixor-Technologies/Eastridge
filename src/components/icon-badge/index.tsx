@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import Image, { StaticImageData } from "next/image";
+import ExportedImage from "next-image-export-optimizer";
+import type { StaticImageData } from "next/image";
 
 type IconBadgeProps = {
   icon: StaticImageData;
@@ -9,7 +10,7 @@ type IconBadgeProps = {
 const IconBadge: FC<IconBadgeProps> = ({ icon, altText = "" }) => {
   return (
     <div className="border-card-border flex size-[3.375rem] items-center justify-center rounded-full border bg-white md:size-16">
-      <Image
+      <ExportedImage
         src={icon}
         alt={altText}
         width={31}
