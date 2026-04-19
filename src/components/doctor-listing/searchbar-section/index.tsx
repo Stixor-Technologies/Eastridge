@@ -76,7 +76,7 @@ const DoctorSearchBar: React.FC<DoctorSearchBarProps> = ({ onFilter }) => {
       const matchesName = doc.name.toLowerCase().includes(search.toLowerCase());
       const matchesDepartment =
         filters.department.length === 0 ||
-        filters.department.includes(doc.department);
+        doc.department.some((d) => filters.department.includes(d));
       return matchesName && matchesDepartment;
     });
   }, [search, filters]);

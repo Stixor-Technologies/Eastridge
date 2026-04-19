@@ -189,9 +189,13 @@ const DoctorDetailSection = ({ doctor }: DoctorDetailSectionProps) => {
             <div className="mb-8 space-y-2 text-sm sm:mb-10 sm:space-y-3">
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
-                  Department:
+                  {doctor.department.length > 1
+                    ? "Departments:"
+                    : "Department:"}
                 </span>
-                <span className="text-gray-600">{doctor.department}</span>
+                <span className="text-gray-600">
+                  {doctor.department.join(", ")}
+                </span>
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-0">
                 <span className="w-full flex-shrink-0 font-bold text-gray-900 sm:w-44">
