@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build && next-image-export-optimizer",
+    "deploy:staging": "yarn build && wrangler pages deploy dist --project-name=eastridge-staging",
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint --ignore-pattern .gitignore \"src/**/*.{ts,js,tsx,jsx}\"",
@@ -46,6 +47,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.83.0"
   }
 }
