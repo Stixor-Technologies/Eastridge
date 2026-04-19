@@ -17,7 +17,7 @@ const getUniqueValues = (arr: Doctor[], key: keyof Doctor): string[] => {
         .flat()
         .filter((v): v is string => typeof v === "string"),
     ),
-  );
+  ).sort((a, b) => a.localeCompare(b));
 };
 
 const FILTERS_KEY = "doctorDepartmentFilters";
