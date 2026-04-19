@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Doctor } from "@/src/core/doctor";
 import { useRef } from "react";
 //import RightArrow from "@/public/icons/right-arrow.svg";
-import VideoBG from "@/public/images/video-bg.svg";
+import VideoBG from "@/public/images/ui/video-bg.svg";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

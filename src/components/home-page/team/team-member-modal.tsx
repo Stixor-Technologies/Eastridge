@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import Close from "@/public/icons/close.svg";
 import Star from "@/public/icons/star.svg";
-import DummyProfile from "@/public/images/dummy-profile.png";
+import DummyProfile from "@/public/images/ui/dummy-profile.png";
 import Link from "next/link";
 
 interface Member {

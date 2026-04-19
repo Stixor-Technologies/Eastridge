@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import HospitalGallery from "@/public/images/hospital-gallery.jpg";
-import HospitalReception from "@/public/images/hospital-reception.jpg";
+import HospitalGallery from "@/public/images/hospital/hospital-gallery.jpg";
+import HospitalReception from "@/public/images/hospital/hospital-reception.jpg";
 import useSectionInView from "@/src/hooks/useSectionInView";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -80,7 +80,7 @@ const AboutSection = () => {
 
   return (
     <section
-      className="[background-size:50rem_37.5rem] bg-[right_-8.5rem_top_-14rem] bg-no-repeat pt-10 md:bg-[url(/images/light.png)] lg:pt-16"
+      className="[background-size:50rem_37.5rem] bg-[right_-8.5rem_top_-14rem] bg-no-repeat pt-10 md:bg-[url(/images/ui/light.png)] lg:pt-16"
       id="about"
       ref={ref}
     >

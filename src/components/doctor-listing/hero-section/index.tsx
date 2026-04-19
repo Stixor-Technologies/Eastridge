@@ -1,5 +1,5 @@
 import Image from "next/image";
-import doctorHero from "@/public/images/doctor-hero.png";
+import doctorHero from "@/public/images/ui/doctor-hero.png";
 
 const DoctorHeroSection = () => {
   return (
